@@ -1,0 +1,22 @@
+.scroll-float {
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-weight: 800;
+  line-height: 1.15;
+  width: 100%;
+}
+
+.scroll-float-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+}

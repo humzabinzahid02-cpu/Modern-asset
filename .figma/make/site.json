@@ -1,0 +1,10 @@
+{
+  "description": "Enhance user interfaces with a realistic translucent button that compresses upon interaction, providing an engaging and visually appealing experience.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
