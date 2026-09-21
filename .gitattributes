@@ -18,9 +18,10 @@
 *.sketch             filter=lfs diff=lfs merge=lfs -text
 
 # ---------------------------------------------------------------------------
-# Video
+# Video (public web video kept in standard Git for Vercel CDN deployment)
 # ---------------------------------------------------------------------------
-*.mp4                filter=lfs diff=lfs merge=lfs -text
+# *.mp4                filter=lfs diff=lfs merge=lfs -text
+*.mp4                -filter -diff -merge
 *.mov                filter=lfs diff=lfs merge=lfs -text
 *.avi                filter=lfs diff=lfs merge=lfs -text
 *.mkv                filter=lfs diff=lfs merge=lfs -text
