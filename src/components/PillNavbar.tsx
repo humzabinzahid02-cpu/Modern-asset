@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { CategoryType } from '../types/store';
 
 interface PillNavbarProps {

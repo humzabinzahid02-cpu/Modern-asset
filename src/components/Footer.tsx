@@ -1,4 +1,4 @@
-const NAV_COLS = [
+﻿const NAV_COLS = [
   {
     heading: 'Products',
     links: ['Tankers', 'Trailers', 'Truck Bodies', 'Sweepers', 'Wreckers', 'Aerial Platforms'],
@@ -16,8 +16,8 @@ const NAV_COLS = [
 export default function Footer() {
   return (
     <footer id="contact-footer" style={{
-      background: '#181D21',
-      borderTop: '1px solid #343B40',
+      background: '#1C2128',
+      borderTop: '1px solid #252D35',
       padding: 'clamp(48px,6vw,80px) clamp(24px,6vw,100px) 32px',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -34,7 +34,7 @@ export default function Footer() {
                 width: 34,
                 height: 34,
                 borderRadius: 7,
-                background: 'linear-gradient(135deg, #E58A16 0%, #C8750D 100%)',
+                background: 'linear-gradient(135deg, #E07B10 0%, #C46C0C 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -58,7 +58,7 @@ export default function Footer() {
             <p style={{
               fontFamily: 'Outfit, sans-serif',
               fontSize: 13,
-              color: '#AEB5B9',
+              color: '#B0B8BC',
               lineHeight: 1.7,
               margin: '0 0 24px',
             }}>
@@ -69,7 +69,7 @@ export default function Footer() {
               fontSize: '11px',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: '#AEB5B9',
+              color: '#B0B8BC',
             }}>
               🇸🇦 Riyadh, Saudi Arabia
             </div>
@@ -96,12 +96,12 @@ export default function Footer() {
                     style={{
                       fontFamily: 'Outfit, sans-serif',
                       fontSize: '13px',
-                      color: '#D9DDDE',
+                      color: '#E2DFDC',
                       textDecoration: 'none',
                       transition: 'color 180ms ease',
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = '#E58A16')}
-                    onMouseLeave={e => (e.currentTarget.style.color = '#D9DDDE')}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#E07B10')}
+                    onMouseLeave={e => (e.currentTarget.style.color = '#E2DFDC')}
                   >
                     {link}
                   </a>
@@ -113,7 +113,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid #343B40',
+          borderTop: '1px solid #252D35',
           paddingTop: 24,
           display: 'flex',
           justifyContent: 'space-between',
@@ -124,7 +124,7 @@ export default function Footer() {
           <div style={{
             fontFamily: 'Outfit, sans-serif',
             fontSize: '12px',
-            color: '#AEB5B9',
+            color: '#B0B8BC',
           }}>
             © 2026 Modern Assets. All rights reserved.
           </div>
@@ -136,12 +136,12 @@ export default function Footer() {
                 style={{
                   fontFamily: 'Outfit, sans-serif',
                   fontSize: '12px',
-                  color: '#AEB5B9',
+                  color: '#B0B8BC',
                   textDecoration: 'none',
                   transition: 'color 180ms ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#E58A16')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#AEB5B9')}
+                onMouseEnter={e => (e.currentTarget.style.color = '#E07B10')}
+                onMouseLeave={e => (e.currentTarget.style.color = '#B0B8BC')}
               >
                 {link}
               </a>

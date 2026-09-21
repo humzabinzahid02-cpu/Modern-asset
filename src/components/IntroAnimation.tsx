@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 
 const WORDS = [
   { text: 'مرحباً', lang: 'Arabic', dir: 'rtl' },
@@ -104,7 +104,7 @@ export default function IntroAnimation({ onDone }: Props) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: bgFade ? 'rgba(244,243,239,0)' : '#F4F3EF',
+        background: bgFade ? 'rgba(244,243,239,0)' : '#F6F5F1',
         pointerEvents: isDocking ? 'none' : 'auto',
         transition: 'background 750ms cubic-bezier(0.16, 1, 0.3, 1)',
         overflow: 'hidden',
@@ -121,7 +121,7 @@ export default function IntroAnimation({ onDone }: Props) {
           width: 500,
           height: 500,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(229,138,22,0.12) 0%, transparent 68%)',
+          background: 'radial-gradient(circle, rgba(224,123,16,0.12) 0%, transparent 68%)',
           pointerEvents: 'none',
           opacity: isDocking ? 0 : 1,
           transition: 'opacity 500ms ease',
@@ -136,7 +136,7 @@ export default function IntroAnimation({ onDone }: Props) {
           left: 0,
           right: 0,
           height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(229,138,22,0.25), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(224,123,16,0.25), transparent)',
           transform: 'translateY(-50%)',
           opacity: isDocking ? 0 : 0.6,
           transition: 'opacity 400ms ease',
@@ -176,7 +176,7 @@ export default function IntroAnimation({ onDone }: Props) {
                 fontWeight: 800,
                 lineHeight: 1,
                 letterSpacing: '-0.01em',
-                background: 'linear-gradient(135deg, #20262B 0%, #E58A16 100%)',
+                background: 'linear-gradient(135deg, #1B2B3A 0%, #E07B10 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -191,7 +191,7 @@ export default function IntroAnimation({ onDone }: Props) {
                 fontSize: '11px',
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
-                color: '#7C858A',
+                color: '#8C949C',
                 marginTop: 12,
                 textAlign: 'center',
               }}
@@ -230,14 +230,14 @@ export default function IntroAnimation({ onDone }: Props) {
               width: isDocking ? 34 : 48,
               height: isDocking ? 34 : 48,
               borderRadius: isDocking ? 7 : 10,
-              background: 'linear-gradient(135deg, #E58A16 0%, #C8750D 100%)',
+              background: 'linear-gradient(135deg, #E07B10 0%, #C46C0C 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
               boxShadow: isDocking
                 ? 'none'
-                : '0 10px 30px rgba(229,138,22,0.3)',
+                : '0 10px 30px rgba(224,123,16,0.3)',
               transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
@@ -266,10 +266,10 @@ export default function IntroAnimation({ onDone }: Props) {
               textTransform: 'uppercase',
               lineHeight: 1,
               whiteSpace: 'nowrap',
-              color: isDocking ? '#20262B' : undefined,
-              background: isDocking ? 'none' : 'linear-gradient(90deg, #20262B 0%, #E58A16 100%)',
+              color: isDocking ? '#1B2B3A' : undefined,
+              background: isDocking ? 'none' : 'linear-gradient(90deg, #1B2B3A 0%, #E07B10 100%)',
               WebkitBackgroundClip: isDocking ? 'unset' : 'text',
-              WebkitTextFillColor: isDocking ? '#20262B' : 'transparent',
+              WebkitTextFillColor: isDocking ? '#1B2B3A' : 'transparent',
               backgroundClip: isDocking ? 'unset' : 'text',
               transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)',
             }}
@@ -284,7 +284,7 @@ export default function IntroAnimation({ onDone }: Props) {
               fontSize: '11px',
               letterSpacing: '0.35em',
               textTransform: 'uppercase',
-              color: '#7C858A',
+              color: '#8C949C',
               opacity: isDocking ? 0 : 1,
               transform: isDocking ? 'translateY(10px) scale(0.9)' : 'translateY(0) scale(1)',
               transition: 'opacity 350ms ease, transform 350ms ease',

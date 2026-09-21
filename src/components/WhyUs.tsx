@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+﻿import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -74,8 +74,8 @@ export default function WhyUs() {
       ref={sectionRef}
       style={{
         padding: 'clamp(80px,10vw,140px) clamp(24px,6vw,100px)',
-        background: '#F4F3EF',
-        color: '#596268',
+        background: '#F6F5F1',
+        color: '#5C6470',
       }}
     >
       <div style={{
@@ -88,7 +88,7 @@ export default function WhyUs() {
       }}>
         {/* Left: image */}
         <div ref={leftColRef} style={{ position: 'relative' }}>
-          <div style={{ backgroundColor: '#D9DDDE', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 16 }}>
+          <div style={{ backgroundColor: '#E2DFDC', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 16 }}>
             <img
               src="https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?w=700&h=900&fit=crop&auto=format"
               alt="Welder working with sparks flying"
@@ -97,7 +97,7 @@ export default function WhyUs() {
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(45deg, rgba(229,138,22,0.12) 0%, transparent 60%)',
+              background: 'linear-gradient(45deg, rgba(224,123,16,0.12) 0%, transparent 60%)',
             }} />
           </div>
           {/* Translucent reference badge matching mockup */}
@@ -111,14 +111,14 @@ export default function WhyUs() {
             display: 'flex',
             alignItems: 'center',
             gap: 12,
-            boxShadow: '0 8px 24px rgba(32,38,43,0.08)',
-            border: '1px solid #D9DDDE',
+            boxShadow: '0 8px 24px rgba(27,43,58,0.08)',
+            border: '1px solid #E2DFDC',
             zIndex: 2,
           }}>
             <div style={{
               width: 30,
               height: 30,
-              background: '#20262B',
+              background: '#1B2B3A',
               borderRadius: 6,
               display: 'flex',
               alignItems: 'center',
@@ -135,14 +135,14 @@ export default function WhyUs() {
               fontFamily: 'Outfit, sans-serif',
               fontWeight: 600,
               fontSize: 13,
-              color: '#20262B',
+              color: '#1B2B3A',
               lineHeight: 1.3,
             }}>
               Precision<br />in Every Detail
             </span>
             <span style={{
               marginLeft: 8,
-              color: '#E58A16',
+              color: '#E07B10',
               fontWeight: 700,
               fontSize: 16,
             }}>→</span>
@@ -153,11 +153,11 @@ export default function WhyUs() {
             position: 'absolute',
             bottom: -24,
             right: -24,
-            background: '#E58A16',
+            background: '#E07B10',
             borderRadius: 12,
             padding: '24px 28px',
             maxWidth: 200,
-            boxShadow: '0 12px 30px rgba(229,138,22,0.25)',
+            boxShadow: '0 12px 30px rgba(224,123,16,0.25)',
           }}>
             <div style={{
               fontFamily: 'Barlow Condensed, sans-serif',
@@ -182,7 +182,7 @@ export default function WhyUs() {
             fontSize: '11px',
             letterSpacing: '0.3em',
             textTransform: 'uppercase',
-            color: '#E58A16',
+            color: '#E07B10',
             marginBottom: 16,
           }}>Why Modern Assets</div>
           <h2 style={{
@@ -192,11 +192,11 @@ export default function WhyUs() {
             lineHeight: 0.95,
             textTransform: 'uppercase',
             margin: '0 0 24px',
-            color: '#20262B',
+            color: '#1B2B3A',
           }}>
             More Than<br />
             <span style={{
-              background: 'linear-gradient(90deg, #E58A16, #20262B)',
+              background: 'linear-gradient(90deg, #E07B10, #1B2B3A)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -205,7 +205,7 @@ export default function WhyUs() {
           <p style={{
             fontFamily: 'Outfit, sans-serif',
             fontSize: 15,
-            color: '#596268',
+            color: '#5C6470',
             lineHeight: 1.7,
             margin: '0 0 40px',
             maxWidth: 420,
@@ -233,8 +233,8 @@ export default function WhyUs() {
                     background: '#FFFFFF',
                     borderRadius: 16,
                     padding: '22px 20px',
-                    border: isHovered ? '1px solid #E58A16' : '1px solid #D9DDDE',
-                    boxShadow: isHovered ? '0 12px 32px rgba(229,138,22,0.1), 0 4px 12px rgba(32,38,43,0.04)' : '0 2px 12px rgba(32,38,43,0.05)',
+                    border: isHovered ? '1px solid #E07B10' : '1px solid #E2DFDC',
+                    boxShadow: isHovered ? '0 12px 32px rgba(224,123,16,0.1), 0 4px 12px rgba(27,43,58,0.04)' : '0 2px 12px rgba(27,43,58,0.05)',
                     transform: isHovered ? 'translateY(-4px)' : 'none',
                     transition: 'all 280ms cubic-bezier(0.16, 1, 0.3, 1)',
                     cursor: 'default',
@@ -244,14 +244,14 @@ export default function WhyUs() {
                     width: 40,
                     height: 40,
                     borderRadius: 10,
-                    background: isHovered ? '#E58A16' : 'rgba(229,138,22,0.08)',
-                    border: '1px solid rgba(229,138,22,0.2)',
+                    background: isHovered ? '#E07B10' : 'rgba(224,123,16,0.08)',
+                    border: '1px solid rgba(224,123,16,0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: 14,
                     fontSize: 18,
-                    color: isHovered ? '#FFFFFF' : '#E58A16',
+                    color: isHovered ? '#FFFFFF' : '#E07B10',
                     transition: 'all 280ms ease',
                   }}>
                     {f.icon}
@@ -262,7 +262,7 @@ export default function WhyUs() {
                     fontWeight: 800,
                     textTransform: 'uppercase',
                     letterSpacing: '0.04em',
-                    color: '#20262B',
+                    color: '#1B2B3A',
                     marginBottom: 8,
                   }}>
                     {f.title}
@@ -270,7 +270,7 @@ export default function WhyUs() {
                   <div style={{
                     fontFamily: 'Outfit, sans-serif',
                     fontSize: '13px',
-                    color: '#596268',
+                    color: '#5C6470',
                     lineHeight: 1.6,
                   }}>
                     {f.desc}

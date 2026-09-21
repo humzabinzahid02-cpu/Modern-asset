@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 
 const STATS = [
   { value: 15, suffix: '+', label: 'Years of Experience' },
@@ -44,8 +44,8 @@ export default function Stats() {
   return (
     <section style={{
       background: '#FFFFFF',
-      borderTop: '1px solid #D9DDDE',
-      borderBottom: '1px solid #D9DDDE',
+      borderTop: '1px solid #E2DFDC',
+      borderBottom: '1px solid #E2DFDC',
       padding: '48px clamp(24px,6vw,100px)',
     }}>
       <div style={{
@@ -56,14 +56,14 @@ export default function Stats() {
         maxWidth: 1200,
         margin: '0 auto',
       }}>
-        <div style={{ borderRight: '1px solid #D9DDDE', paddingRight: 48 }}>
+        <div style={{ borderRight: '1px solid #E2DFDC', paddingRight: 48 }}>
           <div style={{
             fontFamily: 'Barlow Condensed, sans-serif',
             fontSize: '12px',
             fontWeight: 700,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#596268',
+            color: '#5C6470',
             lineHeight: 1.6,
           }}>
             Trusted<br />By Industry<br />Leaders
@@ -82,14 +82,14 @@ export default function Stats() {
                 fontSize: 'clamp(36px, 5vw, 52px)',
                 fontWeight: 900,
                 lineHeight: 1,
-                color: '#20262B',
+                color: '#1B2B3A',
               }}>
                 <CountUp target={s.value} suffix={s.suffix} />
               </div>
               <div style={{
                 fontFamily: 'Outfit, sans-serif',
                 fontSize: '13px',
-                color: '#596268',
+                color: '#5C6470',
                 marginTop: 4,
                 fontWeight: 500,
               }}>

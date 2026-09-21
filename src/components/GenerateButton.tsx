@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -46,8 +46,8 @@ export function GenerateButton({
           --border-radius: 24px;
           --padding: 4px;
           --transition: 0.25s ease;
-          --button-color: #E58A16;
-          --button-hover: #C8750D;
+          --button-color: #E07B10;
+          --button-hover: #C46C0C;
           --highlight-color-hue: ${hue}deg;
 
           user-select: none;
@@ -63,8 +63,8 @@ export function GenerateButton({
           color: #FFFFFF;
 
           background-color: var(--button-color);
-          box-shadow: 0 4px 14px rgba(229,138,22,0.3);
-          border: solid 1px #C8750D;
+          box-shadow: 0 4px 14px rgba(224,123,16,0.3);
+          border: solid 1px #C46C0C;
           border-radius: var(--border-radius);
           cursor: pointer;
 
@@ -74,7 +74,7 @@ export function GenerateButton({
         .gen-btn:hover {
           background-color: var(--button-hover);
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(200,117,13,0.4);
+          box-shadow: 0 6px 20px rgba(196,108,12,0.4);
         }
         
         .gen-btn::before {

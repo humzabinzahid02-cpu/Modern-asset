@@ -1,4 +1,4 @@
-import React, { useState, type ReactNode } from 'react'
+﻿import React, { useState, type ReactNode } from 'react'
 
 export interface GlassButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
@@ -39,21 +39,21 @@ export default function GlassButton({
     },
   }[size]
 
-  let background = hovered ? '#C8750D' : '#E58A16'
+  let background = hovered ? '#C46C0C' : '#E07B10'
   let border = '1.5px solid transparent'
   let textColor = '#FFFFFF'
-  let glowColor = 'rgba(229,138,22,0.3)'
+  let glowColor = 'rgba(224,123,16,0.3)'
 
   if (variant === 'ghost') {
-    background = hovered ? '#20262B' : 'transparent'
-    border = '1.5px solid #20262B'
-    textColor = hovered ? '#FFFFFF' : '#20262B'
-    glowColor = 'rgba(32,38,43,0.06)'
+    background = hovered ? '#1B2B3A' : 'transparent'
+    border = '1.5px solid #1B2B3A'
+    textColor = hovered ? '#FFFFFF' : '#1B2B3A'
+    glowColor = 'rgba(27,43,58,0.06)'
   } else if (variant === 'accent') {
-    background = hovered ? '#343B40' : '#20262B'
-    border = '1.5px solid #20262B'
+    background = hovered ? '#252D35' : '#1B2B3A'
+    border = '1.5px solid #1B2B3A'
     textColor = '#FFFFFF'
-    glowColor = 'rgba(32,38,43,0.2)'
+    glowColor = 'rgba(27,43,58,0.2)'
   }
 
   return (

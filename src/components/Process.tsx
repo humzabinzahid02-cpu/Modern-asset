@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollFloat from './ScrollFloat';
@@ -165,7 +165,7 @@ export default function Process() {
         position: 'relative',
         overflow: 'hidden',
         padding: 'clamp(90px, 12vw, 160px) clamp(20px, 5vw, 80px)',
-        backgroundColor: '#F4F3EF',
+        backgroundColor: '#F6F5F1',
       }}
     >
       {/* Background industrial atmosphere & ambient glows */}
@@ -180,7 +180,7 @@ export default function Process() {
             position: 'absolute',
             inset: 0,
             background:
-              'radial-gradient(circle at 15% 20%, rgba(229,154,35,0.06) 0%, transparent 60%), radial-gradient(circle at 85% 80%, rgba(23,50,77,0.04) 0%, transparent 60%), linear-gradient(180deg, #F4F3EF 0%, rgba(247,249,252,0.85) 50%, #F4F3EF 100%)',
+              'radial-gradient(circle at 15% 20%, rgba(229,154,35,0.06) 0%, transparent 60%), radial-gradient(circle at 85% 80%, rgba(23,50,77,0.04) 0%, transparent 60%), linear-gradient(180deg, #F6F5F1 0%, rgba(247,249,252,0.85) 50%, #F6F5F1 100%)',
           }}
         />
 
@@ -217,8 +217,8 @@ export default function Process() {
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                background: '#E58A16',
-                boxShadow: '0 0 10px #E58A16',
+                background: '#E07B10',
+                boxShadow: '0 0 10px #E07B10',
               }}
             />
             <span
@@ -227,7 +227,7 @@ export default function Process() {
                 fontSize: 12,
                 letterSpacing: '0.24em',
                 textTransform: 'uppercase',
-                color: '#E58A16',
+                color: '#E07B10',
                 fontWeight: 700,
               }}
             >
@@ -247,7 +247,7 @@ export default function Process() {
               lineHeight: 1,
               letterSpacing: '-0.01em',
               textTransform: 'uppercase',
-              color: '#20262B',
+              color: '#1B2B3A',
             }}
           >
             From Concept To Completion
@@ -257,7 +257,7 @@ export default function Process() {
             style={{
               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
               fontSize: 'clamp(16px, 1.8vw, 19px)',
-              color: '#596268',
+              color: '#5C6470',
               lineHeight: 1.7,
               margin: '20px auto 0',
               maxWidth: 720,
@@ -284,8 +284,8 @@ export default function Process() {
                   padding: 'clamp(28px, 4.5vw, 48px)',
                   background: '#FFFFFF',
                   border: isHovered
-                    ? '1px solid #E58A16'
-                    : '1px solid #D9DDDE',
+                    ? '1px solid #E07B10'
+                    : '1px solid #E2DFDC',
                   boxShadow: isHovered
                     ? '0 20px 50px rgba(229,154,35,0.14), 0 4px 12px rgba(23,50,77,0.04)'
                     : '0 10px 30px rgba(23,50,77,0.05)',
@@ -302,7 +302,7 @@ export default function Process() {
                     right: 40,
                     height: 2,
                     background: isHovered
-                      ? 'linear-gradient(90deg, transparent, #E58A16, transparent)'
+                      ? 'linear-gradient(90deg, transparent, #E07B10, transparent)'
                       : 'linear-gradient(90deg, transparent, rgba(229,154,35,0.4), transparent)',
                     transition: 'all 350ms ease',
                   }}
@@ -321,7 +321,7 @@ export default function Process() {
                             height: 44,
                             borderRadius: 10,
                             background: isHovered
-                              ? 'linear-gradient(135deg, #E58A16, #C8750D)'
+                              ? 'linear-gradient(135deg, #E07B10, #C46C0C)'
                               : 'rgba(229,154,35,0.12)',
                             border: '1px solid rgba(229,154,35,0.3)',
                             display: 'flex',
@@ -334,7 +334,7 @@ export default function Process() {
                           <span
                             style={{
                               fontSize: 20,
-                              color: isHovered ? '#FFFFFF' : '#E58A16',
+                              color: isHovered ? '#FFFFFF' : '#E07B10',
                               fontWeight: 900,
                               transition: 'color 300ms ease',
                             }}
@@ -350,7 +350,7 @@ export default function Process() {
                               fontSize: 12,
                               letterSpacing: '0.2em',
                               textTransform: 'uppercase',
-                              color: '#E58A16',
+                              color: '#E07B10',
                               fontWeight: 700,
                             }}
                           >
@@ -362,7 +362,7 @@ export default function Process() {
                               fontSize: 11,
                               letterSpacing: '0.12em',
                               textTransform: 'uppercase',
-                              color: '#596268',
+                              color: '#5C6470',
                               fontWeight: 500,
                             }}
                           >
@@ -384,7 +384,7 @@ export default function Process() {
                             fontSize: 14,
                             fontWeight: 800,
                             letterSpacing: '0.12em',
-                            color: '#E58A16',
+                            color: '#E07B10',
                             marginBottom: 8,
                           }}
                         >
@@ -404,7 +404,7 @@ export default function Process() {
                             textTransform: 'uppercase',
                             letterSpacing: '0.02em',
                             lineHeight: 1.1,
-                            color: '#20262B',
+                            color: '#1B2B3A',
                             display: 'inline-block',
                           }}
                         >
@@ -424,8 +424,8 @@ export default function Process() {
                             alignItems: 'center',
                             padding: '8px 14px',
                             borderRadius: 8,
-                            background: '#F4F3EF',
-                            border: '1px solid #D9DDDE',
+                            background: '#F6F5F1',
+                            border: '1px solid #E2DFDC',
                           }}
                         >
                           <span
@@ -434,7 +434,7 @@ export default function Process() {
                               fontSize: 11,
                               letterSpacing: '0.15em',
                               textTransform: 'uppercase',
-                              color: '#596268',
+                              color: '#5C6470',
                               fontWeight: 700,
                             }}
                           >
@@ -445,7 +445,7 @@ export default function Process() {
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                               fontSize: 13,
                               fontWeight: 700,
-                              color: '#20262B',
+                              color: '#1B2B3A',
                             }}
                           >
                             {spec.val}
@@ -463,7 +463,7 @@ export default function Process() {
                         fontSize: 'clamp(18px, 2.2vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: '0.04em',
-                        color: '#E58A16',
+                        color: '#E07B10',
                         textTransform: 'uppercase',
                         marginBottom: 12,
                       }}
@@ -475,7 +475,7 @@ export default function Process() {
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: 'clamp(15px, 1.5vw, 17px)',
-                        color: '#596268',
+                        color: '#5C6470',
                         lineHeight: 1.75,
                         margin: '0 0 24px',
                       }}
@@ -486,7 +486,7 @@ export default function Process() {
                     {/* Key Deliverables Checkmarks Grid */}
                     <div
                       style={{
-                        borderTop: '1px solid #D9DDDE',
+                        borderTop: '1px solid #E2DFDC',
                         paddingTop: 20,
                       }}
                     >
@@ -496,7 +496,7 @@ export default function Process() {
                           fontSize: 12,
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: '#20262B',
+                          color: '#1B2B3A',
                           marginBottom: 12,
                           fontWeight: 700,
                         }}
@@ -520,12 +520,12 @@ export default function Process() {
                               gap: 10,
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                               fontSize: 13.5,
-                              color: '#596268',
+                              color: '#5C6470',
                             }}
                           >
                             <span
                               style={{
-                                color: '#E58A16',
+                                color: '#E07B10',
                                 fontSize: 13,
                                 flexShrink: 0,
                                 width: 18,

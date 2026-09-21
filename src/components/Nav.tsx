@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import GlassButton from '../GlassButton'
 import { GenerateButton } from './GenerateButton'
 
@@ -27,7 +27,7 @@ export default function Nav() {
       alignItems: 'center',
       justifyContent: 'space-between',
       background: '#FFFFFF',
-      borderBottom: '1px solid #D9DDDE',
+      borderBottom: '1px solid #E2DFDC',
       boxShadow: scrolled ? '0 4px 20px rgba(32, 38, 43, 0.06)' : 'none',
       transition: 'box-shadow 250ms ease',
     }}>
@@ -37,12 +37,12 @@ export default function Nav() {
           width: 36,
           height: 36,
           borderRadius: 8,
-          background: 'linear-gradient(135deg, #E58A16 0%, #C8750D 100%)',
+          background: 'linear-gradient(135deg, #E07B10 0%, #C46C0C 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          boxShadow: '0 2px 8px rgba(229,138,22,0.3)',
+          boxShadow: '0 2px 8px rgba(224,123,16,0.3)',
         }}>
           <span style={{
             fontFamily: 'Barlow Condensed, sans-serif',
@@ -57,7 +57,7 @@ export default function Nav() {
           fontSize: 20,
           letterSpacing: '0.04em',
           textTransform: 'uppercase',
-          color: '#20262B',
+          color: '#1B2B3A',
         }}>Modern Assets</span>
       </a>
 
@@ -77,12 +77,12 @@ export default function Nav() {
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              color: '#596268',
+              color: '#5C6470',
               textDecoration: 'none',
               transition: 'color 180ms ease',
             }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#E58A16')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#596268')}
+            onMouseEnter={e => (e.currentTarget.style.color = '#E07B10')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#5C6470')}
           >
             {link}
           </a>
@@ -107,7 +107,7 @@ export default function Nav() {
           border: 'none',
           cursor: 'pointer',
           padding: 8,
-          color: '#20262B',
+          color: '#1B2B3A',
         }}
         className="hamburger"
         aria-label="Toggle menu"
@@ -128,7 +128,7 @@ export default function Nav() {
           left: 0,
           right: 0,
           background: '#FFFFFF',
-          borderBottom: '1px solid #D9DDDE',
+          borderBottom: '1px solid #E2DFDC',
           boxShadow: '0 12px 32px rgba(32, 38, 43, 0.08)',
           padding: '24px clamp(24px,5vw,80px)',
           display: 'flex',
@@ -147,7 +147,7 @@ export default function Nav() {
                 fontWeight: 700,
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
-                color: '#20262B',
+                color: '#1B2B3A',
                 textDecoration: 'none',
               }}
             >

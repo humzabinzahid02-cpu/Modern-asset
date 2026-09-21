@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { FadingVideo } from './FadingVideo';
 
 export const CapabilitiesSection: React.FC = () => {

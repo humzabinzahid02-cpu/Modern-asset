@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+﻿import React, { useCallback, useEffect, useRef } from 'react';
 import './ScrollExpand.css';
 
 const clamp = (v: number, a: number, b: number) => (v < a ? a : v > b ? b : v);

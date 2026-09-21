@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { CatalogItem, CategoryType } from '../types/store';
 
 export const CATALOG_ITEMS: CatalogItem[] = [

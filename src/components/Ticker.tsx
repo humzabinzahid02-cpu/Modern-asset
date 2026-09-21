@@ -1,4 +1,4 @@
-const ITEMS = [
+﻿const ITEMS = [
   'Custom Truck Bodies',
   'Tankers',
   'Low-Bed Trailers',
@@ -16,8 +16,8 @@ export default function Ticker() {
   return (
     <div style={{
       background: '#FFFFFF',
-      borderTop: '1px solid #D9DDDE',
-      borderBottom: '1px solid #D9DDDE',
+      borderTop: '1px solid #E2DFDC',
+      borderBottom: '1px solid #E2DFDC',
       padding: '14px 0',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
@@ -30,11 +30,11 @@ export default function Ticker() {
             fontWeight: 700,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: '#20262B',
+            color: '#1B2B3A',
             padding: '0 32px',
           }}>
             {item}
-            <span style={{ marginLeft: 32, color: '#E58A16' }}>◆</span>
+            <span style={{ marginLeft: 32, color: '#E07B10' }}>◆</span>
           </span>
         ))}
       </div>

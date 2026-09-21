@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { FadingVideo } from './FadingVideo';
 import { BlurText } from './BlurText';

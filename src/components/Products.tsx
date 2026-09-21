@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+﻿import React, { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ScrollExpand from './ScrollExpand'
@@ -267,7 +267,7 @@ export default function Products() {
   }, [viewMode, activeCategory])
 
   return (
-    <section id="products" style={{ background: '#F4F3EF', position: 'relative' }}>
+    <section id="products" style={{ background: '#F6F5F1', position: 'relative' }}>
       {/* ── React Bits <ScrollExpand /> Integration ─────────────────────────────── */}
       <div style={{ position: 'relative', width: '100%', marginBottom: 60 }}>
         <ScrollExpand
@@ -311,7 +311,7 @@ export default function Products() {
                 fontSize: '11px',
                 letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color: '#E58A16',
+                color: '#E07B10',
                 marginBottom: 16,
               }}
             >
@@ -332,7 +332,7 @@ export default function Products() {
                 textShadow: '0 4px 24px rgba(0,0,0,0.7)',
               }}
             >
-              ENGINEERED FOR <span style={{ color: '#E58A16' }}>EXTREME PAYLOADS</span>
+              ENGINEERED FOR <span style={{ color: '#E07B10' }}>EXTREME PAYLOADS</span>
             </h2>
 
             <p
@@ -404,7 +404,7 @@ export default function Products() {
                   fontSize: '11px',
                   letterSpacing: '0.3em',
                   textTransform: 'uppercase',
-                  color: '#E58A16',
+                  color: '#E07B10',
                   marginBottom: 8,
                   fontWeight: 600,
                 }}
@@ -419,7 +419,7 @@ export default function Products() {
                   textTransform: 'uppercase',
                   lineHeight: 1,
                   margin: 0,
-                  color: '#20262B',
+                  color: '#1B2B3A',
                 }}
               >
                 Tailored for Every Sector
@@ -444,7 +444,7 @@ export default function Products() {
                   background: '#FFFFFF',
                   padding: '6px',
                   borderRadius: '16px',
-                  border: '1px solid #D9DDDE',
+                  border: '1px solid #E2DFDC',
                   boxShadow: '0 2px 10px rgba(23,50,77,0.03)',
                 }}
               >
@@ -466,8 +466,8 @@ export default function Products() {
                         border: 'none',
                         outline: 'none',
                         transition: 'all 200ms ease',
-                        background: isActive ? '#E58A16' : 'transparent',
-                        color: isActive ? '#FFFFFF' : '#596268',
+                        background: isActive ? '#E07B10' : 'transparent',
+                        color: isActive ? '#FFFFFF' : '#5C6470',
                         boxShadow: isActive ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
                       }}
                     >
@@ -485,7 +485,7 @@ export default function Products() {
                   background: '#FFFFFF',
                   padding: '5px',
                   borderRadius: '14px',
-                  border: '1px solid #D9DDDE',
+                  border: '1px solid #E2DFDC',
                   boxShadow: '0 2px 10px rgba(23,50,77,0.03)',
                 }}
               >
@@ -503,8 +503,8 @@ export default function Products() {
                     border: 'none',
                     outline: 'none',
                     transition: 'all 200ms ease',
-                    background: viewMode === 'stack' ? '#E58A16' : 'transparent',
-                    color: viewMode === 'stack' ? '#FFFFFF' : '#596268',
+                    background: viewMode === 'stack' ? '#E07B10' : 'transparent',
+                    color: viewMode === 'stack' ? '#FFFFFF' : '#5C6470',
                     boxShadow: viewMode === 'stack' ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
                     display: 'flex',
                     alignItems: 'center',
@@ -528,8 +528,8 @@ export default function Products() {
                     border: 'none',
                     outline: 'none',
                     transition: 'all 200ms ease',
-                    background: viewMode === 'grid' ? '#E58A16' : 'transparent',
-                    color: viewMode === 'grid' ? '#FFFFFF' : '#596268',
+                    background: viewMode === 'grid' ? '#E07B10' : 'transparent',
+                    color: viewMode === 'grid' ? '#FFFFFF' : '#5C6470',
                     boxShadow: viewMode === 'grid' ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
                     display: 'flex',
                     alignItems: 'center',
@@ -563,7 +563,7 @@ export default function Products() {
                     background: '#FFFFFF',
                     borderRadius: '28px',
                     overflow: 'hidden',
-                    border: '1px solid #D9DDDE',
+                    border: '1px solid #E2DFDC',
                     boxShadow: '0 20px 50px rgba(23, 50, 77, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
                     transition: 'border-color 200ms ease, box-shadow 200ms ease',
                   }}
@@ -575,7 +575,7 @@ export default function Products() {
                       overflow: 'hidden',
                       height: '100%',
                       minHeight: 320,
-                      backgroundColor: '#F4F3EF',
+                      backgroundColor: '#F6F5F1',
                     }}
                   >
                     <img
@@ -607,7 +607,7 @@ export default function Products() {
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
                         color: '#FFFFFF',
-                        background: '#E58A16',
+                        background: '#E07B10',
                         padding: '5px 14px',
                         borderRadius: '6px',
                         boxShadow: '0 2px 8px rgba(229,154,35,0.35)',
@@ -624,12 +624,12 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: '#20262B',
+                        color: '#1B2B3A',
                         background: '#FFFFFF',
                         boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                         padding: '4px 12px',
                         borderRadius: '6px',
-                        border: '1px solid #D9DDDE',
+                        border: '1px solid #E2DFDC',
                         fontWeight: 600,
                       }}
                     >
@@ -653,7 +653,7 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.2em',
                         textTransform: 'uppercase',
-                        color: '#596268',
+                        color: '#5C6470',
                         marginBottom: 8,
                         fontWeight: 600,
                       }}
@@ -666,7 +666,7 @@ export default function Products() {
                         fontSize: 'clamp(32px, 4vw, 42px)',
                         fontWeight: 900,
                         textTransform: 'uppercase',
-                        color: '#20262B',
+                        color: '#1B2B3A',
                         margin: '0 0 12px',
                         lineHeight: 1,
                       }}
@@ -677,7 +677,7 @@ export default function Products() {
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '14px',
-                        color: '#596268',
+                        color: '#5C6470',
                         lineHeight: 1.65,
                         margin: '0 0 24px',
                       }}
@@ -693,8 +693,8 @@ export default function Products() {
                         gap: 12,
                         padding: '16px',
                         borderRadius: '12px',
-                        background: '#F4F3EF',
-                        border: '1px solid #D9DDDE',
+                        background: '#F6F5F1',
+                        border: '1px solid #E2DFDC',
                         marginBottom: 28,
                       }}
                     >
@@ -706,7 +706,7 @@ export default function Products() {
                               fontSize: '11px',
                               letterSpacing: '0.12em',
                               textTransform: 'uppercase',
-                              color: '#596268',
+                              color: '#5C6470',
                               marginBottom: 2,
                             }}
                           >
@@ -717,7 +717,7 @@ export default function Products() {
                               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                               fontSize: '17px',
                               fontWeight: 800,
-                              color: '#20262B',
+                              color: '#1B2B3A',
                             }}
                           >
                             {s.value}
@@ -787,8 +787,8 @@ export default function Products() {
                     overflow: 'hidden',
                     cursor: 'pointer',
                     border: isHovered
-                      ? '1px solid #E58A16'
-                      : '1px solid #D9DDDE',
+                      ? '1px solid #E07B10'
+                      : '1px solid #E2DFDC',
                     boxShadow: isHovered
                       ? '0 20px 48px rgba(229,154,35,0.15)'
                       : '0 4px 20px rgba(23,50,77,0.04)',
@@ -805,7 +805,7 @@ export default function Products() {
                       aspectRatio: '16/9.5',
                       minHeight: 280,
                       overflow: 'hidden',
-                      backgroundColor: '#F4F3EF',
+                      backgroundColor: '#F6F5F1',
                     }}
                   >
                     <img
@@ -842,7 +842,7 @@ export default function Products() {
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
                         color: '#FFFFFF',
-                        background: '#E58A16',
+                        background: '#E07B10',
                         padding: '5px 14px',
                         borderRadius: '6px',
                         boxShadow: '0 2px 8px rgba(229,154,35,0.35)',
@@ -861,12 +861,12 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: '#20262B',
+                        color: '#1B2B3A',
                         background: '#FFFFFF',
                         boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                         padding: '5px 12px',
                         borderRadius: '6px',
-                        border: '1px solid #D9DDDE',
+                        border: '1px solid #E2DFDC',
                         fontWeight: 600,
                       }}
                     >
@@ -884,12 +884,12 @@ export default function Products() {
                         fontWeight: 700,
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: '#E58A16',
+                        color: '#E07B10',
                         background: '#FFFFFF',
                         boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                         padding: '5px 12px',
                         borderRadius: '6px',
-                        border: '1px solid #D9DDDE',
+                        border: '1px solid #E2DFDC',
                         opacity: isHovered ? 1 : 0,
                         transform: isHovered ? 'translateY(0)' : 'translateY(-4px)',
                         transition: 'all 240ms ease',
@@ -942,7 +942,7 @@ export default function Products() {
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '14.5px',
-                        color: '#596268',
+                        color: '#5C6470',
                         lineHeight: 1.65,
                         margin: '0 0 22px',
                         minHeight: 48,
@@ -959,8 +959,8 @@ export default function Products() {
                         gap: 12,
                         padding: '18px',
                         borderRadius: '14px',
-                        background: '#F4F3EF',
-                        border: '1px solid #D9DDDE',
+                        background: '#F6F5F1',
+                        border: '1px solid #E2DFDC',
                         marginBottom: 26,
                       }}
                     >
@@ -972,7 +972,7 @@ export default function Products() {
                               fontSize: '11px',
                               letterSpacing: '0.12em',
                               textTransform: 'uppercase',
-                              color: '#596268',
+                              color: '#5C6470',
                               marginBottom: 3,
                             }}
                           >
@@ -983,7 +983,7 @@ export default function Products() {
                               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                               fontSize: '17px',
                               fontWeight: 800,
-                              color: '#20262B',
+                              color: '#1B2B3A',
                             }}
                           >
                             {s.value}
@@ -1059,7 +1059,7 @@ export default function Products() {
               maxHeight: '90vh',
               overflowY: 'auto',
               background: '#FFFFFF',
-              border: '1px solid #D9DDDE',
+              border: '1px solid #E2DFDC',
               borderRadius: '24px',
               boxShadow: '0 24px 72px rgba(23, 50, 77, 0.18)',
               display: 'flex',
@@ -1092,8 +1092,8 @@ export default function Products() {
                   height: 36,
                   borderRadius: '50%',
                   background: '#FFFFFF',
-                  border: '1px solid #D9DDDE',
-                  color: '#20262B',
+                  border: '1px solid #E2DFDC',
+                  color: '#1B2B3A',
                   fontSize: 18,
                   cursor: 'pointer',
                   display: 'flex',
@@ -1103,12 +1103,12 @@ export default function Products() {
                   boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#E58A16'
+                  e.currentTarget.style.background = '#E07B10'
                   e.currentTarget.style.color = '#FFFFFF'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = '#FFFFFF'
-                  e.currentTarget.style.color = '#20262B'
+                  e.currentTarget.style.color = '#1B2B3A'
                 }}
               >
                 ✕
@@ -1123,7 +1123,7 @@ export default function Products() {
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                     color: '#FFFFFF',
-                    background: '#E58A16',
+                    background: '#E07B10',
                     padding: '4px 12px',
                     borderRadius: '4px',
                     marginBottom: 8,
@@ -1153,7 +1153,7 @@ export default function Products() {
                 style={{
                   fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                   fontSize: '15px',
-                  color: '#596268',
+                  color: '#5C6470',
                   lineHeight: 1.65,
                   margin: '0 0 28px',
                 }}
@@ -1169,7 +1169,7 @@ export default function Products() {
                   fontWeight: 800,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: '#20262B',
+                  color: '#1B2B3A',
                   margin: '0 0 14px',
                 }}
               >
@@ -1187,8 +1187,8 @@ export default function Products() {
                   <div
                     key={idx}
                     style={{
-                      background: '#F4F3EF',
-                      border: '1px solid #D9DDDE',
+                      background: '#F6F5F1',
+                      border: '1px solid #E2DFDC',
                       borderRadius: '10px',
                       padding: '12px 16px',
                     }}
@@ -1199,7 +1199,7 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: '#596268',
+                        color: '#5C6470',
                       }}
                     >
                       {s.label}
@@ -1209,7 +1209,7 @@ export default function Products() {
                         fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                         fontSize: '17px',
                         fontWeight: 800,
-                        color: '#20262B',
+                        color: '#1B2B3A',
                         marginTop: 4,
                       }}
                     >
@@ -1227,7 +1227,7 @@ export default function Products() {
                   fontWeight: 800,
                   letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: '#20262B',
+                  color: '#1B2B3A',
                   margin: '0 0 14px',
                 }}
               >
@@ -1252,10 +1252,10 @@ export default function Products() {
                       gap: 10,
                       fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                       fontSize: '13.5px',
-                      color: '#596268',
+                      color: '#5C6470',
                     }}
                   >
-                    <span style={{ color: '#E58A16', fontSize: '14px', fontWeight: 900 }}>✔</span>
+                    <span style={{ color: '#E07B10', fontSize: '14px', fontWeight: 900 }}>✔</span>
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -1269,7 +1269,7 @@ export default function Products() {
                   justifyContent: 'space-between',
                   flexWrap: 'wrap',
                   gap: 16,
-                  borderTop: '1px solid #D9DDDE',
+                  borderTop: '1px solid #E2DFDC',
                   paddingTop: 24,
                 }}
               >
@@ -1277,7 +1277,7 @@ export default function Products() {
                   style={{
                     fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                     fontSize: '13px',
-                    color: '#596268',
+                    color: '#5C6470',
                   }}
                 >
                   Custom engineering and dimensions built to order.

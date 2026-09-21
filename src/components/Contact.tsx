@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+﻿import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import GlassButton from '../GlassButton'
@@ -67,7 +67,7 @@ export default function Contact() {
       ref={sectionRef}
       style={{
         padding: 'clamp(80px,10vw,140px) clamp(24px,6vw,100px)',
-        background: '#F4F3EF',
+        background: '#F6F5F1',
       }}
     >
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -78,14 +78,14 @@ export default function Contact() {
             position: 'relative',
             overflow: 'hidden',
             background: '#FFFFFF',
-            border: '1px solid #D9DDDE',
+            border: '1px solid #E2DFDC',
             borderRadius: 20,
             padding: 'clamp(48px,6vw,80px) clamp(32px,5vw,80px)',
             display: 'grid',
             gridTemplateColumns: '1fr auto',
             gap: 40,
             alignItems: 'center',
-            boxShadow: '0 8px 32px rgba(32,38,43,0.07)',
+            boxShadow: '0 8px 32px rgba(27,43,58,0.07)',
           }}
         >
           {/* Background accent */}
@@ -96,7 +96,7 @@ export default function Contact() {
             width: 320,
             height: 320,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(229,138,22,0.07) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(224,123,16,0.07) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
 
@@ -106,7 +106,7 @@ export default function Contact() {
               fontSize: '11px',
               letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: '#E58A16',
+              color: '#E07B10',
               marginBottom: 16,
             }}>Get in Touch</div>
             <h2 style={{
@@ -115,12 +115,12 @@ export default function Contact() {
               fontWeight: 800,
               lineHeight: 0.95,
               textTransform: 'uppercase',
-              color: '#20262B',
+              color: '#1B2B3A',
               margin: '0 0 16px',
             }}>
               Ready to Build<br />
               <span style={{
-                background: 'linear-gradient(90deg, #E58A16, #20262B)',
+                background: 'linear-gradient(90deg, #E07B10, #1B2B3A)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -129,7 +129,7 @@ export default function Contact() {
             <p style={{
               fontFamily: 'Outfit, sans-serif',
               fontSize: 14,
-              color: '#596268',
+              color: '#5C6470',
               lineHeight: 1.65,
               margin: 0,
               maxWidth: 400,
@@ -176,9 +176,9 @@ export default function Contact() {
                 background: '#FFFFFF',
                 borderRadius: 14,
                 padding: '24px 28px',
-                border: '1px solid #D9DDDE',
-                borderTop: '3px solid #E58A16',
-                boxShadow: '0 2px 10px rgba(32,38,43,0.04)',
+                border: '1px solid #E2DFDC',
+                borderTop: '3px solid #E07B10',
+                boxShadow: '0 2px 10px rgba(27,43,58,0.04)',
                 transition: 'all 250ms ease',
               }}
             >
@@ -187,14 +187,14 @@ export default function Contact() {
                 fontSize: '11px',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#596268',
+                color: '#5C6470',
                 marginBottom: 8,
               }}>{c.label}</div>
               <div style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
                 fontSize: '19px',
                 fontWeight: 700,
-                color: '#20262B',
+                color: '#1B2B3A',
                 letterSpacing: '0.02em',
               }}>{c.value}</div>
             </div>

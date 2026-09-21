@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { StoryCardData } from '../types/store';
 
 interface StoryCardProps {

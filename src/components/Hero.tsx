@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import GlassButton from '../GlassButton'
 
 const HEADLINES = [
@@ -25,9 +25,9 @@ export default function Hero() {
   const h = HEADLINES[hIdx]
 
   return (
-    <section id="home" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#F4F3EF' }}>
+    <section id="home" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#F6F5F1' }}>
       {/* Background image with light industrial overlay */}
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: '#F4F3EF' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: '#F6F5F1' }}>
         <img
           src="https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=1800&h=1000&fit=crop&auto=format"
           alt="Black semi-truck on a rural highway"
@@ -36,11 +36,11 @@ export default function Hero() {
         {/* Light gradient overlays */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(90deg, #F4F3EF 0%, rgba(244,243,239,0.92) 55%, rgba(244,243,239,0.45) 100%)',
+          background: 'linear-gradient(90deg, #F6F5F1 0%, rgba(244,243,239,0.92) 55%, rgba(244,243,239,0.45) 100%)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(0deg, #F4F3EF 0%, transparent 40%)',
+          background: 'linear-gradient(0deg, #F6F5F1 0%, transparent 40%)',
         }} />
       </div>
 
@@ -60,7 +60,7 @@ export default function Hero() {
           fontSize: '11px',
           letterSpacing: '0.3em',
           textTransform: 'uppercase',
-          color: '#E58A16',
+          color: '#E07B10',
           marginBottom: 24,
           fontWeight: 600,
         }}>
@@ -79,16 +79,16 @@ export default function Hero() {
             textTransform: 'uppercase',
             marginBottom: 24,
           }}>
-            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#20262B', display: 'block' }}>
+            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#1B2B3A', display: 'block' }}>
               {h.line1}
             </div>
-            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#20262B', display: 'block' }}>
+            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#1B2B3A', display: 'block' }}>
               {h.line2}
             </div>
             <div style={{
               fontSize: 'clamp(56px, 9vw, 108px)',
               display: 'block',
-              color: '#E58A16',
+              color: '#E07B10',
             }}>
               {h.accent}
             </div>
@@ -100,7 +100,7 @@ export default function Hero() {
           fontSize: 'clamp(15px, 1.8vw, 18px)',
           fontWeight: 400,
           lineHeight: 1.7,
-          color: '#596268',
+          color: '#5C6470',
           maxWidth: 500,
           marginBottom: 40,
         }}>
@@ -145,14 +145,14 @@ export default function Hero() {
             fontSize: '11px',
             letterSpacing: '0.25em',
             textTransform: 'uppercase',
-            color: '#596268',
+            color: '#5C6470',
             writingMode: 'vertical-rl',
             fontWeight: 700,
           }}>Scroll</span>
           <div style={{
             width: 2,
             height: 48,
-            background: 'linear-gradient(180deg, #E58A16, transparent)',
+            background: 'linear-gradient(180deg, #E07B10, transparent)',
           }} />
         </div>
       </div>
@@ -174,7 +174,7 @@ export default function Hero() {
               width: i === hIdx ? 28 : 8,
               height: 8,
               borderRadius: 4,
-              background: i === hIdx ? '#E58A16' : '#D9DDDE',
+              background: i === hIdx ? '#E07B10' : '#E2DFDC',
               border: 'none',
               cursor: 'pointer',
               transition: 'all 300ms ease',

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, type ReactNode, type RefObject, type CSSProperties } from 'react';
+﻿import React, { useEffect, useMemo, useRef, type ReactNode, type RefObject, type CSSProperties } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
