@@ -3,49 +3,61 @@ import GlassButton from '../GlassButton'
 
 const FLIP_WORDS = ['PURPOSE', 'POWER', 'PROGRESS', 'PERFORMANCE', 'PROWESS']
 
-const FLEET_PROFILES = [
+const ABOUT_TABS = [
   {
-    id: 'tanker',
-    name: '55,000L Fuel Tanker',
-    category: 'Liquid Transport',
-    yieldStrength: '700 MPa Hardox®',
-    tolerance: '±0.5mm Robotic',
-    capacity: '55,000 Liters',
-    cert: 'ADR & SASO Ready',
-    dialogue:
-      'Engineered with internal baffle anti-surge compartments and laser-welded robotic seam welds for zero vapor leak tolerance.',
-    leadTime: '3-4 Weeks',
+    id: 'story',
+    label: 'Who We Are',
+    title: 'Precision Commercial Vehicle Manufacturers',
+    badge: 'EST. 1998 • 25+ YEARS',
+    quote:
+      'We started Modern Assets with one guiding mission: build the strongest, most dependable transport equipment in the industry. Every chassis, weld, and tanker is engineered from the ground up for extreme durability.',
+    author: 'Tariq Al-Mansoor',
+    role: 'Managing Director & Founder',
+    stats: [
+      { label: 'Fleet Assets Delivered', value: '5,200+' },
+      { label: 'Heavy Haul Rating', value: 'Up to 150T' },
+      { label: 'In-House Facility', value: '85,000 sq.ft' },
+      { label: 'Certified Compliance', value: 'ADR & ISO 9001' },
+    ],
   },
   {
-    id: 'lowbed',
-    name: '150T Low-Bed Trailer',
-    category: 'Abnormal Heavy Haul',
-    yieldStrength: 'Strenx 700MC',
-    tolerance: '±0.3mm Laser',
-    capacity: '150 Metric Tons',
-    cert: 'DOT & FMVSS Heavy',
-    dialogue:
-      'Hydraulic gooseneck with wireless steering override. Built to haul abnormal industrial mining transformers and excavators.',
-    leadTime: '4-6 Weeks',
+    id: 'engineering',
+    label: 'Engineering',
+    title: 'High-Tensile Metallurgy & Robotic Precision',
+    badge: 'ADVANCED ROBOTICS',
+    quote:
+      'From 700 MPa high-strength steel tankers to custom multi-axle low-beds, our mechanical engineers run rigorous 3D SolidWorks and FEA stress simulations to eliminate structural fatigue before fabrication.',
+    author: 'Eng. Marcus Vance',
+    role: 'Head of Metallurgy & FEA Design',
+    stats: [
+      { label: 'Chassis Material', value: 'Hardox® & Strenx®' },
+      { label: 'Robotic Tolerance', value: '±0.5mm Laser' },
+      { label: 'Surge Baffle Integrity', value: '100% Tested' },
+      { label: 'Standard Warranty', value: '3-Year Chassis' },
+    ],
   },
   {
-    id: 'flatbed',
-    name: '60T Reinforced Flatbed',
-    category: 'General Freight',
-    yieldStrength: 'Pre-Stressed I-Beam',
-    tolerance: '±0.5mm Camber',
-    capacity: '60 Metric Tons',
-    cert: 'ISO 9001 Certified',
-    dialogue:
-      'Monocoque chassis pre-cambered to counteract high cargo deflection with 12 retractable ISO twist locks.',
-    leadTime: '2-3 Weeks',
+    id: 'promise',
+    label: 'Our Promise',
+    title: 'Guaranteed Delivery & Full Fleet Support',
+    badge: 'TURNKEY FLEET PARTNER',
+    quote:
+      'When your business moves heavy cargo, downtime costs thousands. We guarantee our build timelines, provide turnkey road documentation, and back every fleet with rapid spare parts and dedicated technical support.',
+    author: 'Karim Haddad',
+    role: 'VP Fleet Logistics & After-Sales',
+    stats: [
+      { label: 'On-Schedule Handover', value: '99.4%' },
+      { label: 'Build Lead Time', value: '3 - 6 Weeks' },
+      { label: 'Field Support Dispatch', value: '24/7 Dedicated' },
+      { label: 'Chassis Customization', value: '100% Bespoke' },
+    ],
   },
 ]
 
 export default function Hero() {
   const [wordIdx, setWordIdx] = useState(0)
   const [isFlipping, setIsFlipping] = useState(false)
-  const [activeProfile, setActiveProfile] = useState(0)
+  const [activeTab, setActiveTab] = useState(0)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -63,713 +75,238 @@ export default function Hero() {
   }, [])
 
   const currentWord = FLIP_WORDS[wordIdx]
-  const profile = FLEET_PROFILES[activeProfile]
+  const tabData = ABOUT_TABS[activeTab]
 
   return (
     <section
       id="home"
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        overflow: 'hidden',
-        background: '#F6F5F1',
-        display: 'flex',
-        alignItems: 'center',
-      }}
+      className="relative w-full min-h-screen overflow-hidden bg-[#F6F5F1] flex items-center pt-24 pb-16 lg:py-0"
     >
-      {/* Background image with light industrial overlay */}
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: '#F6F5F1', pointerEvents: 'none' }}>
+      {/* Background Image with Light Industrial Overlay */}
+      <div className="absolute inset-0 bg-[#F6F5F1] pointer-events-none">
         <img
           src="https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=1800&h=1000&fit=crop&auto=format"
           alt="Heavy duty vehicle engineering"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.18 }}
+          className="w-full h-full object-cover opacity-20"
         />
-        {/* Light gradient overlays */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(90deg, #F6F5F1 0%, rgba(246,245,241,0.92) 50%, rgba(246,245,241,0.65) 100%)',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(0deg, #F6F5F1 0%, transparent 40%)',
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F5F1] via-[#F6F5F1]/90 to-[#F6F5F1]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F6F5F1] via-transparent to-transparent" />
       </div>
 
-      {/* Main Container - 2-Column Responsive Layout */}
-      <div
-        className="hero-grid-container"
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
-          gap: 'clamp(32px, 5vw, 72px)',
-          alignItems: 'center',
-          minHeight: '100vh',
-          padding: 'clamp(110px, 13vw, 150px) clamp(24px, 5vw, 80px) 70px',
-          maxWidth: 1400,
-          margin: '0 auto',
-          width: '100%',
-        }}
-      >
-        {/* ── Left Column: Headline & Primary CTAs ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          {/* Eyebrow badge */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-              fontSize: '11px',
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: '#E07B10',
-              marginBottom: 20,
-              fontWeight: 700,
-              background: '#FFFFFF',
-              padding: '6px 14px',
-              borderRadius: '20px',
-              border: '1px solid #E2DFDC',
-              boxShadow: '0 2px 8px rgba(27,43,58,0.04)',
-              width: 'fit-content',
-            }}
-          >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: '50%',
-                backgroundColor: '#E07B10',
-                display: 'inline-block',
-                boxShadow: '0 0 8px #E07B10',
-              }}
-            />
-            Heavy-Duty Vehicle Solutions
-          </div>
-
-          {/* Headline with FIXED black text and ONLY YELLOW TEXT FLIPPING */}
-          <div
-            style={{
-              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-              fontWeight: 900,
-              lineHeight: 0.92,
-              textTransform: 'uppercase',
-              marginBottom: 24,
-            }}
-          >
-            {/* Fixed First Line */}
-            <div
-              style={{
-                fontSize: 'clamp(52px, 7.5vw, 98px)',
-                color: '#1B2B3A',
-                letterSpacing: '-0.01em',
-              }}
-            >
-              BUILT WITH
+      {/* Main Responsive Grid Container */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-center min-h-[calc(100vh-6rem)] py-8 lg:py-16">
+          
+          {/* ── Left Column: Headline, Description & CTAs (7 cols) ── */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 font-body text-[11px] sm:text-xs tracking-[0.25em] uppercase font-bold text-[#E07B10] bg-white px-3.5 py-1.5 rounded-full border border-[#E2DFDC] shadow-sm w-fit mb-5">
+              <span className="w-2 h-2 rounded-full bg-[#E07B10] animate-pulse" />
+              Heavy-Duty Vehicle Solutions
             </div>
 
-            {/* Fixed Second Line */}
-            <div
-              style={{
-                fontSize: 'clamp(52px, 7.5vw, 98px)',
-                color: '#1B2B3A',
-                letterSpacing: '-0.01em',
-              }}
-            >
-              PRECISION &amp;
+            {/* Main Headline: Fixed Top Lines + 3D Flipping Yellow Line */}
+            <div className="font-display font-black text-headings leading-[0.9] sm:leading-[0.92] uppercase tracking-tight mb-6">
+              <span className="block text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-[#1B2B3A]">
+                BUILT WITH
+              </span>
+              <span className="block text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-[#1B2B3A]">
+                PRECISION &amp;
+              </span>
+
+              {/* Yellow/Orange 3D Flip Word Container */}
+              <div className="h-[1.05em] overflow-hidden inline-flex items-center text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-[#E07B10] [perspective:1000px]">
+                <div
+                  key={wordIdx}
+                  className="inline-flex [transform-style:preserve-3d]"
+                >
+                  {currentWord.split('').map((char, charIdx) => (
+                    <span
+                      key={`${currentWord}-${charIdx}`}
+                      style={{
+                        transformOrigin: '50% 50% -18px',
+                        animation: isFlipping
+                          ? `letterFlipOut 400ms ease ${charIdx * 25}ms forwards`
+                          : `letterFlipIn 500ms cubic-bezier(0.16, 1, 0.3, 1) ${charIdx * 35}ms forwards`,
+                      }}
+                      className="inline-block"
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Third Line: ONLY FLIP THE YELLOW / ORANGE TEXT */}
-            <div
-              style={{
-                fontSize: 'clamp(52px, 7.5vw, 98px)',
-                color: '#E07B10',
-                height: '1.05em',
-                overflow: 'hidden',
-                display: 'inline-flex',
-                alignItems: 'center',
-                perspective: '1000px',
-                position: 'relative',
-              }}
-            >
-              <div
-                key={wordIdx}
-                className="flip-text-word"
-                style={{
-                  display: 'inline-flex',
-                  transformStyle: 'preserve-3d',
+            {/* Hero Subtitle */}
+            <p className="font-body text-base sm:text-lg text-[#5C6470] max-w-xl leading-relaxed mb-8">
+              Custom truck bodies, tankers, trailers and specialized heavy-haul platforms — built with precision,
+              designed for extreme duty cycles, engineered for your fleet.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <GlassButton
+                variant="gold"
+                size="lg"
+                onClick={() => {
+                  const p = document.getElementById('products')
+                  if (p) p.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                {currentWord.split('').map((char, charIdx) => (
-                  <span
-                    key={`${currentWord}-${charIdx}`}
-                    style={{
-                      display: 'inline-block',
-                      transformOrigin: '50% 50% -18px',
-                      animation: isFlipping
-                        ? `letterFlipOut 400ms ease ${charIdx * 25}ms forwards`
-                        : `letterFlipIn 500ms cubic-bezier(0.16, 1, 0.3, 1) ${charIdx * 35}ms forwards`,
-                    }}
-                  >
-                    {char}
+                Explore Our Products →
+              </GlassButton>
+              <GlassButton
+                variant="ghost"
+                size="lg"
+                onClick={() => {
+                  const a = document.getElementById('about')
+                  if (a) a.scrollIntoView({ behavior: 'smooth' })
+                }}
+              >
+                Know About Us ▷
+              </GlassButton>
+            </div>
+
+            {/* Key Trust Counters */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-[#E2DFDC] max-w-lg">
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-black text-[#1B2B3A] leading-none">
+                  150T+
+                </div>
+                <div className="font-body text-[11px] sm:text-xs text-[#5C6470] uppercase tracking-wider mt-1">
+                  Max Payload
+                </div>
+              </div>
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-black text-[#1B2B3A] leading-none">
+                  ±0.5mm
+                </div>
+                <div className="font-body text-[11px] sm:text-xs text-[#5C6470] uppercase tracking-wider mt-1">
+                  Weld Precision
+                </div>
+              </div>
+              <div>
+                <div className="font-display text-2xl sm:text-3xl font-black text-[#E07B10] leading-none">
+                  25+ Yrs
+                </div>
+                <div className="font-body text-[11px] sm:text-xs text-[#5C6470] uppercase tracking-wider mt-1">
+                  Industry Leader
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Right Column: 'Know About Us' Story & Credentials Card (5 cols) ── */}
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-white rounded-3xl border border-[#E2DFDC] shadow-[0_20px_50px_rgba(27,43,58,0.08)] p-6 sm:p-8 flex flex-col gap-5 transition-all duration-300">
+              
+              {/* Card Header: Live Plant Status & Badge */}
+              <div className="flex items-center justify-between pb-4 border-b border-[#ECEAE4]">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_#10B981]" />
+                  <span className="font-display text-sm sm:text-base font-bold tracking-wider uppercase text-[#1B2B3A]">
+                    Know About Modern Assets
                   </span>
+                </div>
+                <span className="font-body text-[10px] sm:text-xs font-bold tracking-wider uppercase px-2.5 py-1 rounded-md bg-[#E07B10]/10 text-[#E07B10]">
+                  {tabData.badge}
+                </span>
+              </div>
+
+              {/* Interactive Navigation Tabs: Who We Are / Engineering / Our Promise */}
+              <div className="grid grid-cols-3 gap-1.5 p-1 bg-[#F6F5F1] rounded-xl border border-[#E2DFDC]">
+                {ABOUT_TABS.map((tab, idx) => {
+                  const isActive = activeTab === idx
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(idx)}
+                      className={`py-2 px-1 text-center font-display text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? 'bg-white text-[#1B2B3A] shadow-sm'
+                          : 'text-[#5C6470] hover:text-[#1B2B3A] bg-transparent'
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* Card Focus Headline */}
+              <div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-[#1B2B3A] leading-tight">
+                  {tabData.title}
+                </h3>
+              </div>
+
+              {/* Authentic Leadership Dialogue Box */}
+              <div className="bg-[#F6F5F1] rounded-2xl p-4 sm:p-5 border border-[#E2DFDC]">
+                <div className="flex items-center gap-1.5 font-body text-[11px] font-bold tracking-wider uppercase text-[#E07B10] mb-2">
+                  <span>❝</span> DIRECT LEADERSHIP DIALOGUE
+                </div>
+                <p className="font-body text-xs sm:text-[13px] text-[#1B2B3A] italic leading-relaxed">
+                  "{tabData.quote}"
+                </p>
+                <div className="mt-3 pt-2.5 border-t border-[#E2DFDC]/60 flex items-center justify-between text-[11px] font-body">
+                  <span className="font-bold text-[#1B2B3A]">{tabData.author}</span>
+                  <span className="text-[#8C949C]">{tabData.role}</span>
+                </div>
+              </div>
+
+              {/* 2x2 Capabilities & Verified Metrics Matrix */}
+              <div className="grid grid-cols-2 gap-2.5">
+                {tabData.stats.map((st, sIdx) => (
+                  <div
+                    key={sIdx}
+                    className="p-3 rounded-xl bg-white border border-[#ECEAE4] flex flex-col justify-center"
+                  >
+                    <span className="font-body text-[10px] uppercase tracking-wider text-[#8C949C] font-semibold">
+                      {st.label}
+                    </span>
+                    <span className="font-display text-base sm:text-lg font-black text-[#1B2B3A] mt-0.5">
+                      {st.value}
+                    </span>
+                  </div>
                 ))}
               </div>
+
+              {/* Card Footer: Turnkey Badge & About Link */}
+              <div className="flex items-center justify-between pt-3 border-t border-[#ECEAE4]">
+                <div className="flex items-center gap-1.5 text-xs font-body font-semibold text-[#5C6470]">
+                  <span className="text-emerald-600 font-bold text-sm">✓</span>
+                  <span>ISO 9001:2015 Registered Plant</span>
+                </div>
+                
+                <button
+                  onClick={() => {
+                    const aboutSection = document.getElementById('about')
+                    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className="inline-flex items-center gap-1.5 py-2 px-4 rounded-xl bg-[#1B2B3A] hover:bg-[#E07B10] text-white font-display text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm"
+                >
+                  <span>Our Story</span>
+                  <span>→</span>
+                </button>
+              </div>
+
             </div>
           </div>
 
-          <p
-            style={{
-              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-              fontSize: 'clamp(15px, 1.4vw, 17px)',
-              fontWeight: 400,
-              lineHeight: 1.65,
-              color: '#5C6470',
-              maxWidth: 520,
-              marginBottom: 36,
-            }}
-          >
-            Custom truck bodies, tankers, trailers and specialized heavy haul platforms — built with precision,
-            designed for extreme duty cycles, engineered for your fleet.
-          </p>
-
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <GlassButton
-              variant="gold"
-              size="lg"
-              onClick={() => {
-                const p = document.getElementById('products')
-                if (p) p.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Explore Our Products →
-            </GlassButton>
-            <GlassButton
-              variant="ghost"
-              size="lg"
-              onClick={() => {
-                const s = document.getElementById('capabilities')
-                if (s) s.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Watch Our Story ▷
-            </GlassButton>
-          </div>
-
-          {/* Quick trust metrics */}
-          <div
-            style={{
-              display: 'flex',
-              gap: 28,
-              marginTop: 40,
-              paddingTop: 24,
-              borderTop: '1px solid #E2DFDC',
-              maxWidth: 500,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '26px',
-                  fontWeight: 900,
-                  color: '#1B2B3A',
-                  lineHeight: 1,
-                }}
-              >
-                150T+
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  fontSize: '11px',
-                  color: '#5C6470',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  marginTop: 4,
-                }}
-              >
-                Max Abnormal Load
-              </div>
-            </div>
-
-            <div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '26px',
-                  fontWeight: 900,
-                  color: '#1B2B3A',
-                  lineHeight: 1,
-                }}
-              >
-                ±0.5mm
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  fontSize: '11px',
-                  color: '#5C6470',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  marginTop: 4,
-                }}
-              >
-                Robotic Weld Precision
-              </div>
-            </div>
-
-            <div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '26px',
-                  fontWeight: 900,
-                  color: '#E07B10',
-                  lineHeight: 1,
-                }}
-              >
-                100%
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  fontSize: '11px',
-                  color: '#5C6470',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  marginTop: 4,
-                }}
-              >
-                FEA Stress Validated
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Right Column: Engineering Dispatch Console & Dialogue Card ── */}
-        <div
-          className="hero-right-card"
-          style={{
-            background: '#FFFFFF',
-            borderRadius: '24px',
-            border: '1px solid #E2DFDC',
-            boxShadow: '0 25px 60px rgba(27, 43, 58, 0.08), 0 2px 10px rgba(0, 0, 0, 0.03)',
-            padding: 'clamp(24px, 3.5vw, 36px)',
-            position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
-          }}
-        >
-          {/* Card Header: Live Dispatch Telemetry */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              borderBottom: '1px solid #ECEAE4',
-              paddingBottom: 16,
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#10B981',
-                  boxShadow: '0 0 10px #10B981',
-                  display: 'inline-block',
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '14px',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  color: '#1B2B3A',
-                }}
-              >
-                Fleet Engineering Telemetry
-              </span>
-            </div>
-            <span
-              style={{
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                color: '#E07B10',
-                background: 'rgba(224, 123, 16, 0.09)',
-                padding: '4px 10px',
-                borderRadius: '6px',
-              }}
-            >
-              SPEC #MA-2026
-            </span>
-          </div>
-
-          {/* Interactive Profile Selector Tabs */}
-          <div>
-            <div
-              style={{
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '11px',
-                fontWeight: 600,
-                color: '#737E88',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                marginBottom: 8,
-              }}
-            >
-              Select Active Build Architecture:
-            </div>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: 6,
-                background: '#F6F5F1',
-                padding: 4,
-                borderRadius: '12px',
-                border: '1px solid #E2DFDC',
-              }}
-            >
-              {FLEET_PROFILES.map((p, idx) => {
-                const isActive = activeProfile === idx
-                return (
-                  <button
-                    key={p.id}
-                    onClick={() => setActiveProfile(idx)}
-                    style={{
-                      padding: '8px 6px',
-                      borderRadius: '8px',
-                      border: 'none',
-                      outline: 'none',
-                      cursor: 'pointer',
-                      background: isActive ? '#FFFFFF' : 'transparent',
-                      color: isActive ? '#1B2B3A' : '#5C6470',
-                      boxShadow: isActive ? '0 2px 8px rgba(27,43,58,0.08)' : 'none',
-                      fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                      fontSize: '13px',
-                      fontWeight: 700,
-                      letterSpacing: '0.04em',
-                      textTransform: 'uppercase',
-                      transition: 'all 200ms ease',
-                      textAlign: 'center',
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                    }}
-                  >
-                    {p.name.split(' ')[0]} {p.name.split(' ')[1]}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Dialogue & Quotation Box */}
-          <div
-            style={{
-              background: '#F6F5F1',
-              borderRadius: '16px',
-              padding: '18px 20px',
-              border: '1px solid #E2DFDC',
-              position: 'relative',
-            }}
-          >
-            <div
-              style={{
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '11px',
-                color: '#E07B10',
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                marginBottom: 6,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-              }}
-            >
-              <span>❝</span> CHIEF METALLURGY &amp; WELD ENGINEER DIALOGUE
-            </div>
-            <p
-              style={{
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '13px',
-                lineHeight: 1.6,
-                color: '#1B2B3A',
-                fontStyle: 'italic',
-                margin: 0,
-              }}
-            >
-              "{profile.dialogue}"
-            </p>
-            <div
-              style={{
-                marginTop: 10,
-                fontSize: '11px',
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                color: '#737E88',
-                fontWeight: 600,
-              }}
-            >
-              — Modern Assets Heavy Fabrication Workshop • {profile.leadTime} Lead Time
-            </div>
-          </div>
-
-          {/* Live Specs Matrix */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: 12,
-            }}
-          >
-            <div
-              style={{
-                padding: '12px 14px',
-                borderRadius: '12px',
-                background: '#FFFFFF',
-                border: '1px solid #ECEAE4',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '10px',
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  color: '#737E88',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  fontWeight: 600,
-                }}
-              >
-                Yield Material
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '17px',
-                  fontWeight: 800,
-                  color: '#1B2B3A',
-                  marginTop: 2,
-                }}
-              >
-                {profile.yieldStrength}
-              </div>
-            </div>
-
-            <div
-              style={{
-                padding: '12px 14px',
-                borderRadius: '12px',
-                background: '#FFFFFF',
-                border: '1px solid #ECEAE4',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '10px',
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  color: '#737E88',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  fontWeight: 600,
-                }}
-              >
-                Operating Capacity
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '17px',
-                  fontWeight: 800,
-                  color: '#E07B10',
-                  marginTop: 2,
-                }}
-              >
-                {profile.capacity}
-              </div>
-            </div>
-
-            <div
-              style={{
-                padding: '12px 14px',
-                borderRadius: '12px',
-                background: '#FFFFFF',
-                border: '1px solid #ECEAE4',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '10px',
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  color: '#737E88',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  fontWeight: 600,
-                }}
-              >
-                Chassis Tolerance
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '17px',
-                  fontWeight: 800,
-                  color: '#1B2B3A',
-                  marginTop: 2,
-                }}
-              >
-                {profile.tolerance}
-              </div>
-            </div>
-
-            <div
-              style={{
-                padding: '12px 14px',
-                borderRadius: '12px',
-                background: '#FFFFFF',
-                border: '1px solid #ECEAE4',
-              }}
-            >
-              <div
-                style={{
-                  fontSize: '10px',
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  color: '#737E88',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  fontWeight: 600,
-                }}
-              >
-                Compliance Rating
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '17px',
-                  fontWeight: 800,
-                  color: '#1B2B3A',
-                  marginTop: 2,
-                }}
-              >
-                {profile.cert}
-              </div>
-            </div>
-          </div>
-
-          {/* Action Footer */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingTop: 8,
-              borderTop: '1px solid #ECEAE4',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: '#E07B10', fontSize: '13px' }}>✓</span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  color: '#5C6470',
-                }}
-              >
-                Turnkey Field Delivery
-              </span>
-            </div>
-
-            <button
-              onClick={() => {
-                const c = document.getElementById('contact')
-                if (c) c.scrollIntoView({ behavior: 'smooth' })
-              }}
-              style={{
-                padding: '8px 18px',
-                background: '#1B2B3A',
-                color: '#FFFFFF',
-                border: 'none',
-                borderRadius: '10px',
-                fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                fontSize: '13px',
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                transition: 'all 200ms ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#E07B10'
-                e.currentTarget.style.transform = 'translateY(-1px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#1B2B3A'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }}
-            >
-              <span>Configure Blueprint</span>
-              <span>→</span>
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Vertical Scroll indicator */}
-      <div
-        style={{
-          position: 'absolute',
-          right: 'clamp(20px, 3vw, 40px)',
-          bottom: 40,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 8,
-          zIndex: 2,
-        }}
-      >
-        <span
-          style={{
-            fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-            fontSize: '11px',
-            letterSpacing: '0.25em',
-            textTransform: 'uppercase',
-            color: '#737E88',
-            writingMode: 'vertical-rl',
-            fontWeight: 700,
-          }}
-        >
+      {/* Vertical Scroll Indicator (Hidden on small mobile screens) */}
+      <div className="hidden sm:flex absolute right-6 md:right-10 bottom-8 flex-col items-center gap-2 z-10 pointer-events-none">
+        <span className="font-display text-[11px] tracking-[0.25em] uppercase text-[#8C949C] [writing-mode:vertical-rl] font-bold">
           SCROLL
         </span>
-        <div
-          style={{
-            width: 2,
-            height: 48,
-            background: 'linear-gradient(180deg, #E07B10, transparent)',
-          }}
-        />
+        <div className="w-[2px] h-12 bg-gradient-to-b from-[#E07B10] to-transparent" />
       </div>
 
-      {/* CSS Keyframes for 3D Flip Fade Text & Responsive Layout */}
+      {/* 3D Flip Fade Text Keyframes */}
       <style>{`
         @keyframes letterFlipIn {
           0% {
@@ -800,20 +337,8 @@ export default function Hero() {
             filter: blur(4px);
           }
         }
-
-        @media (max-width: 1024px) {
-          .hero-grid-container {
-            grid-template-columns: 1fr !important;
-            padding-top: 130px !important;
-            gap: 40px !important;
-          }
-          .hero-right-card {
-            max-width: 600px;
-            margin: 0 auto;
-            width: 100%;
-          }
-        }
       `}</style>
     </section>
   )
 }
+
