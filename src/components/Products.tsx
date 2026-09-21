@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ScrollExpand from './ScrollExpand'
@@ -564,7 +564,7 @@ export default function Products() {
                     borderRadius: '28px',
                     overflow: 'hidden',
                     border: '1px solid #E2DFDC',
-                    boxShadow: '0 20px 50px rgba(23, 50, 77, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    boxShadow: '0 -4px 24px rgba(27, 43, 58, 0.06), 0 25px 60px rgba(27, 43, 58, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04)',
                     transition: 'border-color 200ms ease, box-shadow 200ms ease',
                   }}
                 >
