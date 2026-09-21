@@ -22,7 +22,7 @@ const FLEET_SHOWCASE = [
     num: '02',
     name: '150-Ton Heavy-Duty Low-Bed Trailer',
     category: 'Abnormal Load & Mining Machinery',
-    img: 'https://images.unsplash.com/photo-1577075473292-5f62dfae5522?w=900&h=650&fit=crop&auto=format',
+    img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=900&h=650&fit=crop&auto=format',
     tag: 'Extreme Heavy Haul',
     badge: '150 Metric Tons',
     capacity: '150,000 KG',

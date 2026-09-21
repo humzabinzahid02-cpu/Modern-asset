@@ -47,12 +47,12 @@ const PRODUCTS_DATA: ProductDetail[] = [
     name: 'Heavy-Duty Low-Bed Trailers',
     tag: 'Heavy Haul',
     category: 'heavy',
-    desc: 'Engineered for extreme abnormal load transport, earthmoving machinery, transformers, and industrial plant relocation.',
-    img: 'https://images.unsplash.com/photo-1577075473292-5f62dfae5522?w=1200&h=800&fit=crop&auto=format',
+    desc: 'Engineered for multi-ton abnormal haulage, industrial transformers, earthmoving equipment, and extreme plant relocation with zero chassis deflection.',
+    img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&h=800&fit=crop&auto=format',
     specs: [
       { label: 'Payload Rating', value: '60 - 150 Metric Tons' },
       { label: 'Axle Configuration', value: '3, 4, 5 & 6-Axle Hydraulic' },
-      { label: 'Deck Profile', value: 'Extendable Drop Deck' },
+      { label: 'Chassis Alloy', value: 'Strenx® 700MC High-Tensile' },
       { label: 'Ramp System', value: 'Heavy Hydraulic Bi-Fold' },
     ],
     features: [
@@ -61,7 +61,7 @@ const PRODUCTS_DATA: ProductDetail[] = [
       'Outrigger brackets for wide load accommodation',
       'Integrated heavy-duty lashing points every 500mm',
     ],
-    leadTime: '4 - 6 Weeks',
+    leadTime: '4 - 6 Weeks Guaranteed',
   },
   {
     id: 'flatbed',
@@ -593,7 +593,7 @@ export default function Products() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(180deg, rgba(23,50,77,0.05) 0%, rgba(23,50,77,0.55) 100%)',
+                          'linear-gradient(180deg, transparent 70%, rgba(27,43,58,0.15) 100%)',
                       }}
                     />
                     <div

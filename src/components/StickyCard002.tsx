@@ -50,7 +50,6 @@ export function StickyCard002<T extends CardData = CardData>({
 
         gsap.to(currentCard, {
           scale: 0.96,
-          filter: 'brightness(0.95)',
           ease: 'power1.out',
           scrollTrigger: {
             trigger: nextCard,
