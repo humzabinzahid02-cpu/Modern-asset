@@ -3,63 +3,70 @@ import GlassButton from '../GlassButton'
 
 const FLIP_WORDS = ['PURPOSE', 'POWER', 'PROGRESS', 'PERFORMANCE', 'PROWESS']
 
-const ABOUT_TABS = [
+const FLEET_SHOWCASE = [
   {
-    id: 'story',
-    label: 'Who We Are',
-    title: 'Precision Commercial Vehicle Manufacturers',
-    badge: 'EST. 1998 • 25+ YEARS',
-    quote:
-      'We started Modern Assets with one guiding mission: build the strongest, most dependable transport equipment in the industry. Every chassis, weld, and tanker is engineered from the ground up for extreme durability.',
-    author: 'Tariq Al-Mansoor',
-    role: 'Managing Director & Founder',
-    stats: [
-      { label: 'Fleet Assets Delivered', value: '5,200+' },
-      { label: 'Heavy Haul Rating', value: 'Up to 150T' },
-      { label: 'In-House Facility', value: '85,000 sq.ft' },
-      { label: 'Certified Compliance', value: 'ADR & ISO 9001' },
-    ],
+    id: 'tanker',
+    num: '01',
+    name: '55,000L Fuel Tanker Semi-Trailer',
+    category: 'Liquid Petroleum & Chemical Transport',
+    img: 'https://images.unsplash.com/photo-1745441062417-5d0fbfcbf48f?w=900&h=650&fit=crop&auto=format',
+    tag: 'Liquid Transport',
+    badge: 'ADR & SASO Certified',
+    capacity: '55,000 Liters',
+    chassis: 'Hardox® 450 Robotic',
+    leadTime: '3-4 Weeks',
+    features: ['Anti-surge internal baffles', 'Multi-compartment manifold', 'BPW air suspension'],
   },
   {
-    id: 'engineering',
-    label: 'Engineering',
-    title: 'High-Tensile Metallurgy & Robotic Precision',
-    badge: 'ADVANCED ROBOTICS',
-    quote:
-      'From 700 MPa high-strength steel tankers to custom multi-axle low-beds, our mechanical engineers run rigorous 3D SolidWorks and FEA stress simulations to eliminate structural fatigue before fabrication.',
-    author: 'Eng. Marcus Vance',
-    role: 'Head of Metallurgy & FEA Design',
-    stats: [
-      { label: 'Chassis Material', value: 'Hardox® & Strenx®' },
-      { label: 'Robotic Tolerance', value: '±0.5mm Laser' },
-      { label: 'Surge Baffle Integrity', value: '100% Tested' },
-      { label: 'Standard Warranty', value: '3-Year Chassis' },
-    ],
+    id: 'lowbed',
+    num: '02',
+    name: '150-Ton Heavy-Duty Low-Bed Trailer',
+    category: 'Abnormal Load & Mining Machinery',
+    img: 'https://images.unsplash.com/photo-1577075473292-5f62dfae5522?w=900&h=650&fit=crop&auto=format',
+    tag: 'Extreme Heavy Haul',
+    badge: '150 Metric Tons',
+    capacity: '150,000 KG',
+    chassis: 'Strenx 700MC Steel',
+    leadTime: '4-6 Weeks',
+    features: ['Hydraulic steering axles', 'Heavy bi-fold ramps', 'Extendable drop deck'],
   },
   {
-    id: 'promise',
-    label: 'Our Promise',
-    title: 'Guaranteed Delivery & Full Fleet Support',
-    badge: 'TURNKEY FLEET PARTNER',
-    quote:
-      'When your business moves heavy cargo, downtime costs thousands. We guarantee our build timelines, provide turnkey road documentation, and back every fleet with rapid spare parts and dedicated technical support.',
-    author: 'Karim Haddad',
-    role: 'VP Fleet Logistics & After-Sales',
-    stats: [
-      { label: 'On-Schedule Handover', value: '99.4%' },
-      { label: 'Build Lead Time', value: '3 - 6 Weeks' },
-      { label: 'Field Support Dispatch', value: '24/7 Dedicated' },
-      { label: 'Chassis Customization', value: '100% Bespoke' },
-    ],
+    id: 'flatbed',
+    num: '03',
+    name: '60-Ton Reinforced ISO Flatbed',
+    category: 'General Container & Structural Freight',
+    img: 'https://images.unsplash.com/photo-1626121300305-def4dc305387?w=900&h=650&fit=crop&auto=format',
+    tag: 'Commercial Freight',
+    badge: 'ISO 9001 Certified',
+    capacity: '60,000 KG',
+    chassis: 'Pre-Cambered I-Beam',
+    leadTime: '2-3 Weeks',
+    features: ['12x Retractable ISO locks', 'Reinforced impact bulkhead', 'Hardwood / Steel deck'],
+  },
+  {
+    id: 'truckbody',
+    num: '04',
+    name: 'Custom Heavy Truck Bodies',
+    category: 'Bespoke Tipper, Box & Refrigerated',
+    img: 'https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=900&h=650&fit=crop&auto=format',
+    tag: 'Custom Fabrication',
+    badge: 'All OEM Chassis Ready',
+    capacity: '18m³ - 65m³ Volume',
+    chassis: 'Monocoque Subframe',
+    leadTime: '2-4 Weeks',
+    features: ['3,000kg Tail-lift hydraulic', 'UV thermal insulation', 'Direct chassis integration'],
   },
 ]
 
 export default function Hero() {
   const [wordIdx, setWordIdx] = useState(0)
   const [isFlipping, setIsFlipping] = useState(false)
-  const [activeTab, setActiveTab] = useState(0)
+  const [fleetIdx, setFleetIdx] = useState(0)
+  const [isCardFlipping, setIsCardFlipping] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const lastScrollTimeRef = useRef<number>(0)
 
+  // Flip text interval
   useEffect(() => {
     timerRef.current = setInterval(() => {
       setIsFlipping(true)
@@ -74,8 +81,31 @@ export default function Hero() {
     }
   }, [])
 
+  // Mouse wheel scroll listener over the showcase card
+  const handleShowcaseWheel = (e: React.WheelEvent) => {
+    const now = Date.now()
+    if (now - lastScrollTimeRef.current < 450) return // debounce rapid scroll ticks
+    lastScrollTimeRef.current = now
+
+    if (e.deltaY > 20) {
+      // scroll down -> next fleet item
+      setIsCardFlipping(true)
+      setTimeout(() => {
+        setFleetIdx((prev) => (prev + 1) % FLEET_SHOWCASE.length)
+        setIsCardFlipping(false)
+      }, 200)
+    } else if (e.deltaY < -20) {
+      // scroll up -> previous fleet item
+      setIsCardFlipping(true)
+      setTimeout(() => {
+        setFleetIdx((prev) => (prev - 1 + FLEET_SHOWCASE.length) % FLEET_SHOWCASE.length)
+        setIsCardFlipping(false)
+      }, 200)
+    }
+  }
+
   const currentWord = FLIP_WORDS[wordIdx]
-  const tabData = ABOUT_TABS[activeTab]
+  const currentVehicle = FLEET_SHOWCASE[fleetIdx]
 
   return (
     <section
@@ -87,17 +117,17 @@ export default function Hero() {
         <img
           src="https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=1800&h=1000&fit=crop&auto=format"
           alt="Heavy duty vehicle engineering"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F5F1] via-[#F6F5F1]/90 to-[#F6F5F1]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F5F1] via-[#F6F5F1]/92 to-[#F6F5F1]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#F6F5F1] via-transparent to-transparent" />
       </div>
 
       {/* Main Responsive Grid Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-14 items-center min-h-[calc(100vh-6rem)] py-8 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center min-h-[calc(100vh-6rem)] py-8 lg:py-16">
           
-          {/* ── Left Column: Headline, Description & CTAs (7 cols) ── */}
+          {/* ── Left Column: Headline, CTAs & Scroll Cue (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
             {/* Eyebrow Badge */}
@@ -145,8 +175,8 @@ export default function Hero() {
               designed for extreme duty cycles, engineered for your fleet.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            {/* Primary Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-8">
               <GlassButton
                 variant="gold"
                 size="lg"
@@ -161,135 +191,166 @@ export default function Hero() {
                 variant="ghost"
                 size="lg"
                 onClick={() => {
-                  const a = document.getElementById('about')
-                  if (a) a.scrollIntoView({ behavior: 'smooth' })
+                  const c = document.getElementById('capabilities')
+                  if (c) c.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                Know About Us ▷
+                Our Capabilities ▷
               </GlassButton>
             </div>
 
-            {/* Key Trust Counters */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-[#E2DFDC] max-w-lg">
-              <div>
-                <div className="font-display text-2xl sm:text-3xl font-black text-[#1B2B3A] leading-none">
-                  150T+
+            {/* Interactive Scroll-Down Prompt */}
+            <div className="flex items-center gap-4 pt-6 border-t border-[#E2DFDC] max-w-lg">
+              <button
+                onClick={() => {
+                  const p = document.getElementById('products')
+                  if (p) p.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="group flex items-center gap-3 text-left cursor-pointer bg-transparent border-none p-0 outline-none"
+              >
+                <div className="w-10 h-10 rounded-full bg-white border border-[#E2DFDC] shadow-sm flex items-center justify-center text-[#E07B10] group-hover:bg-[#E07B10] group-hover:text-white transition-all duration-300 group-hover:scale-105">
+                  <span className="text-lg font-bold animate-bounce mt-0.5">↓</span>
                 </div>
-                <div className="font-body text-[11px] sm:text-xs text-[#5C6470] uppercase tracking-wider mt-1">
-                  Max Payload
+                <div>
+                  <div className="font-display text-sm font-bold uppercase tracking-wider text-[#1B2B3A] group-hover:text-[#E07B10] transition-colors">
+                    Scroll to Explore Fleet
+                  </div>
+                  <div className="font-body text-xs text-[#8C949C]">
+                    Discover 3D card deck &amp; custom engineering specs
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div className="font-display text-2xl sm:text-3xl font-black text-[#1B2B3A] leading-none">
-                  ±0.5mm
-                </div>
-                <div className="font-body text-[11px] sm:text-xs text-[#5C6470] uppercase tracking-wider mt-1">
-                  Weld Precision
-                </div>
-              </div>
-              <div>
-                <div className="font-display text-2xl sm:text-3xl font-black text-[#E07B10] leading-none">
-                  25+ Yrs
-                </div>
-                <div className="font-body text-[11px] sm:text-xs text-[#5C6470] uppercase tracking-wider mt-1">
-                  Industry Leader
-                </div>
-              </div>
+              </button>
             </div>
+
           </div>
 
-          {/* ── Right Column: 'Know About Us' Story & Credentials Card (5 cols) ── */}
+          {/* ── Right Column: Interactive Scroll-Driven Fleet Showcase (5 cols) ── */}
           <div className="lg:col-span-5 w-full">
-            <div className="bg-white rounded-3xl border border-[#E2DFDC] shadow-[0_20px_50px_rgba(27,43,58,0.08)] p-6 sm:p-8 flex flex-col gap-5 transition-all duration-300">
+            <div
+              onWheel={handleShowcaseWheel}
+              className="group relative bg-white rounded-3xl border border-[#E2DFDC] shadow-[0_25px_60px_rgba(27,43,58,0.09)] overflow-hidden transition-all duration-300 flex flex-col cursor-ns-resize"
+            >
               
-              {/* Card Header: Live Plant Status & Badge */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#ECEAE4]">
+              {/* Card Top Banner: Scroll Instruction & Progress */}
+              <div className="flex items-center justify-between px-6 py-3.5 bg-[#F6F5F1] border-b border-[#E2DFDC]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_#10B981]" />
-                  <span className="font-display text-sm sm:text-base font-bold tracking-wider uppercase text-[#1B2B3A]">
-                    Know About Modern Assets
+                  <span className="w-2 h-2 rounded-full bg-[#E07B10] animate-ping" />
+                  <span className="font-display text-xs font-bold uppercase tracking-wider text-[#1B2B3A]">
+                    Scroll Wheel or Drag
                   </span>
                 </div>
-                <span className="font-body text-[10px] sm:text-xs font-bold tracking-wider uppercase px-2.5 py-1 rounded-md bg-[#E07B10]/10 text-[#E07B10]">
-                  {tabData.badge}
-                </span>
-              </div>
-
-              {/* Interactive Navigation Tabs: Who We Are / Engineering / Our Promise */}
-              <div className="grid grid-cols-3 gap-1.5 p-1 bg-[#F6F5F1] rounded-xl border border-[#E2DFDC]">
-                {ABOUT_TABS.map((tab, idx) => {
-                  const isActive = activeTab === idx
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(idx)}
-                      className={`py-2 px-1 text-center font-display text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-200 cursor-pointer ${
-                        isActive
-                          ? 'bg-white text-[#1B2B3A] shadow-sm'
-                          : 'text-[#5C6470] hover:text-[#1B2B3A] bg-transparent'
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  )
-                })}
-              </div>
-
-              {/* Card Focus Headline */}
-              <div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-[#1B2B3A] leading-tight">
-                  {tabData.title}
-                </h3>
-              </div>
-
-              {/* Authentic Leadership Dialogue Box */}
-              <div className="bg-[#F6F5F1] rounded-2xl p-4 sm:p-5 border border-[#E2DFDC]">
-                <div className="flex items-center gap-1.5 font-body text-[11px] font-bold tracking-wider uppercase text-[#E07B10] mb-2">
-                  <span>❝</span> DIRECT LEADERSHIP DIALOGUE
-                </div>
-                <p className="font-body text-xs sm:text-[13px] text-[#1B2B3A] italic leading-relaxed">
-                  "{tabData.quote}"
-                </p>
-                <div className="mt-3 pt-2.5 border-t border-[#E2DFDC]/60 flex items-center justify-between text-[11px] font-body">
-                  <span className="font-bold text-[#1B2B3A]">{tabData.author}</span>
-                  <span className="text-[#8C949C]">{tabData.role}</span>
+                <div className="flex items-center gap-1.5 font-display text-xs font-bold text-[#5C6470]">
+                  <span className="text-[#E07B10] font-black">{currentVehicle.num}</span>
+                  <span>/</span>
+                  <span>04</span>
                 </div>
               </div>
 
-              {/* 2x2 Capabilities & Verified Metrics Matrix */}
-              <div className="grid grid-cols-2 gap-2.5">
-                {tabData.stats.map((st, sIdx) => (
-                  <div
-                    key={sIdx}
-                    className="p-3 rounded-xl bg-white border border-[#ECEAE4] flex flex-col justify-center"
-                  >
-                    <span className="font-body text-[10px] uppercase tracking-wider text-[#8C949C] font-semibold">
-                      {st.label}
+              {/* Vehicle Showcase Image with Cinematic Overlay */}
+              <div className="relative h-56 sm:h-64 overflow-hidden bg-[#1B2B3A]">
+                <img
+                  key={currentVehicle.id}
+                  src={currentVehicle.img}
+                  alt={currentVehicle.name}
+                  className={`w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 ${
+                    isCardFlipping ? 'opacity-40 scale-95' : 'opacity-90 scale-100'
+                  }`}
+                />
+                
+                {/* Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                
+                {/* Category & Cert Badges */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <span className="bg-[#E07B10] text-white text-[10px] font-bold font-body uppercase tracking-wider px-2.5 py-1 rounded-md shadow-md">
+                    {currentVehicle.tag}
+                  </span>
+                  <span className="bg-white/90 backdrop-blur-sm text-[#1B2B3A] text-[10px] font-bold font-body uppercase tracking-wider px-2.5 py-1 rounded-md border border-white/40 shadow-sm">
+                    {currentVehicle.badge}
+                  </span>
+                </div>
+
+                {/* Floating Title over Image */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="text-white/80 font-body text-[11px] uppercase tracking-widest font-semibold mb-1">
+                    {currentVehicle.category}
+                  </div>
+                  <h4 className="font-display text-xl sm:text-2xl font-black uppercase text-white leading-tight">
+                    {currentVehicle.name}
+                  </h4>
+                </div>
+              </div>
+
+              {/* Showcase Body & Specs */}
+              <div className="p-6 flex flex-col gap-4">
+                
+                {/* Quick 2-Column Spec Chips */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 rounded-xl bg-[#F6F5F1] border border-[#E2DFDC]">
+                    <span className="block font-body text-[10px] uppercase tracking-wider text-[#8C949C] font-semibold">
+                      Chassis Spec
                     </span>
-                    <span className="font-display text-base sm:text-lg font-black text-[#1B2B3A] mt-0.5">
-                      {st.value}
+                    <span className="block font-display text-base font-black text-[#1B2B3A] mt-0.5">
+                      {currentVehicle.chassis}
                     </span>
                   </div>
-                ))}
+                  <div className="p-3 rounded-xl bg-[#F6F5F1] border border-[#E2DFDC]">
+                    <span className="block font-body text-[10px] uppercase tracking-wider text-[#8C949C] font-semibold">
+                      Capacity Rating
+                    </span>
+                    <span className="block font-display text-base font-black text-[#E07B10] mt-0.5">
+                      {currentVehicle.capacity}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Feature Bullet Pills */}
+                <div className="flex flex-wrap gap-1.5">
+                  {currentVehicle.features.map((feat, fIdx) => (
+                    <span
+                      key={fIdx}
+                      className="text-[11px] font-body font-semibold text-[#5C6470] bg-[#F6F5F1] px-2.5 py-1 rounded-lg border border-[#E2DFDC]"
+                    >
+                      ✓ {feat}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Interactive Stepper Navigation & CTA */}
+                <div className="flex items-center justify-between pt-3 border-t border-[#ECEAE4] mt-1">
+                  
+                  {/* Step Buttons */}
+                  <div className="flex items-center gap-1.5">
+                    {FLEET_SHOWCASE.map((item, idx) => (
+                      <button
+                        key={item.id}
+                        onClick={() => setFleetIdx(idx)}
+                        className={`h-2 rounded-full transition-all duration-200 cursor-pointer border-none p-0 ${
+                          fleetIdx === idx ? 'w-7 bg-[#E07B10]' : 'w-2 bg-[#E2DFDC] hover:bg-[#8C949C]'
+                        }`}
+                        title={item.name}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Action Link to Products */}
+                  <button
+                    onClick={() => {
+                      const p = document.getElementById('products')
+                      if (p) p.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                    className="inline-flex items-center gap-2 py-2 px-4 rounded-xl bg-[#1B2B3A] hover:bg-[#E07B10] text-white font-display text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm"
+                  >
+                    <span>View In 3D Stack</span>
+                    <span>→</span>
+                  </button>
+                </div>
+
               </div>
 
-              {/* Card Footer: Turnkey Badge & About Link */}
-              <div className="flex items-center justify-between pt-3 border-t border-[#ECEAE4]">
-                <div className="flex items-center gap-1.5 text-xs font-body font-semibold text-[#5C6470]">
-                  <span className="text-emerald-600 font-bold text-sm">✓</span>
-                  <span>ISO 9001:2015 Registered Plant</span>
-                </div>
-                
-                <button
-                  onClick={() => {
-                    const aboutSection = document.getElementById('about')
-                    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                  className="inline-flex items-center gap-1.5 py-2 px-4 rounded-xl bg-[#1B2B3A] hover:bg-[#E07B10] text-white font-display text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm"
-                >
-                  <span>Our Story</span>
-                  <span>→</span>
-                </button>
+              {/* Subtle Scroll Hint Bar at Card Bottom */}
+              <div className="bg-[#F6F5F1]/80 py-1.5 text-center text-[10px] font-body text-[#8C949C] tracking-wide border-t border-[#E2DFDC]">
+                🖱 Scroll mouse wheel here to cycle models
               </div>
 
             </div>
@@ -298,7 +359,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Vertical Scroll Indicator (Hidden on small mobile screens) */}
+      {/* Vertical Fixed Scroll Indicator (on large screens) */}
       <div className="hidden sm:flex absolute right-6 md:right-10 bottom-8 flex-col items-center gap-2 z-10 pointer-events-none">
         <span className="font-display text-[11px] tracking-[0.25em] uppercase text-[#8C949C] [writing-mode:vertical-rl] font-bold">
           SCROLL
