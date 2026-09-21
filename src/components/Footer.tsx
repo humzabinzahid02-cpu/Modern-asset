@@ -16,8 +16,8 @@ const NAV_COLS = [
 export default function Footer() {
   return (
     <footer id="contact-footer" style={{
-      background: '#07070f',
-      borderTop: '1px solid rgba(245,197,24,0.08)',
+      background: '#181D21',
+      borderTop: '1px solid #343B40',
       padding: 'clamp(48px,6vw,80px) clamp(24px,6vw,100px) 32px',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -33,7 +33,8 @@ export default function Footer() {
               <div style={{
                 width: 34,
                 height: 34,
-                background: 'linear-gradient(135deg,#F5C518,#E6A800)',
+                borderRadius: 7,
+                background: 'linear-gradient(135deg, #E58A16 0%, #C8750D 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -42,7 +43,7 @@ export default function Footer() {
                   fontFamily: 'Barlow Condensed, sans-serif',
                   fontWeight: 900,
                   fontSize: 18,
-                  color: '#0c0c14',
+                  color: '#FFFFFF',
                 }}>M</span>
               </div>
               <span style={{
@@ -51,13 +52,13 @@ export default function Footer() {
                 fontSize: 17,
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
-                color: '#ffffff',
+                color: '#FFFFFF',
               }}>Modern Assets</span>
             </div>
             <p style={{
               fontFamily: 'Outfit, sans-serif',
               fontSize: 13,
-              color: 'rgba(255,255,255,0.35)',
+              color: '#AEB5B9',
               lineHeight: 1.7,
               margin: '0 0 24px',
             }}>
@@ -68,7 +69,7 @@ export default function Footer() {
               fontSize: '11px',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.2)',
+              color: '#AEB5B9',
             }}>
               🇸🇦 Riyadh, Saudi Arabia
             </div>
@@ -78,11 +79,11 @@ export default function Footer() {
             <div key={col.heading}>
               <div style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.2em',
+                fontSize: '13px',
+                fontWeight: 800,
+                letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#F5C518',
+                color: '#FFFFFF',
                 marginBottom: 20,
               }}>
                 {col.heading}
@@ -95,12 +96,12 @@ export default function Footer() {
                     style={{
                       fontFamily: 'Outfit, sans-serif',
                       fontSize: '13px',
-                      color: 'rgba(255,255,255,0.4)',
+                      color: '#D9DDDE',
                       textDecoration: 'none',
                       transition: 'color 180ms ease',
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.4)')}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#E58A16')}
+                    onMouseLeave={e => (e.currentTarget.style.color = '#D9DDDE')}
                   >
                     {link}
                   </a>
@@ -112,7 +113,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: '1px solid rgba(255,255,255,0.06)',
+          borderTop: '1px solid #343B40',
           paddingTop: 24,
           display: 'flex',
           justifyContent: 'space-between',
@@ -123,7 +124,7 @@ export default function Footer() {
           <div style={{
             fontFamily: 'Outfit, sans-serif',
             fontSize: '12px',
-            color: 'rgba(255,255,255,0.2)',
+            color: '#AEB5B9',
           }}>
             © 2026 Modern Assets. All rights reserved.
           </div>
@@ -135,9 +136,12 @@ export default function Footer() {
                 style={{
                   fontFamily: 'Outfit, sans-serif',
                   fontSize: '12px',
-                  color: 'rgba(255,255,255,0.2)',
+                  color: '#AEB5B9',
                   textDecoration: 'none',
+                  transition: 'color 180ms ease',
                 }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#E58A16')}
+                onMouseLeave={e => (e.currentTarget.style.color = '#AEB5B9')}
               >
                 {link}
               </a>

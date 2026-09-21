@@ -165,7 +165,7 @@ export default function Process() {
         position: 'relative',
         overflow: 'hidden',
         padding: 'clamp(90px, 12vw, 160px) clamp(20px, 5vw, 80px)',
-        backgroundColor: '#0c0c14',
+        backgroundColor: '#F4F3EF',
       }}
     >
       {/* Background industrial atmosphere & ambient glows */}
@@ -173,14 +173,14 @@ export default function Process() {
         <img
           src="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?w=1600&h=900&fit=crop&auto=format"
           alt="Industrial welding fabrication"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.07 }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.04 }}
         />
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'radial-gradient(circle at 15% 20%, rgba(245,197,24,0.06) 0%, transparent 60%), radial-gradient(circle at 85% 80%, rgba(245,197,24,0.04) 0%, transparent 60%), linear-gradient(180deg, #0c0c14 0%, rgba(12,12,20,0.85) 50%, #0c0c14 100%)',
+              'radial-gradient(circle at 15% 20%, rgba(229,154,35,0.06) 0%, transparent 60%), radial-gradient(circle at 85% 80%, rgba(23,50,77,0.04) 0%, transparent 60%), linear-gradient(180deg, #F4F3EF 0%, rgba(247,249,252,0.85) 50%, #F4F3EF 100%)',
           }}
         />
 
@@ -190,9 +190,9 @@ export default function Process() {
             position: 'absolute',
             inset: 0,
             backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
+              'linear-gradient(rgba(23,50,77,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(23,50,77,0.03) 1px, transparent 1px)',
             backgroundSize: '80px 80px',
-            opacity: 0.35,
+            opacity: 0.5,
           }}
         />
       </div>
@@ -207,8 +207,8 @@ export default function Process() {
               gap: 10,
               padding: '6px 16px',
               borderRadius: 24,
-              background: 'rgba(245,197,24,0.08)',
-              border: '1px solid rgba(245,197,24,0.25)',
+              background: 'rgba(229,154,35,0.12)',
+              border: '1px solid rgba(229,154,35,0.3)',
               marginBottom: 20,
             }}
           >
@@ -217,8 +217,8 @@ export default function Process() {
                 width: 7,
                 height: 7,
                 borderRadius: '50%',
-                background: '#F5C518',
-                boxShadow: '0 0 10px #F5C518',
+                background: '#E58A16',
+                boxShadow: '0 0 10px #E58A16',
               }}
             />
             <span
@@ -227,7 +227,7 @@ export default function Process() {
                 fontSize: 12,
                 letterSpacing: '0.24em',
                 textTransform: 'uppercase',
-                color: '#F5C518',
+                color: '#E58A16',
                 fontWeight: 700,
               }}
             >
@@ -247,7 +247,7 @@ export default function Process() {
               lineHeight: 1,
               letterSpacing: '-0.01em',
               textTransform: 'uppercase',
-              color: '#ffffff',
+              color: '#20262B',
             }}
           >
             From Concept To Completion
@@ -257,7 +257,7 @@ export default function Process() {
             style={{
               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
               fontSize: 'clamp(16px, 1.8vw, 19px)',
-              color: 'rgba(255,255,255,0.6)',
+              color: '#596268',
               lineHeight: 1.7,
               margin: '20px auto 0',
               maxWidth: 720,
@@ -282,18 +282,15 @@ export default function Process() {
                   position: 'relative',
                   borderRadius: 20,
                   padding: 'clamp(28px, 4.5vw, 48px)',
-                  background: isHovered
-                    ? 'linear-gradient(135deg, rgba(24, 24, 38, 0.95) 0%, rgba(14, 14, 24, 0.95) 100%)'
-                    : 'linear-gradient(135deg, rgba(18, 18, 30, 0.85) 0%, rgba(12, 12, 20, 0.9) 100%)',
+                  background: '#FFFFFF',
                   border: isHovered
-                    ? '1px solid rgba(245, 197, 24, 0.45)'
-                    : '1px solid rgba(245, 197, 24, 0.16)',
+                    ? '1px solid #E58A16'
+                    : '1px solid #D9DDDE',
                   boxShadow: isHovered
-                    ? '0 20px 60px rgba(0,0,0,0.5), 0 0 35px rgba(245,197,24,0.14)'
-                    : '0 8px 32px rgba(0,0,0,0.3)',
-                  backdropFilter: 'blur(16px)',
+                    ? '0 20px 50px rgba(229,154,35,0.14), 0 4px 12px rgba(23,50,77,0.04)'
+                    : '0 10px 30px rgba(23,50,77,0.05)',
                   transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
-                  transform: isHovered ? 'translateY(-3px)' : 'none',
+                  transform: isHovered ? 'translateY(-4px)' : 'none',
                 }}
               >
                 {/* Top Subtle Gold Accent Line */}
@@ -303,10 +300,10 @@ export default function Process() {
                     top: 0,
                     left: 40,
                     right: 40,
-                    height: 1,
+                    height: 2,
                     background: isHovered
-                      ? 'linear-gradient(90deg, transparent, #F5C518, transparent)'
-                      : 'linear-gradient(90deg, transparent, rgba(245,197,24,0.3), transparent)',
+                      ? 'linear-gradient(90deg, transparent, #E58A16, transparent)'
+                      : 'linear-gradient(90deg, transparent, rgba(229,154,35,0.4), transparent)',
                     transition: 'all 350ms ease',
                   }}
                 />
@@ -324,20 +321,20 @@ export default function Process() {
                             height: 44,
                             borderRadius: 10,
                             background: isHovered
-                              ? 'linear-gradient(135deg, #F5C518, #E6A800)'
-                              : 'rgba(245,197,24,0.08)',
-                            border: '1px solid rgba(245,197,24,0.3)',
+                              ? 'linear-gradient(135deg, #E58A16, #C8750D)'
+                              : 'rgba(229,154,35,0.12)',
+                            border: '1px solid rgba(229,154,35,0.3)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            boxShadow: isHovered ? '0 0 20px rgba(245,197,24,0.4)' : 'none',
+                            boxShadow: isHovered ? '0 0 20px rgba(229,154,35,0.35)' : 'none',
                             transition: 'all 300ms ease',
                           }}
                         >
                           <span
                             style={{
                               fontSize: 20,
-                              color: isHovered ? '#0c0c14' : '#F5C518',
+                              color: isHovered ? '#FFFFFF' : '#E58A16',
                               fontWeight: 900,
                               transition: 'color 300ms ease',
                             }}
@@ -353,7 +350,7 @@ export default function Process() {
                               fontSize: 12,
                               letterSpacing: '0.2em',
                               textTransform: 'uppercase',
-                              color: '#F5C518',
+                              color: '#E58A16',
                               fontWeight: 700,
                             }}
                           >
@@ -365,7 +362,8 @@ export default function Process() {
                               fontSize: 11,
                               letterSpacing: '0.12em',
                               textTransform: 'uppercase',
-                              color: 'rgba(255,255,255,0.4)',
+                              color: '#596268',
+                              fontWeight: 500,
                             }}
                           >
                             {step.badge}
@@ -380,13 +378,13 @@ export default function Process() {
                             display: 'inline-block',
                             padding: '3px 10px',
                             borderRadius: 6,
-                            background: 'rgba(245,197,24,0.12)',
-                            border: '1px solid rgba(245,197,24,0.3)',
+                            background: 'rgba(229,154,35,0.12)',
+                            border: '1px solid rgba(229,154,35,0.3)',
                             fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                             fontSize: 14,
                             fontWeight: 800,
                             letterSpacing: '0.12em',
-                            color: '#F5C518',
+                            color: '#E58A16',
                             marginBottom: 8,
                           }}
                         >
@@ -406,7 +404,7 @@ export default function Process() {
                             textTransform: 'uppercase',
                             letterSpacing: '0.02em',
                             lineHeight: 1.1,
-                            color: '#ffffff',
+                            color: '#20262B',
                             display: 'inline-block',
                           }}
                         >
@@ -426,8 +424,8 @@ export default function Process() {
                             alignItems: 'center',
                             padding: '8px 14px',
                             borderRadius: 8,
-                            background: 'rgba(255,255,255,0.03)',
-                            border: '1px solid rgba(255,255,255,0.06)',
+                            background: '#F4F3EF',
+                            border: '1px solid #D9DDDE',
                           }}
                         >
                           <span
@@ -436,7 +434,7 @@ export default function Process() {
                               fontSize: 11,
                               letterSpacing: '0.15em',
                               textTransform: 'uppercase',
-                              color: 'rgba(245,197,24,0.7)',
+                              color: '#596268',
                               fontWeight: 700,
                             }}
                           >
@@ -446,8 +444,8 @@ export default function Process() {
                             style={{
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                               fontSize: 13,
-                              fontWeight: 600,
-                              color: '#ffffff',
+                              fontWeight: 700,
+                              color: '#20262B',
                             }}
                           >
                             {spec.val}
@@ -465,7 +463,7 @@ export default function Process() {
                         fontSize: 'clamp(18px, 2.2vw, 24px)',
                         fontWeight: 700,
                         letterSpacing: '0.04em',
-                        color: '#F5C518',
+                        color: '#E58A16',
                         textTransform: 'uppercase',
                         marginBottom: 12,
                       }}
@@ -477,7 +475,7 @@ export default function Process() {
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: 'clamp(15px, 1.5vw, 17px)',
-                        color: 'rgba(255,255,255,0.7)',
+                        color: '#596268',
                         lineHeight: 1.75,
                         margin: '0 0 24px',
                       }}
@@ -488,7 +486,7 @@ export default function Process() {
                     {/* Key Deliverables Checkmarks Grid */}
                     <div
                       style={{
-                        borderTop: '1px solid rgba(255,255,255,0.08)',
+                        borderTop: '1px solid #D9DDDE',
                         paddingTop: 20,
                       }}
                     >
@@ -498,7 +496,7 @@ export default function Process() {
                           fontSize: 12,
                           letterSpacing: '0.18em',
                           textTransform: 'uppercase',
-                          color: 'rgba(255,255,255,0.4)',
+                          color: '#20262B',
                           marginBottom: 12,
                           fontWeight: 700,
                         }}
@@ -522,21 +520,22 @@ export default function Process() {
                               gap: 10,
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                               fontSize: 13.5,
-                              color: 'rgba(255,255,255,0.85)',
+                              color: '#596268',
                             }}
                           >
                             <span
                               style={{
-                                color: '#F5C518',
+                                color: '#E58A16',
                                 fontSize: 13,
                                 flexShrink: 0,
                                 width: 18,
                                 height: 18,
                                 borderRadius: '50%',
-                                background: 'rgba(245,197,24,0.1)',
+                                background: 'rgba(229,154,35,0.12)',
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
+                                fontWeight: 900,
                               }}
                             >
                               ✓

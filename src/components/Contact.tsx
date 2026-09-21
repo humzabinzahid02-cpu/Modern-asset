@@ -67,7 +67,7 @@ export default function Contact() {
       ref={sectionRef}
       style={{
         padding: 'clamp(80px,10vw,140px) clamp(24px,6vw,100px)',
-        background: '#0c0c14',
+        background: '#F4F3EF',
       }}
     >
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -77,15 +77,15 @@ export default function Contact() {
           style={{
             position: 'relative',
             overflow: 'hidden',
-            background: '#13131f',
-            border: '1px solid rgba(245,197,24,0.18)',
+            background: '#FFFFFF',
+            border: '1px solid #D9DDDE',
             borderRadius: 20,
             padding: 'clamp(48px,6vw,80px) clamp(32px,5vw,80px)',
             display: 'grid',
             gridTemplateColumns: '1fr auto',
             gap: 40,
             alignItems: 'center',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+            boxShadow: '0 8px 32px rgba(32,38,43,0.07)',
           }}
         >
           {/* Background accent */}
@@ -96,7 +96,7 @@ export default function Contact() {
             width: 320,
             height: 320,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(229,138,22,0.07) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
 
@@ -106,7 +106,7 @@ export default function Contact() {
               fontSize: '11px',
               letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: '#F5C518',
+              color: '#E58A16',
               marginBottom: 16,
             }}>Get in Touch</div>
             <h2 style={{
@@ -115,11 +115,12 @@ export default function Contact() {
               fontWeight: 800,
               lineHeight: 0.95,
               textTransform: 'uppercase',
+              color: '#20262B',
               margin: '0 0 16px',
             }}>
               Ready to Build<br />
               <span style={{
-                background: 'linear-gradient(90deg,#F5C518,#fff)',
+                background: 'linear-gradient(90deg, #E58A16, #20262B)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -128,7 +129,7 @@ export default function Contact() {
             <p style={{
               fontFamily: 'Outfit, sans-serif',
               fontSize: 14,
-              color: 'rgba(255,255,255,0.45)',
+              color: '#596268',
               lineHeight: 1.65,
               margin: 0,
               maxWidth: 400,
@@ -158,10 +159,8 @@ export default function Contact() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 1,
-            marginTop: 16,
-            borderRadius: 16,
-            overflow: 'hidden',
+            gap: 16,
+            marginTop: 20,
           }}
         >
           {[
@@ -174,26 +173,28 @@ export default function Contact() {
               key={c.label}
               className="contact-detail-card"
               style={{
-                background: '#13131f',
+                background: '#FFFFFF',
+                borderRadius: 14,
                 padding: '24px 28px',
-                borderTop: '2px solid transparent',
-                borderImage: 'linear-gradient(90deg,#F5C518,transparent) 1',
-                transition: 'background 250ms ease',
+                border: '1px solid #D9DDDE',
+                borderTop: '3px solid #E58A16',
+                boxShadow: '0 2px 10px rgba(32,38,43,0.04)',
+                transition: 'all 250ms ease',
               }}
             >
               <div style={{
                 fontFamily: 'Outfit, sans-serif',
-                fontSize: '10px',
-                letterSpacing: '0.2em',
+                fontSize: '11px',
+                letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.3)',
-                marginBottom: 6,
+                color: '#596268',
+                marginBottom: 8,
               }}>{c.label}</div>
               <div style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
-                fontSize: '18px',
-                fontWeight: 600,
-                color: '#ffffff',
+                fontSize: '19px',
+                fontWeight: 700,
+                color: '#20262B',
                 letterSpacing: '0.02em',
               }}>{c.value}</div>
             </div>

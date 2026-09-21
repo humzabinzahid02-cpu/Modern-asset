@@ -15,7 +15,9 @@ export default function Ticker() {
 
   return (
     <div style={{
-      background: '#F5C518',
+      background: '#FFFFFF',
+      borderTop: '1px solid #D9DDDE',
+      borderBottom: '1px solid #D9DDDE',
       padding: '14px 0',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
@@ -24,15 +26,15 @@ export default function Ticker() {
         {doubled.map((item, i) => (
           <span key={i} style={{
             fontFamily: 'Barlow Condensed, sans-serif',
-            fontSize: '14px',
+            fontSize: '15px',
             fontWeight: 700,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: '#0c0c14',
+            color: '#20262B',
             padding: '0 32px',
           }}>
             {item}
-            <span style={{ marginLeft: 32, opacity: 0.4 }}>◆</span>
+            <span style={{ marginLeft: 32, color: '#E58A16' }}>◆</span>
           </span>
         ))}
       </div>

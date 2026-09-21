@@ -74,8 +74,8 @@ export default function WhyUs() {
       ref={sectionRef}
       style={{
         padding: 'clamp(80px,10vw,140px) clamp(24px,6vw,100px)',
-        background: '#f8f5ed',
-        color: '#0c0c14',
+        background: '#F4F3EF',
+        color: '#596268',
       }}
     >
       <div style={{
@@ -88,7 +88,7 @@ export default function WhyUs() {
       }}>
         {/* Left: image */}
         <div ref={leftColRef} style={{ position: 'relative' }}>
-          <div style={{ backgroundColor: '#d6cfc0', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 16 }}>
+          <div style={{ backgroundColor: '#D9DDDE', aspectRatio: '4/5', overflow: 'hidden', borderRadius: 16 }}>
             <img
               src="https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?w=700&h=900&fit=crop&auto=format"
               alt="Welder working with sparks flying"
@@ -97,7 +97,7 @@ export default function WhyUs() {
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(45deg, rgba(245,197,24,0.15) 0%, transparent 60%)',
+              background: 'linear-gradient(45deg, rgba(229,138,22,0.12) 0%, transparent 60%)',
             }} />
           </div>
           {/* Translucent reference badge matching mockup */}
@@ -105,22 +105,21 @@ export default function WhyUs() {
             position: 'absolute',
             bottom: 20,
             left: 20,
-            background: 'rgba(255, 255, 255, 0.92)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: '#FFFFFF',
             borderRadius: '12px',
             padding: '12px 20px',
             display: 'flex',
             alignItems: 'center',
             gap: 12,
-            boxShadow: '0 12px 32px rgba(0,0,0,0.25)',
-            border: '1px solid rgba(255,255,255,0.8)',
+            boxShadow: '0 8px 24px rgba(32,38,43,0.08)',
+            border: '1px solid #D9DDDE',
             zIndex: 2,
           }}>
             <div style={{
               width: 30,
               height: 30,
-              background: '#0c0c14',
+              background: '#20262B',
+              borderRadius: 6,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -136,14 +135,14 @@ export default function WhyUs() {
               fontFamily: 'Outfit, sans-serif',
               fontWeight: 600,
               fontSize: 13,
-              color: '#0c0c14',
+              color: '#20262B',
               lineHeight: 1.3,
             }}>
               Precision<br />in Every Detail
             </span>
             <span style={{
               marginLeft: 8,
-              color: '#0c0c14',
+              color: '#E58A16',
               fontWeight: 700,
               fontSize: 16,
             }}>→</span>
@@ -154,22 +153,23 @@ export default function WhyUs() {
             position: 'absolute',
             bottom: -24,
             right: -24,
-            background: '#F5C518',
+            background: '#E58A16',
+            borderRadius: 12,
             padding: '24px 28px',
             maxWidth: 200,
-            boxShadow: '0 12px 30px rgba(245,197,24,0.3)',
+            boxShadow: '0 12px 30px rgba(229,138,22,0.25)',
           }}>
             <div style={{
               fontFamily: 'Barlow Condensed, sans-serif',
               fontWeight: 900,
               fontSize: 32,
-              color: '#0c0c14',
+              color: '#FFFFFF',
               lineHeight: 1,
             }}>15+</div>
             <div style={{
               fontFamily: 'Outfit, sans-serif',
               fontSize: 12,
-              color: 'rgba(12,12,20,0.65)',
+              color: 'rgba(255,255,255,0.9)',
               marginTop: 4,
             }}>Years of precision fabrication in the region</div>
           </div>
@@ -182,7 +182,7 @@ export default function WhyUs() {
             fontSize: '11px',
             letterSpacing: '0.3em',
             textTransform: 'uppercase',
-            color: '#E6A800',
+            color: '#E58A16',
             marginBottom: 16,
           }}>Why Modern Assets</div>
           <h2 style={{
@@ -192,11 +192,11 @@ export default function WhyUs() {
             lineHeight: 0.95,
             textTransform: 'uppercase',
             margin: '0 0 24px',
-            color: '#0c0c14',
+            color: '#20262B',
           }}>
             More Than<br />
             <span style={{
-              background: 'linear-gradient(90deg,#E6A800,#0c0c14)',
+              background: 'linear-gradient(90deg, #E58A16, #20262B)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -205,7 +205,7 @@ export default function WhyUs() {
           <p style={{
             fontFamily: 'Outfit, sans-serif',
             fontSize: 15,
-            color: 'rgba(12,12,20,0.6)',
+            color: '#596268',
             lineHeight: 1.7,
             margin: '0 0 40px',
             maxWidth: 420,
@@ -230,13 +230,11 @@ export default function WhyUs() {
                   onMouseEnter={() => setHoveredFeature(f.title)}
                   onMouseLeave={() => setHoveredFeature(null)}
                   style={{
-                    background: isHovered ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.6)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
+                    background: '#FFFFFF',
                     borderRadius: 16,
                     padding: '22px 20px',
-                    border: isHovered ? '1px solid rgba(230,168,0,0.5)' : '1px solid rgba(12,12,20,0.07)',
-                    boxShadow: isHovered ? '0 16px 36px rgba(230,168,0,0.12), 0 4px 12px rgba(0,0,0,0.04)' : '0 4px 20px rgba(0,0,0,0.03)',
+                    border: isHovered ? '1px solid #E58A16' : '1px solid #D9DDDE',
+                    boxShadow: isHovered ? '0 12px 32px rgba(229,138,22,0.1), 0 4px 12px rgba(32,38,43,0.04)' : '0 2px 12px rgba(32,38,43,0.05)',
                     transform: isHovered ? 'translateY(-4px)' : 'none',
                     transition: 'all 280ms cubic-bezier(0.16, 1, 0.3, 1)',
                     cursor: 'default',
@@ -246,14 +244,14 @@ export default function WhyUs() {
                     width: 40,
                     height: 40,
                     borderRadius: 10,
-                    background: isHovered ? 'linear-gradient(135deg, #F5C518, #E6A800)' : 'rgba(230,168,0,0.12)',
-                    border: '1px solid rgba(230,168,0,0.3)',
+                    background: isHovered ? '#E58A16' : 'rgba(229,138,22,0.08)',
+                    border: '1px solid rgba(229,138,22,0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: 14,
                     fontSize: 18,
-                    color: isHovered ? '#0c0c14' : '#E6A800',
+                    color: isHovered ? '#FFFFFF' : '#E58A16',
                     transition: 'all 280ms ease',
                   }}>
                     {f.icon}
@@ -264,7 +262,7 @@ export default function WhyUs() {
                     fontWeight: 800,
                     textTransform: 'uppercase',
                     letterSpacing: '0.04em',
-                    color: '#0c0c14',
+                    color: '#20262B',
                     marginBottom: 8,
                   }}>
                     {f.title}
@@ -272,7 +270,7 @@ export default function WhyUs() {
                   <div style={{
                     fontFamily: 'Outfit, sans-serif',
                     fontSize: '13px',
-                    color: 'rgba(12,12,20,0.65)',
+                    color: '#596268',
                     lineHeight: 1.6,
                   }}>
                     {f.desc}

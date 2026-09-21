@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import GlassButton from '../GlassButton'
-import GenerateButton from './GenerateButton'
+import { GenerateButton } from './GenerateButton'
 
 const LINKS = ['Products', 'Capabilities', 'Projects', 'About', 'Contact']
 
@@ -9,7 +9,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -26,36 +26,38 @@ export default function Nav() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      background: scrolled ? 'rgba(12,12,20,0.92)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(245,197,24,0.08)' : '1px solid transparent',
-      transition: 'background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
+      background: '#FFFFFF',
+      borderBottom: '1px solid #D9DDDE',
+      boxShadow: scrolled ? '0 4px 20px rgba(32, 38, 43, 0.06)' : 'none',
+      transition: 'box-shadow 250ms ease',
     }}>
       {/* Logo */}
       <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
         <div style={{
-          width: 34,
-          height: 34,
-          background: 'linear-gradient(135deg,#F5C518,#E6A800)',
+          width: 36,
+          height: 36,
+          borderRadius: 8,
+          background: 'linear-gradient(135deg, #E58A16 0%, #C8750D 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
+          boxShadow: '0 2px 8px rgba(229,138,22,0.3)',
         }}>
           <span style={{
             fontFamily: 'Barlow Condensed, sans-serif',
             fontWeight: 900,
-            fontSize: 18,
-            color: '#0c0c14',
+            fontSize: 20,
+            color: '#FFFFFF',
           }}>M</span>
         </div>
         <span style={{
           fontFamily: 'Barlow Condensed, sans-serif',
-          fontWeight: 700,
-          fontSize: 18,
-          letterSpacing: '0.06em',
+          fontWeight: 800,
+          fontSize: 20,
+          letterSpacing: '0.04em',
           textTransform: 'uppercase',
-          color: '#ffffff',
+          color: '#20262B',
         }}>Modern Assets</span>
       </a>
 
@@ -72,21 +74,21 @@ export default function Nav() {
             style={{
               fontFamily: 'Barlow Condensed, sans-serif',
               fontSize: '15px',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.65)',
+              color: '#596268',
               textDecoration: 'none',
               transition: 'color 180ms ease',
             }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#F5C518')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
+            onMouseEnter={e => (e.currentTarget.style.color = '#E58A16')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#596268')}
           >
             {link}
           </a>
         ))}
         <GenerateButton
-          hue={46}
+          hue={38}
           text="Request A Quote"
           activeText="Connecting..."
           onClick={() => {
@@ -105,7 +107,7 @@ export default function Nav() {
           border: 'none',
           cursor: 'pointer',
           padding: 8,
-          color: '#fff',
+          color: '#20262B',
         }}
         className="hamburger"
         aria-label="Toggle menu"
@@ -125,10 +127,10 @@ export default function Nav() {
           top: 72,
           left: 0,
           right: 0,
-          background: 'rgba(12,12,20,0.97)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(245,197,24,0.12)',
-          padding: '20px clamp(24px,5vw,80px)',
+          background: '#FFFFFF',
+          borderBottom: '1px solid #D9DDDE',
+          boxShadow: '0 12px 32px rgba(32, 38, 43, 0.08)',
+          padding: '24px clamp(24px,5vw,80px)',
           display: 'flex',
           flexDirection: 'column',
           gap: 16,
@@ -141,11 +143,11 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
-                fontSize: '20px',
+                fontSize: '18px',
                 fontWeight: 700,
-                letterSpacing: '0.08em',
+                letterSpacing: '0.06em',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.8)',
+                color: '#20262B',
                 textDecoration: 'none',
               }}
             >
@@ -153,7 +155,7 @@ export default function Nav() {
             </a>
           ))}
           <GenerateButton
-            hue={46}
+            hue={38}
             text="Request A Quote"
             activeText="Connecting..."
             onClick={() => {

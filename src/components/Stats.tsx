@@ -43,9 +43,9 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 export default function Stats() {
   return (
     <section style={{
-      background: '#13131f',
-      borderTop: '1px solid rgba(245,197,24,0.1)',
-      borderBottom: '1px solid rgba(245,197,24,0.1)',
+      background: '#FFFFFF',
+      borderTop: '1px solid #D9DDDE',
+      borderBottom: '1px solid #D9DDDE',
       padding: '48px clamp(24px,6vw,100px)',
     }}>
       <div style={{
@@ -56,13 +56,14 @@ export default function Stats() {
         maxWidth: 1200,
         margin: '0 auto',
       }}>
-        <div style={{ borderRight: '1px solid rgba(255,255,255,0.1)', paddingRight: 48 }}>
+        <div style={{ borderRight: '1px solid #D9DDDE', paddingRight: 48 }}>
           <div style={{
             fontFamily: 'Barlow Condensed, sans-serif',
-            fontSize: '11px',
-            letterSpacing: '0.25em',
+            fontSize: '12px',
+            fontWeight: 700,
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.4)',
+            color: '#596268',
             lineHeight: 1.6,
           }}>
             Trusted<br />By Industry<br />Leaders
@@ -79,20 +80,18 @@ export default function Stats() {
               <div style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
                 fontSize: 'clamp(36px, 5vw, 52px)',
-                fontWeight: 800,
+                fontWeight: 900,
                 lineHeight: 1,
-                background: 'linear-gradient(90deg, #F5C518, #ffffff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#20262B',
               }}>
                 <CountUp target={s.value} suffix={s.suffix} />
               </div>
               <div style={{
                 fontFamily: 'Outfit, sans-serif',
                 fontSize: '13px',
-                color: 'rgba(255,255,255,0.45)',
+                color: '#596268',
                 marginTop: 4,
+                fontWeight: 500,
               }}>
                 {s.label}
               </div>

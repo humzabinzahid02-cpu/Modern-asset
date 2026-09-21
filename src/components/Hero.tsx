@@ -25,22 +25,22 @@ export default function Hero() {
   const h = HEADLINES[hIdx]
 
   return (
-    <section id="home" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      {/* Background image */}
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: '#111' }}>
+    <section id="home" style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#F4F3EF' }}>
+      {/* Background image with light industrial overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: '#F4F3EF' }}>
         <img
           src="https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=1800&h=1000&fit=crop&auto=format"
           alt="Black semi-truck on a rural highway"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.45 }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.22 }}
         />
-        {/* Dark gradient overlays */}
+        {/* Light gradient overlays */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(90deg, rgba(12,12,20,0.95) 0%, rgba(12,12,20,0.5) 60%, rgba(12,12,20,0.1) 100%)',
+          background: 'linear-gradient(90deg, #F4F3EF 0%, rgba(244,243,239,0.92) 55%, rgba(244,243,239,0.45) 100%)',
         }} />
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(0deg, rgba(12,12,20,1) 0%, transparent 40%)',
+          background: 'linear-gradient(0deg, #F4F3EF 0%, transparent 40%)',
         }} />
       </div>
 
@@ -53,16 +53,16 @@ export default function Hero() {
         justifyContent: 'center',
         minHeight: '100vh',
         padding: 'clamp(100px,12vw,160px) clamp(24px,6vw,100px) 80px',
-        maxWidth: 900,
+        maxWidth: 920,
       }}>
         <div style={{
           fontFamily: 'Outfit, sans-serif',
           fontSize: '11px',
           letterSpacing: '0.3em',
           textTransform: 'uppercase',
-          color: '#F5C518',
-          marginBottom: 28,
-          opacity: 0.9,
+          color: '#E58A16',
+          marginBottom: 24,
+          fontWeight: 600,
         }}>
           Heavy-Duty Vehicle Solutions
         </div>
@@ -79,19 +79,16 @@ export default function Hero() {
             textTransform: 'uppercase',
             marginBottom: 24,
           }}>
-            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#ffffff', display: 'block' }}>
+            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#20262B', display: 'block' }}>
               {h.line1}
             </div>
-            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#ffffff', display: 'block' }}>
+            <div style={{ fontSize: 'clamp(56px, 9vw, 108px)', color: '#20262B', display: 'block' }}>
               {h.line2}
             </div>
             <div style={{
               fontSize: 'clamp(56px, 9vw, 108px)',
               display: 'block',
-              background: 'linear-gradient(90deg, #F5C518 0%, #ffffff 70%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: '#E58A16',
             }}>
               {h.accent}
             </div>
@@ -100,11 +97,11 @@ export default function Hero() {
 
         <p style={{
           fontFamily: 'Outfit, sans-serif',
-          fontSize: 'clamp(14px, 1.8vw, 17px)',
-          fontWeight: 300,
+          fontSize: 'clamp(15px, 1.8vw, 18px)',
+          fontWeight: 400,
           lineHeight: 1.7,
-          color: 'rgba(255,255,255,0.6)',
-          maxWidth: 420,
+          color: '#596268',
+          maxWidth: 500,
           marginBottom: 40,
         }}>
           Custom truck bodies, tankers, trailers and specialized equipment — built with precision, designed for performance, made for your business.
@@ -145,16 +142,17 @@ export default function Hero() {
         }}>
           <span style={{
             fontFamily: 'Barlow Condensed, sans-serif',
-            fontSize: '10px',
+            fontSize: '11px',
             letterSpacing: '0.25em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.3)',
+            color: '#596268',
             writingMode: 'vertical-rl',
+            fontWeight: 700,
           }}>Scroll</span>
           <div style={{
-            width: 1,
+            width: 2,
             height: 48,
-            background: 'linear-gradient(180deg, rgba(245,197,24,0.6), transparent)',
+            background: 'linear-gradient(180deg, #E58A16, transparent)',
           }} />
         </div>
       </div>
@@ -165,7 +163,7 @@ export default function Hero() {
         bottom: 80,
         left: 'clamp(24px,6vw,100px)',
         display: 'flex',
-        gap: 6,
+        gap: 8,
         zIndex: 2,
       }}>
         {HEADLINES.map((_, i) => (
@@ -173,13 +171,13 @@ export default function Hero() {
             key={i}
             onClick={() => { setHIdx(i); setVisible(true) }}
             style={{
-              width: i === hIdx ? 24 : 6,
-              height: 6,
-              borderRadius: 3,
-              background: i === hIdx ? '#F5C518' : 'rgba(255,255,255,0.2)',
+              width: i === hIdx ? 28 : 8,
+              height: 8,
+              borderRadius: 4,
+              background: i === hIdx ? '#E58A16' : '#D9DDDE',
               border: 'none',
               cursor: 'pointer',
-              transition: 'width 300ms ease, background 300ms ease',
+              transition: 'all 300ms ease',
               padding: 0,
             }}
           />

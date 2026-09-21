@@ -267,7 +267,7 @@ export default function Products() {
   }, [viewMode, activeCategory])
 
   return (
-    <section id="products" style={{ background: '#0c0c14', position: 'relative' }}>
+    <section id="products" style={{ background: '#F4F3EF', position: 'relative' }}>
       {/* ── React Bits <ScrollExpand /> Integration ─────────────────────────────── */}
       <div style={{ position: 'relative', width: '100%', marginBottom: 60 }}>
         <ScrollExpand
@@ -304,14 +304,14 @@ export default function Products() {
                 gap: 8,
                 padding: '6px 18px',
                 borderRadius: '9999px',
-                background: 'rgba(245,197,24,0.15)',
-                border: '1px solid rgba(245,197,24,0.4)',
+                background: 'rgba(229,154,35,0.18)',
+                border: '1px solid rgba(229,154,35,0.45)',
                 backdropFilter: 'blur(12px)',
                 fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                 fontSize: '11px',
                 letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color: '#F5C518',
+                color: '#E58A16',
                 marginBottom: 16,
               }}
             >
@@ -332,7 +332,7 @@ export default function Products() {
                 textShadow: '0 4px 24px rgba(0,0,0,0.7)',
               }}
             >
-              ENGINEERED FOR <span style={{ color: '#F5C518' }}>EXTREME PAYLOADS</span>
+              ENGINEERED FOR <span style={{ color: '#E58A16' }}>EXTREME PAYLOADS</span>
             </h2>
 
             <p
@@ -404,8 +404,9 @@ export default function Products() {
                   fontSize: '11px',
                   letterSpacing: '0.3em',
                   textTransform: 'uppercase',
-                  color: '#F5C518',
+                  color: '#E58A16',
                   marginBottom: 8,
+                  fontWeight: 600,
                 }}
               >
                 Precision Fleet Catalog
@@ -418,7 +419,7 @@ export default function Products() {
                   textTransform: 'uppercase',
                   lineHeight: 1,
                   margin: 0,
-                  color: '#ffffff',
+                  color: '#20262B',
                 }}
               >
                 Tailored for Every Sector
@@ -440,10 +441,11 @@ export default function Products() {
                   display: 'flex',
                   flexWrap: 'wrap',
                   gap: 8,
-                  background: 'rgba(255,255,255,0.03)',
+                  background: '#FFFFFF',
                   padding: '6px',
                   borderRadius: '16px',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  border: '1px solid #D9DDDE',
+                  boxShadow: '0 2px 10px rgba(23,50,77,0.03)',
                 }}
               >
                 {CATEGORIES.map((cat) => {
@@ -464,9 +466,9 @@ export default function Products() {
                         border: 'none',
                         outline: 'none',
                         transition: 'all 200ms ease',
-                        background: isActive ? '#F5C518' : 'transparent',
-                        color: isActive ? '#0c0c14' : 'rgba(255,255,255,0.65)',
-                        boxShadow: isActive ? '0 2px 12px rgba(245,197,24,0.3)' : 'none',
+                        background: isActive ? '#E58A16' : 'transparent',
+                        color: isActive ? '#FFFFFF' : '#596268',
+                        boxShadow: isActive ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
                       }}
                     >
                       {cat.label}
@@ -480,10 +482,11 @@ export default function Products() {
                 style={{
                   display: 'flex',
                   gap: 6,
-                  background: 'rgba(255,255,255,0.04)',
+                  background: '#FFFFFF',
                   padding: '5px',
                   borderRadius: '14px',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  border: '1px solid #D9DDDE',
+                  boxShadow: '0 2px 10px rgba(23,50,77,0.03)',
                 }}
               >
                 <button
@@ -500,9 +503,9 @@ export default function Products() {
                     border: 'none',
                     outline: 'none',
                     transition: 'all 200ms ease',
-                    background: viewMode === 'stack' ? '#F5C518' : 'transparent',
-                    color: viewMode === 'stack' ? '#0c0c14' : 'rgba(255,255,255,0.65)',
-                    boxShadow: viewMode === 'stack' ? '0 2px 10px rgba(245,197,24,0.3)' : 'none',
+                    background: viewMode === 'stack' ? '#E58A16' : 'transparent',
+                    color: viewMode === 'stack' ? '#FFFFFF' : '#596268',
+                    boxShadow: viewMode === 'stack' ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
                     display: 'flex',
                     alignItems: 'center',
                     gap: 6,
@@ -525,9 +528,9 @@ export default function Products() {
                     border: 'none',
                     outline: 'none',
                     transition: 'all 200ms ease',
-                    background: viewMode === 'grid' ? '#F5C518' : 'transparent',
-                    color: viewMode === 'grid' ? '#0c0c14' : 'rgba(255,255,255,0.65)',
-                    boxShadow: viewMode === 'grid' ? '0 2px 10px rgba(245,197,24,0.3)' : 'none',
+                    background: viewMode === 'grid' ? '#E58A16' : 'transparent',
+                    color: viewMode === 'grid' ? '#FFFFFF' : '#596268',
+                    boxShadow: viewMode === 'grid' ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
                     display: 'flex',
                     alignItems: 'center',
                     gap: 6,
@@ -557,12 +560,12 @@ export default function Products() {
                     height: '100%',
                     minHeight: 480,
                     cursor: 'pointer',
-                    background: 'linear-gradient(180deg, #151522 0%, #0d0d17 100%)',
+                    background: '#FFFFFF',
                     borderRadius: '28px',
                     overflow: 'hidden',
-                    border: '1px solid rgba(245,197,24,0.35)',
-                    boxShadow: '0 24px 70px rgba(0,0,0,0.7), 0 0 40px rgba(245,197,24,0.12)',
-                    transition: 'border-color 200ms ease',
+                    border: '1px solid #D9DDDE',
+                    boxShadow: '0 20px 50px rgba(23, 50, 77, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+                    transition: 'border-color 200ms ease, box-shadow 200ms ease',
                   }}
                 >
                   {/* Left side: Massive Vehicle Image */}
@@ -572,7 +575,7 @@ export default function Products() {
                       overflow: 'hidden',
                       height: '100%',
                       minHeight: 320,
-                      backgroundColor: '#1a1a2e',
+                      backgroundColor: '#F4F3EF',
                     }}
                   >
                     <img
@@ -590,7 +593,7 @@ export default function Products() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(180deg, rgba(12,12,20,0.15) 0%, rgba(12,12,20,0.8) 100%)',
+                          'linear-gradient(180deg, rgba(23,50,77,0.05) 0%, rgba(23,50,77,0.55) 100%)',
                       }}
                     />
                     <div
@@ -600,14 +603,14 @@ export default function Products() {
                         left: 18,
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '11px',
-                        fontWeight: 600,
+                        fontWeight: 700,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: '#0c0c14',
-                        background: '#F5C518',
-                        padding: '4px 12px',
+                        color: '#FFFFFF',
+                        background: '#E58A16',
+                        padding: '5px 14px',
                         borderRadius: '6px',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                        boxShadow: '0 2px 8px rgba(229,154,35,0.35)',
                       }}
                     >
                       {p.tag}
@@ -618,15 +621,16 @@ export default function Products() {
                         top: 18,
                         right: 18,
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '10px',
+                        fontSize: '11px',
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: '#F5C518',
-                        background: 'rgba(12,12,20,0.85)',
-                        backdropFilter: 'blur(8px)',
+                        color: '#20262B',
+                        background: '#FFFFFF',
+                        boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                         padding: '4px 12px',
                         borderRadius: '6px',
-                        border: '1px solid rgba(245,197,24,0.3)',
+                        border: '1px solid #D9DDDE',
+                        fontWeight: 600,
                       }}
                     >
                       Click to Expand ⤢
@@ -640,6 +644,7 @@ export default function Products() {
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'center',
+                      background: '#FFFFFF',
                     }}
                   >
                     <div
@@ -648,8 +653,9 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.2em',
                         textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.4)',
+                        color: '#596268',
                         marginBottom: 8,
+                        fontWeight: 600,
                       }}
                     >
                       Build Lead Time: {p.leadTime}
@@ -660,7 +666,7 @@ export default function Products() {
                         fontSize: 'clamp(32px, 4vw, 42px)',
                         fontWeight: 900,
                         textTransform: 'uppercase',
-                        color: '#ffffff',
+                        color: '#20262B',
                         margin: '0 0 12px',
                         lineHeight: 1,
                       }}
@@ -671,7 +677,7 @@ export default function Products() {
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '14px',
-                        color: 'rgba(255,255,255,0.7)',
+                        color: '#596268',
                         lineHeight: 1.65,
                         margin: '0 0 24px',
                       }}
@@ -687,8 +693,8 @@ export default function Products() {
                         gap: 12,
                         padding: '16px',
                         borderRadius: '12px',
-                        background: 'rgba(255,255,255,0.03)',
-                        border: '1px solid rgba(255,255,255,0.08)',
+                        background: '#F4F3EF',
+                        border: '1px solid #D9DDDE',
                         marginBottom: 28,
                       }}
                     >
@@ -697,10 +703,10 @@ export default function Products() {
                           <div
                             style={{
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                              fontSize: '10px',
-                              letterSpacing: '0.15em',
+                              fontSize: '11px',
+                              letterSpacing: '0.12em',
                               textTransform: 'uppercase',
-                              color: 'rgba(255,255,255,0.4)',
+                              color: '#596268',
                               marginBottom: 2,
                             }}
                           >
@@ -709,9 +715,9 @@ export default function Products() {
                           <div
                             style={{
                               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                              fontSize: '16px',
-                              fontWeight: 700,
-                              color: '#F5C518',
+                              fontSize: '17px',
+                              fontWeight: 800,
+                              color: '#20262B',
                             }}
                           >
                             {s.value}
@@ -776,16 +782,16 @@ export default function Products() {
                   onMouseLeave={() => setHoveredId(null)}
                   style={{
                     position: 'relative',
-                    background: 'linear-gradient(180deg, #151522 0%, #0d0d17 100%)',
+                    background: '#FFFFFF',
                     borderRadius: '24px',
                     overflow: 'hidden',
                     cursor: 'pointer',
                     border: isHovered
-                      ? '1px solid rgba(245,197,24,0.55)'
-                      : '1px solid rgba(255,255,255,0.08)',
+                      ? '1px solid #E58A16'
+                      : '1px solid #D9DDDE',
                     boxShadow: isHovered
-                      ? '0 24px 54px rgba(0,0,0,0.7), 0 0 40px rgba(245,197,24,0.2)'
-                      : '0 10px 30px rgba(0,0,0,0.4)',
+                      ? '0 20px 48px rgba(229,154,35,0.15)'
+                      : '0 4px 20px rgba(23,50,77,0.04)',
                     transform: isHovered ? 'translateY(-8px) scale(1.015)' : 'translateY(0) scale(1)',
                     transition: 'all 320ms cubic-bezier(0.22, 1, 0.36, 1)',
                     display: 'flex',
@@ -799,7 +805,7 @@ export default function Products() {
                       aspectRatio: '16/9.5',
                       minHeight: 280,
                       overflow: 'hidden',
-                      backgroundColor: '#1a1a2e',
+                      backgroundColor: '#F4F3EF',
                     }}
                   >
                     <img
@@ -820,7 +826,7 @@ export default function Products() {
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(180deg, rgba(12,12,20,0.15) 0%, rgba(12,12,20,0.88) 100%)',
+                          'linear-gradient(180deg, rgba(23,50,77,0.05) 0%, rgba(23,50,77,0.4) 100%)',
                       }}
                     />
 
@@ -832,14 +838,14 @@ export default function Products() {
                         left: 18,
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '11px',
-                        fontWeight: 600,
+                        fontWeight: 700,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: '#0c0c14',
-                        background: '#F5C518',
+                        color: '#FFFFFF',
+                        background: '#E58A16',
                         padding: '5px 14px',
                         borderRadius: '6px',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                        boxShadow: '0 2px 8px rgba(229,154,35,0.35)',
                       }}
                     >
                       {p.tag}
@@ -855,12 +861,13 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.85)',
-                        background: 'rgba(12,12,20,0.75)',
-                        backdropFilter: 'blur(8px)',
+                        color: '#20262B',
+                        background: '#FFFFFF',
+                        boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                         padding: '5px 12px',
                         borderRadius: '6px',
-                        border: '1px solid rgba(255,255,255,0.12)',
+                        border: '1px solid #D9DDDE',
+                        fontWeight: 600,
                       }}
                     >
                       Build: {p.leadTime}
@@ -874,15 +881,15 @@ export default function Products() {
                         right: 18,
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '11px',
-                        fontWeight: 600,
+                        fontWeight: 700,
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: '#F5C518',
-                        background: 'rgba(12,12,20,0.85)',
-                        backdropFilter: 'blur(8px)',
+                        color: '#E58A16',
+                        background: '#FFFFFF',
+                        boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                         padding: '5px 12px',
                         borderRadius: '6px',
-                        border: '1px solid rgba(245,197,24,0.4)',
+                        border: '1px solid #D9DDDE',
                         opacity: isHovered ? 1 : 0,
                         transform: isHovered ? 'translateY(0)' : 'translateY(-4px)',
                         transition: 'all 240ms ease',
@@ -910,10 +917,10 @@ export default function Products() {
                           fontSize: 'clamp(28px, 3.8vw, 36px)',
                           fontWeight: 800,
                           textTransform: 'uppercase',
-                          color: '#ffffff',
+                          color: '#FFFFFF',
                           margin: 0,
                           lineHeight: 1,
-                          textShadow: '0 2px 12px rgba(0,0,0,0.7)',
+                          textShadow: '0 2px 12px rgba(23,50,77,0.7)',
                         }}
                       >
                         {p.name}
@@ -928,13 +935,14 @@ export default function Products() {
                       display: 'flex',
                       flexDirection: 'column',
                       flex: 1,
+                      background: '#FFFFFF',
                     }}
                   >
                     <p
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '14.5px',
-                        color: 'rgba(255,255,255,0.7)',
+                        color: '#596268',
                         lineHeight: 1.65,
                         margin: '0 0 22px',
                         minHeight: 48,
@@ -951,8 +959,8 @@ export default function Products() {
                         gap: 12,
                         padding: '18px',
                         borderRadius: '14px',
-                        background: 'rgba(255,255,255,0.03)',
-                        border: '1px solid rgba(255,255,255,0.07)',
+                        background: '#F4F3EF',
+                        border: '1px solid #D9DDDE',
                         marginBottom: 26,
                       }}
                     >
@@ -962,9 +970,9 @@ export default function Products() {
                             style={{
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                               fontSize: '11px',
-                              letterSpacing: '0.15em',
+                              letterSpacing: '0.12em',
                               textTransform: 'uppercase',
-                              color: 'rgba(255,255,255,0.45)',
+                              color: '#596268',
                               marginBottom: 3,
                             }}
                           >
@@ -973,9 +981,9 @@ export default function Products() {
                           <div
                             style={{
                               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                              fontSize: '16px',
-                              fontWeight: 700,
-                              color: '#F5C518',
+                              fontSize: '17px',
+                              fontWeight: 800,
+                              color: '#20262B',
                             }}
                           >
                             {s.value}
@@ -1033,7 +1041,7 @@ export default function Products() {
             position: 'fixed',
             inset: 0,
             zIndex: 99999,
-            background: 'rgba(12, 12, 20, 0.85)',
+            background: 'rgba(23, 50, 77, 0.45)',
             backdropFilter: 'blur(16px)',
             display: 'flex',
             alignItems: 'center',
@@ -1050,10 +1058,10 @@ export default function Products() {
               maxWidth: 920,
               maxHeight: '90vh',
               overflowY: 'auto',
-              background: '#13131f',
-              border: '1px solid rgba(245,197,24,0.4)',
+              background: '#FFFFFF',
+              border: '1px solid #D9DDDE',
               borderRadius: '24px',
-              boxShadow: '0 24px 72px rgba(0,0,0,0.85), 0 0 50px rgba(245,197,24,0.25)',
+              boxShadow: '0 24px 72px rgba(23, 50, 77, 0.18)',
               display: 'flex',
               flexDirection: 'column',
               animation: 'cardModalExpand 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -1070,7 +1078,7 @@ export default function Products() {
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(0deg, #13131f 0%, rgba(19,19,31,0.2) 60%)',
+                  background: 'linear-gradient(0deg, rgba(23, 50, 77, 0.8) 0%, transparent 60%)',
                 }}
               />
               {/* Close button */}
@@ -1083,17 +1091,25 @@ export default function Products() {
                   width: 36,
                   height: 36,
                   borderRadius: '50%',
-                  background: 'rgba(12,12,20,0.8)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#ffffff',
+                  background: '#FFFFFF',
+                  border: '1px solid #D9DDDE',
+                  color: '#20262B',
                   fontSize: 18,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'background 200ms ease',
+                  transition: 'all 200ms ease',
+                  boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = '#F5C518')}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#E58A16'
+                  e.currentTarget.style.color = '#FFFFFF'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#FFFFFF'
+                  e.currentTarget.style.color = '#20262B'
+                }}
               >
                 ✕
               </button>
@@ -1106,11 +1122,12 @@ export default function Products() {
                     fontSize: '11px',
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
-                    color: '#0c0c14',
-                    background: '#F5C518',
-                    padding: '3px 10px',
+                    color: '#FFFFFF',
+                    background: '#E58A16',
+                    padding: '4px 12px',
                     borderRadius: '4px',
                     marginBottom: 8,
+                    fontWeight: 700,
                   }}
                 >
                   {selectedProduct.tag}
@@ -1121,7 +1138,7 @@ export default function Products() {
                     fontSize: 'clamp(32px, 5vw, 44px)',
                     fontWeight: 900,
                     textTransform: 'uppercase',
-                    color: '#ffffff',
+                    color: '#FFFFFF',
                     margin: 0,
                   }}
                 >
@@ -1131,12 +1148,12 @@ export default function Products() {
             </div>
 
             {/* Modal Content */}
-            <div style={{ padding: '28px 32px 36px' }}>
+            <div style={{ padding: '28px 32px 36px', background: '#FFFFFF' }}>
               <p
                 style={{
                   fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                   fontSize: '15px',
-                  color: 'rgba(255,255,255,0.7)',
+                  color: '#596268',
                   lineHeight: 1.65,
                   margin: '0 0 28px',
                 }}
@@ -1149,10 +1166,10 @@ export default function Products() {
                 style={{
                   fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                   fontSize: '18px',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
+                  fontWeight: 800,
+                  letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: '#F5C518',
+                  color: '#20262B',
                   margin: '0 0 14px',
                 }}
               >
@@ -1170,8 +1187,8 @@ export default function Products() {
                   <div
                     key={idx}
                     style={{
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: '#F4F3EF',
+                      border: '1px solid #D9DDDE',
                       borderRadius: '10px',
                       padding: '12px 16px',
                     }}
@@ -1179,10 +1196,10 @@ export default function Products() {
                     <div
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '10px',
-                        letterSpacing: '0.15em',
+                        fontSize: '11px',
+                        letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.4)',
+                        color: '#596268',
                       }}
                     >
                       {s.label}
@@ -1190,9 +1207,9 @@ export default function Products() {
                     <div
                       style={{
                         fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                        fontSize: '16px',
-                        fontWeight: 700,
-                        color: '#ffffff',
+                        fontSize: '17px',
+                        fontWeight: 800,
+                        color: '#20262B',
                         marginTop: 4,
                       }}
                     >
@@ -1207,10 +1224,10 @@ export default function Products() {
                 style={{
                   fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                   fontSize: '18px',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
+                  fontWeight: 800,
+                  letterSpacing: '0.06em',
                   textTransform: 'uppercase',
-                  color: '#F5C518',
+                  color: '#20262B',
                   margin: '0 0 14px',
                 }}
               >
@@ -1234,11 +1251,11 @@ export default function Products() {
                       alignItems: 'center',
                       gap: 10,
                       fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                      fontSize: '13px',
-                      color: 'rgba(255,255,255,0.75)',
+                      fontSize: '13.5px',
+                      color: '#596268',
                     }}
                   >
-                    <span style={{ color: '#F5C518', fontSize: '14px' }}>✔</span>
+                    <span style={{ color: '#E58A16', fontSize: '14px', fontWeight: 900 }}>✔</span>
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -1252,15 +1269,15 @@ export default function Products() {
                   justifyContent: 'space-between',
                   flexWrap: 'wrap',
                   gap: 16,
-                  borderTop: '1px solid rgba(255,255,255,0.08)',
+                  borderTop: '1px solid #D9DDDE',
                   paddingTop: 24,
                 }}
               >
                 <div
                   style={{
                     fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                    fontSize: '12px',
-                    color: 'rgba(255,255,255,0.4)',
+                    fontSize: '13px',
+                    color: '#596268',
                   }}
                 >
                   Custom engineering and dimensions built to order.

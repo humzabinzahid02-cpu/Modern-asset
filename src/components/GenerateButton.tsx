@@ -45,40 +45,36 @@ export function GenerateButton({
         .gen-btn {
           --border-radius: 24px;
           --padding: 4px;
-          --transition: 0.4s;
-          --button-color: #101010;
+          --transition: 0.25s ease;
+          --button-color: #E58A16;
+          --button-hover: #C8750D;
           --highlight-color-hue: ${hue}deg;
 
           user-select: none;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0.6em 1.2em 0.6em 1.1em;
-          font-family: var(--font-display, "Barlow Condensed", "Poppins", sans-serif);
+          padding: 0.65em 1.4em;
+          font-family: var(--font-display, "Barlow Condensed", sans-serif);
           font-size: 1em;
           font-weight: 700;
           letter-spacing: 0.06em;
           text-transform: uppercase;
+          color: #FFFFFF;
 
           background-color: var(--button-color);
-
-          box-shadow:
-            inset 0px 1px 1px rgba(255, 255, 255, 0.2),
-            inset 0px 2px 2px rgba(255, 255, 255, 0.15),
-            inset 0px 4px 4px rgba(255, 255, 255, 0.1),
-            inset 0px 8px 8px rgba(255, 255, 255, 0.05),
-            inset 0px 16px 16px rgba(255, 255, 255, 0.05),
-            0px -1px 1px rgba(0, 0, 0, 0.02),
-            0px -2px 2px rgba(0, 0, 0, 0.03), 
-            0px -4px 4px rgba(0, 0, 0, 0.05),
-            0px -8px 8px rgba(0, 0, 0, 0.06), 
-            0px -16px 16px rgba(0, 0, 0, 0.08);
-
-          border: solid 1px rgba(245, 197, 24, 0.25);
+          box-shadow: 0 4px 14px rgba(229,138,22,0.3);
+          border: solid 1px #C8750D;
           border-radius: var(--border-radius);
           cursor: pointer;
 
-          transition: box-shadow var(--transition), border var(--transition), background-color var(--transition);
+          transition: all var(--transition);
+        }
+        
+        .gen-btn:hover {
+          background-color: var(--button-hover);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(200,117,13,0.4);
         }
         
         .gen-btn::before {
@@ -144,10 +140,10 @@ export function GenerateButton({
           height: 20px;
           width: 20px;
           margin-right: 0.6rem;
-          fill: #F5C518;
+          fill: #FFFFFF;
           animation: gen-flicker 2s linear infinite;
           animation-delay: 0.5s;
-          filter: drop-shadow(0 0 4px rgba(245,197,24,0.6));
+          filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
           transition: fill var(--transition), filter var(--transition), opacity var(--transition);
         }
         
