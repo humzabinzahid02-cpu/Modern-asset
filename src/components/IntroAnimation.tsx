@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const WORDS = [
   { text: 'مرحباً', lang: 'Arabic', dir: 'rtl' },
@@ -176,10 +176,7 @@ export default function IntroAnimation({ onDone }: Props) {
                 fontWeight: 800,
                 lineHeight: 1,
                 letterSpacing: '-0.01em',
-                background: 'linear-gradient(135deg, #1B2B3A 0%, #E07B10 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: '#1B2B3A',
                 textAlign: 'center',
               }}
             >
@@ -188,10 +185,11 @@ export default function IntroAnimation({ onDone }: Props) {
             <div
               style={{
                 fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '11px',
+                fontSize: '12px',
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
-                color: '#8C949C',
+                fontWeight: 700,
+                color: '#E07B10',
                 marginTop: 12,
                 textAlign: 'center',
               }}
@@ -266,11 +264,7 @@ export default function IntroAnimation({ onDone }: Props) {
               textTransform: 'uppercase',
               lineHeight: 1,
               whiteSpace: 'nowrap',
-              color: isDocking ? '#1B2B3A' : undefined,
-              background: isDocking ? 'none' : 'linear-gradient(90deg, #1B2B3A 0%, #E07B10 100%)',
-              WebkitBackgroundClip: isDocking ? 'unset' : 'text',
-              WebkitTextFillColor: isDocking ? '#1B2B3A' : 'transparent',
-              backgroundClip: isDocking ? 'unset' : 'text',
+              color: '#1B2B3A',
               transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
@@ -284,7 +278,8 @@ export default function IntroAnimation({ onDone }: Props) {
               fontSize: '11px',
               letterSpacing: '0.35em',
               textTransform: 'uppercase',
-              color: '#8C949C',
+              fontWeight: 600,
+              color: '#5C6470',
               opacity: isDocking ? 0 : 1,
               transform: isDocking ? 'translateY(10px) scale(0.9)' : 'translateY(0) scale(1)',
               transition: 'opacity 350ms ease, transform 350ms ease',
