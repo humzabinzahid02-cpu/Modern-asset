@@ -546,26 +546,25 @@ export default function Products() {
 
         {/* ── View Mode: 3D StickyCard002 Stack or 2-Column Grid ────────────────────────── */}
         {viewMode === 'stack' ? (
-          <div style={{ position: 'relative', width: '100%', maxWidth: 1160, margin: '0 auto' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: 1340, margin: '0 auto' }}>
             <StickyCard002
               cards={filteredProducts}
-              containerClassName="max-w-5xl"
+              containerClassName="max-w-6xl xl:max-w-[1340px]"
               renderCard={(p) => (
                 <div
                   onClick={() => setSelectedProduct(p)}
-                  className="stack-card-inner"
+                  className="stack-card-inner group"
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'minmax(320px, 1.15fr) 1fr',
-                    height: '100%',
-                    minHeight: 480,
+                    gridTemplateColumns: 'minmax(360px, 1.25fr) 1fr',
+                    minHeight: 'clamp(540px, 62vh, 620px)',
                     cursor: 'pointer',
                     background: '#FFFFFF',
-                    borderRadius: '28px',
+                    borderRadius: '34px',
                     overflow: 'hidden',
                     border: '1px solid #E2DFDC',
-                    boxShadow: '0 -4px 24px rgba(27, 43, 58, 0.06), 0 25px 60px rgba(27, 43, 58, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04)',
-                    transition: 'border-color 200ms ease, box-shadow 200ms ease',
+                    boxShadow: '0 4px 16px rgba(27, 43, 58, 0.05), 0 1px 3px rgba(27, 43, 58, 0.03)',
+                    transition: 'border-color 250ms ease, box-shadow 250ms ease',
                   }}
                 >
                   {/* Left side: Massive Vehicle Image */}
@@ -574,7 +573,7 @@ export default function Products() {
                       position: 'relative',
                       overflow: 'hidden',
                       height: '100%',
-                      minHeight: 320,
+                      minHeight: 360,
                       backgroundColor: '#F6F5F1',
                     }}
                   >
@@ -585,22 +584,23 @@ export default function Products() {
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
-                        transition: 'transform 600ms cubic-bezier(0.22, 1, 0.36, 1)',
+                        transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)',
                       }}
+                      className="group-hover:scale-105"
                     />
                     <div
                       style={{
                         position: 'absolute',
                         inset: 0,
                         background:
-                          'linear-gradient(180deg, transparent 70%, rgba(27,43,58,0.15) 100%)',
+                          'linear-gradient(180deg, transparent 75%, rgba(27,43,58,0.1) 100%)',
                       }}
                     />
                     <div
                       style={{
                         position: 'absolute',
-                        top: 18,
-                        left: 18,
+                        top: 20,
+                        left: 20,
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '11px',
                         fontWeight: 700,
@@ -608,27 +608,32 @@ export default function Products() {
                         textTransform: 'uppercase',
                         color: '#FFFFFF',
                         background: '#E07B10',
-                        padding: '5px 14px',
-                        borderRadius: '6px',
-                        boxShadow: '0 2px 8px rgba(229,154,35,0.35)',
+                        padding: '6px 16px',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 10px rgba(229,154,35,0.4)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 6,
                       }}
                     >
-                      {p.tag}
+                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                      <span>{p.tag}</span>
                     </div>
                     <div
                       style={{
                         position: 'absolute',
-                        top: 18,
-                        right: 18,
+                        top: 20,
+                        right: 20,
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
                         fontSize: '11px',
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
                         color: '#1B2B3A',
-                        background: '#FFFFFF',
+                        background: 'rgba(255, 255, 255, 0.92)',
+                        backdropFilter: 'blur(8px)',
                         boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
-                        padding: '4px 12px',
-                        borderRadius: '6px',
+                        padding: '5px 14px',
+                        borderRadius: '8px',
                         border: '1px solid #E2DFDC',
                         fontWeight: 600,
                       }}
@@ -637,10 +642,10 @@ export default function Products() {
                     </div>
                   </div>
 
-                  {/* Right side: Detailed Specs & Controls */}
+                  {/* Right side: Detailed Specs & Controls (Bigger & More Spacious) */}
                   <div
                     style={{
-                      padding: '36px 36px 40px',
+                      padding: 'clamp(32px, 4vw, 52px)',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'center',
@@ -653,9 +658,9 @@ export default function Products() {
                         fontSize: '11px',
                         letterSpacing: '0.2em',
                         textTransform: 'uppercase',
-                        color: '#5C6470',
+                        color: '#E07B10',
                         marginBottom: 8,
-                        fontWeight: 600,
+                        fontWeight: 700,
                       }}
                     >
                       Build Lead Time: {p.leadTime}
@@ -663,7 +668,7 @@ export default function Products() {
                     <h4
                       style={{
                         fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                        fontSize: 'clamp(32px, 4vw, 42px)',
+                        fontSize: 'clamp(34px, 4.2vw, 46px)',
                         fontWeight: 900,
                         textTransform: 'uppercase',
                         color: '#1B2B3A',
@@ -691,8 +696,8 @@ export default function Products() {
                         display: 'grid',
                         gridTemplateColumns: '1fr 1fr',
                         gap: 12,
-                        padding: '16px',
-                        borderRadius: '12px',
+                        padding: '18px',
+                        borderRadius: '14px',
                         background: '#F6F5F1',
                         border: '1px solid #E2DFDC',
                         marginBottom: 28,
@@ -707,7 +712,8 @@ export default function Products() {
                               letterSpacing: '0.12em',
                               textTransform: 'uppercase',
                               color: '#5C6470',
-                              marginBottom: 2,
+                              marginBottom: 3,
+                              fontWeight: 600,
                             }}
                           >
                             {s.label}
@@ -715,7 +721,7 @@ export default function Products() {
                           <div
                             style={{
                               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                              fontSize: '17px',
+                              fontSize: '19px',
                               fontWeight: 800,
                               color: '#1B2B3A',
                             }}

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
-import GlassButton from '../GlassButton'
-import { GenerateButton } from './GenerateButton'
 import CreepyButton from './CreepyButton'
 
 const LINKS = ['Products', 'Capabilities', 'Projects', 'About', 'Contact']
 
-export default function Nav() {
+interface NavProps {
+  currentPage?: 'home' | 'quote'
+  onNavigate?: (page: 'home' | 'quote', sectionId?: string) => void
+}
+
+export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -14,6 +17,49 @@ export default function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const handleLinkClick = (link: string, e: React.MouseEvent) => {
+    e.preventDefault()
+    setOpen(false)
+
+    if (link.toLowerCase() === 'contact') {
+      if (onNavigate) {
+        onNavigate('quote')
+      } else {
+        const c = document.getElementById('contact')
+        if (c) c.scrollIntoView({ behavior: 'smooth' })
+      }
+      return
+    }
+
+    if (currentPage === 'quote') {
+      if (onNavigate) {
+        onNavigate('home', link.toLowerCase())
+      }
+    } else {
+      const el = document.getElementById(link.toLowerCase())
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleStartProject = () => {
+    setOpen(false)
+    if (onNavigate) {
+      onNavigate('quote')
+    } else {
+      const c = document.getElementById('contact')
+      if (c) c.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (currentPage === 'quote' && onNavigate) {
+      onNavigate('home', 'home')
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
   return (
     <nav style={{
@@ -27,7 +73,7 @@ export default function Nav() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      background: scrolled ? 'rgba(255, 255, 255, 0.65)' : 'rgba(255, 255, 255, 0.35)',
+      background: scrolled ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.45)',
       backdropFilter: 'blur(24px) saturate(190%)',
       WebkitBackdropFilter: 'blur(24px) saturate(190%)',
       borderBottom: '1px solid rgba(255, 255, 255, 0.45)',
@@ -57,8 +103,20 @@ export default function Nav() {
         background: 'linear-gradient(90deg, rgba(226,223,220,0.2) 0%, rgba(255,255,255,0.8) 25%, rgba(224,123,16,0.3) 50%, rgba(255,255,255,0.8) 75%, rgba(226,223,220,0.2) 100%)',
         pointerEvents: 'none',
       }} />
+
       {/* Logo */}
-      <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+      <button
+        onClick={handleLogoClick}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          background: 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+        }}
+      >
         <div style={{
           width: 36,
           height: 36,
@@ -85,7 +143,7 @@ export default function Nav() {
           textTransform: 'uppercase',
           color: '#1B2B3A',
         }}>Modern Assets</span>
-      </a>
+      </button>
 
       {/* Desktop links */}
       <div style={{
@@ -97,28 +155,25 @@ export default function Nav() {
           <a
             key={link}
             href={`#${link.toLowerCase()}`}
+            onClick={(e) => handleLinkClick(link, e)}
             style={{
               fontFamily: 'Barlow Condensed, sans-serif',
               fontSize: '15px',
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              color: '#5C6470',
+              color: link.toLowerCase() === 'contact' && currentPage === 'quote' ? '#E07B10' : '#5C6470',
               textDecoration: 'none',
               transition: 'color 180ms ease',
+              cursor: 'pointer',
             }}
             onMouseEnter={e => (e.currentTarget.style.color = '#E07B10')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#5C6470')}
+            onMouseLeave={e => (e.currentTarget.style.color = link.toLowerCase() === 'contact' && currentPage === 'quote' ? '#E07B10' : '#5C6470')}
           >
             {link}
           </a>
         ))}
-        <CreepyButton
-          onClick={() => {
-            const c = document.getElementById('contact')
-            if (c) c.scrollIntoView({ behavior: 'smooth' })
-          }}
-        >
+        <CreepyButton onClick={handleStartProject}>
           START A PROJECT
         </CreepyButton>
       </div>
@@ -152,7 +207,7 @@ export default function Nav() {
           top: 72,
           left: 0,
           right: 0,
-          background: 'rgba(255, 255, 255, 0.82)',
+          background: 'rgba(255, 255, 255, 0.92)',
           backdropFilter: 'blur(24px) saturate(190%)',
           WebkitBackdropFilter: 'blur(24px) saturate(190%)',
           borderBottom: '1px solid rgba(255, 255, 255, 0.5)',
@@ -167,7 +222,7 @@ export default function Nav() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              onClick={() => setOpen(false)}
+              onClick={(e) => handleLinkClick(link, e)}
               style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
                 fontSize: '18px',
@@ -176,18 +231,13 @@ export default function Nav() {
                 textTransform: 'uppercase',
                 color: '#1B2B3A',
                 textDecoration: 'none',
+                cursor: 'pointer',
               }}
             >
               {link}
             </a>
           ))}
-          <CreepyButton
-            onClick={() => {
-              setOpen(false)
-              const c = document.getElementById('contact')
-              if (c) c.scrollIntoView({ behavior: 'smooth' })
-            }}
-          >
+          <CreepyButton onClick={handleStartProject}>
             START A PROJECT
           </CreepyButton>
         </div>

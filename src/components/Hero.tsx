@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { FluidMorphBg, SITE_HERO_COLORS } from './FluidMorphBg'
 
 const FLIP_WORDS = ['PURPOSE', 'POWER', 'PROGRESS', 'PERFORMANCE', 'PROWESS']
 
@@ -30,15 +31,22 @@ export default function Hero() {
       id="home"
       className="relative w-full min-h-screen overflow-hidden bg-[#F6F5F1] flex items-center pt-28 pb-16 lg:pt-28 lg:pb-16"
     >
-      {/* Background Image with Light Industrial Overlay */}
-      <div className="absolute inset-0 bg-[#F6F5F1] pointer-events-none">
-        <img
-          src="https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=1800&h=1000&fit=crop&auto=format"
-          alt="Heavy duty vehicle engineering"
-          className="w-full h-full object-cover opacity-15"
+      {/* Fluid Morphing Dynamic Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <FluidMorphBg
+          className="w-full h-full opacity-100"
+          backgroundColor="#F6F5F1"
+          duration={6.5}
+          colors={SITE_HERO_COLORS}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F5F1] via-[#F6F5F1]/92 to-[#F6F5F1]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F6F5F1] via-transparent to-transparent" />
+        {/* Soft top gradient to keep navbar clean and unified */}
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#F6F5F1] via-[#F6F5F1]/65 to-transparent pointer-events-none" />
+
+        {/* Soft left diffusion so headline typography has crisp readability while waves flow visibly */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[52%] bg-gradient-to-r from-[#F6F5F1]/80 via-[#F6F5F1]/30 to-transparent pointer-events-none" />
+
+        {/* Soft bottom fade to seamlessly blend into subsequent section */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#F6F5F1] via-[#F6F5F1]/50 to-transparent pointer-events-none" />
       </div>
 
       {/* Main Responsive Grid Container */}
@@ -180,4 +188,3 @@ export default function Hero() {
     </section>
   )
 }
-

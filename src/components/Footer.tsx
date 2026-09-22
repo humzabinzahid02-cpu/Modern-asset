@@ -1,4 +1,6 @@
-﻿const NAV_COLS = [
+import React from 'react'
+
+const NAV_COLS = [
   {
     heading: 'Products',
     links: ['Tankers', 'Trailers', 'Truck Bodies', 'Sweepers', 'Wreckers', 'Aerial Platforms'],
@@ -13,7 +15,18 @@
   },
 ]
 
-export default function Footer() {
+interface FooterProps {
+  onOpenQuote?: () => void
+}
+
+export default function Footer({ onOpenQuote }: FooterProps) {
+  const handleLinkClick = (link: string, e: React.MouseEvent) => {
+    if (link === 'Request a Quote' || link === 'Contact Us') {
+      e.preventDefault()
+      if (onOpenQuote) onOpenQuote()
+    }
+  }
+
   return (
     <footer id="contact-footer" style={{
       background: '#1C2128',
@@ -62,11 +75,11 @@ export default function Footer() {
               lineHeight: 1.7,
               margin: '0 0 24px',
             }}>
-              Custom fabrication of heavy-duty commercial vehicles and equipment — built for strength, precision & performance.
+              Custom fabrication of heavy-duty commercial vehicles and equipment — built for strength, precision &amp; performance.
             </p>
             <div style={{
               fontFamily: 'Outfit, sans-serif',
-              fontSize: '11px',
+              fontSize: 11,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               color: '#B0B8BC',
@@ -93,12 +106,14 @@ export default function Footer() {
                   <a
                     key={link}
                     href="#"
+                    onClick={(e) => handleLinkClick(link, e)}
                     style={{
                       fontFamily: 'Outfit, sans-serif',
                       fontSize: '13px',
                       color: '#E2DFDC',
                       textDecoration: 'none',
                       transition: 'color 180ms ease',
+                      cursor: (link === 'Request a Quote' || link === 'Contact Us') ? 'pointer' : 'default',
                     }}
                     onMouseEnter={e => (e.currentTarget.style.color = '#E07B10')}
                     onMouseLeave={e => (e.currentTarget.style.color = '#E2DFDC')}
@@ -119,49 +134,34 @@ export default function Footer() {
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: 12,
+          gap: 16,
         }}>
-          <div style={{
+          <p style={{
             fontFamily: 'Outfit, sans-serif',
-            fontSize: '12px',
+            fontSize: 12,
             color: '#B0B8BC',
+            margin: 0,
           }}>
-            © 2026 Modern Assets. All rights reserved.
-          </div>
+            &copy; {new Date().getFullYear()} Modern Assets. All rights reserved. Saudi Vision 2030 Fleet Partner.
+          </p>
           <div style={{ display: 'flex', gap: 24 }}>
-            {['Privacy Policy', 'Terms of Use'].map(link => (
+            {['Privacy Policy', 'Terms of Service', 'Safety Certifications'].map(item => (
               <a
-                key={link}
+                key={item}
                 href="#"
                 style={{
                   fontFamily: 'Outfit, sans-serif',
-                  fontSize: '12px',
+                  fontSize: 12,
                   color: '#B0B8BC',
                   textDecoration: 'none',
-                  transition: 'color 180ms ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#E07B10')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#B0B8BC')}
               >
-                {link}
+                {item}
               </a>
             ))}
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          footer > div > div:first-child {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        @media (max-width: 600px) {
-          footer > div > div:first-child {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </footer>
   )
 }
