@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 
 const WORDS = [
   { text: 'مرحباً', lang: 'Arabic', dir: 'rtl' },
@@ -97,13 +98,18 @@ export default function IntroAnimation({ onDone }: Props) {
 
   const isDocking = phase === 'docking'
 
-  return (
+  const content = (
     <div
       onClick={handleSkip}
       style={{
         position: 'fixed',
-        inset: 0,
-        zIndex: 9999,
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: '100dvh',
+        zIndex: 99999,
         background: bgFade ? 'rgba(244,243,239,0)' : '#F6F5F1',
         pointerEvents: isDocking ? 'none' : 'auto',
         transition: 'background 750ms cubic-bezier(0.16, 1, 0.3, 1)',
@@ -118,8 +124,8 @@ export default function IntroAnimation({ onDone }: Props) {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: 500,
-          height: 500,
+          width: 'min(500px, 85vw)',
+          height: 'min(500px, 85vw)',
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(224,123,16,0.12) 0%, transparent 68%)',
           pointerEvents: 'none',
@@ -152,6 +158,7 @@ export default function IntroAnimation({ onDone }: Props) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            padding: '0 20px',
             pointerEvents: 'none',
             zIndex: 5,
           }}
@@ -163,6 +170,7 @@ export default function IntroAnimation({ onDone }: Props) {
               alignItems: 'center',
               justifyContent: 'center',
               textAlign: 'center',
+              maxWidth: '90vw',
               animation: wordVisible
                 ? 'introIn 200ms cubic-bezier(0.22,1,0.36,1) forwards'
                 : 'introOut 200ms ease forwards',
@@ -172,12 +180,13 @@ export default function IntroAnimation({ onDone }: Props) {
               dir={word?.dir}
               style={{
                 fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                fontSize: 'clamp(72px, 15vw, 150px)',
+                fontSize: 'clamp(48px, 14vw, 130px)',
                 fontWeight: 800,
-                lineHeight: 1,
+                lineHeight: 1.05,
                 letterSpacing: '-0.01em',
                 color: '#1B2B3A',
                 textAlign: 'center',
+                wordBreak: 'break-word',
               }}
             >
               {word?.text}
@@ -185,7 +194,7 @@ export default function IntroAnimation({ onDone }: Props) {
             <div
               style={{
                 fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '12px',
+                fontSize: 'clamp(10px, 2.5vw, 12px)',
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
                 fontWeight: 700,
@@ -207,10 +216,8 @@ export default function IntroAnimation({ onDone }: Props) {
             position: 'absolute',
             zIndex: 10,
             transformOrigin: isDocking ? 'top left' : 'center center',
-            // If brand: centered on screen.
-            // If docking: seamlessly fly and dock to top-left navbar coordinate!
-            top: isDocking ? 19 : '50%',
-            left: isDocking ? 'clamp(24px, 5vw, 80px)' : '50%',
+            top: isDocking ? 18 : '50%',
+            left: isDocking ? 'clamp(16px, 4vw, 80px)' : '50%',
             transform: isDocking
               ? 'translate(0, 0)'
               : 'translate(-50%, -50%)',
@@ -220,14 +227,15 @@ export default function IntroAnimation({ onDone }: Props) {
             alignItems: 'center',
             justifyContent: 'center',
             gap: isDocking ? 10 : 16,
+            maxWidth: isDocking ? 'none' : '90vw',
           }}
         >
           {/* Logo Box with "M" */}
           <div
             style={{
-              width: isDocking ? 34 : 48,
-              height: isDocking ? 34 : 48,
-              borderRadius: isDocking ? 7 : 10,
+              width: isDocking ? 36 : 48,
+              height: isDocking ? 36 : 48,
+              borderRadius: isDocking ? 8 : 10,
               background: 'linear-gradient(135deg, #E07B10 0%, #C46C0C 100%)',
               display: 'flex',
               alignItems: 'center',
@@ -243,7 +251,7 @@ export default function IntroAnimation({ onDone }: Props) {
               style={{
                 fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                 fontWeight: 900,
-                fontSize: isDocking ? 18 : 26,
+                fontSize: isDocking ? 19 : 26,
                 color: '#FFFFFF',
                 letterSpacing: '-0.02em',
                 lineHeight: 1,
@@ -258,9 +266,9 @@ export default function IntroAnimation({ onDone }: Props) {
           <div
             style={{
               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-              fontWeight: 700,
-              fontSize: isDocking ? 18 : 'clamp(44px, 8vw, 92px)',
-              letterSpacing: isDocking ? '0.06em' : '0.04em',
+              fontWeight: 800,
+              fontSize: isDocking ? 'clamp(18px, 4vw, 20px)' : 'clamp(36px, 8vw, 84px)',
+              letterSpacing: isDocking ? '0.04em' : '0.03em',
               textTransform: 'uppercase',
               lineHeight: 1,
               whiteSpace: 'nowrap',
@@ -275,8 +283,8 @@ export default function IntroAnimation({ onDone }: Props) {
           <div
             style={{
               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-              fontSize: '11px',
-              letterSpacing: '0.35em',
+              fontSize: 'clamp(9px, 2.5vw, 11px)',
+              letterSpacing: '0.28em',
               textTransform: 'uppercase',
               fontWeight: 600,
               color: '#5C6470',
@@ -286,6 +294,7 @@ export default function IntroAnimation({ onDone }: Props) {
               pointerEvents: 'none',
               marginTop: isDocking ? 0 : 6,
               display: isDocking ? 'none' : 'block',
+              textAlign: 'center',
             }}
           >
             Custom Fabrication Solutions
@@ -294,4 +303,7 @@ export default function IntroAnimation({ onDone }: Props) {
       )}
     </div>
   )
+
+  if (typeof document === 'undefined') return null
+  return createPortal(content, document.body)
 }

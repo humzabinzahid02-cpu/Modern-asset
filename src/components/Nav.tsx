@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import CreepyButton from './CreepyButton'
 
 const LINKS = ['Products', 'Capabilities', 'Projects', 'About', 'Contact']
@@ -68,17 +68,17 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
       left: 0,
       right: 0,
       zIndex: 100,
-      padding: '0 clamp(24px, 5vw, 80px)',
+      padding: '0 clamp(16px, 4vw, 80px)',
       height: 72,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      background: scrolled ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.45)',
+      background: scrolled ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.6)',
       backdropFilter: 'blur(24px) saturate(190%)',
       WebkitBackdropFilter: 'blur(24px) saturate(190%)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.45)',
+      borderBottom: '1px solid rgba(226, 223, 220, 0.6)',
       boxShadow: scrolled
-        ? '0 12px 36px -4px rgba(27, 43, 58, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 0 rgba(255, 255, 255, 0.2)'
+        ? '0 12px 36px -4px rgba(27, 43, 58, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95)'
         : '0 4px 24px -2px rgba(27, 43, 58, 0.04), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85)',
       transition: 'background 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms ease, border-color 350ms ease',
     }}>
@@ -138,7 +138,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         <span style={{
           fontFamily: 'Barlow Condensed, sans-serif',
           fontWeight: 800,
-          fontSize: 20,
+          fontSize: 'clamp(18px, 4vw, 20px)',
           letterSpacing: '0.04em',
           textTransform: 'uppercase',
           color: '#1B2B3A',
@@ -192,7 +192,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         className="hamburger"
         aria-label="Toggle menu"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
           {open
             ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
             : <><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></>
@@ -207,12 +207,12 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
           top: 72,
           left: 0,
           right: 0,
-          background: 'rgba(255, 255, 255, 0.92)',
+          background: 'rgba(255, 255, 255, 0.96)',
           backdropFilter: 'blur(24px) saturate(190%)',
           WebkitBackdropFilter: 'blur(24px) saturate(190%)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.5)',
-          boxShadow: '0 20px 40px rgba(27, 43, 58, 0.1), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9)',
-          padding: '24px clamp(24px,5vw,80px)',
+          borderBottom: '1px solid rgba(226, 223, 220, 0.8)',
+          boxShadow: '0 20px 40px rgba(27, 43, 58, 0.12)',
+          padding: '24px clamp(16px, 4vw, 40px)',
           display: 'flex',
           flexDirection: 'column',
           gap: 16,
@@ -225,21 +225,24 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
               onClick={(e) => handleLinkClick(link, e)}
               style={{
                 fontFamily: 'Barlow Condensed, sans-serif',
-                fontSize: '18px',
+                fontSize: '19px',
                 fontWeight: 700,
                 letterSpacing: '0.06em',
                 textTransform: 'uppercase',
                 color: '#1B2B3A',
                 textDecoration: 'none',
                 cursor: 'pointer',
+                padding: '4px 0',
               }}
             >
               {link}
             </a>
           ))}
-          <CreepyButton onClick={handleStartProject}>
-            START A PROJECT
-          </CreepyButton>
+          <div style={{ paddingTop: 8 }}>
+            <CreepyButton onClick={handleStartProject} style={{ width: '100%', justifyContent: 'center' }}>
+              START A PROJECT
+            </CreepyButton>
+          </div>
         </div>
       )}
 

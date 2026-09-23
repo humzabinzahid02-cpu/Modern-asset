@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+﻿import React, { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ScrollExpand from './ScrollExpand'
-import ScrollStack, { ScrollStackItem } from './ScrollStack'
 import StickyCard002 from './StickyCard002'
 import GlassButton from '../GlassButton'
 
@@ -52,7 +51,7 @@ const PRODUCTS_DATA: ProductDetail[] = [
     specs: [
       { label: 'Payload Rating', value: '60 - 150 Metric Tons' },
       { label: 'Axle Configuration', value: '3, 4, 5 & 6-Axle Hydraulic' },
-      { label: 'Chassis Alloy', value: 'Strenx® 700MC High-Tensile' },
+      { label: 'Chassis Alloy', value: 'Strenx 700MC High-Tensile' },
       { label: 'Ramp System', value: 'Heavy Hydraulic Bi-Fold' },
     ],
     features: [
@@ -243,15 +242,15 @@ export default function Products() {
           cards,
           {
             opacity: 0,
-            y: 50,
-            scale: 0.95,
+            y: 40,
+            scale: 0.96,
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.7,
-            stagger: 0.1,
+            duration: 0.6,
+            stagger: 0.08,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: el,
@@ -267,16 +266,16 @@ export default function Products() {
   }, [viewMode, activeCategory])
 
   return (
-    <section id="products" style={{ background: '#F6F5F1', position: 'relative' }}>
-      {/* ── React Bits <ScrollExpand /> Integration ─────────────────────────────── */}
-      <div style={{ position: 'relative', width: '100%', marginBottom: 60 }}>
+    <section id="products" className="bg-[#F6F5F1] relative w-full overflow-hidden">
+      {/* ScrollExpand Section */}
+      <div className="relative w-full mb-10 sm:mb-16">
         <ScrollExpand
           src="https://images.unsplash.com/photo-1577075473292-5f62dfae5522?w=1920&h=1080&fit=crop&auto=format"
           alt="Modern Assets Heavy Fleet Expansion"
           title="BUILT FOR EVERY INDUSTRY"
           scrollHint="SCROLL TO EXPAND FLEET ↓"
-          startWidth={44}
-          startHeight={60}
+          startWidth={56}
+          startHeight={64}
           startRadius={24}
           endRadius={0}
           mediaZoom={1.35}
@@ -287,74 +286,26 @@ export default function Products() {
           useWindowScroll={true}
         >
           {/* Content that fades in over the media once it reaches full bleed */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              maxWidth: 960,
-              margin: '0 auto',
-            }}
-          >
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '6px 18px',
-                borderRadius: '9999px',
-                background: 'rgba(229,154,35,0.18)',
-                border: '1px solid rgba(229,154,35,0.45)',
-                backdropFilter: 'blur(12px)',
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: '11px',
-                letterSpacing: '0.25em',
-                textTransform: 'uppercase',
-                color: '#E07B10',
-                marginBottom: 16,
-              }}
-            >
+          <div className="flex flex-col items-center justify-center max-w-4xl mx-auto px-4 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E07B10]/20 border border-[#E07B10]/40 backdrop-blur-md font-body text-[10px] sm:text-xs tracking-[0.25em] uppercase text-[#E07B10] mb-4">
               <span>CHAPTER 02</span>
-              <span style={{ opacity: 0.4 }}>•</span>
+              <span className="opacity-40">•</span>
               <span>HEAVY-DUTY COMMERCIAL FLEET</span>
             </div>
 
-            <h2
-              style={{
-                fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                fontSize: 'clamp(36px, 6vw, 76px)',
-                fontWeight: 900,
-                textTransform: 'uppercase',
-                lineHeight: 0.95,
-                margin: '0 0 16px',
-                color: '#ffffff',
-                textShadow: '0 4px 24px rgba(0,0,0,0.7)',
-              }}
-            >
-              ENGINEERED FOR <span style={{ color: '#E07B10' }}>EXTREME PAYLOADS</span>
+            <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-[0.95] mb-4 text-white drop-shadow-md">
+              ENGINEERED FOR <span className="text-[#E07B10]">EXTREME PAYLOADS</span>
             </h2>
 
-            <p
-              style={{
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                fontSize: 'clamp(14px, 1.6vw, 18px)',
-                fontWeight: 300,
-                lineHeight: 1.6,
-                color: 'rgba(255,255,255,0.85)',
-                maxWidth: 620,
-                margin: '0 0 28px',
-                textShadow: '0 2px 12px rgba(0,0,0,0.6)',
-              }}
-            >
+            <p className="font-body text-xs sm:text-base md:text-lg font-light leading-relaxed text-white/90 max-w-xl mb-6 drop-shadow-sm">
               From certified ADR chemical tankers to 150-ton hydraulic low-bed trailers, our heavy
               commercial solutions are forged for unyielding performance and absolute durability.
             </p>
 
-            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div className="flex flex-wrap gap-3 justify-center">
               <GlassButton
                 variant="gold"
-                size="lg"
+                size="md"
                 onClick={() => {
                   const target = document.getElementById('catalog-cards')
                   if (target) target.scrollIntoView({ behavior: 'smooth' })
@@ -364,7 +315,7 @@ export default function Products() {
               </GlassButton>
               <GlassButton
                 variant="ghost"
-                size="lg"
+                size="md"
                 onClick={() => {
                   const target = document.getElementById('contact')
                   if (target) target.scrollIntoView({ behavior: 'smooth' })
@@ -377,99 +328,36 @@ export default function Products() {
         </ScrollExpand>
       </div>
 
-      {/* ── Big Cards Product Catalog ─────────────────────────────────────────── */}
-      <div id="catalog-cards" style={{ maxWidth: 1320, margin: '0 auto', padding: '0 clamp(24px, 5vw, 80px) 120px' }}>
+      {/* Product Catalog Grid Container */}
+      <div id="catalog-cards" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-32">
+        
         {/* Section Header & Filters */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 24,
-            marginBottom: 48,
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
-              gap: 24,
-            }}
-          >
+        <div className="flex flex-col gap-6 mb-8 sm:mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  fontSize: '11px',
-                  letterSpacing: '0.3em',
-                  textTransform: 'uppercase',
-                  color: '#E07B10',
-                  marginBottom: 8,
-                  fontWeight: 600,
-                }}
-              >
+              <div className="font-body text-[11px] tracking-[0.3em] uppercase text-[#E07B10] mb-2 font-bold">
                 Precision Fleet Catalog
               </div>
-              <h3
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: 'clamp(36px, 5vw, 56px)',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  lineHeight: 1,
-                  margin: 0,
-                  color: '#1B2B3A',
-                }}
-              >
+              <h3 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase leading-none text-[#1B2B3A]">
                 Tailored for Every Sector
               </h3>
             </div>
 
             {/* Filter Pills & View Switcher */}
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                gap: 12,
-              }}
-            >
+            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
               {/* Category filters */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: 8,
-                  background: '#FFFFFF',
-                  padding: '6px',
-                  borderRadius: '16px',
-                  border: '1px solid #E2DFDC',
-                  boxShadow: '0 2px 10px rgba(23,50,77,0.03)',
-                }}
-              >
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 bg-white p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs max-w-full">
                 {CATEGORIES.map((cat) => {
                   const isActive = activeCategory === cat.id
                   return (
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
-                      style={{
-                        padding: '8px 18px',
-                        borderRadius: '10px',
-                        fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                        fontSize: '14px',
-                        fontWeight: 700,
-                        letterSpacing: '0.05em',
-                        textTransform: 'uppercase',
-                        cursor: 'pointer',
-                        border: 'none',
-                        outline: 'none',
-                        transition: 'all 200ms ease',
-                        background: isActive ? '#E07B10' : 'transparent',
-                        color: isActive ? '#FFFFFF' : '#5C6470',
-                        boxShadow: isActive ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
-                      }}
+                      className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-display text-xs sm:text-sm font-bold tracking-wider uppercase cursor-pointer border-none transition-all ${
+                        isActive
+                          ? 'bg-[#E07B10] text-white shadow-xs'
+                          : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
+                      }`}
                     >
                       {cat.label}
                     </button>
@@ -478,254 +366,86 @@ export default function Products() {
               </div>
 
               {/* View Switcher: 3D ScrollStack vs 2-Column Grid */}
-              <div
-                style={{
-                  display: 'flex',
-                  gap: 6,
-                  background: '#FFFFFF',
-                  padding: '5px',
-                  borderRadius: '14px',
-                  border: '1px solid #E2DFDC',
-                  boxShadow: '0 2px 10px rgba(23,50,77,0.03)',
-                }}
-              >
+              <div className="flex gap-1.5 bg-white p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs">
                 <button
                   onClick={() => setViewMode('stack')}
-                  style={{
-                    padding: '7px 16px',
-                    borderRadius: '9px',
-                    fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    border: 'none',
-                    outline: 'none',
-                    transition: 'all 200ms ease',
-                    background: viewMode === 'stack' ? '#E07B10' : 'transparent',
-                    color: viewMode === 'stack' ? '#FFFFFF' : '#5C6470',
-                    boxShadow: viewMode === 'stack' ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                  }}
+                  className={`px-3 py-1.5 rounded-xl font-display text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all flex items-center gap-1.5 ${
+                    viewMode === 'stack'
+                      ? 'bg-[#E07B10] text-white shadow-xs'
+                      : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
+                  }`}
                 >
                   <span>☰</span>
-                  <span>3D ScrollStack</span>
+                  <span>Stack</span>
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
-                  style={{
-                    padding: '7px 16px',
-                    borderRadius: '9px',
-                    fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    border: 'none',
-                    outline: 'none',
-                    transition: 'all 200ms ease',
-                    background: viewMode === 'grid' ? '#E07B10' : 'transparent',
-                    color: viewMode === 'grid' ? '#FFFFFF' : '#5C6470',
-                    boxShadow: viewMode === 'grid' ? '0 2px 10px rgba(229,154,35,0.3)' : 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                  }}
+                  className={`px-3 py-1.5 rounded-xl font-display text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all flex items-center gap-1.5 ${
+                    viewMode === 'grid'
+                      ? 'bg-[#E07B10] text-white shadow-xs'
+                      : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
+                  }`}
                 >
                   <span>⊞</span>
-                  <span>2-Column Grid</span>
+                  <span>Grid</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── View Mode: 3D StickyCard002 Stack or 2-Column Grid ────────────────────────── */}
+        {/* View Mode: Responsive Stack or 2-Column Grid */}
         {viewMode === 'stack' ? (
-          <div style={{ position: 'relative', width: '100%', maxWidth: 1340, margin: '0 auto' }}>
+          <div className="relative w-full max-w-7xl mx-auto">
             <StickyCard002
               cards={filteredProducts}
               containerClassName="max-w-6xl xl:max-w-[1340px]"
               renderCard={(p) => (
                 <div
                   onClick={() => setSelectedProduct(p)}
-                  className="stack-card-inner group"
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(360px, 1.25fr) 1fr',
-                    minHeight: 'clamp(540px, 62vh, 620px)',
-                    cursor: 'pointer',
-                    background: '#FFFFFF',
-                    borderRadius: '34px',
-                    overflow: 'hidden',
-                    border: '1px solid #E2DFDC',
-                    boxShadow: '0 4px 16px rgba(27, 43, 58, 0.05), 0 1px 3px rgba(27, 43, 58, 0.03)',
-                    transition: 'border-color 250ms ease, box-shadow 250ms ease',
-                  }}
+                  className="stack-card-inner group grid grid-cols-1 lg:grid-cols-12 min-h-0 lg:min-h-[540px] cursor-pointer bg-white rounded-2xl sm:rounded-3xl lg:rounded-[34px] overflow-hidden border border-[#E2DFDC] shadow-xs hover:shadow-md transition-all"
                 >
-                  {/* Left side: Massive Vehicle Image */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      overflow: 'hidden',
-                      height: '100%',
-                      minHeight: 360,
-                      backgroundColor: '#F6F5F1',
-                    }}
-                  >
+                  {/* Vehicle Image (Top on mobile, Left 7-cols on desktop) */}
+                  <div className="relative lg:col-span-7 overflow-hidden h-56 sm:h-72 lg:h-full min-h-[220px] sm:min-h-[280px] lg:min-h-[360px] bg-[#F6F5F1]">
                     <img
                       src={p.img}
                       alt={p.name}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)',
-                      }}
-                      className="group-hover:scale-105"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background:
-                          'linear-gradient(180deg, transparent 75%, rgba(27,43,58,0.1) 100%)',
-                      }}
-                    />
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 20,
-                        left: 20,
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        color: '#FFFFFF',
-                        background: '#E07B10',
-                        padding: '6px 16px',
-                        borderRadius: '8px',
-                        boxShadow: '0 2px 10px rgba(229,154,35,0.4)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 6,
-                      }}
-                    >
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B2B3A]/40 via-transparent to-transparent pointer-events-none" />
+                    
+                    {/* Category Tag */}
+                    <div className="absolute top-4 left-4 font-body text-[10px] sm:text-xs font-bold tracking-wider uppercase text-white bg-[#E07B10] px-3 py-1 rounded-md shadow-xs flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                       <span>{p.tag}</span>
                     </div>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 20,
-                        right: 20,
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        color: '#1B2B3A',
-                        background: 'rgba(255, 255, 255, 0.92)',
-                        backdropFilter: 'blur(8px)',
-                        boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
-                        padding: '5px 14px',
-                        borderRadius: '8px',
-                        border: '1px solid #E2DFDC',
-                        fontWeight: 600,
-                      }}
-                    >
-                      Click to Expand ⤢
+
+                    {/* Expand Cue */}
+                    <div className="absolute top-4 right-4 font-body text-[10px] sm:text-xs tracking-wider uppercase text-[#1B2B3A] bg-white/90 backdrop-blur-xs px-3 py-1 rounded-md border border-[#E2DFDC] font-semibold">
+                      Inspect Specs ↗
                     </div>
                   </div>
 
-                  {/* Right side: Detailed Specs & Controls (Bigger & More Spacious) */}
-                  <div
-                    style={{
-                      padding: 'clamp(32px, 4vw, 52px)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      background: '#FFFFFF',
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        color: '#E07B10',
-                        marginBottom: 8,
-                        fontWeight: 700,
-                      }}
-                    >
+                  {/* Detailed Specs & Controls (Bottom on mobile, Right 5-cols on desktop) */}
+                  <div className="lg:col-span-5 p-5 sm:p-7 lg:p-8 xl:p-10 flex flex-col justify-center bg-white">
+                    <div className="font-body text-[10px] sm:text-xs tracking-widest uppercase text-[#E07B10] font-bold mb-1.5">
                       Build Lead Time: {p.leadTime}
                     </div>
-                    <h4
-                      style={{
-                        fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                        fontSize: 'clamp(34px, 4.2vw, 46px)',
-                        fontWeight: 900,
-                        textTransform: 'uppercase',
-                        color: '#1B2B3A',
-                        margin: '0 0 12px',
-                        lineHeight: 1,
-                      }}
-                    >
+                    <h4 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl uppercase text-[#1B2B3A] mb-2 sm:mb-3 leading-tight">
                       {p.name}
                     </h4>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '14px',
-                        color: '#5C6470',
-                        lineHeight: 1.65,
-                        margin: '0 0 24px',
-                      }}
-                    >
+                    <p className="font-body text-xs sm:text-sm text-[#5C6470] leading-relaxed mb-4 sm:mb-6 line-clamp-3 lg:line-clamp-none">
                       {p.desc}
                     </p>
 
                     {/* Specs Grid */}
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        gap: 12,
-                        padding: '18px',
-                        borderRadius: '14px',
-                        background: '#F6F5F1',
-                        border: '1px solid #E2DFDC',
-                        marginBottom: 28,
-                      }}
-                    >
+                    <div className="grid grid-cols-2 gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl bg-[#F6F5F1] border border-[#E2DFDC] mb-5 sm:mb-6">
                       {p.specs.map((s, idx) => (
                         <div key={idx}>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                              fontSize: '11px',
-                              letterSpacing: '0.12em',
-                              textTransform: 'uppercase',
-                              color: '#5C6470',
-                              marginBottom: 3,
-                              fontWeight: 600,
-                            }}
-                          >
+                          <div className="font-body text-[10px] sm:text-[11px] tracking-wider uppercase text-[#5C6470] mb-0.5 font-semibold">
                             {s.label}
                           </div>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                              fontSize: '19px',
-                              fontWeight: 800,
-                              color: '#1B2B3A',
-                            }}
-                          >
+                          <div className="font-display font-extrabold text-sm sm:text-base lg:text-lg text-[#1B2B3A] leading-tight">
                             {s.value}
                           </div>
                         </div>
@@ -733,11 +453,11 @@ export default function Products() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div style={{ display: 'flex', gap: 12 }}>
+                    <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
                       <GlassButton
                         variant="gold"
                         size="md"
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, justifyContent: 'center' }}
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                           e.stopPropagation()
                           setSelectedProduct(p)
@@ -748,7 +468,7 @@ export default function Products() {
                       <GlassButton
                         variant="ghost"
                         size="md"
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, justifyContent: 'center' }}
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                           e.stopPropagation()
                           const contactEl = document.getElementById('contact')
@@ -764,234 +484,64 @@ export default function Products() {
             />
           </div>
         ) : (
-          /* Big Product Cards Grid - Centered 2 Cards Layout */
+          /* Product Cards Grid: 1 Col on Mobile, 2 Col on Tablet/Desktop */
           <div
             ref={gridCardsRef}
-            className="products-2col-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-              gap: '40px 36px',
-              maxWidth: 1220,
-              margin: '0 auto',
-              width: '100%',
-            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto w-full"
           >
             {filteredProducts.map((p) => {
               const isHovered = hoveredId === p.id
               return (
                 <div
                   key={p.id}
-                  className="grid-product-card"
+                  className="grid-product-card bg-white rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-[#E2DFDC] hover:border-[#E07B10] shadow-xs hover:shadow-lg transition-all flex flex-col"
                   onClick={() => setSelectedProduct(p)}
                   onMouseEnter={() => setHoveredId(p.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  style={{
-                    position: 'relative',
-                    background: '#FFFFFF',
-                    borderRadius: '24px',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    border: isHovered
-                      ? '1px solid #E07B10'
-                      : '1px solid #E2DFDC',
-                    boxShadow: isHovered
-                      ? '0 20px 48px rgba(229,154,35,0.15)'
-                      : '0 4px 20px rgba(23,50,77,0.04)',
-                    transform: isHovered ? 'translateY(-8px) scale(1.015)' : 'translateY(0) scale(1)',
-                    transition: 'all 320ms cubic-bezier(0.22, 1, 0.36, 1)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
                 >
-                  {/* Visual Image Banner (Bigger 16:9.5 Aspect) */}
-                  <div
-                    style={{
-                      position: 'relative',
-                      aspectRatio: '16/9.5',
-                      minHeight: 280,
-                      overflow: 'hidden',
-                      backgroundColor: '#F6F5F1',
-                    }}
-                  >
+                  {/* Visual Image Banner */}
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] min-h-[200px] overflow-hidden bg-[#F6F5F1]">
                     <img
                       src={p.img}
                       alt={p.name}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transform: isHovered ? 'scale(1.08)' : 'scale(1)',
-                        transition: 'transform 600ms cubic-bezier(0.22, 1, 0.36, 1)',
-                      }}
+                      className={`w-full h-full object-cover transition-transform duration-500 ease-out ${
+                        isHovered ? 'scale-105' : 'scale-100'
+                      }`}
                     />
-
-                    {/* Gradient Scrim */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background:
-                          'linear-gradient(180deg, rgba(23,50,77,0.05) 0%, rgba(23,50,77,0.4) 100%)',
-                      }}
-                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B2B3A]/60 via-transparent to-transparent pointer-events-none" />
 
                     {/* Category Badge */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 18,
-                        left: 18,
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        color: '#FFFFFF',
-                        background: '#E07B10',
-                        padding: '5px 14px',
-                        borderRadius: '6px',
-                        boxShadow: '0 2px 8px rgba(229,154,35,0.35)',
-                      }}
-                    >
+                    <div className="absolute top-3.5 left-3.5 font-body text-[10px] sm:text-xs font-bold tracking-wider uppercase text-white bg-[#E07B10] px-2.5 py-1 rounded-md shadow-xs">
                       {p.tag}
                     </div>
 
                     {/* Lead Time indicator */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 18,
-                        right: 18,
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        color: '#1B2B3A',
-                        background: '#FFFFFF',
-                        boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
-                        padding: '5px 12px',
-                        borderRadius: '6px',
-                        border: '1px solid #E2DFDC',
-                        fontWeight: 600,
-                      }}
-                    >
+                    <div className="absolute top-3.5 right-3.5 font-body text-[10px] sm:text-xs tracking-wider uppercase text-[#1B2B3A] bg-white px-2.5 py-1 rounded-md border border-[#E2DFDC] font-semibold">
                       Build: {p.leadTime}
                     </div>
 
-                    {/* Expand Cue on Hover */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: 18,
-                        right: 18,
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#E07B10',
-                        background: '#FFFFFF',
-                        boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
-                        padding: '5px 12px',
-                        borderRadius: '6px',
-                        border: '1px solid #E2DFDC',
-                        opacity: isHovered ? 1 : 0,
-                        transform: isHovered ? 'translateY(0)' : 'translateY(-4px)',
-                        transition: 'all 240ms ease',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 5,
-                      }}
-                    >
-                      <span>Click to Expand</span>
-                      <span>⤢</span>
-                    </div>
-
                     {/* Name overlay */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: 18,
-                        left: 22,
-                        right: 120,
-                      }}
-                    >
-                      <h4
-                        style={{
-                          fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                          fontSize: 'clamp(28px, 3.8vw, 36px)',
-                          fontWeight: 800,
-                          textTransform: 'uppercase',
-                          color: '#FFFFFF',
-                          margin: 0,
-                          lineHeight: 1,
-                          textShadow: '0 2px 12px rgba(23,50,77,0.7)',
-                        }}
-                      >
+                    <div className="absolute bottom-3.5 left-3.5 right-3.5">
+                      <h4 className="font-display font-black text-xl sm:text-2xl lg:text-3xl uppercase text-white drop-shadow-md m-0">
                         {p.name}
                       </h4>
                     </div>
                   </div>
 
                   {/* Card Body */}
-                  <div
-                    style={{
-                      padding: '28px 28px 32px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      flex: 1,
-                      background: '#FFFFFF',
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '14.5px',
-                        color: '#5C6470',
-                        lineHeight: 1.65,
-                        margin: '0 0 22px',
-                        minHeight: 48,
-                      }}
-                    >
+                  <div className="p-5 sm:p-6 flex flex-col flex-1 bg-white">
+                    <p className="font-body text-xs sm:text-sm text-[#5C6470] leading-relaxed mb-4 line-clamp-2">
                       {p.desc}
                     </p>
 
                     {/* Technical Specs 2x2 Grid */}
-                    <div
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        gap: 12,
-                        padding: '18px',
-                        borderRadius: '14px',
-                        background: '#F6F5F1',
-                        border: '1px solid #E2DFDC',
-                        marginBottom: 26,
-                      }}
-                    >
+                    <div className="grid grid-cols-2 gap-2.5 p-3 rounded-xl bg-[#F6F5F1] border border-[#E2DFDC] mb-5">
                       {p.specs.map((s, sIdx) => (
                         <div key={sIdx}>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                              fontSize: '11px',
-                              letterSpacing: '0.12em',
-                              textTransform: 'uppercase',
-                              color: '#5C6470',
-                              marginBottom: 3,
-                            }}
-                          >
+                          <div className="font-body text-[10px] tracking-wider uppercase text-[#5C6470] mb-0.5">
                             {s.label}
                           </div>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                              fontSize: '17px',
-                              fontWeight: 800,
-                              color: '#1B2B3A',
-                            }}
-                          >
+                          <div className="font-display font-bold text-sm sm:text-base text-[#1B2B3A]">
                             {s.value}
                           </div>
                         </div>
@@ -999,18 +549,11 @@ export default function Products() {
                     </div>
 
                     {/* Action Buttons Row */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 14,
-                        marginTop: 'auto',
-                      }}
-                    >
+                    <div className="flex gap-2.5 mt-auto">
                       <GlassButton
                         variant="gold"
-                        size="md"
-                        style={{ flex: 1 }}
+                        size="sm"
+                        style={{ flex: 1, justifyContent: 'center' }}
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                           e.stopPropagation()
                           setSelectedProduct(p)
@@ -1020,8 +563,8 @@ export default function Products() {
                       </GlassButton>
                       <GlassButton
                         variant="ghost"
-                        size="md"
-                        style={{ flex: 1 }}
+                        size="sm"
+                        style={{ flex: 1, justifyContent: 'center' }}
                         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                           e.stopPropagation()
                           const contactEl = document.getElementById('contact')
@@ -1039,186 +582,65 @@ export default function Products() {
         )}
       </div>
 
-      {/* ── Interactive Vehicle Inspection Modal ───────────────────────────────── */}
+      {/* Interactive Vehicle Inspection Modal */}
       {selectedProduct && (
         <div
           onClick={() => setSelectedProduct(null)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 99999,
-            background: 'rgba(23, 50, 77, 0.45)',
-            backdropFilter: 'blur(16px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '24px',
-            animation: 'fadeUp 240ms ease forwards',
-          }}
+          className="fixed inset-0 z-[99999] bg-[#1B2B3A]/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: 920,
-              maxHeight: '90vh',
-              overflowY: 'auto',
-              background: '#FFFFFF',
-              border: '1px solid #E2DFDC',
-              borderRadius: '24px',
-              boxShadow: '0 24px 72px rgba(23, 50, 77, 0.18)',
-              display: 'flex',
-              flexDirection: 'column',
-              animation: 'cardModalExpand 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards',
-            }}
+            className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-white border border-[#E2DFDC] rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col"
           >
             {/* Modal Header Image */}
-            <div style={{ position: 'relative', height: 280, overflow: 'hidden' }}>
+            <div className="relative h-48 sm:h-64 overflow-hidden shrink-0">
               <img
                 src={selectedProduct.img}
                 alt={selectedProduct.name}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                className="w-full h-full object-cover"
               />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(0deg, rgba(23, 50, 77, 0.8) 0%, transparent 60%)',
-                }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1B2B3A]/80 via-[#1B2B3A]/20 to-transparent" />
+              
               {/* Close button */}
               <button
                 onClick={() => setSelectedProduct(null)}
-                style={{
-                  position: 'absolute',
-                  top: 18,
-                  right: 18,
-                  width: 36,
-                  height: 36,
-                  borderRadius: '50%',
-                  background: '#FFFFFF',
-                  border: '1px solid #E2DFDC',
-                  color: '#1B2B3A',
-                  fontSize: 18,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'all 200ms ease',
-                  boxShadow: '0 2px 8px rgba(23,50,77,0.1)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#E07B10'
-                  e.currentTarget.style.color = '#FFFFFF'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#FFFFFF'
-                  e.currentTarget.style.color = '#1B2B3A'
-                }}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white hover:bg-[#E07B10] text-[#1B2B3A] hover:text-white border border-[#E2DFDC] flex items-center justify-center cursor-pointer transition-colors shadow-sm text-base"
+                aria-label="Close modal"
               >
                 ✕
               </button>
+
               {/* Header Title */}
-              <div style={{ position: 'absolute', bottom: 20, left: 28, right: 28 }}>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                    fontSize: '11px',
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    color: '#FFFFFF',
-                    background: '#E07B10',
-                    padding: '4px 12px',
-                    borderRadius: '4px',
-                    marginBottom: 8,
-                    fontWeight: 700,
-                  }}
-                >
+              <div className="absolute bottom-4 left-4 sm:left-6 right-4 sm:right-6">
+                <span className="inline-block font-body text-[10px] tracking-wider uppercase text-white bg-[#E07B10] px-3 py-1 rounded-md mb-1.5 font-bold">
                   {selectedProduct.tag}
                 </span>
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                    fontSize: 'clamp(32px, 5vw, 44px)',
-                    fontWeight: 900,
-                    textTransform: 'uppercase',
-                    color: '#FFFFFF',
-                    margin: 0,
-                  }}
-                >
+                <h3 className="font-display font-black text-2xl sm:text-4xl uppercase text-white m-0 leading-tight">
                   {selectedProduct.name}
                 </h3>
               </div>
             </div>
 
             {/* Modal Content */}
-            <div style={{ padding: '28px 32px 36px', background: '#FFFFFF' }}>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                  fontSize: '15px',
-                  color: '#5C6470',
-                  lineHeight: 1.65,
-                  margin: '0 0 28px',
-                }}
-              >
+            <div className="p-4 sm:p-6 md:p-8 bg-white flex flex-col">
+              <p className="font-body text-xs sm:text-sm text-[#5C6470] leading-relaxed mb-6">
                 {selectedProduct.desc}
               </p>
 
               {/* Specs Grid */}
-              <h5
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '18px',
-                  fontWeight: 800,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: '#1B2B3A',
-                  margin: '0 0 14px',
-                }}
-              >
-                Technical Specifications & Limits
+              <h5 className="font-display font-extrabold text-base sm:text-lg tracking-wider uppercase text-[#1B2B3A] mb-3">
+                Technical Specifications &amp; Limits
               </h5>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                  gap: 12,
-                  marginBottom: 28,
-                }}
-              >
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-6">
                 {selectedProduct.specs.map((s, idx) => (
                   <div
                     key={idx}
-                    style={{
-                      background: '#F6F5F1',
-                      border: '1px solid #E2DFDC',
-                      borderRadius: '10px',
-                      padding: '12px 16px',
-                    }}
+                    className="bg-[#F6F5F1] border border-[#E2DFDC] rounded-xl p-3"
                   >
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: '11px',
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: '#5C6470',
-                      }}
-                    >
+                    <div className="font-body text-[10px] tracking-wider uppercase text-[#5C6470]">
                       {s.label}
                     </div>
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                        fontSize: '17px',
-                        fontWeight: 800,
-                        color: '#1B2B3A',
-                        marginTop: 4,
-                      }}
-                    >
+                    <div className="font-display font-extrabold text-sm sm:text-base text-[#1B2B3A] mt-1">
                       {s.value}
                     </div>
                   </div>
@@ -1226,83 +648,43 @@ export default function Products() {
               </div>
 
               {/* Engineering Features */}
-              <h5
-                style={{
-                  fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                  fontSize: '18px',
-                  fontWeight: 800,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: '#1B2B3A',
-                  margin: '0 0 14px',
-                }}
-              >
+              <h5 className="font-display font-extrabold text-base sm:text-lg tracking-wider uppercase text-[#1B2B3A] mb-3">
                 Key Engineering Highlights
               </h5>
-              <ul
-                style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: '0 0 32px',
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                  gap: 10,
-                }}
-              >
+              <ul className="list-none p-0 m-0 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {selectedProduct.features.map((feat, fIdx) => (
                   <li
                     key={fIdx}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 10,
-                      fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                      fontSize: '13.5px',
-                      color: '#5C6470',
-                    }}
+                    className="flex items-center gap-2.5 font-body text-xs sm:text-sm text-[#5C6470]"
                   >
-                    <span style={{ color: '#E07B10', fontSize: '14px', fontWeight: 900 }}>✔</span>
+                    <span className="text-[#E07B10] text-sm font-black">✓</span>
                     <span>{feat}</span>
                   </li>
                 ))}
               </ul>
 
               {/* Modal Actions */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  flexWrap: 'wrap',
-                  gap: 16,
-                  borderTop: '1px solid #E2DFDC',
-                  paddingTop: 24,
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                    fontSize: '13px',
-                    color: '#5C6470',
-                  }}
-                >
-                  Custom engineering and dimensions built to order.
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E2DFDC] pt-5 mt-auto">
+                <div className="font-body text-xs text-[#5C6470] text-center sm:text-left">
+                  Custom engineering and dimensions built to order in KSA.
                 </div>
-                <div style={{ display: 'flex', gap: 12 }}>
+                <div className="flex gap-2.5 w-full sm:w-auto">
                   <GlassButton
                     variant="gold"
                     size="md"
+                    style={{ flex: 1, justifyContent: 'center' }}
                     onClick={() => {
                       setSelectedProduct(null)
                       const c = document.getElementById('contact')
                       if (c) c.scrollIntoView({ behavior: 'smooth' })
                     }}
                   >
-                    Inquire Specification Blueprint →
+                    Inquire Blueprint →
                   </GlassButton>
                   <GlassButton
                     variant="ghost"
                     size="md"
+                    style={{ flex: 1, justifyContent: 'center' }}
                     onClick={() => setSelectedProduct(null)}
                   >
                     Close
@@ -1313,30 +695,6 @@ export default function Products() {
           </div>
         </div>
       )}
-
-      {/* Responsive & Animation Styles */}
-      <style>{`
-        @media (max-width: 860px) {
-          .stack-card-inner {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @media (max-width: 820px) {
-          .products-2col-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        @keyframes cardModalExpand {
-          0% {
-            opacity: 0;
-            transform: scale(0.88) translateY(24px);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
-      `}</style>
     </section>
   )
 }

@@ -23,7 +23,7 @@ const STEPS: StepItem[] = [
     title: 'Consultation',
     subtitle: 'Operational Assessment & Regulatory Architecture',
     desc: 'We conduct deep engineering discovery into your operational payload demands, duty-cycle parameters, regional DOT/EPA regulations, and fleet integration needs before cutting a single sheet of steel.',
-    icon: '◎',
+    icon: '🔍',
     phase: 'Phase 1 • Weeks 1-2',
     badge: 'Discovery & Audit',
     deliverables: [
@@ -42,7 +42,7 @@ const STEPS: StepItem[] = [
     title: 'Design',
     subtitle: 'Parametric 3D CAD & FEA Stress Modeling',
     desc: 'Our mechanical aerospace and heavy-equipment engineers construct full-fidelity 3D SolidWorks models, running rigorous Finite Element Analysis (FEA) to maximize structural rigidity while trimming deadweight.',
-    icon: '⬡',
+    icon: '📐',
     phase: 'Phase 2 • Weeks 3-4',
     badge: '3D Simulation',
     deliverables: [
@@ -61,7 +61,7 @@ const STEPS: StepItem[] = [
     title: 'Fabrication',
     subtitle: 'Robotic CNC, Certified Metallurgy & Mil-Spec Coating',
     desc: 'Manufacturing occurs in our ISO 9001:2015 facility utilizing ultra-high-power fiber laser cutting, precision CNC press brakes, AWS D1.1 certified robotic welding, and multi-stage anti-corrosion urethane finishes.',
-    icon: '⚙',
+    icon: '⚙️',
     phase: 'Phase 3 • Weeks 5-7',
     badge: 'Heavy Fabrication',
     deliverables: [
@@ -80,7 +80,7 @@ const STEPS: StepItem[] = [
     title: 'Delivery',
     subtitle: 'Dynamic Load Testing, Final Certification & Fleet Handover',
     desc: 'Every completed asset undergoes multi-point dynamic road trials, hydraulic pressure proofing, and full regulatory certification before turnkey transport to your depot with full schematics and operational documentation.',
-    icon: '⬤',
+    icon: '🚚',
     phase: 'Phase 4 • Week 8',
     badge: 'Turnkey Handover',
     deliverables: [
@@ -114,14 +114,14 @@ export default function Process() {
           card,
           {
             opacity: 0,
-            y: 65,
-            scale: 0.96,
+            y: 50,
+            scale: 0.97,
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.85,
+            duration: 0.75,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
@@ -136,16 +136,16 @@ export default function Process() {
         if (deliverables.length > 0) {
           gsap.fromTo(
             deliverables,
-            { opacity: 0, x: -14 },
+            { opacity: 0, x: -10 },
             {
               opacity: 1,
               x: 0,
-              duration: 0.5,
-              stagger: 0.07,
+              duration: 0.45,
+              stagger: 0.05,
               ease: 'power2.out',
               scrollTrigger: {
                 trigger: card,
-                start: 'top 80%',
+                start: 'top 82%',
                 toggleActions: 'play none none none',
               },
             }
@@ -164,7 +164,7 @@ export default function Process() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        padding: 'clamp(90px, 12vw, 160px) clamp(20px, 5vw, 80px)',
+        padding: 'clamp(60px, 9vw, 140px) clamp(16px, 4vw, 80px)',
         backgroundColor: '#F6F5F1',
       }}
     >
@@ -178,54 +178,45 @@ export default function Process() {
         <div
           style={{
             position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(circle at 15% 20%, rgba(229,154,35,0.06) 0%, transparent 60%), radial-gradient(circle at 85% 80%, rgba(23,50,77,0.04) 0%, transparent 60%), linear-gradient(180deg, #F6F5F1 0%, rgba(247,249,252,0.85) 50%, #F6F5F1 100%)',
-          }}
-        />
-
-        {/* Subtle grid background */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(23,50,77,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(23,50,77,0.03) 1px, transparent 1px)',
-            backgroundSize: '80px 80px',
-            opacity: 0.5,
+            top: '20%',
+            right: '-10%',
+            width: 600,
+            height: 600,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(224,123,16,0.06) 0%, transparent 70%)',
           }}
         />
       </div>
 
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 1240, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         {/* Centered Grand Header with ScrollFloat animation */}
-        <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 8vw, 80px)', maxWidth: 900, margin: '0 auto clamp(50px, 8vw, 80px)' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(40px, 6vw, 70px)', maxWidth: 900, margin: '0 auto clamp(40px, 6vw, 70px)' }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 10,
-              padding: '6px 16px',
+              gap: 8,
+              padding: '5px 14px',
               borderRadius: 24,
               background: 'rgba(229,154,35,0.12)',
               border: '1px solid rgba(229,154,35,0.3)',
-              marginBottom: 20,
+              marginBottom: 16,
             }}
           >
             <span
               style={{
-                width: 7,
-                height: 7,
+                width: 6,
+                height: 6,
                 borderRadius: '50%',
                 background: '#E07B10',
-                boxShadow: '0 0 10px #E07B10',
+                boxShadow: '0 0 8px #E07B10',
               }}
             />
             <span
               style={{
                 fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                fontSize: 12,
-                letterSpacing: '0.24em',
+                fontSize: 11,
+                letterSpacing: '0.2em',
                 textTransform: 'uppercase',
                 color: '#E07B10',
                 fontWeight: 700,
@@ -237,12 +228,12 @@ export default function Process() {
 
           {/* Headline using ScrollFloat from React Bits */}
           <ScrollFloat
-            animationDuration={1.1}
+            animationDuration={1.0}
             ease="back.out(1.8)"
             stagger={0.02}
             textStyle={{
               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-              fontSize: 'clamp(42px, 6vw, 84px)',
+              fontSize: 'clamp(36px, 5.5vw, 76px)',
               fontWeight: 900,
               lineHeight: 1,
               letterSpacing: '-0.01em',
@@ -256,20 +247,20 @@ export default function Process() {
           <p
             style={{
               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-              fontSize: 'clamp(16px, 1.8vw, 19px)',
+              fontSize: 'clamp(14px, 1.5vw, 17px)',
               color: '#5C6470',
-              lineHeight: 1.7,
-              margin: '20px auto 0',
-              maxWidth: 720,
+              lineHeight: 1.65,
+              margin: '16px auto 0',
+              maxWidth: 680,
             }}
           >
             We follow a streamlined, high-precision engineering process to ensure structural excellence,
-            regulatory certification, and turnkey deployment — on time, every time.
+            regulatory certification, and turnkey deployment - on time, every time.
           </p>
         </div>
 
         {/* Expansive Full-Width Process Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(24px, 3.5vw, 40px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(20px, 3vw, 36px)' }}>
           {STEPS.map((step, idx) => {
             const isHovered = hoveredIdx === idx;
             return (
@@ -281,16 +272,16 @@ export default function Process() {
                 style={{
                   position: 'relative',
                   borderRadius: 20,
-                  padding: 'clamp(28px, 4.5vw, 48px)',
+                  padding: 'clamp(20px, 4vw, 44px)',
                   background: '#FFFFFF',
                   border: isHovered
                     ? '1px solid #E07B10'
                     : '1px solid #E2DFDC',
                   boxShadow: isHovered
-                    ? '0 20px 50px rgba(229,154,35,0.14), 0 4px 12px rgba(23,50,77,0.04)'
-                    : '0 10px 30px rgba(23,50,77,0.05)',
-                  transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
-                  transform: isHovered ? 'translateY(-4px)' : 'none',
+                    ? '0 16px 40px rgba(229,154,35,0.12), 0 4px 12px rgba(23,50,77,0.04)'
+                    : '0 8px 24px rgba(23,50,77,0.04)',
+                  transition: 'all 300ms cubic-bezier(0.16, 1, 0.3, 1)',
+                  transform: isHovered ? 'translateY(-3px)' : 'none',
                 }}
               >
                 {/* Top Subtle Gold Accent Line */}
@@ -298,72 +289,63 @@ export default function Process() {
                   style={{
                     position: 'absolute',
                     top: 0,
-                    left: 40,
-                    right: 40,
+                    left: 36,
+                    right: 36,
                     height: 2,
                     background: isHovered
                       ? 'linear-gradient(90deg, transparent, #E07B10, transparent)'
-                      : 'linear-gradient(90deg, transparent, rgba(229,154,35,0.4), transparent)',
-                    transition: 'all 350ms ease',
+                      : 'transparent',
+                    transition: 'all 300ms ease',
                   }}
                 />
 
-                {/* 2-Column Responsive Card Grid */}
                 <div className="process-card-inner-grid">
-                  {/* Left Column: Big Step Number, Icon, and ScrollFloat Title */}
-                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  {/* Left Column: Phase badge, Step Number, and Quick Specs */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      borderRight: '1px solid #E2DFDC',
+                      paddingRight: 'clamp(16px, 3vw, 36px)',
+                    }}
+                    className="process-card-left-col"
+                  >
                     <div>
-                      {/* Badge and Phase */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                        <div
+                      {/* Phase metadata and stage tag */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          marginBottom: 12,
+                        }}
+                      >
+                        <span
                           style={{
-                            width: 44,
-                            height: 44,
-                            borderRadius: 10,
-                            background: isHovered
-                              ? 'linear-gradient(135deg, #E07B10, #C46C0C)'
-                              : 'rgba(229,154,35,0.12)',
-                            border: '1px solid rgba(229,154,35,0.3)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            boxShadow: isHovered ? '0 0 20px rgba(229,154,35,0.35)' : 'none',
-                            transition: 'all 300ms ease',
+                            fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                            fontSize: 11,
+                            letterSpacing: '0.12em',
+                            textTransform: 'uppercase',
+                            color: '#8C949C',
+                            fontWeight: 600,
                           }}
                         >
-                          <span
-                            style={{
-                              fontSize: 20,
-                              color: isHovered ? '#FFFFFF' : '#E07B10',
-                              fontWeight: 900,
-                              transition: 'color 300ms ease',
-                            }}
-                          >
-                            {step.icon}
-                          </span>
-                        </div>
-
-                        <div>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                              fontSize: 12,
-                              letterSpacing: '0.2em',
-                              textTransform: 'uppercase',
-                              color: '#E07B10',
-                              fontWeight: 700,
-                            }}
-                          >
-                            {step.phase}
-                          </div>
+                          {step.phase}
+                        </span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <span style={{ fontSize: 16 }}>{step.icon}</span>
                           <div
                             style={{
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                              fontSize: 11,
-                              letterSpacing: '0.12em',
+                              fontSize: 10,
+                              fontWeight: 700,
                               textTransform: 'uppercase',
-                              color: '#5C6470',
-                              fontWeight: 500,
+                              letterSpacing: '0.12em',
+                              padding: '2px 8px',
+                              borderRadius: 4,
+                              background: '#F6F5F1',
+                              color: '#1B2B3A',
                             }}
                           >
                             {step.badge}
@@ -371,39 +353,39 @@ export default function Process() {
                         </div>
                       </div>
 
-                      {/* Prominent Large Step Number & ScrollFloat Animated Title */}
-                      <div style={{ margin: '12px 0 8px' }}>
+                      {/* Prominent Large Step Number & Title */}
+                      <div style={{ margin: '8px 0' }}>
                         <div
                           style={{
                             display: 'inline-block',
-                            padding: '3px 10px',
+                            padding: '2px 8px',
                             borderRadius: 6,
                             background: 'rgba(229,154,35,0.12)',
                             border: '1px solid rgba(229,154,35,0.3)',
                             fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: 800,
                             letterSpacing: '0.12em',
                             color: '#E07B10',
-                            marginBottom: 8,
+                            marginBottom: 6,
                           }}
                         >
                           STEP {step.num}
                         </div>
 
-                        {/* Huge Step Title Animated with ScrollFloat */}
+                        {/* Step Title Animated with ScrollFloat */}
                         <ScrollFloat
                           as="h3"
                           animationDuration={0.8}
                           ease="back.out(1.8)"
-                          stagger={0.025}
+                          stagger={0.02}
                           textStyle={{
                             fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                            fontSize: 'clamp(38px, 4.8vw, 60px)',
+                            fontSize: 'clamp(32px, 4vw, 54px)',
                             fontWeight: 900,
                             textTransform: 'uppercase',
                             letterSpacing: '0.02em',
-                            lineHeight: 1.1,
+                            lineHeight: 1.05,
                             color: '#1B2B3A',
                             display: 'inline-block',
                           }}
@@ -414,7 +396,7 @@ export default function Process() {
                     </div>
 
                     {/* Quick Specs Callouts for this step */}
-                    <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
                       {step.specs.map((spec, sIdx) => (
                         <div
                           key={sIdx}
@@ -422,7 +404,7 @@ export default function Process() {
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
-                            padding: '8px 14px',
+                            padding: '6px 12px',
                             borderRadius: 8,
                             background: '#F6F5F1',
                             border: '1px solid #E2DFDC',
@@ -432,7 +414,7 @@ export default function Process() {
                             style={{
                               fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
                               fontSize: 11,
-                              letterSpacing: '0.15em',
+                              letterSpacing: '0.12em',
                               textTransform: 'uppercase',
                               color: '#5C6470',
                               fontWeight: 700,
@@ -443,7 +425,7 @@ export default function Process() {
                           <span
                             style={{
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                              fontSize: 13,
+                              fontSize: 12,
                               fontWeight: 700,
                               color: '#1B2B3A',
                             }}
@@ -460,12 +442,12 @@ export default function Process() {
                     <div
                       style={{
                         fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                        fontSize: 'clamp(18px, 2.2vw, 24px)',
+                        fontSize: 'clamp(16px, 2vw, 22px)',
                         fontWeight: 700,
                         letterSpacing: '0.04em',
                         color: '#E07B10',
                         textTransform: 'uppercase',
-                        marginBottom: 12,
+                        marginBottom: 10,
                       }}
                     >
                       {step.subtitle}
@@ -474,10 +456,10 @@ export default function Process() {
                     <p
                       style={{
                         fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                        fontSize: 'clamp(15px, 1.5vw, 17px)',
+                        fontSize: 'clamp(13.5px, 1.4vw, 16px)',
                         color: '#5C6470',
-                        lineHeight: 1.75,
-                        margin: '0 0 24px',
+                        lineHeight: 1.7,
+                        margin: '0 0 20px',
                       }}
                     >
                       {step.desc}
@@ -487,29 +469,23 @@ export default function Process() {
                     <div
                       style={{
                         borderTop: '1px solid #E2DFDC',
-                        paddingTop: 20,
+                        paddingTop: 16,
                       }}
                     >
                       <div
                         style={{
                           fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
-                          fontSize: 12,
-                          letterSpacing: '0.18em',
+                          fontSize: 11,
+                          letterSpacing: '0.16em',
                           textTransform: 'uppercase',
                           color: '#1B2B3A',
-                          marginBottom: 12,
+                          marginBottom: 10,
                           fontWeight: 700,
                         }}
                       >
                         Core Deliverables & Standards
                       </div>
-                      <div
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                          gap: '10px 20px',
-                        }}
-                      >
+                      <div className="process-deliverables-grid">
                         {step.deliverables.map((item, dIdx) => (
                           <div
                             key={dIdx}
@@ -517,19 +493,19 @@ export default function Process() {
                             style={{
                               display: 'flex',
                               alignItems: 'center',
-                              gap: 10,
+                              gap: 8,
                               fontFamily: 'var(--font-body, "Outfit", sans-serif)',
-                              fontSize: 13.5,
+                              fontSize: 13,
                               color: '#5C6470',
                             }}
                           >
                             <span
                               style={{
                                 color: '#E07B10',
-                                fontSize: 13,
+                                fontSize: 12,
                                 flexShrink: 0,
-                                width: 18,
-                                height: 18,
+                                width: 16,
+                                height: 16,
                                 borderRadius: '50%',
                                 background: 'rgba(229,154,35,0.12)',
                                 display: 'inline-flex',
@@ -556,14 +532,32 @@ export default function Process() {
       <style>{`
         .process-card-inner-grid {
           display: grid;
-          grid-template-columns: minmax(280px, 360px) 1fr;
-          gap: clamp(24px, 4vw, 48px);
+          grid-template-columns: minmax(260px, 340px) 1fr;
+          gap: clamp(20px, 3.5vw, 40px);
           align-items: stretch;
+        }
+
+        .process-deliverables-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 8px 16px;
+        }
+
+        @media (min-width: 640px) {
+          .process-deliverables-grid {
+            grid-template-columns: 1fr 1fr;
+          }
         }
 
         @media (max-width: 860px) {
           .process-card-inner-grid {
             grid-template-columns: 1fr;
+          }
+          .process-card-left-col {
+            border-right: none !important;
+            border-bottom: 1px solid #E2DFDC;
+            padding-right: 0 !important;
+            padding-bottom: 20px;
           }
         }
       `}</style>

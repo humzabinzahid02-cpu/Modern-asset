@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+﻿import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -59,10 +59,10 @@ export default function WhyUs() {
       if (leftColRef.current) {
         gsap.fromTo(
           leftColRef.current,
-          { opacity: 0, x: -50, scale: 0.96 },
+          { opacity: 0, x: -30, scale: 0.98 },
           {
             opacity: 1, x: 0, scale: 1,
-            duration: 0.9, ease: 'power3.out',
+            duration: 0.8, ease: 'power3.out',
             scrollTrigger: {
               trigger: leftColRef.current,
               start: 'top 85%',
@@ -75,10 +75,10 @@ export default function WhyUs() {
       if (headingRef.current) {
         gsap.fromTo(
           headingRef.current.children,
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 24 },
           {
             opacity: 1, y: 0,
-            duration: 0.7, stagger: 0.12, ease: 'power2.out',
+            duration: 0.6, stagger: 0.1, ease: 'power2.out',
             scrollTrigger: {
               trigger: headingRef.current,
               start: 'top 85%',
@@ -92,10 +92,10 @@ export default function WhyUs() {
         const cards = featuresGridRef.current.querySelectorAll('.why-feature-card')
         gsap.fromTo(
           cards,
-          { opacity: 0, y: 40, scale: 0.95 },
+          { opacity: 0, y: 30, scale: 0.96 },
           {
             opacity: 1, y: 0, scale: 1,
-            duration: 0.75, stagger: 0.12, ease: 'power2.out',
+            duration: 0.65, stagger: 0.08, ease: 'power2.out',
             scrollTrigger: {
               trigger: featuresGridRef.current,
               start: 'top 85%',
@@ -111,296 +111,150 @@ export default function WhyUs() {
 
   return (
     <>
-      {/* ── Marquee Divider Strip (like digitaltarka.com transition) ── */}
-      <div style={{
-        background: '#1B2B3A',
-        overflow: 'hidden',
-        padding: '20px 0',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-      }}>
-        <div className="whyus-marquee-track" style={{ display: 'flex', width: 'max-content' }}>
+      {/* Marquee Divider Strip */}
+      <div className="bg-[#1B2B3A] overflow-hidden py-4 sm:py-5 border-y border-white/10 w-full">
+        <div className="whyus-marquee-track flex w-max">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-            <span key={i} style={{
-              flexShrink: 0,
-              fontFamily: 'Barlow Condensed, sans-serif',
-              fontSize: 'clamp(18px, 2.5vw, 28px)',
-              fontWeight: 800,
-              letterSpacing: '0.25em',
-              textTransform: 'uppercase',
-              color: 'transparent',
-              WebkitTextStroke: '1.5px rgba(224,123,16,0.45)',
-              whiteSpace: 'nowrap',
-              padding: '0 clamp(24px,3vw,48px)',
-              userSelect: 'none',
-            }}>
+            <span
+              key={i}
+              className="shrink-0 font-display text-lg sm:text-2xl font-black tracking-[0.25em] uppercase text-transparent [-webkit-text-stroke:1.5px_rgba(224,123,16,0.45)] whitespace-nowrap px-6 sm:px-10 flex items-center select-none"
+            >
               {item}
-              <span style={{
-                color: '#E07B10',
-                WebkitTextStroke: '0',
-                marginLeft: 'clamp(20px,2.5vw,40px)',
-                opacity: 0.7,
-                fontSize: '0.6em',
-              }}>◆</span>
+              <span className="text-[#E07B10] [-webkit-text-stroke:0] ml-6 sm:ml-10 opacity-70 text-sm">
+                ✦
+              </span>
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── Main Why Us Section ── */}
+      {/* Main Why Us Section */}
       <section
         id="about"
         ref={sectionRef}
-        style={{
-          padding: 'clamp(80px,10vw,140px) clamp(24px,6vw,100px)',
-          background: '#F6F5F1',
-          color: '#5C6470',
-        }}
+        className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-[#F6F5F1] text-[#5C6470] overflow-hidden"
       >
-        <div style={{
-          maxWidth: 1280,
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 'clamp(40px,6vw,100px)',
-          alignItems: 'center',
-        }}>
-          {/* Left: image */}
-          <div ref={leftColRef} style={{ position: 'relative' }}>
-            <div style={{
-              backgroundColor: '#E2DFDC',
-              aspectRatio: '4/5',
-              overflow: 'hidden',
-              borderRadius: 16,
-            }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          
+          {/* Left Column: Visual Image & Floating Badges (5 cols) */}
+          <div ref={leftColRef} className="lg:col-span-5 relative w-full max-w-lg mx-auto lg:max-w-none">
+            <div className="relative bg-[#E2DFDC] aspect-[4/3] sm:aspect-[4/5] overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg">
               <img
                 src="https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?w=700&h=900&fit=crop&auto=format"
                 alt="Welder working with sparks flying"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                className="w-full h-full object-cover"
               />
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(45deg, rgba(224,123,16,0.12) 0%, transparent 60%)',
-              }} />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#1B2B3A]/40 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            {/* Floating badge — bottom left */}
-            <div style={{
-              position: 'absolute',
-              bottom: 20,
-              left: 20,
-              background: '#FFFFFF',
-              borderRadius: '12px',
-              padding: '12px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              boxShadow: '0 8px 24px rgba(27,43,58,0.08)',
-              border: '1px solid #E2DFDC',
-              zIndex: 2,
-            }}>
-              <div style={{
-                width: 30, height: 30,
-                background: '#1B2B3A',
-                borderRadius: 6,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <span style={{
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                  fontWeight: 900,
-                  fontSize: 17,
-                  color: '#ffffff',
-                }}>M</span>
+            {/* Floating badge: Bottom Left */}
+            <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-4 flex items-center gap-3 shadow-md border border-[#E2DFDC] z-10">
+              <div className="w-8 h-8 bg-[#1B2B3A] rounded-lg flex items-center justify-center shrink-0">
+                <span className="font-display font-black text-sm sm:text-base text-white">M</span>
               </div>
-              <span style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontWeight: 600,
-                fontSize: 13,
-                color: '#1B2B3A',
-                lineHeight: 1.3,
-              }}>
-                Precision<br />in Every Detail
-              </span>
-              <span style={{ marginLeft: 8, color: '#E07B10', fontWeight: 700, fontSize: 16 }}>→</span>
+              <div>
+                <span className="font-display font-extrabold text-xs sm:text-sm text-[#1B2B3A] leading-tight block uppercase">
+                  Precision in Every Detail
+                </span>
+                <span className="font-body text-[10px] text-[#E07B10] font-bold block">
+                  Saudi Quality Standard
+                </span>
+              </div>
             </div>
 
-            {/* Stat card — bottom right */}
-            <div style={{
-              position: 'absolute',
-              bottom: -24,
-              right: -24,
-              background: '#E07B10',
-              borderRadius: 12,
-              padding: '24px 28px',
-              maxWidth: 200,
-              boxShadow: '0 12px 30px rgba(224,123,16,0.25)',
-            }}>
-              <div style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-                fontWeight: 900,
-                fontSize: 40,
-                color: '#FFFFFF',
-                lineHeight: 1,
-              }}>15+</div>
-              <div style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontSize: 12,
-                color: 'rgba(255,255,255,0.9)',
-                marginTop: 4,
-              }}>Years of precision fabrication across the region</div>
+            {/* Stat card: Top Right */}
+            <div className="absolute top-3 right-3 sm:top-5 sm:right-5 bg-[#E07B10] text-white rounded-xl p-3.5 sm:p-5 shadow-lg max-w-[140px] sm:max-w-[160px] z-10">
+              <div className="font-display font-black text-2xl sm:text-4xl leading-none">
+                15+
+              </div>
+              <div className="font-body text-[10px] sm:text-xs text-white/90 mt-1 leading-snug">
+                Years of industrial engineering in KSA
+              </div>
             </div>
           </div>
 
-          {/* Right: content */}
-          <div>
+          {/* Right Column: Heading & Features Grid (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col">
             <div ref={headingRef}>
-              <div style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                color: '#E07B10',
-                marginBottom: 16,
-                fontWeight: 700,
-              }}>Why Modern Assets</div>
-              <h2 style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
-                fontSize: 'clamp(40px,5vw,68px)',
-                fontWeight: 900,
-                lineHeight: 0.93,
-                textTransform: 'uppercase',
-                margin: '0 0 20px',
-                color: '#1B2B3A',
-              }}>
-                We Don't Just<br />
-                <span style={{
-                  background: 'linear-gradient(90deg, #E07B10, #1B2B3A)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}>Build — We Engineer</span>
+              <div className="font-body text-[11px] tracking-[0.3em] uppercase text-[#E07B10] mb-3 font-bold">
+                Why Modern Assets
+              </div>
+              <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#1B2B3A] uppercase tracking-tight leading-[0.93] mb-4">
+                We Don't Just Build — <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E07B10] to-[#1B2B3A]">
+                  We Engineer
+                </span>
               </h2>
-              <p style={{
-                fontFamily: 'Outfit, sans-serif',
-                fontSize: 15,
-                color: '#5C6470',
-                lineHeight: 1.72,
-                margin: '0 0 36px',
-                maxWidth: 430,
-              }}>
+              <p className="font-body text-sm sm:text-base text-[#5C6470] leading-relaxed mb-8 max-w-xl">
                 You need more than a fabricator. You need a partner who understands operational demands, respects your timelines, and builds equipment that genuinely keeps your fleet running.
               </p>
             </div>
 
+            {/* Responsive 1 col on mobile, 2 cols on tablet/desktop */}
             <div
               ref={featuresGridRef}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '18px 20px',
-              }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
             >
-              {FEATURES.map(f => {
+              {FEATURES.map((f) => {
                 const isHovered = hoveredFeature === f.title
                 return (
                   <div
                     key={f.title}
-                    className="why-feature-card"
+                    className="why-feature-card bg-white rounded-2xl p-5 border border-[#E2DFDC] hover:border-[#E07B10] shadow-xs hover:shadow-md transition-all cursor-default flex flex-col justify-between"
                     onMouseEnter={() => setHoveredFeature(f.title)}
                     onMouseLeave={() => setHoveredFeature(null)}
-                    style={{
-                      background: '#FFFFFF',
-                      borderRadius: 16,
-                      padding: '20px 20px',
-                      border: isHovered ? '1px solid #E07B10' : '1px solid #E2DFDC',
-                      boxShadow: isHovered
-                        ? '0 12px 32px rgba(224,123,16,0.1), 0 4px 12px rgba(27,43,58,0.04)'
-                        : '0 2px 12px rgba(27,43,58,0.05)',
-                      transform: isHovered ? 'translateY(-4px)' : 'none',
-                      transition: 'all 280ms cubic-bezier(0.16, 1, 0.3, 1)',
-                      cursor: 'default',
-                    }}
                   >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
-                      <div style={{
-                        width: 38,
-                        height: 38,
-                        borderRadius: 9,
-                        background: isHovered ? '#E07B10' : 'rgba(224,123,16,0.08)',
-                        border: '1px solid rgba(224,123,16,0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: 17,
-                        color: isHovered ? '#FFFFFF' : '#E07B10',
-                        transition: 'all 280ms ease',
-                        flexShrink: 0,
-                      }}>
-                        {f.icon === 'shield' && (
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        )}
-                        {f.icon === 'settings' && (
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                        )}
-                        {f.icon === 'users' && (
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        )}
-                        {f.icon === 'truck' && (
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                        )}
+                    <div>
+                      <div className="flex justify-between items-start mb-3">
+                        <div
+                          className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                            isHovered
+                              ? 'bg-[#E07B10] text-white'
+                              : 'bg-[#E07B10]/10 text-[#E07B10]'
+                          }`}
+                        >
+                          {f.icon === 'shield' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                          )}
+                          {f.icon === 'settings' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                          )}
+                          {f.icon === 'users' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                          )}
+                          {f.icon === 'truck' && (
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                          )}
+                        </div>
+                        <div className="text-right">
+                          <div
+                            className={`font-display font-black text-xl leading-none transition-colors ${
+                              isHovered ? 'text-[#E07B10]' : 'text-[#1B2B3A]'
+                            }`}
+                          >
+                            {f.stat}
+                          </div>
+                          <div className="font-body text-[9px] tracking-wider uppercase text-[#8C949C] mt-0.5">
+                            {f.statLabel}
+                          </div>
+                        </div>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <div style={{
-                          fontFamily: 'Barlow Condensed, sans-serif',
-                          fontSize: '22px',
-                          fontWeight: 900,
-                          color: isHovered ? '#E07B10' : '#1B2B3A',
-                          lineHeight: 1,
-                          transition: 'color 280ms',
-                        }}>{f.stat}</div>
-                        <div style={{
-                          fontFamily: 'Outfit, sans-serif',
-                          fontSize: '10px',
-                          letterSpacing: '0.12em',
-                          textTransform: 'uppercase',
-                          color: '#8C949C',
-                        }}>{f.statLabel}</div>
+                      <div className="font-display font-extrabold text-base uppercase text-[#1B2B3A] mb-1.5 leading-tight">
+                        {f.title}
                       </div>
-                    </div>
-                    <div style={{
-                      fontFamily: 'Barlow Condensed, sans-serif',
-                      fontSize: '17px',
-                      fontWeight: 800,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.04em',
-                      color: '#1B2B3A',
-                      marginBottom: 7,
-                    }}>
-                      {f.title}
-                    </div>
-                    <div style={{
-                      fontFamily: 'Outfit, sans-serif',
-                      fontSize: '12.5px',
-                      color: '#5C6470',
-                      lineHeight: 1.62,
-                    }}>
-                      {f.desc}
+                      <div className="font-body text-xs text-[#5C6470] leading-relaxed">
+                        {f.desc}
+                      </div>
                     </div>
                   </div>
                 )
               })}
             </div>
           </div>
+
         </div>
 
         <style>{`
-          @media (max-width: 800px) {
-            #about > div { grid-template-columns: 1fr !important; }
-            #about > div > div:first-child { display: none; }
-          }
           .whyus-marquee-track {
             animation: whyusMarquee 28s linear infinite;
           }

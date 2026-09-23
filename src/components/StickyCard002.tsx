@@ -1,9 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+﻿import React, { useRef } from 'react';
 import { cn } from '@/lib/utils';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export interface CardData {
   id: number | string;
@@ -30,21 +26,14 @@ export function StickyCard002<T extends CardData = CardData>({
   const container = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    // Keep cards clean and bright without darkening filters
-  }, [cards]);
-
   return (
     <div className={cn('relative w-full', className)} ref={container}>
       <div
         className={cn(
           'relative w-full max-w-6xl xl:max-w-[1340px] mx-auto flex flex-col',
+          'gap-6 sm:gap-10 lg:gap-[clamp(120px,20vh,240px)] pb-8 sm:pb-12 lg:pb-36',
           containerClassName,
         )}
-        style={{
-          gap: 'clamp(140px, 24vh, 260px)',
-          paddingBottom: '140px',
-        }}
       >
         {cards.map((card, i) => (
           <div
@@ -52,15 +41,8 @@ export function StickyCard002<T extends CardData = CardData>({
             ref={(el) => {
               cardRefs.current[i] = el;
             }}
-            className={cn('w-full will-change-transform', cardClassName)}
-            style={{
-              position: 'sticky',
-              top: `calc(clamp(76px, 11vh, 96px) + ${i * 14}px)`,
-              zIndex: i + 1,
-              borderRadius: '34px',
-              background: '#FFFFFF',
-              boxShadow: '0 4px 16px rgba(27, 43, 58, 0.05)',
-            }}
+            className={cn('w-full will-change-transform sticky-card-item', cardClassName)}
+            data-index={i}
           >
             {renderCard ? (
               renderCard(card, i, false)
@@ -68,12 +50,32 @@ export function StickyCard002<T extends CardData = CardData>({
               <img
                 src={card.image}
                 alt={card.alt || ''}
-                className="h-full w-full rounded-3xl object-cover shadow-2xl"
+                className="h-full w-full rounded-2xl sm:rounded-3xl object-cover shadow-xl"
               />
             )}
           </div>
         ))}
       </div>
+      <style>{`
+        .sticky-card-item {
+          position: relative;
+          border-radius: 24px;
+          background: #FFFFFF;
+          box-shadow: 0 4px 16px rgba(27, 43, 58, 0.05);
+        }
+        @media (min-width: 1024px) {
+          .sticky-card-item {
+            position: sticky;
+            border-radius: 34px;
+          }
+          ${cards.map((_, i) => `
+            .sticky-card-item[data-index="${i}"] {
+              top: calc(clamp(76px, 11vh, 96px) + ${i * 14}px);
+              z-index: ${i + 1};
+            }
+          `).join('\n')}
+        }
+      `}</style>
     </div>
   );
 }
