@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const STATS = [
   { value: 15, suffix: '+', label: 'Years of Experience' },

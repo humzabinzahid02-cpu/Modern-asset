@@ -112,7 +112,7 @@ export default function Contact() {
     border: '1.5px solid #E2DFDC',
     borderRadius: 10,
     padding: '14px 16px',
-    fontFamily: 'Outfit, sans-serif',
+    fontFamily: 'Poppins, sans-serif',
     fontSize: 15,
     color: '#1B2B3A',
     outline: 'none',
@@ -122,7 +122,7 @@ export default function Contact() {
 
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontFamily: 'Outfit, sans-serif',
+    fontFamily: 'Poppins, sans-serif',
     fontSize: '11px',
     fontWeight: 700,
     letterSpacing: '0.18em',
@@ -169,7 +169,7 @@ export default function Contact() {
         {/* Section heading */}
         <div ref={headingRef} style={{ marginBottom: 64 }}>
           <div style={{
-            fontFamily: 'Outfit, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontSize: '11px',
             letterSpacing: '0.32em',
             textTransform: 'uppercase',
@@ -180,7 +180,7 @@ export default function Contact() {
             Get in Touch
           </div>
           <h2 style={{
-            fontFamily: 'Barlow Condensed, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontSize: 'clamp(38px,5vw,72px)',
             fontWeight: 900,
             lineHeight: 0.93,
@@ -197,7 +197,7 @@ export default function Contact() {
             }}>Vision Together</span>
           </h2>
           <p style={{
-            fontFamily: 'Outfit, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontSize: 16,
             color: 'rgba(255,255,255,0.6)',
             lineHeight: 1.65,
@@ -295,7 +295,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '10px',
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
@@ -304,7 +304,7 @@ export default function Contact() {
                     fontWeight: 700,
                   }}>{item.label}</div>
                   <div style={{
-                    fontFamily: 'Barlow Condensed, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '18px',
                     fontWeight: 700,
                     color: '#FFFFFF',
@@ -312,7 +312,7 @@ export default function Contact() {
                     marginBottom: 2,
                   }}>{item.value}</div>
                   <div style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '12px',
                     color: 'rgba(255,255,255,0.45)',
                   }}>{item.sub}</div>
@@ -329,7 +329,7 @@ export default function Contact() {
               borderRadius: 14,
             }}>
               <div style={{
-                fontFamily: 'Outfit, sans-serif',
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: '11px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -338,18 +338,37 @@ export default function Contact() {
                 fontWeight: 700,
               }}>Why Choose Us</div>
               {[
-                '✓  ISO 9001:2015 Certified Manufacturing',
-                '✓  15+ Years Regional Experience',
-                '✓  Fixed Pricing & Guaranteed Delivery',
-                '✓  24-Hour Engineering Response',
+                'ISO 9001:2015 Certified Manufacturing',
+                '15+ Years Regional Experience',
+                'Fixed Pricing & Guaranteed Delivery',
+                '24-Hour Engineering Response',
               ].map(badge => (
                 <div key={badge} style={{
-                  fontFamily: 'Outfit, sans-serif',
+                  fontFamily: 'Poppins, sans-serif',
                   fontSize: '13px',
-                  color: 'rgba(255,255,255,0.75)',
+                  color: 'rgba(255,255,255,0.85)',
                   lineHeight: 1.6,
-                  marginBottom: 4,
-                }}>{badge}</div>
+                  marginBottom: 8,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                }}>
+                  <span style={{
+                    width: 18,
+                    height: 18,
+                    borderRadius: '50%',
+                    background: 'rgba(224,123,16,0.2)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <svg className="w-2.5 h-2.5 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <span>{badge}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -373,11 +392,14 @@ export default function Contact() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: 32,
                     margin: '0 auto 24px',
-                  }}>✓</div>
+                  }}>
+                    <svg className="w-8 h-8 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
                   <h3 style={{
-                    fontFamily: 'Barlow Condensed, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: 32,
                     fontWeight: 800,
                     textTransform: 'uppercase',
@@ -385,7 +407,7 @@ export default function Contact() {
                     margin: '0 0 12px',
                   }}>Request Received!</h3>
                   <p style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: 15,
                     color: '#5C6470',
                     lineHeight: 1.65,
@@ -401,7 +423,7 @@ export default function Contact() {
                       border: '1.5px solid #E2DFDC',
                       borderRadius: 8,
                       padding: '10px 24px',
-                      fontFamily: 'Outfit, sans-serif',
+                      fontFamily: 'Poppins, sans-serif',
                       fontSize: 13,
                       color: '#5C6470',
                       cursor: 'pointer',
@@ -414,7 +436,7 @@ export default function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                   <div style={{
-                    fontFamily: 'Barlow Condensed, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: 26,
                     fontWeight: 800,
                     textTransform: 'uppercase',
@@ -423,7 +445,7 @@ export default function Contact() {
                     letterSpacing: '0.03em',
                   }}>Request a Quote</div>
                   <p style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: 13,
                     color: '#5C6470',
                     lineHeight: 1.6,
@@ -588,7 +610,7 @@ export default function Contact() {
                         : 'linear-gradient(135deg, #E07B10 0%, #C46E0E 100%)',
                       border: 'none',
                       borderRadius: 12,
-                      fontFamily: 'Barlow Condensed, sans-serif',
+                      fontFamily: 'Poppins, sans-serif',
                       fontSize: 17,
                       fontWeight: 800,
                       textTransform: 'uppercase',
@@ -627,12 +649,18 @@ export default function Contact() {
                         Sending Request...
                       </>
                     ) : (
-                      <>Send Request →</>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                        <span>Send Request</span>
+                        <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </span>
                     )}
                   </button>
 
                   <p style={{
-                    fontFamily: 'Outfit, sans-serif',
+                    fontFamily: 'Poppins, sans-serif',
                     fontSize: '11px',
                     color: '#8C949C',
                     textAlign: 'center',

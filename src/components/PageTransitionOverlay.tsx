@@ -59,27 +59,27 @@ export default function PageTransitionOverlay({
     // Phase 1: Cream layer sweeps up from bottom, closely followed by Deep Navy layer
     tl.to(cream, {
       yPercent: 0,
-      duration: 0.52,
-      ease: 'power3.inOut',
+      duration: 0.75,
+      ease: 'power4.inOut',
     })
       .to(
         navy,
         {
           yPercent: 0,
-          duration: 0.52,
-          ease: 'power3.inOut',
+          duration: 0.75,
+          ease: 'power4.inOut',
         },
-        '-=0.42'
+        '-=0.55'
       )
       .to(
         content,
         {
           opacity: 1,
           y: 0,
-          duration: 0.32,
+          duration: 0.5,
           ease: 'power2.out',
         },
-        '-=0.2'
+        '-=0.3'
       )
 
       // Phase 2: Exact moment screen is fully covered -> trigger route/page switch
@@ -88,32 +88,32 @@ export default function PageTransitionOverlay({
       })
 
       // Brief fluid hold so text is readable
-      .to({}, { duration: 0.22 })
+      .to({}, { duration: 0.55 })
 
       // Phase 3: Content fades up, then Navy and Cream sweep up and out off the top
       .to(content, {
         opacity: 0,
         y: -30,
-        duration: 0.25,
+        duration: 0.35,
         ease: 'power2.in',
       })
       .to(
         navy,
         {
           yPercent: -100,
-          duration: 0.52,
-          ease: 'power3.inOut',
+          duration: 0.75,
+          ease: 'power4.inOut',
         },
-        '-=0.08'
+        '-=0.12'
       )
       .to(
         cream,
         {
           yPercent: -100,
-          duration: 0.52,
-          ease: 'power3.inOut',
+          duration: 0.75,
+          ease: 'power4.inOut',
         },
-        '-=0.42'
+        '-=0.55'
       )
 
     return () => {
@@ -208,7 +208,7 @@ export default function PageTransitionOverlay({
           >
             <span
               style={{
-                fontFamily: 'Barlow Condensed, sans-serif',
+                fontFamily: 'Poppins, sans-serif',
                 fontWeight: 900,
                 fontSize: 30,
                 color: '#E07B10',
@@ -221,7 +221,7 @@ export default function PageTransitionOverlay({
           {/* Big Bold Display Headline in Site Cream */}
           <h1
             style={{
-              fontFamily: 'Barlow Condensed, sans-serif',
+              fontFamily: 'Poppins, sans-serif',
               fontSize: 'clamp(44px, 8vw, 112px)',
               fontWeight: 900,
               lineHeight: 0.92,
@@ -238,7 +238,7 @@ export default function PageTransitionOverlay({
           {/* Subtitle with Site Golden Amber Accent */}
           <p
             style={{
-              fontFamily: 'Outfit, sans-serif',
+              fontFamily: 'Poppins, sans-serif',
               fontSize: '13px',
               letterSpacing: '0.3em',
               textTransform: 'uppercase',

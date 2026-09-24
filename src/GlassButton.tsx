@@ -1,8 +1,8 @@
-﻿import React, { useState, type ReactNode } from 'react'
+import React, { useState, type ReactNode } from 'react'
 
 export interface GlassButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
-  variant?: 'default' | 'accent' | 'gold' | 'ghost'
+  variant?: 'default' | 'accent' | 'gold' | 'ghost' | 'ghost-white'
   size?: 'sm' | 'md' | 'lg'
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   className?: string
@@ -39,12 +39,17 @@ export default function GlassButton({
     },
   }[size]
 
-  let background = hovered ? '#C46C0C' : '#E07B10'
-  let border = '1.5px solid transparent'
-  let textColor = '#FFFFFF'
-  let glowColor = 'rgba(224,123,16,0.3)'
+  let background = hovered ? '#FFFFFF' : '#E07B10'
+  let border = hovered ? '1.5px solid #FFFFFF' : '1.5px solid #E07B10'
+  let textColor = hovered ? '#E07B10' : '#FFFFFF'
+  let glowColor = hovered ? 'rgba(255, 255, 255, 0.4)' : 'rgba(224, 123, 16, 0.35)'
 
-  if (variant === 'ghost') {
+  if (variant === 'ghost-white') {
+    background = hovered ? '#FFFFFF' : 'rgba(255, 255, 255, 0.08)'
+    border = hovered ? '1.5px solid #FFFFFF' : '1.5px solid rgba(255, 255, 255, 0.85)'
+    textColor = hovered ? '#1B2B3A' : '#FFFFFF'
+    glowColor = hovered ? 'rgba(255, 255, 255, 0.45)' : 'transparent'
+  } else if (variant === 'ghost') {
     background = hovered ? '#1B2B3A' : 'transparent'
     border = '1.5px solid #1B2B3A'
     textColor = hovered ? '#FFFFFF' : '#1B2B3A'
@@ -72,7 +77,7 @@ export default function GlassButton({
       style={{
         background,
         border,
-        fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+        fontFamily: 'Poppins, sans-serif',
         fontWeight: 700,
         letterSpacing: '0.06em',
         textTransform: 'uppercase',

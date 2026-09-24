@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { CartItem } from '../types/store';
 
 interface CartDrawerProps {
@@ -52,8 +52,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-full liquid-glass flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+            aria-label="Close drawer"
           >
-            ✕
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         </div>
 
@@ -110,8 +114,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     onClick={() => onRemoveItem(item.id)}
                     className="text-white/40 hover:text-red-400 text-xs transition-colors p-1"
                     title="Remove item"
+                    aria-label="Remove item"
                   >
-                    ✕
+                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
                   </button>
 
                   <div className="flex items-center gap-2 bg-black/40 rounded-full border border-white/10 px-2 py-0.5">

@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useRef, type ReactNode, type RefObject, type CSSProperties } from 'react';
+import React, { useEffect, useMemo, useRef, type ReactNode, type RefObject, type CSSProperties } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -94,10 +94,24 @@ export default function ScrollFloat({
         ease: ease,
         stagger: stagger,
         scrollTrigger: triggerConfig,
+        onComplete: () => {
+          gsap.set(charElements, { opacity: 1, clearProps: 'all' });
+        },
       });
     }, el);
 
-    return () => ctx.revert();
+    // Safeguard timeout: ensure text is visible even if ScrollTrigger didn't fire
+    const safetyTimer = setTimeout(() => {
+      charElements.forEach((c) => {
+        (c as HTMLElement).style.opacity = '1';
+        (c as HTMLElement).style.transform = 'none';
+      });
+    }, 1200);
+
+    return () => {
+      clearTimeout(safetyTimer);
+      ctx.revert();
+    };
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger, scrub]);
 
   return (

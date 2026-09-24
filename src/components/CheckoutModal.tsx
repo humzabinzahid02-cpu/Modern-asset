@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { CartItem } from '../types/store';
 
 declare global {
@@ -86,8 +86,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               <button
                 onClick={handleClose}
                 className="w-8 h-8 rounded-full liquid-glass flex items-center justify-center text-white/50 hover:text-white"
+                aria-label="Close"
               >
-                ✕
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
             </div>
 

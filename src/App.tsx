@@ -13,6 +13,8 @@ import SectionMarquee from './components/SectionMarquee'
 import PageTransitionOverlay from './components/PageTransitionOverlay'
 import QuotePage from './pages/QuotePage'
 
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 export default function App() {
   const [introDone, setIntroDone] = useState(false)
   const [currentPage, setCurrentPage] = useState<'home' | 'quote'>('home')
@@ -35,6 +37,18 @@ export default function App() {
     window.addEventListener('hashchange', handleHash)
     return () => window.removeEventListener('hashchange', handleHash)
   }, [])
+
+  // Refresh ScrollTrigger once intro completes
+  useEffect(() => {
+    if (introDone) {
+      const t1 = setTimeout(() => ScrollTrigger.refresh(), 100)
+      const t2 = setTimeout(() => ScrollTrigger.refresh(), 650)
+      return () => {
+        clearTimeout(t1)
+        clearTimeout(t2)
+      }
+    }
+  }, [introDone])
 
   // Trigger page transition (down-to-up curtain)
   const triggerNavigation = (targetPage: 'home' | 'quote', sectionId?: string) => {

@@ -41,7 +41,7 @@ export default function SectionMarquee({
             key={i}
             style={{
               flexShrink: 0,
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               fontSize: `clamp(${textSize * 0.4}px, ${textSize * 0.08}vw, ${textSize}px)`,
               fontWeight: 800,
               letterSpacing: '0.05em',
@@ -61,15 +61,23 @@ export default function SectionMarquee({
             <span
               style={{
                 color: '#E07B10',
-                WebkitTextStroke: '0',
                 marginLeft: `clamp(16px, 2vw, 32px)`,
                 marginRight: `clamp(16px, 2vw, 32px)`,
-                fontSize: `${textSize * 0.3}px`,
-                opacity: 0.6,
+                display: 'inline-flex',
+                alignItems: 'center',
                 verticalAlign: 'middle',
               }}
             >
-              ◆
+              <svg
+                style={{
+                  width: `${Math.max(10, textSize * 0.22)}px`,
+                  height: `${Math.max(10, textSize * 0.22)}px`,
+                  fill: 'currentColor',
+                }}
+                viewBox="0 0 24 24"
+              >
+                <polygon points="12 2 22 12 12 22 2 12" />
+              </svg>
             </span>
           </span>
         ))}

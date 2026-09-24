@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ScrollExpand from './ScrollExpand'
@@ -266,22 +266,23 @@ export default function Products() {
   }, [viewMode, activeCategory])
 
   return (
-    <section id="products" className="bg-[#F6F5F1] relative w-full overflow-hidden">
+    <section id="products" className="bg-[#F6F5F1] relative w-full overflow-x-clip">
       {/* ScrollExpand Section */}
-      <div className="relative w-full mb-10 sm:mb-16">
+      <div className="relative w-full mb-4 sm:mb-8">
         <ScrollExpand
-          src="https://images.unsplash.com/photo-1577075473292-5f62dfae5522?w=1920&h=1080&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&h=1080&fit=crop&auto=format"
           alt="Modern Assets Heavy Fleet Expansion"
           title="BUILT FOR EVERY INDUSTRY"
-          scrollHint="SCROLL TO EXPAND FLEET ↓"
+          badge="CHAPTER 02 • COMMERCIAL FLEET"
+          scrollHint="SCROLL TO EXPAND FLEET"
           startWidth={56}
           startHeight={64}
           startRadius={24}
           endRadius={0}
           mediaZoom={1.35}
-          scrollDistance={1.1}
-          holdDistance={0.35}
-          smoothing={0.12}
+          scrollDistance={0.35}
+          holdDistance={0}
+          smoothing={0.1}
           overlayScrim={0.5}
           useWindowScroll={true}
         >
@@ -311,17 +312,17 @@ export default function Products() {
                   if (target) target.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                Inspect Fleet Catalog ↓
+                <span className="inline-flex items-center gap-1.5">Inspect Fleet Catalog <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></svg></span>
               </GlassButton>
               <GlassButton
-                variant="ghost"
+                variant="ghost-white"
                 size="md"
                 onClick={() => {
                   const target = document.getElementById('contact')
                   if (target) target.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                Request Custom Blueprint →
+                <span className="inline-flex items-center gap-1.5">Request Custom Blueprint <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
               </GlassButton>
             </div>
           </div>
@@ -375,7 +376,11 @@ export default function Products() {
                       : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
                   }`}
                 >
-                  <span>☰</span>
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                  </svg>
                   <span>Stack</span>
                 </button>
                 <button
@@ -386,7 +391,12 @@ export default function Products() {
                       : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
                   }`}
                 >
-                  <span>⊞</span>
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                  </svg>
                   <span>Grid</span>
                 </button>
               </div>
@@ -463,7 +473,7 @@ export default function Products() {
                           setSelectedProduct(p)
                         }}
                       >
-                        Inspect Specs →
+                        <span className="inline-flex items-center gap-1.5">Inspect Specs <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
                       </GlassButton>
                       <GlassButton
                         variant="ghost"
@@ -559,7 +569,7 @@ export default function Products() {
                           setSelectedProduct(p)
                         }}
                       >
-                        Inspect Specs →
+                        <span className="inline-flex items-center gap-1.5">Inspect Specs <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
                       </GlassButton>
                       <GlassButton
                         variant="ghost"
@@ -604,10 +614,13 @@ export default function Products() {
               {/* Close button */}
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white hover:bg-[#E07B10] text-[#1B2B3A] hover:text-white border border-[#E2DFDC] flex items-center justify-center cursor-pointer transition-colors shadow-sm text-base"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white hover:bg-[#E07B10] text-[#1B2B3A] hover:text-white border border-[#E2DFDC] flex items-center justify-center cursor-pointer transition-colors shadow-sm"
                 aria-label="Close modal"
               >
-                ✕
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
 
               {/* Header Title */}
@@ -657,7 +670,11 @@ export default function Products() {
                     key={fIdx}
                     className="flex items-center gap-2.5 font-body text-xs sm:text-sm text-[#5C6470]"
                   >
-                    <span className="text-[#E07B10] text-sm font-black">✓</span>
+                    <span className="w-4 h-4 rounded-full bg-[#E07B10]/10 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-2.5 h-2.5 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -679,7 +696,7 @@ export default function Products() {
                       if (c) c.scrollIntoView({ behavior: 'smooth' })
                     }}
                   >
-                    Inquire Blueprint →
+                    <span className="inline-flex items-center gap-1.5">Inquire Blueprint <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
                   </GlassButton>
                   <GlassButton
                     variant="ghost"

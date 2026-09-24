@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollFloat from './ScrollFloat';
@@ -10,7 +10,7 @@ interface StepItem {
   title: string;
   subtitle: string;
   desc: string;
-  icon: string;
+  icon: React.ReactNode;
   phase: string;
   badge: string;
   deliverables: string[];
@@ -23,7 +23,13 @@ const STEPS: StepItem[] = [
     title: 'Consultation',
     subtitle: 'Operational Assessment & Regulatory Architecture',
     desc: 'We conduct deep engineering discovery into your operational payload demands, duty-cycle parameters, regional DOT/EPA regulations, and fleet integration needs before cutting a single sheet of steel.',
-    icon: '🔍',
+    icon: (
+      <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        <path d="M11 8v6M8 11h6" />
+      </svg>
+    ),
     phase: 'Phase 1 • Weeks 1-2',
     badge: 'Discovery & Audit',
     deliverables: [
@@ -42,7 +48,13 @@ const STEPS: StepItem[] = [
     title: 'Design',
     subtitle: 'Parametric 3D CAD & FEA Stress Modeling',
     desc: 'Our mechanical aerospace and heavy-equipment engineers construct full-fidelity 3D SolidWorks models, running rigorous Finite Element Analysis (FEA) to maximize structural rigidity while trimming deadweight.',
-    icon: '📐',
+    icon: (
+      <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+        <polyline points="2 17 12 22 22 17" />
+        <polyline points="2 12 12 17 22 12" />
+      </svg>
+    ),
     phase: 'Phase 2 • Weeks 3-4',
     badge: '3D Simulation',
     deliverables: [
@@ -61,7 +73,12 @@ const STEPS: StepItem[] = [
     title: 'Fabrication',
     subtitle: 'Robotic CNC, Certified Metallurgy & Mil-Spec Coating',
     desc: 'Manufacturing occurs in our ISO 9001:2015 facility utilizing ultra-high-power fiber laser cutting, precision CNC press brakes, AWS D1.1 certified robotic welding, and multi-stage anti-corrosion urethane finishes.',
-    icon: '⚙️',
+    icon: (
+      <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+    ),
     phase: 'Phase 3 • Weeks 5-7',
     badge: 'Heavy Fabrication',
     deliverables: [
@@ -80,7 +97,14 @@ const STEPS: StepItem[] = [
     title: 'Delivery',
     subtitle: 'Dynamic Load Testing, Final Certification & Fleet Handover',
     desc: 'Every completed asset undergoes multi-point dynamic road trials, hydraulic pressure proofing, and full regulatory certification before turnkey transport to your depot with full schematics and operational documentation.',
-    icon: '🚚',
+    icon: (
+      <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="1" y="3" width="15" height="13" rx="1" />
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+        <circle cx="5.5" cy="18.5" r="2.5" />
+        <circle cx="18.5" cy="18.5" r="2.5" />
+      </svg>
+    ),
     phase: 'Phase 4 • Week 8',
     badge: 'Turnkey Handover',
     deliverables: [
@@ -113,20 +137,23 @@ export default function Process() {
         gsap.fromTo(
           card,
           {
-            opacity: 0,
-            y: 50,
-            scale: 0.97,
+            opacity: 0.1,
+            y: 35,
+            scale: 0.98,
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.75,
+            duration: 0.65,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: card,
-              start: 'top 88%',
+              start: 'top 92%',
               toggleActions: 'play none none none',
+            },
+            onComplete: () => {
+              gsap.set(card, { clearProps: 'opacity,transform' });
             },
           }
         );
@@ -136,16 +163,16 @@ export default function Process() {
         if (deliverables.length > 0) {
           gsap.fromTo(
             deliverables,
-            { opacity: 0, x: -10 },
+            { opacity: 0.2, x: -8 },
             {
               opacity: 1,
               x: 0,
               duration: 0.45,
-              stagger: 0.05,
+              stagger: 0.04,
               ease: 'power2.out',
               scrollTrigger: {
                 trigger: card,
-                start: 'top 82%',
+                start: 'top 88%',
                 toggleActions: 'play none none none',
               },
             }
@@ -154,12 +181,31 @@ export default function Process() {
       });
     }, el);
 
-    return () => ctx.revert();
+    // Safeguard: ensure cards are visible even if ScrollTrigger didn't fire
+    const safetyTimer = setTimeout(() => {
+      STEPS.forEach((step) => {
+        const card = document.getElementById(`process-step-${step.num}`);
+        if (card) {
+          card.style.opacity = '1';
+          card.style.transform = 'none';
+          const deliverables = card.querySelectorAll('.process-deliverable-item');
+          deliverables.forEach((d) => {
+            (d as HTMLElement).style.opacity = '1';
+          });
+        }
+      });
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => {
+      clearTimeout(safetyTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
     <section
-      id="capabilities"
+      id="process"
       ref={sectionRef}
       style={{
         position: 'relative',
@@ -214,7 +260,7 @@ export default function Process() {
             />
             <span
               style={{
-                fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: 11,
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
@@ -232,7 +278,7 @@ export default function Process() {
             ease="back.out(1.8)"
             stagger={0.02}
             textStyle={{
-              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+              fontFamily: 'Poppins, sans-serif',
               fontSize: 'clamp(36px, 5.5vw, 76px)',
               fontWeight: 900,
               lineHeight: 1,
@@ -246,7 +292,7 @@ export default function Process() {
 
           <p
             style={{
-              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+              fontFamily: 'Poppins, sans-serif',
               fontSize: 'clamp(14px, 1.5vw, 17px)',
               color: '#5C6470',
               lineHeight: 1.65,
@@ -323,7 +369,7 @@ export default function Process() {
                       >
                         <span
                           style={{
-                            fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                            fontFamily: 'Poppins, sans-serif',
                             fontSize: 11,
                             letterSpacing: '0.12em',
                             textTransform: 'uppercase',
@@ -334,10 +380,10 @@ export default function Process() {
                           {step.phase}
                         </span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span style={{ fontSize: 16 }}>{step.icon}</span>
+                          <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#E07B10]/10">{step.icon}</span>
                           <div
                             style={{
-                              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                              fontFamily: 'Poppins, sans-serif',
                               fontSize: 10,
                               fontWeight: 700,
                               textTransform: 'uppercase',
@@ -362,7 +408,7 @@ export default function Process() {
                             borderRadius: 6,
                             background: 'rgba(229,154,35,0.12)',
                             border: '1px solid rgba(229,154,35,0.3)',
-                            fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                            fontFamily: 'Poppins, sans-serif',
                             fontSize: 13,
                             fontWeight: 800,
                             letterSpacing: '0.12em',
@@ -380,7 +426,7 @@ export default function Process() {
                           ease="back.out(1.8)"
                           stagger={0.02}
                           textStyle={{
-                            fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                            fontFamily: 'Poppins, sans-serif',
                             fontSize: 'clamp(32px, 4vw, 54px)',
                             fontWeight: 900,
                             textTransform: 'uppercase',
@@ -412,7 +458,7 @@ export default function Process() {
                         >
                           <span
                             style={{
-                              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                              fontFamily: 'Poppins, sans-serif',
                               fontSize: 11,
                               letterSpacing: '0.12em',
                               textTransform: 'uppercase',
@@ -424,7 +470,7 @@ export default function Process() {
                           </span>
                           <span
                             style={{
-                              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                              fontFamily: 'Poppins, sans-serif',
                               fontSize: 12,
                               fontWeight: 700,
                               color: '#1B2B3A',
@@ -441,7 +487,7 @@ export default function Process() {
                   <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <div
                       style={{
-                        fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                        fontFamily: 'Poppins, sans-serif',
                         fontSize: 'clamp(16px, 2vw, 22px)',
                         fontWeight: 700,
                         letterSpacing: '0.04em',
@@ -455,7 +501,7 @@ export default function Process() {
 
                     <p
                       style={{
-                        fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                        fontFamily: 'Poppins, sans-serif',
                         fontSize: 'clamp(13.5px, 1.4vw, 16px)',
                         color: '#5C6470',
                         lineHeight: 1.7,
@@ -474,7 +520,7 @@ export default function Process() {
                     >
                       <div
                         style={{
-                          fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                          fontFamily: 'Poppins, sans-serif',
                           fontSize: 11,
                           letterSpacing: '0.16em',
                           textTransform: 'uppercase',
@@ -494,7 +540,7 @@ export default function Process() {
                               display: 'flex',
                               alignItems: 'center',
                               gap: 8,
-                              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                              fontFamily: 'Poppins, sans-serif',
                               fontSize: 13,
                               color: '#5C6470',
                             }}
@@ -502,19 +548,19 @@ export default function Process() {
                             <span
                               style={{
                                 color: '#E07B10',
-                                fontSize: 12,
                                 flexShrink: 0,
-                                width: 16,
-                                height: 16,
+                                width: 18,
+                                height: 18,
                                 borderRadius: '50%',
                                 background: 'rgba(229,154,35,0.12)',
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                fontWeight: 900,
                               }}
                             >
-                              ✓
+                              <svg className="w-2.5 h-2.5 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                              </svg>
                             </span>
                             <span>{item}</span>
                           </div>

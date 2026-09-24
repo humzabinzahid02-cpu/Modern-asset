@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -59,14 +59,17 @@ export default function WhyUs() {
       if (leftColRef.current) {
         gsap.fromTo(
           leftColRef.current,
-          { opacity: 0, x: -30, scale: 0.98 },
+          { opacity: 0.1, x: -30, scale: 0.98 },
           {
             opacity: 1, x: 0, scale: 1,
-            duration: 0.8, ease: 'power3.out',
+            duration: 0.7, ease: 'power3.out',
             scrollTrigger: {
               trigger: leftColRef.current,
-              start: 'top 85%',
+              start: 'top 88%',
               toggleActions: 'play none none none',
+            },
+            onComplete: () => {
+              if (leftColRef.current) gsap.set(leftColRef.current, { clearProps: 'opacity,transform' })
             },
           }
         )
@@ -75,14 +78,17 @@ export default function WhyUs() {
       if (headingRef.current) {
         gsap.fromTo(
           headingRef.current.children,
-          { opacity: 0, y: 24 },
+          { opacity: 0.1, y: 24 },
           {
             opacity: 1, y: 0,
-            duration: 0.6, stagger: 0.1, ease: 'power2.out',
+            duration: 0.6, stagger: 0.08, ease: 'power2.out',
             scrollTrigger: {
               trigger: headingRef.current,
-              start: 'top 85%',
+              start: 'top 88%',
               toggleActions: 'play none none none',
+            },
+            onComplete: () => {
+              if (headingRef.current) gsap.set(headingRef.current.children, { clearProps: 'opacity,transform' })
             },
           }
         )
@@ -92,21 +98,47 @@ export default function WhyUs() {
         const cards = featuresGridRef.current.querySelectorAll('.why-feature-card')
         gsap.fromTo(
           cards,
-          { opacity: 0, y: 30, scale: 0.96 },
+          { opacity: 0.1, y: 30, scale: 0.96 },
           {
             opacity: 1, y: 0, scale: 1,
-            duration: 0.65, stagger: 0.08, ease: 'power2.out',
+            duration: 0.6, stagger: 0.06, ease: 'power2.out',
             scrollTrigger: {
               trigger: featuresGridRef.current,
-              start: 'top 85%',
+              start: 'top 88%',
               toggleActions: 'play none none none',
+            },
+            onComplete: () => {
+              gsap.set(cards, { clearProps: 'opacity,transform' })
             },
           }
         )
       }
     }, el)
 
-    return () => ctx.revert()
+    const safetyTimer = setTimeout(() => {
+      if (leftColRef.current) {
+        leftColRef.current.style.opacity = '1'
+        leftColRef.current.style.transform = 'none'
+      }
+      if (headingRef.current) {
+        Array.from(headingRef.current.children).forEach((c) => {
+          ;(c as HTMLElement).style.opacity = '1'
+          ;(c as HTMLElement).style.transform = 'none'
+        })
+      }
+      if (featuresGridRef.current) {
+        featuresGridRef.current.querySelectorAll('.why-feature-card').forEach((c) => {
+          ;(c as HTMLElement).style.opacity = '1'
+          ;(c as HTMLElement).style.transform = 'none'
+        })
+      }
+      ScrollTrigger.refresh()
+    }, 1000)
+
+    return () => {
+      clearTimeout(safetyTimer)
+      ctx.revert()
+    }
   }, [])
 
   return (
@@ -120,8 +152,10 @@ export default function WhyUs() {
               className="shrink-0 font-display text-lg sm:text-2xl font-black tracking-[0.25em] uppercase text-transparent [-webkit-text-stroke:1.5px_rgba(224,123,16,0.45)] whitespace-nowrap px-6 sm:px-10 flex items-center select-none"
             >
               {item}
-              <span className="text-[#E07B10] [-webkit-text-stroke:0] ml-6 sm:ml-10 opacity-70 text-sm">
-                ✦
+              <span className="text-[#E07B10] [-webkit-text-stroke:0] ml-6 sm:ml-10 opacity-70 inline-flex items-center">
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5Z" />
+                </svg>
               </span>
             </span>
           ))}
@@ -130,7 +164,7 @@ export default function WhyUs() {
 
       {/* Main Why Us Section */}
       <section
-        id="about"
+        id="why-us"
         ref={sectionRef}
         className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-[#F6F5F1] text-[#5C6470] overflow-hidden"
       >

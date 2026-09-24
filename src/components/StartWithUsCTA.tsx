@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 
 interface StartWithUsCTAProps {
   onOpenQuote: () => void
@@ -70,7 +70,10 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
                 className="group inline-flex items-center justify-center gap-2.5 font-display font-bold text-sm sm:text-base tracking-wider uppercase text-white hover:text-[#E07B10] px-6 py-3.5 rounded-full transition-colors cursor-pointer bg-transparent border border-white/20 hover:border-[#E07B10] w-full sm:w-auto text-center"
               >
                 <span>START WITH US</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </button>
 
             </div>
@@ -131,9 +134,13 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
                 <button
                   type="button"
                   onClick={onOpenQuote}
-                  className="font-body text-xs text-[#E07B10] hover:underline font-bold bg-transparent border-none p-0 cursor-pointer"
+                  className="font-body text-xs text-[#E07B10] hover:underline font-bold bg-transparent border-none p-0 cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  Open Dedicated Fleet Spec Form →
+                  <span>Open Dedicated Fleet Spec Form</span>
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
                 </button>
               </div>
             </div>

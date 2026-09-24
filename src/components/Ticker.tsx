@@ -1,4 +1,4 @@
-﻿const ITEMS = [
+const ITEMS = [
   'Custom Truck Bodies',
   'Tankers',
   'Low-Bed Trailers',
@@ -25,16 +25,22 @@ export default function Ticker() {
       <div className="animate-ticker" style={{ display: 'inline-flex', gap: 0 }}>
         {doubled.map((item, i) => (
           <span key={i} style={{
-            fontFamily: 'Barlow Condensed, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontSize: '15px',
             fontWeight: 700,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
             color: '#1B2B3A',
             padding: '0 32px',
+            display: 'inline-flex',
+            alignItems: 'center',
           }}>
-            {item}
-            <span style={{ marginLeft: 32, color: '#E07B10' }}>◆</span>
+            <span>{item}</span>
+            <span style={{ marginLeft: 32, display: 'inline-flex', alignItems: 'center' }}>
+              <svg className="w-2.5 h-2.5 text-[#E07B10] fill-current" viewBox="0 0 24 24">
+                <polygon points="12 2 22 12 12 22 2 12" />
+              </svg>
+            </span>
           </span>
         ))}
       </div>

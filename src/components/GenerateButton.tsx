@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -55,7 +55,7 @@ export function GenerateButton({
           align-items: center;
           justify-content: center;
           padding: 0.65em 1.4em;
-          font-family: var(--font-display, "Barlow Condensed", sans-serif);
+          font-family: 'Poppins', sans-serif;
           font-size: 1em;
           font-weight: 700;
           letter-spacing: 0.06em;

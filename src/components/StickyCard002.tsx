@@ -1,4 +1,4 @@
-﻿import React, { useRef } from 'react';
+import React, { useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface CardData {
@@ -62,6 +62,7 @@ export function StickyCard002<T extends CardData = CardData>({
           border-radius: 24px;
           background: #FFFFFF;
           box-shadow: 0 4px 16px rgba(27, 43, 58, 0.05);
+          transition: transform 0.2s ease-out;
         }
         @media (min-width: 1024px) {
           .sticky-card-item {
@@ -70,7 +71,7 @@ export function StickyCard002<T extends CardData = CardData>({
           }
           ${cards.map((_, i) => `
             .sticky-card-item[data-index="${i}"] {
-              top: calc(clamp(76px, 11vh, 96px) + ${i * 14}px);
+              top: calc(clamp(80px, 12vh, 100px) + ${i * 22}px);
               z-index: ${i + 1};
             }
           `).join('\n')}

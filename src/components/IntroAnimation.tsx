@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 const WORDS = [
@@ -179,7 +179,7 @@ export default function IntroAnimation({ onDone }: Props) {
             <div
               dir={word?.dir}
               style={{
-                fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: 'clamp(48px, 14vw, 130px)',
                 fontWeight: 800,
                 lineHeight: 1.05,
@@ -193,7 +193,7 @@ export default function IntroAnimation({ onDone }: Props) {
             </div>
             <div
               style={{
-                fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+                fontFamily: 'Poppins, sans-serif',
                 fontSize: 'clamp(10px, 2.5vw, 12px)',
                 letterSpacing: '0.3em',
                 textTransform: 'uppercase',
@@ -249,7 +249,7 @@ export default function IntroAnimation({ onDone }: Props) {
           >
             <span
               style={{
-                fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+                fontFamily: 'Poppins, sans-serif',
                 fontWeight: 900,
                 fontSize: isDocking ? 19 : 26,
                 color: '#FFFFFF',
@@ -265,7 +265,7 @@ export default function IntroAnimation({ onDone }: Props) {
           {/* "MODERN ASSETS" Typography */}
           <div
             style={{
-              fontFamily: 'var(--font-display, "Barlow Condensed", sans-serif)',
+              fontFamily: 'Poppins, sans-serif',
               fontWeight: 800,
               fontSize: isDocking ? 'clamp(18px, 4vw, 20px)' : 'clamp(36px, 8vw, 84px)',
               letterSpacing: isDocking ? '0.04em' : '0.03em',
@@ -282,7 +282,7 @@ export default function IntroAnimation({ onDone }: Props) {
           {/* Subtitle that gracefully fades out during docking */}
           <div
             style={{
-              fontFamily: 'var(--font-body, "Outfit", sans-serif)',
+              fontFamily: 'Poppins, sans-serif',
               fontSize: 'clamp(9px, 2.5vw, 11px)',
               letterSpacing: '0.28em',
               textTransform: 'uppercase',

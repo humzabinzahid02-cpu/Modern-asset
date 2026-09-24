@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 
 interface QuotePageProps {
   onBackToHome: () => void
@@ -64,7 +64,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
     border: '1.5px solid #E2DFDC',
     borderRadius: '10px',
     padding: '12px 14px',
-    fontFamily: 'Outfit, sans-serif',
+    fontFamily: 'Poppins, sans-serif',
     fontSize: '14.5px',
     color: '#1B2B3A',
     outline: 'none',
@@ -74,7 +74,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
 
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontFamily: 'Outfit, sans-serif',
+    fontFamily: 'Poppins, sans-serif',
     fontSize: '11px',
     fontWeight: 700,
     letterSpacing: '0.16em',
@@ -112,13 +112,86 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             onClick={onBackToHome}
             className="group flex items-center gap-1.5 sm:gap-2 font-display text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1B2B3A] bg-white border border-[#E2DFDC] hover:border-[#E07B10] hover:text-[#E07B10] px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-xs transition-all cursor-pointer shrink-0"
           >
-            <span className="transition-transform group-hover:-translate-x-1">←</span>
+            <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
             <span className="hidden sm:inline">Back to Fleet &amp; Overview</span>
             <span className="sm:hidden">Back</span>
           </button>
 
         </div>
       </header>
+
+      {/* ── Hero Banner with Visual Background ── */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#14212D] via-[#1B2B3A] to-[#243B50]">
+        {/* Subtle dot grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(#F6F5F1 1.2px, transparent 1.2px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+
+        {/* Floating geometric accents */}
+        <div className="absolute top-8 left-[10%] w-40 h-40 rounded-full bg-[#E07B10]/[0.06] blur-3xl pointer-events-none" />
+        <div className="absolute bottom-4 right-[8%] w-56 h-56 rounded-full bg-[#E07B10]/[0.04] blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/[0.03] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[#E07B10]/[0.06] pointer-events-none" />
+
+        {/* Diagonal accent lines */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]" preserveAspectRatio="none" viewBox="0 0 1440 400">
+          <line x1="0" y1="400" x2="500" y2="0" stroke="#E07B10" strokeWidth="1" />
+          <line x1="200" y1="400" x2="700" y2="0" stroke="#F6F5F1" strokeWidth="0.5" />
+          <line x1="800" y1="400" x2="1300" y2="0" stroke="#E07B10" strokeWidth="0.5" />
+          <line x1="1000" y1="400" x2="1440" y2="80" stroke="#F6F5F1" strokeWidth="1" />
+        </svg>
+
+        {/* Hero content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
+          <div className="max-w-3xl">
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 font-body text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-bold text-[#E07B10] mb-5">
+              <span className="w-8 h-px bg-[#E07B10]" />
+              <span>Fleet Specification Request</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-white uppercase tracking-tight leading-[0.92] mb-5">
+              LET'S BUILD YOUR<br />
+              <span className="text-[#E07B10]">FLEET TOGETHER</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="font-body text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed max-w-xl mb-8">
+              Tell us about your specialized vehicle requirements. Our chief engineering team in Riyadh will issue a comprehensive, fixed-cost proposal within 24 hours.
+            </p>
+
+            {/* Trust badges row */}
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              {[
+                { icon: 'M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.18V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z', label: 'ISO 9001 Certified' },
+                { icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', label: 'SASO Compliant' },
+                { icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', label: '24h CAD Response' },
+              ].map(badge => (
+                <div
+                  key={badge.label}
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/[0.06] border border-white/[0.08] backdrop-blur-sm"
+                >
+                  <svg className="w-3.5 h-3.5 text-[#E07B10] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={badge.icon} />
+                  </svg>
+                  <span className="font-body text-[10px] sm:text-[11px] tracking-widest uppercase text-white/70 font-semibold">{badge.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom fade to cream */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#F6F5F1] to-transparent pointer-events-none" />
+      </div>
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
@@ -143,13 +216,13 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
               Direct Factory Engineering • KSA
             </div>
 
-            <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#1B2B3A] uppercase tracking-tight leading-[0.93] mb-4 sm:mb-6">
-              LET'S BUILD YOUR<br />
-              <span className="text-[#E07B10]">FLEET TOGETHER</span>
-            </h1>
+            <h2 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-[#1B2B3A] uppercase tracking-tight leading-[0.95] mb-4 sm:mb-5">
+              WHY WORK WITH<br />
+              <span className="text-[#E07B10]">MODERN ASSETS?</span>
+            </h2>
 
             <p className="font-body text-sm sm:text-base text-[#5C6470] leading-relaxed mb-6 sm:mb-8">
-              Tell us about your specialized vehicle requirements. Our chief engineering team in Riyadh will review your specifications and issue a comprehensive, fixed-cost proposal with CAD schematics within 24 hours.
+              From custom truck bodies to multi-axle lowbeds — every project gets dedicated engineering oversight, certified materials, and on-time delivery.
             </p>
 
             {/* Key Assurance Cards */}
@@ -403,12 +476,19 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                         ) : (
                           <>
                             <span>SUBMIT FLEET SPECIFICATION REQUEST</span>
-                            <span className="text-xl">→</span>
+                            <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12" />
+                              <polyline points="12 5 19 12 12 19" />
+                            </svg>
                           </>
                         )}
                       </button>
-                      <p className="font-body text-[11px] text-[#8C949C] text-center mt-2.5 mb-0">
-                        🔒 Confidential commercial inquiry. Guaranteed factory non-disclosure.
+                      <p className="font-body text-[11px] text-[#8C949C] text-center mt-2.5 mb-0 flex items-center justify-center gap-1.5">
+                        <svg className="w-3.5 h-3.5 text-[#8C949C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                        <span>Confidential commercial inquiry. Guaranteed factory non-disclosure.</span>
                       </p>
                     </div>
 
