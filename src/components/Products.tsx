@@ -334,7 +334,7 @@ export default function Products() {
         
         {/* Section Header & Filters */}
         <div className="flex flex-col gap-6 mb-8 sm:mb-12">
-          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6">
+          <div className="flex flex-col items-stretch gap-6">
             <div>
               <div className="font-body text-[11px] tracking-[0.3em] uppercase text-[#E07B10] mb-2 font-bold">
                 Precision Fleet Catalog
@@ -345,9 +345,9 @@ export default function Products() {
             </div>
 
             {/* Filter Pills & View Switcher strictly in one horizontal line */}
-            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 max-w-full overflow-x-auto no-scrollbar pb-1 sm:pb-0">
+            <div className="flex w-full flex-nowrap items-center justify-between gap-3 max-w-full pb-1 sm:pb-0">
               {/* Category filters — Single Line */}
-              <div className="flex flex-nowrap items-center gap-1 sm:gap-1.5 bg-white p-1 sm:p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs max-w-full overflow-x-auto no-scrollbar whitespace-nowrap shrink-0">
+              <div className="flex min-w-0 flex-1 flex-nowrap items-center gap-1 sm:gap-1.5 bg-white p-1 sm:p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs max-w-full overflow-x-auto xl:overflow-visible no-scrollbar whitespace-nowrap">
                 {CATEGORIES.map((cat) => {
                   const isActive = activeCategory === cat.id
                   return (

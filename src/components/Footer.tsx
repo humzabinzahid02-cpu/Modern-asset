@@ -31,9 +31,9 @@ export default function Footer({ onOpenQuote }: FooterProps) {
   return (
     <footer
       id="contact-footer"
-      className="bg-[#1C2128] px-4 sm:px-6 lg:px-12 pt-7 sm:pt-9 lg:pt-10 pb-4 sm:pb-5 text-[#B0B8BC] overflow-hidden"
+      className="w-full min-h-[550px] bg-[#1C2128] px-4 sm:px-6 lg:px-13 pt-10 sm:pt-9 lg:pt-10 pb-4 sm:pb-5 text-[#B0B8BC] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[100rem] mx-auto">
         {/* Top Section: CTA on Left, Link Columns on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 mb-4 sm:mb-6">
           
@@ -188,7 +188,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
         {/* Giant Typographic Brand Display — BORDERLESS, FULL, AND PROMINENT */}
         <div className="w-full pt-2 sm:pt-3 pb-2 select-none overflow-hidden text-center">
-          <div className="font-display font-black text-[clamp(2.5rem,11.5vw,10.5rem)] tracking-tight uppercase leading-[0.82] whitespace-nowrap select-none">
+          <div className="font-display font-black text-[clamp(2.5rem,11vw,10.5rem)] tracking-tight uppercase leading-[0.82] whitespace-nowrap select-none">
             <span className="text-white">Modern </span>
             <span className="text-[#E07B10]">Assets.</span>
           </div>

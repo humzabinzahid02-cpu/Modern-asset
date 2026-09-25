@@ -76,22 +76,18 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         zIndex: 100,
         padding: '0 clamp(14px, 3.7vw, 72px)',
         paddingLeft: 'clamp(12px, 1.5vw, 20px)',
-        height: 90,
+        height: 120,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        background: scrolled
-          ? 'rgba(255, 255, 255, 0.96)'
-          : 'rgba(246, 245, 241, 0.94)',
-        backdropFilter: 'blur(10px)',
+        background: 'rgba(246, 245, 241, 0.68)',
+        backdropFilter: 'blur(18px) saturate(140%)',
         transform: 'translateZ(0)',
         willChange: 'background, box-shadow',
-        WebkitBackdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(226, 223, 220, 0.85)',
-        boxShadow: scrolled
-          ? '0 12px 32px -4px rgba(27, 43, 58, 0.08)'
-          : '0 2px 14px rgba(27, 43, 58, 0.04)',
-        transition: 'background 300ms ease, box-shadow 300ms ease',
+        WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.32)',
+        boxShadow: '0 8px 28px rgba(27, 43, 58, 0.06)',
+        transition: 'background 300ms ease, box-shadow 300ms ease, backdrop-filter 300ms ease',
       }}
     >
       {/* Specular Liquid Gleam line */}
@@ -126,7 +122,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
           <img
             src={`${import.meta.env.BASE_URL}modern-assets-logo.png`}
             alt="Modern Assets — Heavy Vehicle Solutions"
-            style={{ width: 'clamp(240px, 27vw, 288px)', height: 70, objectFit: 'contain', transition: 'transform 200ms ease' }}
+            style={{ width: 'clamp(240px, 27vw, 288px)', height: 92, objectFit: 'contain', transition: 'transform 200ms ease' }}
             className="group-hover:scale-105"
           />
         </button>
@@ -269,7 +265,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         <div
           style={{
             position: 'absolute',
-            top: 90,
+            top: 120,
             left: 0,
             right: 0,
             background: 'rgba(255, 255, 255, 0.98)',

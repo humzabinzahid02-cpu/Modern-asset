@@ -172,3 +172,12 @@ body {
   color: #FFFFFF;
   border-color: #1B2B3A;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

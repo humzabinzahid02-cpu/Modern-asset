@@ -247,7 +247,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               </div>
 
               {/* Front Card: Compact Text Card (Columns 1 to 6, Row 1, z-20) — Overlaps bottom-left of Video Card */}
-              <div className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 w-full -mt-10 sm:-mt-14 lg:mt-0 lg:self-end lg:translate-x-12 lg:translate-y-12 xl:translate-y-16 max-w-[470px] xl:max-w-[500px] bg-[#0A0E14] text-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
+              <div className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 w-full -mt-10 sm:-mt-14 lg:mt-0 lg:self-end lg:translate-x-12 lg:translate-y-[90px] max-w-[500px] xl:max-w-[500px] bg-[#0A0E14]/75 backdrop-blur-md text-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-[28px] lg:text-[30px] xl:text-[32px] font-black font-display text-white tracking-tight leading-[1.14] mb-3.5">
                     Accelerate your fleet growth with <span className="text-[#E07B10]">Modern Assets</span>
