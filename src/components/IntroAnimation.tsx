@@ -282,7 +282,7 @@ export default function IntroAnimation({ onDone }: Props) {
             }}
           >
             <img
-              src="/modern-assets-logo.png"
+              src={`${import.meta.env.BASE_URL}modern-assets-logo.png`}
               alt="Modern Assets — Heavy Vehicle Solutions"
               style={{ width: isDocking ? 205 : 'min(76vw, 520px)', height: isDocking ? 58 : 'auto', objectFit: 'contain', transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)' }}
             />

@@ -124,7 +124,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
           className="group select-none"
         >
           <img
-            src="/modern-assets-logo.png"
+            src={`${import.meta.env.BASE_URL}modern-assets-logo.png`}
             alt="Modern Assets — Heavy Vehicle Solutions"
             style={{ width: 'clamp(240px, 27vw, 288px)', height: 70, objectFit: 'contain', transition: 'transform 200ms ease' }}
             className="group-hover:scale-105"

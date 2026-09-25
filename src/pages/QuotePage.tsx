@@ -94,7 +94,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             onClick={onBackToHome}
             className="flex items-center gap-2 sm:gap-2.5 text-left bg-transparent border-none cursor-pointer p-0 group"
           >
-            <img src="/modern-assets-logo.png" alt="Modern Assets — Heavy Vehicle Solutions" className="w-40 sm:w-52 h-12 object-contain group-hover:scale-[1.03] transition-transform" />
+            <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt="Modern Assets — Heavy Vehicle Solutions" className="w-40 sm:w-52 h-12 object-contain group-hover:scale-[1.03] transition-transform" />
           </button>
 
           {/* Back to Home Button */}

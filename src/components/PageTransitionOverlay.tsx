@@ -191,7 +191,7 @@ export default function PageTransitionOverlay({
             willChange: 'transform, opacity',
           }}
         >
-          <img src="/modern-assets-logo.png" alt="Modern Assets — Heavy Vehicle Solutions" style={{ width: 'min(72vw, 360px)', height: 100, objectFit: 'contain', marginBottom: 24 }} />
+          <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt="Modern Assets — Heavy Vehicle Solutions" style={{ width: 'min(72vw, 360px)', height: 100, objectFit: 'contain', marginBottom: 24 }} />
 
           {/* Big Bold Display Headline in Site Cream */}
           <h1
