@@ -22,7 +22,7 @@ export default function Ticker() {
       overflow: 'hidden',
       whiteSpace: 'nowrap',
     }}>
-      <div className="animate-ticker" style={{ display: 'inline-flex', gap: 0 }}>
+      <div className="animate-ticker" style={{ display: 'inline-flex', gap: 0, willChange: 'transform', transform: 'translateZ(0)' }}>
         {doubled.map((item, i) => (
           <span key={i} style={{
             fontFamily: 'Poppins, sans-serif',

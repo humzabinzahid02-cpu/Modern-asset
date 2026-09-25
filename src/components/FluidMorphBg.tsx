@@ -113,7 +113,7 @@ export function FluidMorphBg({
               key={index}
               d={dList[0]}
               fill={colors[index % colors.length]}
-              filter="url(#fluid-shadow)"
+              opacity={0.85}
             >
               <animate
                 attributeName="d"

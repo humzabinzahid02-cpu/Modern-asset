@@ -33,6 +33,7 @@
   inset: 0;
   clip-path: inset(18% 22% 18% 22% round 24px);
   will-change: clip-path;
+  transform: translateZ(0);
   background-color: #14212D;
 }
 
@@ -100,6 +101,7 @@
   border: 1.5px solid rgba(224, 123, 16, 0.45);
   box-shadow: 0 24px 60px -15px rgba(20, 33, 45, 0.45), 0 8px 24px -6px rgba(0, 0, 0, 0.3);
   will-change: left, top, width, height, border-radius;
+  transform: translateZ(0);
 }
 
 .scroll-expand__title-wrapper {

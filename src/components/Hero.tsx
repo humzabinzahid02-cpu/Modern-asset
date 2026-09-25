@@ -96,6 +96,16 @@ export default function Hero({ onOpenQuote }: HeroProps) {
     if (!ctx) return
 
     let animId: number
+    let isVisible = true
+    const observer = new IntersectionObserver(([entry]) => {
+      const wasVisible = isVisible
+      isVisible = entry.isIntersecting
+      if (isVisible && !wasVisible) {
+        animId = requestAnimationFrame(render)
+      }
+    }, { threshold: 0.05 })
+    observer.observe(canvas)
+
     let width = (canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth)
     let height = (canvas.height = canvas.parentElement?.offsetHeight || 600)
 
@@ -118,6 +128,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
     }))
 
     const render = () => {
+      if (!isVisible) return
       ctx.clearRect(0, 0, width, height)
 
       // Update positions
@@ -160,6 +171,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
     return () => {
       window.removeEventListener('resize', handleResize)
       cancelAnimationFrame(animId)
+      observer.disconnect()
     }
   }, [])
 
@@ -191,8 +203,8 @@ export default function Hero({ onOpenQuote }: HeroProps) {
       <section className="relative w-full bg-[#F6F5F1] overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-28 lg:pt-40 lg:pb-32 px-6 sm:px-12 lg:px-20 flex items-center min-h-[500px] lg:min-h-[560px]">
         
         {/* Ambient Subtle Warm Glows */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#E07B10]/[0.08] rounded-full blur-3xl pointer-events-none z-0" />
-        <div className="absolute top-1/2 right-0 w-80 h-80 bg-[#1B2B3A]/[0.04] rounded-full blur-3xl pointer-events-none z-0" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#E07B10]/[0.08] rounded-full blur-3xl pointer-events-none z-0 [transform:translateZ(0)]" />
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-[#1B2B3A]/[0.04] rounded-full blur-3xl pointer-events-none z-0 [transform:translateZ(0)]" />
 
         {/* ── Background Kinetic Watermark Typography (Never Empty) ── */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 flex flex-col justify-between py-6 opacity-60">
@@ -359,8 +371,8 @@ export default function Hero({ onOpenQuote }: HeroProps) {
       <section className="relative z-10 w-full overflow-hidden bg-[#F6F5F1] py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-12 select-none border-t border-[#E2DFDC]">
         
         {/* Subtle Ambient Background Warm Glows */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#E07B10]/[0.06] rounded-full blur-3xl pointer-events-none -z-0" />
-        <div className="absolute -bottom-10 right-1/4 w-80 h-80 bg-[#1B2B3A]/[0.03] rounded-full blur-3xl pointer-events-none -z-0" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#E07B10]/[0.06] rounded-full blur-3xl pointer-events-none -z-0 [transform:translateZ(0)]" />
+        <div className="absolute -bottom-10 right-1/4 w-80 h-80 bg-[#1B2B3A]/[0.03] rounded-full blur-3xl pointer-events-none -z-0 [transform:translateZ(0)]" />
 
         {/* Content: Clean White Card (Left) + Video Frame (Right) */}
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
@@ -448,9 +460,13 @@ export default function Hero({ onOpenQuote }: HeroProps) {
 
         .hero-bg-drift-left {
           animation: heroBgDriftLeft 45s linear infinite;
+          will-change: transform;
+          transform: translateZ(0);
         }
         .hero-bg-drift-right {
           animation: heroBgDriftRight 40s linear infinite;
+          will-change: transform;
+          transform: translateZ(0);
         }
 
         .hero-badge-float {

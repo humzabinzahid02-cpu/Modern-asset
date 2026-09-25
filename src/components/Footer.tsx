@@ -209,7 +209,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
         {/* Giant Typographic Brand Display across bottom (as in Image 2) */}
         <div className="w-full border-t border-white/10 pt-6 sm:pt-10 select-none overflow-hidden text-center">
-          <div className="font-display font-black text-[14vw] lg:text-[15.5vw] tracking-tighter uppercase leading-[0.8] whitespace-nowrap select-none">
+          <div className="font-display font-black text-[clamp(2rem,10.6vw,12.5rem)] tracking-tighter uppercase leading-[0.8] whitespace-nowrap select-none">
             <span className="text-white">Modern </span>
             <span className="text-[#E07B10]">Assets.</span>
           </div>

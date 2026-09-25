@@ -82,13 +82,15 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         background: scrolled
           ? 'rgba(255, 255, 255, 0.96)'
           : 'rgba(246, 245, 241, 0.94)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        backdropFilter: 'blur(10px)',
+        transform: 'translateZ(0)',
+        willChange: 'background, box-shadow',
+        WebkitBackdropFilter: 'blur(10px)',
         borderBottom: '1px solid rgba(226, 223, 220, 0.85)',
         boxShadow: scrolled
           ? '0 12px 32px -4px rgba(27, 43, 58, 0.08)'
           : '0 2px 14px rgba(27, 43, 58, 0.04)',
-        transition: 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'background 300ms ease, box-shadow 300ms ease',
       }}
     >
       {/* Specular Liquid Gleam line */}

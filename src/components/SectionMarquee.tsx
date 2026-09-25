@@ -34,6 +34,8 @@ export default function SectionMarquee({
           width: 'max-content',
           animation: `sectionMarquee${direction === 'rtl' ? 'RTL' : 'LTR'}_${duration} ${duration}s linear infinite`,
           lineHeight: 0.8,
+          willChange: 'transform',
+          transform: 'translateZ(0)',
         }}
       >
         {tripled.map((item, i) => (
