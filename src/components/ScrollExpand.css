@@ -1,7 +1,6 @@
 .scroll-expand {
   position: relative;
   width: 100%;
-  height: 100%;
 }
 
 .scroll-expand--scroller {
@@ -23,18 +22,42 @@
 
 .scroll-expand__stage {
   position: sticky;
-  top: 0;
+  top: 90px;
   width: 100%;
+  height: calc(100vh - 90px);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0);
 }
 
-.scroll-expand__frame {
+/* Single unified hardware-composited card */
+.scroll-expand__card {
   position: absolute;
   inset: 0;
-  clip-path: inset(18% 22% 18% 22% round 24px);
-  will-change: clip-path;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform, border-radius;
   transform: translateZ(0);
   background-color: #14212D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hardware-composited border and glow with GPU opacity fade */
+.scroll-expand__border-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1.5px solid rgba(224, 123, 16, 0.45);
+  box-shadow: 0 24px 60px -15px rgba(20, 33, 45, 0.45), 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+  border-radius: inherit;
+  z-index: 5;
+  will-change: opacity;
 }
 
 .scroll-expand__media {
@@ -44,7 +67,7 @@
   height: 100%;
   object-fit: cover;
   will-change: transform;
-  transform-origin: center;
+  transform-origin: center center;
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -55,9 +78,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(20, 33, 45, 0.72) 0%,
-    rgba(27, 43, 58, 0.45) 45%,
-    rgba(15, 23, 42, 0.85) 100%
+    rgba(20, 33, 45, 0.65) 0%,
+    rgba(27, 43, 58, 0.35) 45%,
+    rgba(15, 23, 42, 0.75) 100%
   );
   pointer-events: none;
   z-index: 1;
@@ -70,41 +93,11 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(12, 18, 26, 0.5) 45%, rgba(0, 0, 0, 0.65));
   opacity: 0;
   z-index: 2;
-}
-
-.scroll-expand__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 4% 6%;
-  opacity: 0;
-  will-change: opacity, transform;
-  z-index: 3;
-}
-
-/* Card box strictly sized and positioned to match the clipped card */
-.scroll-expand__card-box {
-  position: absolute;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  padding: 1.5rem 2rem;
-  z-index: 4;
-  overflow: hidden;
-  border: 1.5px solid rgba(224, 123, 16, 0.45);
-  box-shadow: 0 24px 60px -15px rgba(20, 33, 45, 0.45), 0 8px 24px -6px rgba(0, 0, 0, 0.3);
-  will-change: left, top, width, height, border-radius;
-  transform: translateZ(0);
+  will-change: opacity;
 }
 
 .scroll-expand__title-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,6 +106,7 @@
   width: 100%;
   max-width: 90%;
   box-sizing: border-box;
+  z-index: 4;
   will-change: opacity, transform;
 }
 
@@ -124,8 +118,6 @@
   border-radius: 9999px;
   background: rgba(20, 33, 45, 0.85);
   border: 1px solid rgba(224, 123, 16, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   font-family: 'Inter', sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
@@ -183,9 +175,26 @@
   text-transform: uppercase;
   color: #E07B10;
   pointer-events: none;
+  z-index: 4;
   will-change: opacity, transform;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
+
+.scroll-expand__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4% 6%;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+  z-index: 6;
+}
+

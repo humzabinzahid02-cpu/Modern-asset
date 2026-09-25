@@ -127,24 +127,24 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             </div>
           </div>
 
-          {/* Right Columns: Products & Site Links */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
+          {/* Right Columns: Products & Site Links (Enlarged & High-Legibility) */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-14">
             
             {/* Products Column */}
             <div>
-              <div className="font-display font-black text-sm tracking-widest uppercase text-white mb-5 pb-2 border-b border-white/10">
+              <div className="font-display font-black text-base sm:text-lg lg:text-xl tracking-wider uppercase text-white mb-6 pb-3 border-b border-white/15">
                 Fleet Products
               </div>
-              <ul className="space-y-3 p-0 m-0 list-none font-body text-xs sm:text-sm">
+              <ul className="space-y-3.5 sm:space-y-4 p-0 m-0 list-none font-body text-base sm:text-[17px]">
                 {FLEET_PRODUCTS.map((prod) => (
                   <li key={prod}>
                     <a
                       href="#products"
                       onClick={(e) => handleLinkClick('products', e)}
-                      className="text-[#B0B8BC] hover:text-[#E07B10] transition-colors no-underline cursor-pointer flex items-center gap-2 group"
+                      className="text-[#C5CCD2] hover:text-[#E07B10] transition-all no-underline cursor-pointer flex items-center gap-2.5 group font-medium"
                     >
-                      <span className="text-[#E07B10] opacity-50 group-hover:opacity-100 transition-opacity">›</span>
-                      <span>{prod}</span>
+                      <span className="text-[#E07B10] text-lg font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all">›</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform">{prod}</span>
                     </a>
                   </li>
                 ))}
@@ -153,33 +153,33 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
             {/* Site Navigation Links */}
             <div>
-              <div className="font-display font-black text-sm tracking-widest uppercase text-white mb-5 pb-2 border-b border-white/10">
+              <div className="font-display font-black text-base sm:text-lg lg:text-xl tracking-wider uppercase text-white mb-6 pb-3 border-b border-white/15">
                 Site Links
               </div>
-              <ul className="space-y-3 p-0 m-0 list-none font-body text-xs sm:text-sm">
+              <ul className="space-y-3.5 sm:space-y-4 p-0 m-0 list-none font-body text-base sm:text-[17px]">
                 {SITE_LINKS.map((link) => (
                   <li key={link.name}>
                     <a
                       href={`#${link.target}`}
                       onClick={(e) => handleLinkClick(link.target, e)}
-                      className="text-[#B0B8BC] hover:text-[#E07B10] transition-colors no-underline cursor-pointer flex items-center gap-2 group"
+                      className="text-[#C5CCD2] hover:text-[#E07B10] transition-all no-underline cursor-pointer flex items-center gap-2.5 group font-medium"
                     >
-                      <span className="text-[#E07B10] opacity-50 group-hover:opacity-100 transition-opacity">›</span>
-                      <span>{link.name}</span>
+                      <span className="text-[#E07B10] text-lg font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all">›</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform">{link.name}</span>
                     </a>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <div className="font-body text-xs tracking-wider uppercase text-white/90 font-semibold mb-1 flex items-center gap-1.5">
-                  <svg className="w-3.5 h-3.5 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="mt-10 pt-6 border-t border-white/15">
+                <div className="font-body text-sm sm:text-base tracking-wider uppercase text-white font-bold mb-2 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   <span>Headquarters</span>
                 </div>
-                <div className="font-body text-xs text-[#8C949C]">
+                <div className="font-body text-sm sm:text-base text-[#A4ACB2] leading-relaxed">
                   Industrial Area 2, Riyadh, Kingdom of Saudi Arabia
                 </div>
               </div>
@@ -189,8 +189,16 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
         </div>
 
-        {/* Small Copyright & Legal Metadata Bar */}
-        <div className="border-t border-[#252D35] pt-6 pb-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left text-xs font-body text-[#8C949C]">
+        {/* Giant Typographic Brand Display — On Upper */}
+        <div className="w-full border-t border-white/10 pt-8 sm:pt-12 pb-6 sm:pb-8 select-none overflow-hidden text-center">
+          <div className="font-display font-black text-[clamp(2rem,10.6vw,12.5rem)] tracking-tighter uppercase leading-[0.85] whitespace-nowrap select-none">
+            <span className="text-white">Modern </span>
+            <span className="text-[#E07B10]">Assets.</span>
+          </div>
+        </div>
+
+        {/* Small Copyright & Legal Metadata Bar — At the Very Last */}
+        <div className="border-t border-[#252D35] pt-6 pb-2 sm:pb-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left text-xs font-body text-[#8C949C]">
           <div>
             &copy; {new Date().getFullYear()} Modern Assets. All rights reserved. Saudi Vision 2030 Fleet Partner.
           </div>
@@ -204,14 +212,6 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 {item}
               </a>
             ))}
-          </div>
-        </div>
-
-        {/* Giant Typographic Brand Display across bottom (as in Image 2) */}
-        <div className="w-full border-t border-white/10 pt-6 sm:pt-10 select-none overflow-hidden text-center">
-          <div className="font-display font-black text-[clamp(2rem,10.6vw,12.5rem)] tracking-tighter uppercase leading-[0.8] whitespace-nowrap select-none">
-            <span className="text-white">Modern </span>
-            <span className="text-[#E07B10]">Assets.</span>
           </div>
         </div>
 

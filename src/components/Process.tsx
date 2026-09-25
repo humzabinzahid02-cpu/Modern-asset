@@ -306,7 +306,7 @@ export default function Process() {
         </div>
 
         {/* Expansive Full-Width Process Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(20px, 3vw, 36px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(16px, 2vw, 24px)' }}>
           {STEPS.map((step, idx) => {
             const isHovered = hoveredIdx === idx;
             return (
@@ -318,7 +318,7 @@ export default function Process() {
                 style={{
                   position: 'relative',
                   borderRadius: 20,
-                  padding: 'clamp(20px, 4vw, 44px)',
+                  padding: 'clamp(20px, 2.5vw, 32px)',
                   background: '#FFFFFF',
                   border: isHovered
                     ? '1px solid #E07B10'
@@ -351,9 +351,10 @@ export default function Process() {
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'space-between',
+                      justifyContent: 'flex-start',
+                      gap: 14,
                       borderRight: '1px solid #E2DFDC',
-                      paddingRight: 'clamp(16px, 3vw, 36px)',
+                      paddingRight: 'clamp(16px, 2.5vw, 30px)',
                     }}
                     className="process-card-left-col"
                   >
@@ -364,6 +365,8 @@ export default function Process() {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
+                          gap: 10,
+                          flexWrap: 'wrap',
                           marginBottom: 12,
                         }}
                       >
@@ -375,6 +378,7 @@ export default function Process() {
                             textTransform: 'uppercase',
                             color: '#8C949C',
                             fontWeight: 600,
+                            whiteSpace: 'nowrap',
                           }}
                         >
                           {step.phase}
@@ -427,11 +431,11 @@ export default function Process() {
                           stagger={0.02}
                           textStyle={{
                             fontFamily: 'Poppins, sans-serif',
-                            fontSize: 'clamp(32px, 4vw, 54px)',
+                            fontSize: 'clamp(22px, 2.4vw, 34px)',
                             fontWeight: 900,
                             textTransform: 'uppercase',
-                            letterSpacing: '0.02em',
-                            lineHeight: 1.05,
+                            letterSpacing: '0.01em',
+                            lineHeight: 1.1,
                             color: '#1B2B3A',
                             display: 'inline-block',
                           }}
@@ -442,7 +446,7 @@ export default function Process() {
                     </div>
 
                     {/* Quick Specs Callouts for this step */}
-                    <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    <div style={{ marginTop: 6, display: 'flex', flexDirection: 'column', gap: 6 }}>
                       {step.specs.map((spec, sIdx) => (
                         <div
                           key={sIdx}
@@ -505,7 +509,7 @@ export default function Process() {
                         fontSize: 'clamp(13.5px, 1.4vw, 16px)',
                         color: '#5C6470',
                         lineHeight: 1.7,
-                        margin: '0 0 20px',
+                        margin: '0 0 14px',
                       }}
                     >
                       {step.desc}
@@ -515,7 +519,7 @@ export default function Process() {
                     <div
                       style={{
                         borderTop: '1px solid #E2DFDC',
-                        paddingTop: 16,
+                        paddingTop: 12,
                       }}
                     >
                       <div
@@ -578,8 +582,8 @@ export default function Process() {
       <style>{`
         .process-card-inner-grid {
           display: grid;
-          grid-template-columns: minmax(260px, 340px) 1fr;
-          gap: clamp(20px, 3.5vw, 40px);
+          grid-template-columns: minmax(320px, 390px) 1fr;
+          gap: clamp(20px, 2.5vw, 32px);
           align-items: stretch;
         }
 
@@ -595,7 +599,7 @@ export default function Process() {
           }
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 960px) {
           .process-card-inner-grid {
             grid-template-columns: 1fr;
           }

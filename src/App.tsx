@@ -112,7 +112,7 @@ export default function App() {
               currentPage="home"
               onNavigate={(page, sectionId) => triggerNavigation(page, sectionId)}
             />
-            <Hero />
+            <Hero onOpenQuote={() => triggerNavigation('quote')} />
             <Stats />
             <Ticker />
             <Products />

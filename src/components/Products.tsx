@@ -275,14 +275,14 @@ export default function Products() {
           title="BUILT FOR EVERY INDUSTRY"
           badge="CHAPTER 02 • COMMERCIAL FLEET"
           scrollHint="SCROLL TO EXPAND FLEET"
-          startWidth={56}
-          startHeight={64}
+          startWidth={76}
+          startHeight={78}
           startRadius={24}
           endRadius={0}
-          mediaZoom={1.35}
-          scrollDistance={0.35}
-          holdDistance={0}
-          smoothing={0.1}
+          mediaZoom={1.25}
+          scrollDistance={0.9}
+          holdDistance={0.15}
+          smoothing={0.03}
           overlayScrim={0.5}
           useWindowScroll={true}
         >
@@ -334,7 +334,7 @@ export default function Products() {
         
         {/* Section Header & Filters */}
         <div className="flex flex-col gap-6 mb-8 sm:mb-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6">
             <div>
               <div className="font-body text-[11px] tracking-[0.3em] uppercase text-[#E07B10] mb-2 font-bold">
                 Precision Fleet Catalog
@@ -344,17 +344,17 @@ export default function Products() {
               </h3>
             </div>
 
-            {/* Filter Pills & View Switcher */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3">
-              {/* Category filters */}
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 bg-white p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs max-w-full">
+            {/* Filter Pills & View Switcher strictly in one horizontal line */}
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 max-w-full overflow-x-auto no-scrollbar pb-1 sm:pb-0">
+              {/* Category filters — Single Line */}
+              <div className="flex flex-nowrap items-center gap-1 sm:gap-1.5 bg-white p-1 sm:p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs max-w-full overflow-x-auto no-scrollbar whitespace-nowrap shrink-0">
                 {CATEGORIES.map((cat) => {
                   const isActive = activeCategory === cat.id
                   return (
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
-                      className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl font-display text-xs sm:text-sm font-bold tracking-wider uppercase cursor-pointer border-none transition-all ${
+                      className={`shrink-0 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl font-display text-[11px] sm:text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all whitespace-nowrap ${
                         isActive
                           ? 'bg-[#E07B10] text-white shadow-xs'
                           : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
@@ -367,10 +367,10 @@ export default function Products() {
               </div>
 
               {/* View Switcher: 3D ScrollStack vs 2-Column Grid */}
-              <div className="flex gap-1.5 bg-white p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs">
+              <div className="flex shrink-0 items-center gap-1 bg-white p-1 sm:p-1.5 rounded-2xl border border-[#E2DFDC] shadow-xs">
                 <button
                   onClick={() => setViewMode('stack')}
-                  className={`px-3 py-1.5 rounded-xl font-display text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all flex items-center gap-1.5 ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-xl font-display text-[11px] sm:text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all flex items-center gap-1.5 whitespace-nowrap ${
                     viewMode === 'stack'
                       ? 'bg-[#E07B10] text-white shadow-xs'
                       : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
@@ -385,7 +385,7 @@ export default function Products() {
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`px-3 py-1.5 rounded-xl font-display text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all flex items-center gap-1.5 ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-xl font-display text-[11px] sm:text-xs font-bold tracking-wider uppercase cursor-pointer border-none transition-all flex items-center gap-1.5 whitespace-nowrap ${
                     viewMode === 'grid'
                       ? 'bg-[#E07B10] text-white shadow-xs'
                       : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'

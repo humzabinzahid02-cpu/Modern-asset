@@ -42,16 +42,16 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
   badge = '',
   cardTint,
   scrollHint = '',
-  startWidth = 42,
-  startHeight = 58,
+  startWidth = 76,
+  startHeight = 78,
   startRadius = 24,
   endRadius = 0,
-  mediaZoom = 1.35,
-  scrollDistance = 1.2,
-  holdDistance = 0.35,
-  smoothing = 0.1,
-  overlayScrim = 0.45,
-  useWindowScroll = false,
+  mediaZoom = 1.25,
+  scrollDistance = 0.9,
+  holdDistance = 0.15,
+  smoothing = 0.03,
+  overlayScrim = 0.5,
+  useWindowScroll = true,
   enabled = true,
   children,
   className = '',
@@ -61,8 +61,8 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
   const rootRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const frameRef = useRef<HTMLDivElement>(null);
-  const cardBoxRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const borderGlowRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLImageElement | HTMLVideoElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -98,59 +98,54 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
   };
 
   const applyProgress = useCallback((p: number) => {
-    const frame = frameRef.current;
+    const card = cardRef.current;
     const media = mediaRef.current;
-    if (!frame || !media) return;
+    if (!card || !media) return;
     const c = propsRef.current;
 
     const e = smoothstep(0, 1, p);
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
     const isTablet = typeof window !== 'undefined' && window.innerWidth < 1024;
-    const baseStartWidth = isMobile ? 88 : isTablet ? 72 : c.startWidth;
-    const baseStartHeight = isMobile ? 54 : c.startHeight;
+    const baseStartWidth = isMobile ? 90 : isTablet ? 82 : (c.startWidth || 76);
+    const baseStartHeight = isMobile ? 68 : isTablet ? 74 : (c.startHeight || 78);
 
-    const w = baseStartWidth + (100 - baseStartWidth) * e;
-    const h = baseStartHeight + (100 - baseStartHeight) * e;
-    const ix = Math.max(0, (100 - w) / 2);
-    const iy = Math.max(0, (100 - h) / 2);
+    const sx = (baseStartWidth / 100) + (1 - baseStartWidth / 100) * e;
+    const sy = (baseStartHeight / 100) + (1 - baseStartHeight / 100) * e;
     const r = c.startRadius + (c.endRadius - c.startRadius) * e;
-    frame.style.clipPath = `inset(${iy}% ${ix}% ${iy}% ${ix}% round ${r}px)`;
 
-    media.style.transform = `scale(${c.mediaZoom + (1 - c.mediaZoom) * e})`;
+    card.style.transform = `scale3d(${sx.toFixed(4)}, ${sy.toFixed(4)}, 1)`;
+    card.style.borderRadius = `${r.toFixed(1)}px`;
 
-    if (scrimRef.current) scrimRef.current.style.opacity = `${c.overlayScrim * e}`;
+    const zoom = c.mediaZoom + (1 - c.mediaZoom) * e;
+    media.style.transform = `scale(${zoom.toFixed(4)})`;
 
-    if (cardBoxRef.current) {
-      cardBoxRef.current.style.left = `${ix}%`;
-      cardBoxRef.current.style.top = `${iy}%`;
-      cardBoxRef.current.style.width = `${w}%`;
-      cardBoxRef.current.style.height = `${h}%`;
-      cardBoxRef.current.style.borderRadius = `${r}px`;
+    if (borderGlowRef.current) {
+      const borderFade = smoothstep(0.7, 0.98, p);
+      borderGlowRef.current.style.opacity = `${(1 - borderFade).toFixed(3)}`;
+    }
 
-      const borderFade = smoothstep(0.65, 0.95, p);
-      cardBoxRef.current.style.borderColor = `rgba(224, 123, 16, ${0.45 * (1 - borderFade)})`;
-      cardBoxRef.current.style.boxShadow = borderFade >= 0.95
-        ? 'none'
-        : `0 24px 60px -15px rgba(20, 33, 45, ${0.45 * (1 - borderFade)}), 0 8px 24px -6px rgba(0, 0, 0, ${0.3 * (1 - borderFade)})`;
+    if (scrimRef.current) {
+      scrimRef.current.style.opacity = `${(c.overlayScrim * e).toFixed(3)}`;
     }
 
     if (titleRef.current) {
-      const out = smoothstep(0.35, 0.8, p);
-      titleRef.current.style.opacity = `${1 - out}`;
-      titleRef.current.style.transform = `translate3d(0, ${-24 * out}px, 0)`;
+      const out = smoothstep(0.2, 0.65, p);
+      titleRef.current.style.opacity = `${(1 - out).toFixed(3)}`;
+      titleRef.current.style.transform = `translate3d(0, ${(-20 * out).toFixed(1)}px, 0)`;
     }
 
     if (hintRef.current) {
       const gone = smoothstep(0, 0.12, p);
-      hintRef.current.style.opacity = `${1 - gone}`;
-      hintRef.current.style.transform = `translate3d(0, ${8 * gone}px, 0)`;
+      hintRef.current.style.opacity = `${(1 - gone).toFixed(3)}`;
+      hintRef.current.style.transform = `translate3d(0, ${(8 * gone).toFixed(1)}px, 0)`;
     }
 
     if (overlayRef.current) {
-      const inn = smoothstep(0.4, 0.85, p);
-      overlayRef.current.style.opacity = `${inn}`;
-      overlayRef.current.style.transform = `translate3d(0, ${16 * (1 - inn)}px, 0)`;
+      const inn = smoothstep(0.45, 0.9, p);
+      overlayRef.current.style.opacity = `${inn.toFixed(3)}`;
+      overlayRef.current.style.transform = `translate3d(0, ${(16 * (1 - inn)).toFixed(1)}px, 0)`;
+      overlayRef.current.style.pointerEvents = inn > 0.5 ? 'auto' : 'none';
     }
   }, []);
 
@@ -166,14 +161,22 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
     let current = 0;
     let target = 0;
     let stageH = 0;
+    let trackDocTop = 0;
     let running = false;
 
     const measure = () => {
       const c = propsRef.current;
-      stageH = c.useWindowScroll ? window.innerHeight : root.clientHeight;
+      const navOffset = c.useWindowScroll ? 90 : 0;
+      stageH = c.useWindowScroll ? window.innerHeight - navOffset : root.clientHeight;
       if (stageH <= 0) return;
       stage.style.height = `${stageH}px`;
-      track.style.height = `${stageH * (1 + Math.max(0, c.scrollDistance) + Math.max(0, c.holdDistance))}px`;
+      stage.style.top = `${navOffset}px`;
+      const totalSpanMultiplier = 1 + Math.max(0, c.scrollDistance) + Math.max(0, c.holdDistance);
+      track.style.height = `${stageH * totalSpanMultiplier}px`;
+
+      // Cache document-relative top position to prevent forced reflows on scroll
+      const rect = track.getBoundingClientRect();
+      trackDocTop = rect.top + (window.pageYOffset || document.documentElement.scrollTop);
     };
 
     const readProgress = () => {
@@ -181,7 +184,9 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
       if (!c.enabled) return 1;
       const span = stageH * Math.max(0.01, c.scrollDistance);
       if (c.useWindowScroll) {
-        const top = track.getBoundingClientRect().top;
+        const navOffset = 90;
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const top = trackDocTop - scrollY - navOffset;
         return clamp(-top / span, 0, 1);
       }
       return clamp(root.scrollTop / span, 0, 1);
@@ -189,9 +194,9 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
 
     const tick = () => {
       const c = propsRef.current;
-      const k = c.smoothing <= 0 ? 1 : 1 - Math.exp(-1 / (60 * c.smoothing));
+      const k = c.smoothing <= 0 ? 1 : 1 - Math.exp(-1 / (60 * Math.max(0.01, c.smoothing)));
       current += (target - current) * k;
-      if (Math.abs(target - current) < 0.0004) {
+      if (Math.abs(target - current) < 0.0005) {
         current = target;
         running = false;
       }
@@ -272,23 +277,23 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
     >
       <div ref={trackRef} className="scroll-expand__track">
         <div ref={stageRef} className="scroll-expand__stage">
-          <div ref={frameRef} className="scroll-expand__frame">
+          {/* Single unified hardware-composited card */}
+          <div ref={cardRef} className="scroll-expand__card">
             {media}
-            {/* Color tint & gradient overlay for rich industrial look */}
+
+            {/* Color tint & gradient overlay */}
             <div
               className="scroll-expand__card-tint"
               style={cardTint ? { background: cardTint } : undefined}
             />
-            <div ref={scrimRef} className="scroll-expand__scrim" />
-            {children ? (
-              <div ref={overlayRef} className="scroll-expand__overlay">
-                {children}
-              </div>
-            ) : null}
-          </div>
 
-          {/* Sized card box matching the clipped card boundaries so text is strictly inside */}
-          <div ref={cardBoxRef} className="scroll-expand__card-box">
+            {/* Darkening Scrim */}
+            <div ref={scrimRef} className="scroll-expand__scrim" />
+
+            {/* Border and Shadow glow layer with GPU-composited opacity fade */}
+            <div ref={borderGlowRef} className="scroll-expand__border-glow" />
+
+            {/* Initial Center Title and Chapter Badge */}
             {title ? (
               <div ref={titleRef} className="scroll-expand__title-wrapper">
                 {badge && (
@@ -302,17 +307,25 @@ const ScrollExpand: React.FC<ScrollExpandProps> = ({
                 </h2>
               </div>
             ) : null}
-          </div>
 
-          {scrollHint ? (
-            <div ref={hintRef} className="scroll-expand__hint">
-              <span>{scrollHint}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce">
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <polyline points="19 12 12 19 5 12" />
-              </svg>
-            </div>
-          ) : null}
+            {/* Initial Scroll Hint */}
+            {scrollHint ? (
+              <div ref={hintRef} className="scroll-expand__hint">
+                <span>{scrollHint}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <polyline points="19 12 12 19 5 12" />
+                </svg>
+              </div>
+            ) : null}
+
+            {/* Expanded Full-Bleed Overlay Content */}
+            {children ? (
+              <div ref={overlayRef} className="scroll-expand__overlay">
+                {children}
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

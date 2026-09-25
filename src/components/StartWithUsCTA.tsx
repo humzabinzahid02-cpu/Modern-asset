@@ -51,31 +51,16 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
               Tell us about your fleet requirements and our engineering team will respond within 24 hours with a tailored proposal — fixed pricing and guaranteed timelines included.
             </p>
 
-            {/* Action Buttons Container */}
+            {/* Action Button: BECOME A CLIENT */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
-              
-              {/* Button: INQUIRE QUOTE */}
               <button
                 type="button"
                 onClick={onOpenQuote}
-                className="group inline-flex items-center justify-center font-display font-bold text-sm sm:text-base tracking-[0.1em] uppercase text-[#1B2B3A] bg-white hover:bg-[#E07B10] hover:text-white hover:border-[#E07B10] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full border-2 border-white shadow-[0_8px_25px_rgba(0,0,0,0.2)] transition-all duration-300 cursor-pointer w-full sm:w-auto text-center"
+                className="group inline-flex items-center justify-center gap-3 font-display font-extrabold text-sm sm:text-base tracking-[0.1em] uppercase text-white bg-[#E07B10] hover:bg-[#C96B0A] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full border-2 border-[#E07B10] shadow-[0_8px_25px_rgba(224,123,16,0.35)] hover:shadow-[0_12px_32px_rgba(224,123,16,0.5)] transition-all duration-300 cursor-pointer w-full sm:w-auto text-center"
               >
-                <span>INQUIRE QUOTE</span>
+                <span>BECOME A CLIENT</span>
+                <span className="text-lg font-black transition-transform group-hover:translate-x-1">›</span>
               </button>
-
-              {/* Secondary Action: Start With Us with Arrow */}
-              <button
-                type="button"
-                onClick={onOpenQuote}
-                className="group inline-flex items-center justify-center gap-2.5 font-display font-bold text-sm sm:text-base tracking-wider uppercase text-white hover:text-[#E07B10] px-6 py-3.5 rounded-full transition-colors cursor-pointer bg-transparent border border-white/20 hover:border-[#E07B10] w-full sm:w-auto text-center"
-              >
-                <span>START WITH US</span>
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </button>
-
             </div>
 
           </div>
