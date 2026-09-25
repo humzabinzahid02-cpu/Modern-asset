@@ -183,9 +183,7 @@ export default function WhyUs() {
 
             {/* Floating badge: Bottom Left */}
             <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-4 flex items-center gap-3 shadow-md border border-[#E2DFDC] z-10">
-              <div className="w-8 h-8 bg-[#1B2B3A] rounded-lg flex items-center justify-center shrink-0">
-                <span className="font-display font-black text-sm sm:text-base text-white">M</span>
-              </div>
+              <img src="/modern-assets-logo.png" alt="" className="w-16 h-10 object-contain shrink-0" />
               <div>
                 <span className="font-display font-extrabold text-xs sm:text-sm text-[#1B2B3A] leading-tight block uppercase">
                   Precision in Every Detail

@@ -8,7 +8,7 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#1B2B3A] text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative w-full bg-[#1B2B3A] text-white py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Ambient background glows */}
       <div className="absolute top-0 right-0 w-80 sm:w-[550px] h-80 sm:h-[550px] bg-radial from-[#E07B10]/20 to-transparent rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3" />
@@ -81,7 +81,7 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
                   Riyadh, Saudi Arabia
                 </h4>
                 <p className="font-body text-xs text-[#9CA3AF] m-0">
-                  Industrial City 2 • Fleet deliveries available nationwide
+                  <span className="text-[#E07B10] font-semibold">Industrial City 2</span> • Fleet deliveries available nationwide
                 </p>
               </div>
             </div>

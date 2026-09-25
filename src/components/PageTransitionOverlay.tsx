@@ -191,32 +191,7 @@ export default function PageTransitionOverlay({
             willChange: 'transform, opacity',
           }}
         >
-          {/* Logo Badge: Cream with Golden 'M' */}
-          <div
-            style={{
-              width: 58,
-              height: 58,
-              borderRadius: 14,
-              background: '#F6F5F1',
-              border: '2px solid #E07B10',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 24,
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
-            }}
-          >
-            <span
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 900,
-                fontSize: 30,
-                color: '#E07B10',
-              }}
-            >
-              M
-            </span>
-          </div>
+          <img src="/modern-assets-logo.png" alt="Modern Assets — Heavy Vehicle Solutions" style={{ width: 'min(72vw, 360px)', height: 100, objectFit: 'contain', marginBottom: 24 }} />
 
           {/* Big Bold Display Headline in Site Cream */}
           <h1

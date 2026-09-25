@@ -94,17 +94,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             onClick={onBackToHome}
             className="flex items-center gap-2 sm:gap-2.5 text-left bg-transparent border-none cursor-pointer p-0 group"
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-[#E07B10] to-[#C46C0C] flex items-center justify-center text-white font-display font-black text-lg sm:text-xl shadow-xs group-hover:scale-105 transition-transform shrink-0">
-              M
-            </div>
-            <div>
-              <span className="font-display font-black text-lg sm:text-xl tracking-wide uppercase text-[#1B2B3A] block leading-none">
-                Modern Assets
-              </span>
-              <span className="font-body text-[9px] sm:text-[10px] tracking-widest uppercase text-[#8C949C] block mt-0.5">
-                Heavy Vehicle Solutions • KSA
-              </span>
-            </div>
+            <img src="/modern-assets-logo.png" alt="Modern Assets — Heavy Vehicle Solutions" className="w-40 sm:w-52 h-12 object-contain group-hover:scale-[1.03] transition-transform" />
           </button>
 
           {/* Back to Home Button */}

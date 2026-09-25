@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 
 const LINKS = [
   { name: 'Home', target: 'home' },
@@ -74,7 +74,8 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         left: 0,
         right: 0,
         zIndex: 100,
-        padding: '0 clamp(20px, 4.5vw, 84px)',
+        padding: '0 clamp(14px, 3.7vw, 72px)',
+        paddingLeft: 'clamp(12px, 1.5vw, 20px)',
         height: 90,
         display: 'flex',
         alignItems: 'center',
@@ -122,65 +123,12 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
           }}
           className="group select-none"
         >
-          {/* Brand "M" in Orange Squircle */}
-          <div
-            style={{
-              width: 38,
-              height: 38,
-              borderRadius: 10,
-              background: 'linear-gradient(135deg, #E07B10 0%, #C46C0C 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-              boxShadow: '0 3px 10px rgba(224, 123, 16, 0.28)',
-              transition: 'transform 200ms ease',
-            }}
+          <img
+            src="/modern-assets-logo.png"
+            alt="Modern Assets — Heavy Vehicle Solutions"
+            style={{ width: 'clamp(240px, 27vw, 288px)', height: 70, objectFit: 'contain', transition: 'transform 200ms ease' }}
             className="group-hover:scale-105"
-          >
-            <span
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 900,
-                fontSize: 22,
-                color: '#FFFFFF',
-                letterSpacing: '-0.02em',
-                lineHeight: 1,
-              }}
-            >
-              M
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
-            <span
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 900,
-                fontSize: 'clamp(19px, 2.2vw, 23px)',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                color: '#1B2B3A',
-                lineHeight: 1.05,
-              }}
-            >
-              Modern Assets
-            </span>
-            <span
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 600,
-                fontSize: '9.5px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: '#8C949C',
-                lineHeight: 1,
-                marginTop: 3,
-              }}
-            >
-              Heavy Vehicle Solutions • KSA
-            </span>
-          </div>
+          />
         </button>
       </div>
 

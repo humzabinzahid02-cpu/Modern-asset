@@ -330,7 +330,7 @@ export default function Products() {
       </div>
 
       {/* Product Catalog Grid Container */}
-      <div id="catalog-cards" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 sm:pb-32">
+      <div id="catalog-cards" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6">
         
         {/* Section Header & Filters */}
         <div className="flex flex-col gap-6 mb-8 sm:mb-12">

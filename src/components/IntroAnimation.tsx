@@ -272,63 +272,20 @@ export default function IntroAnimation({ onDone }: Props) {
               transition:
                 'top 750ms cubic-bezier(0.16, 1, 0.3, 1), left 750ms cubic-bezier(0.16, 1, 0.3, 1), transform 750ms cubic-bezier(0.16, 1, 0.3, 1)',
               display: 'flex',
-              flexDirection: isDocking ? 'row' : 'column',
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: isDocking ? 10 : 16,
+              gap: 16,
               maxWidth: isDocking ? 'none' : '90vw',
               userSelect: 'none',
               whiteSpace: 'nowrap',
             }}
           >
-            {/* Logo Box with "M" */}
-            <div
-              style={{
-                width: isDocking ? 36 : 48,
-                height: isDocking ? 36 : 48,
-                borderRadius: isDocking ? 8 : 10,
-                background: 'linear-gradient(135deg, #E07B10 0%, #C46C0C 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: isDocking ? 'none' : '0 10px 30px rgba(224,123,16,0.3)',
-                transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)',
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: 'Poppins, sans-serif',
-                  fontWeight: 900,
-                  fontSize: isDocking ? 19 : 26,
-                  color: '#FFFFFF',
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1,
-                  transition: 'font-size 750ms cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-              >
-                M
-              </span>
-            </div>
-
-            {/* "MODERN ASSETS" Typography */}
-            <div
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontWeight: 800,
-                fontSize: isDocking
-                  ? 'clamp(18px, 4vw, 20px)'
-                  : 'clamp(36px, 8vw, 84px)',
-                letterSpacing: isDocking ? '0.04em' : '0.03em',
-                textTransform: 'uppercase',
-                lineHeight: 1,
-                whiteSpace: 'nowrap',
-                color: '#1B2B3A',
-                transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)',
-              }}
-            >
-              Modern Assets
-            </div>
+            <img
+              src="/modern-assets-logo.png"
+              alt="Modern Assets — Heavy Vehicle Solutions"
+              style={{ width: isDocking ? 205 : 'min(76vw, 520px)', height: isDocking ? 58 : 'auto', objectFit: 'contain', transition: 'all 750ms cubic-bezier(0.16, 1, 0.3, 1)' }}
+            />
 
             {/* Subtitle that gracefully fades out during docking */}
             <div

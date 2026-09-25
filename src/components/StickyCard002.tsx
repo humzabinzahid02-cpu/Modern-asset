@@ -31,7 +31,7 @@ export function StickyCard002<T extends CardData = CardData>({
       <div
         className={cn(
           'relative w-full max-w-6xl xl:max-w-[1340px] mx-auto flex flex-col',
-          'gap-6 sm:gap-10 lg:gap-[clamp(120px,20vh,240px)] pb-8 sm:pb-12 lg:pb-36',
+          'gap-6 sm:gap-10 lg:gap-[clamp(120px,20vh,240px)] pb-2 sm:pb-4 lg:pb-4',
           containerClassName,
         )}
       >
@@ -61,17 +61,19 @@ export function StickyCard002<T extends CardData = CardData>({
           position: relative;
           border-radius: 24px;
           background: #FFFFFF;
-          box-shadow: 0 4px 16px rgba(27, 43, 58, 0.05);
+          box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.05), 0 16px 40px rgba(27, 43, 58, 0.09);
           transition: transform 0.2s ease-out;
         }
         @media (min-width: 1024px) {
           .sticky-card-item {
             position: sticky;
             border-radius: 34px;
+            /* Safe distance below fixed navbar so card never goes inside navbar */
+            top: clamp(104px, 15vh, 118px);
           }
+          /* Every card has increasing z-index so incoming card fully covers the previous card instead of lining up */
           ${cards.map((_, i) => `
             .sticky-card-item[data-index="${i}"] {
-              top: calc(clamp(80px, 12vh, 100px) + ${i * 22}px);
               z-index: ${i + 1};
             }
           `).join('\n')}

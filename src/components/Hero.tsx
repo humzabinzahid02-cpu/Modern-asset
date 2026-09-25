@@ -207,7 +207,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             <div className="grid grid-cols-1 lg:grid-cols-12 items-end relative">
               
               {/* Back Card: Video Frame (Columns 4 to 13, Row 1, z-10) */}
-              <div className="order-1 lg:order-none lg:col-start-4 lg:col-end-13 lg:row-start-1 z-10 w-full rounded-3xl overflow-hidden bg-[#0C121A] border-2 border-[#E2DFDC] shadow-[0_20px_50px_rgba(27,43,58,0.14)] aspect-[16/10] sm:aspect-[16/9] lg:self-start relative group">
+              <div className="order-1 lg:order-none lg:col-start-6 lg:col-end-13 lg:row-start-1 z-10 w-full rounded-3xl overflow-hidden bg-[#0C121A] border-2 border-[#E2DFDC] shadow-[0_20px_50px_rgba(27,43,58,0.14)] aspect-[16/10] sm:aspect-[16/9] lg:self-start relative group lg:translate-y-[30px]">
                 <video
                   src="/hero-video.mp4"
                   autoPlay
@@ -247,7 +247,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               </div>
 
               {/* Front Card: Compact Text Card (Columns 1 to 6, Row 1, z-20) — Overlaps bottom-left of Video Card */}
-              <div className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 w-full -mt-10 sm:-mt-14 lg:mt-0 lg:self-end lg:translate-y-12 xl:translate-y-16 max-w-[470px] xl:max-w-[500px] bg-[#0A0E14] text-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
+              <div className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 w-full -mt-10 sm:-mt-14 lg:mt-0 lg:self-end lg:translate-x-12 lg:translate-y-12 xl:translate-y-16 max-w-[470px] xl:max-w-[500px] bg-[#0A0E14] text-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-[28px] lg:text-[30px] xl:text-[32px] font-black font-display text-white tracking-tight leading-[1.14] mb-3.5">
                     Accelerate your fleet growth with <span className="text-[#E07B10]">Modern Assets</span>
