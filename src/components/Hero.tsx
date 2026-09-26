@@ -173,7 +173,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                     />
                     <text className="text-[7.5px] font-bold tracking-[0.24em] fill-white uppercase">
                       <textPath href="#reelCirclePath" startOffset="0%">
-                        ★ PLAY REEL ★ HEAVY FLEETS ★ KSA ★
+                        {isArabic ? '★ شاهد الفيديو ★ الأساطيل الثقيلة ★ السعودية ★' : '★ PLAY REEL ★ HEAVY FLEETS ★ KSA ★'}
                       </textPath>
                     </text>
                   </svg>

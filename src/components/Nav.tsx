@@ -282,7 +282,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
             color: darkBackground ? '#E07B10' : '#1B2B3A',
           }}
           className="hamburger"
-          aria-label="Toggle menu"
+          aria-label={isArabic ? 'فتح أو إغلاق القائمة' : 'Toggle menu'}
         >
           <svg
             width="28"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { sendFormEmail, openEmailClient, getGmailComposeLink, getMailtoLink, TARGET_EMAIL } from '../lib/sendFormEmail'
+import { useLanguage } from '../LanguageContext'
 
 interface QuotePageProps {
   onBackToHome: () => void
@@ -7,7 +8,19 @@ interface QuotePageProps {
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
+function getFormErrorMessage(message: string, isArabic: boolean) {
+  if (!isArabic) return message
+  if (message.toLowerCase().includes('email setup is incomplete')) {
+    return 'إعداد البريد غير مكتمل. تحقّق من نطاق الإرسال في Resend لإرسال الطلبات إلى هذا العنوان.'
+  }
+  if (message.toLowerCase().includes('email service is unreachable')) {
+    return 'تعذّر الاتصال بخدمة البريد حالياً. يرجى المحاولة لاحقاً.'
+  }
+  return 'تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى.'
+}
+
 export default function QuotePage({ onBackToHome }: QuotePageProps) {
+  const { isArabic } = useLanguage()
   const [formState, setFormState] = useState<FormState>('idle')
   const [formError, setFormError] = useState('')
   const [form, setForm] = useState({
@@ -102,7 +115,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             onClick={onBackToHome}
             className="flex items-center gap-2 sm:gap-2.5 text-left bg-transparent border-none cursor-pointer p-0 group"
           >
-            <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt="Modern Assets — Heavy Vehicle Solutions" className="w-40 sm:w-52 h-12 object-contain group-hover:scale-[1.03] transition-transform" />
+            <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt={isArabic ? 'مودرن أسيتس — حلول المركبات الثقيلة' : 'Modern Assets — Heavy Vehicle Solutions'} className="w-40 sm:w-52 h-12 object-contain group-hover:scale-[1.03] transition-transform" />
           </button>
 
           {/* Back to Home Button */}
@@ -114,8 +127,8 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
               <line x1="19" y1="12" x2="5" y2="12" />
               <polyline points="12 19 5 12 12 5" />
             </svg>
-            <span className="hidden sm:inline">Back to Fleet &amp; Overview</span>
-            <span className="sm:hidden">Back</span>
+            <span className="hidden sm:inline">{isArabic ? 'العودة إلى الأسطول والرئيسية' : 'Back to Fleet &amp; Overview'}</span>
+            <span className="sm:hidden">{isArabic ? 'عودة' : 'Back'}</span>
           </button>
 
         </div>
@@ -152,18 +165,18 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 font-body text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-bold text-[#E07B10] mb-5">
               <span className="w-8 h-px bg-[#E07B10]" />
-              <span>Fleet Specification Request</span>
+              <span>{isArabic ? 'طلب مواصفات الأسطول' : 'Fleet Specification Request'}</span>
             </div>
 
             {/* Title */}
             <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-white uppercase tracking-tight leading-[0.92] mb-5">
-              LET'S BUILD YOUR<br />
-              <span className="text-[#E07B10]">FLEET TOGETHER</span>
+              {isArabic ? 'لنبنِ ' : "LET'S BUILD YOUR"}<br />
+              <span className="text-[#E07B10]">{isArabic ? 'أسطولك معاً' : 'FLEET TOGETHER'}</span>
             </h1>
 
             {/* Subtitle */}
             <p className="font-body text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed max-w-xl mb-8">
-              Tell us about your specialized vehicle requirements. Our chief engineering team in Riyadh will issue a comprehensive, fixed-cost proposal within 24 hours.
+              {isArabic ? 'أخبرنا عن احتياجاتك من المركبات المتخصصة. سيعد فريقنا الهندسي في الرياض عرضاً مفصلاً بسعر ثابت خلال 24 ساعة.' : 'Tell us about your specialized vehicle requirements. Our chief engineering team in Riyadh will issue a comprehensive, fixed-cost proposal within 24 hours.'}
             </p>
 
             {/* Trust badges row */}
@@ -197,10 +210,10 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs font-body uppercase tracking-wider text-[#8C949C] mb-6 sm:mb-8">
           <button onClick={onBackToHome} className="hover:text-[#E07B10] transition-colors cursor-pointer bg-transparent border-none p-0">
-            Home
+            {isArabic ? 'الرئيسية' : 'Home'}
           </button>
           <span>/</span>
-          <span className="text-[#E07B10] font-bold">Request a Formal Quote</span>
+          <span className="text-[#E07B10] font-bold">{isArabic ? 'طلب عرض سعر رسمي' : 'Request a Formal Quote'}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -211,16 +224,16 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             {/* Eyebrow badge */}
             <div className="inline-flex items-center gap-2 font-body text-[10px] sm:text-[11px] tracking-[0.25em] uppercase font-bold text-[#E07B10] bg-white px-3 sm:px-3.5 py-1.5 rounded-full border border-[#E2DFDC] shadow-xs w-fit mb-4">
               <span className="w-2 h-2 rounded-full bg-[#E07B10] animate-pulse" />
-              Direct Factory Engineering • KSA
+              {isArabic ? 'هندسة مباشرة من المصنع • المملكة' : 'Direct Factory Engineering • KSA'}
             </div>
 
             <h2 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-[#1B2B3A] uppercase tracking-tight leading-[0.95] mb-4 sm:mb-5">
-              WHY WORK WITH<br />
-              <span className="text-[#E07B10]">MODERN ASSETS?</span>
+              {isArabic ? 'لماذا تختار' : 'WHY WORK WITH'}<br />
+              <span className="text-[#E07B10]">{isArabic ? 'مودرن أسيتس؟' : 'MODERN ASSETS?'}</span>
             </h2>
 
             <p className="font-body text-sm sm:text-base text-[#5C6470] leading-relaxed mb-6 sm:mb-8">
-              From custom truck bodies to multi-axle lowbeds — every project gets dedicated engineering oversight, certified materials, and on-time delivery.
+              {isArabic ? 'من هياكل الشاحنات المخصصة إلى المقطورات متعددة المحاور، يحظى كل مشروع بإشراف هندسي متخصص ومواد معتمدة وتسليم في الموعد.' : 'From custom truck bodies to multi-axle lowbeds — every project gets dedicated engineering oversight, certified materials, and on-time delivery.'}
             </p>
 
             {/* Key Assurance Cards */}
@@ -231,10 +244,10 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-sm uppercase text-[#1B2B3A] m-0">
-                    SASO &amp; Aramco Certified
+                    {isArabic ? 'معتمد من SASO وأرامكو' : 'SASO & Aramco Certified'}
                   </h4>
                   <p className="font-body text-xs text-[#5C6470] m-0 mt-0.5">
-                    100% compliant with Saudi transport regulations and safety codes.
+                    {isArabic ? 'متوافق بالكامل مع أنظمة النقل والسلامة السعودية.' : '100% compliant with Saudi transport regulations and safety codes.'}
                   </p>
                 </div>
               </div>
@@ -245,10 +258,10 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-sm uppercase text-[#1B2B3A] m-0">
-                    24-Hour Guaranteed Turnaround
+                    {isArabic ? 'عرض مضمون خلال 24 ساعة' : '24-Hour Guaranteed Turnaround'}
                   </h4>
                   <p className="font-body text-xs text-[#5C6470] m-0 mt-0.5">
-                    Fast turnaround with itemized bill of materials and delivery schedules.
+                    {isArabic ? 'استجابة سريعة مع قائمة مواد مفصلة وجدول تسليم واضح.' : 'Fast turnaround with itemized bill of materials and delivery schedules.'}
                   </p>
                 </div>
               </div>
@@ -259,10 +272,10 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-sm uppercase text-[#1B2B3A] m-0">
-                    Custom Technical CAD Included
+                    {isArabic ? 'تصميم CAD فني مخصص' : 'Custom Technical CAD Included'}
                   </h4>
                   <p className="font-body text-xs text-[#5C6470] m-0 mt-0.5">
-                    Axle weight distribution, hydraulic schematics, and payload analysis.
+                    {isArabic ? 'يشمل توزيع وزن المحاور والمخططات الهيدروليكية وتحليل الحمولة.' : 'Axle weight distribution, hydraulic schematics, and payload analysis.'}
                   </p>
                 </div>
               </div>
@@ -271,14 +284,14 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
             {/* Direct Factory Contacts */}
             <div className="bg-[#1B2B3A] text-white p-5 sm:p-6 rounded-2xl border border-[#2A3B4D] shadow-md">
               <span className="font-body text-[10px] tracking-widest uppercase text-[#E07B10] font-bold block mb-3">
-                Riyadh Engineering Office
+                {isArabic ? 'مكتب الرياض الهندسي' : 'Riyadh Engineering Office'}
               </span>
               <div className="space-y-3 font-body text-xs sm:text-sm text-[#D1D5DB]">
                 <div className="flex items-center gap-3">
                   <span className="text-[#E07B10] flex items-center shrink-0">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   </span>
-                  <span>Industrial City 2, Riyadh, Kingdom of Saudi Arabia</span>
+                  <span>{isArabic ? 'المدينة الصناعية الثانية، الرياض، المملكة العربية السعودية' : 'Industrial City 2, Riyadh, Kingdom of Saudi Arabia'}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-[#E07B10] flex items-center shrink-0">
@@ -308,15 +321,15 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
                   <h2 className="font-display font-black text-2xl sm:text-4xl uppercase text-[#1B2B3A] mb-2 sm:mb-3">
-                    Email Created & Ready To Send!
+                    {isArabic ? 'تم إنشاء رسالة البريد وهي جاهزة للإرسال!' : 'Email Created & Ready To Send!'}
                   </h2>
                   <p className="font-body text-sm sm:text-base text-[#5C6470] max-w-lg mx-auto leading-relaxed mb-4">
-                    Your email app has been opened with your full specifications pre-written to <strong className="text-[#1B2B3A]">{TARGET_EMAIL}</strong>. Simply click <strong>Send</strong> in your mail app!
+                    {isArabic ? <>فتحنا تطبيق البريد وكتبنا مواصفاتك إلى <strong className="text-[#1B2B3A]">{TARGET_EMAIL}</strong>. اضغط <strong>إرسال</strong> لإكمال الطلب.</> : <>Your email app has been opened with your full specifications pre-written to <strong className="text-[#1B2B3A]">{TARGET_EMAIL}</strong>. Simply click <strong>Send</strong> in your mail app!</>}
                   </p>
 
                   {/* Direct Launch Buttons */}
                   <div className="bg-[#F8F7F4] border border-[#E2DFDC] rounded-2xl p-4 sm:p-5 max-w-md mx-auto mb-8 text-center">
-                    <p className="font-body text-xs font-semibold text-[#1B2B3A] mb-3">Didn't open automatically? Choose your preferred client:</p>
+                    <p className="font-body text-xs font-semibold text-[#1B2B3A] mb-3">{isArabic ? 'لم يفتح تلقائياً؟ اختر تطبيق البريد المناسب:' : "Didn't open automatically? Choose your preferred client:"}</p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
                       <a
                         href={getGmailComposeLink('New Fleet Quote Request', form)}
@@ -325,14 +338,14 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#EA4335] text-white font-display font-bold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity no-underline"
                       >
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.266H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-                        <span>Open in Gmail Web</span>
+                        <span>{isArabic ? 'الفتح في Gmail' : 'Open in Gmail Web'}</span>
                       </a>
                       <a
                         href={getMailtoLink('New Fleet Quote Request', form)}
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#1B2B3A] text-white font-display font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-[#E07B10] transition-colors no-underline"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <span>Open Default Mail App</span>
+                        <span>{isArabic ? 'فتح تطبيق البريد الافتراضي' : 'Open Default Mail App'}</span>
                       </a>
                     </div>
                   </div>
@@ -343,14 +356,14 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                       onClick={onBackToHome}
                       className="w-full sm:w-auto font-display font-bold text-sm uppercase tracking-wider bg-[#1B2B3A] hover:bg-[#E07B10] text-white px-7 py-3.5 rounded-full transition-all cursor-pointer shadow-md"
                     >
-                      Return to Main Site
+                      {isArabic ? 'العودة إلى الموقع' : 'Return to Main Site'}
                     </button>
                     <button
                       type="button"
                       onClick={() => setFormState('idle')}
                       className="w-full sm:w-auto font-display font-bold text-sm uppercase tracking-wider bg-transparent text-[#5C6470] hover:text-[#1B2B3A] px-5 py-3.5 rounded-full transition-all cursor-pointer"
                     >
-                      Submit Another Vehicle Spec
+                      {isArabic ? 'إرسال مواصفات مركبة أخرى' : 'Submit Another Vehicle Spec'}
                     </button>
                   </div>
                 </div>
@@ -359,10 +372,10 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                 <form onSubmit={handleSubmit}>
                   <div className="border-b border-[#E2DFDC] pb-4 sm:pb-6 mb-6 sm:mb-8">
                     <h3 className="font-display font-black text-xl sm:text-2xl uppercase tracking-tight text-[#1B2B3A] m-0">
-                      REQUEST A FORMAL FLEET PROPOSAL
+                      {isArabic ? 'اطلب عرضاً رسمياً للأسطول' : 'REQUEST A FORMAL FLEET PROPOSAL'}
                     </h3>
                     <p className="font-body text-xs text-[#5C6470] m-0 mt-1">
-                      Fill in your specifications below. Fields marked with an asterisk (*) are required.
+                      {isArabic ? 'أدخل مواصفاتك أدناه. الحقول المميزة بعلامة (*) مطلوبة.' : 'Fill in your specifications below. Fields marked with an asterisk (*) are required.'}
                     </p>
                   </div>
 
@@ -371,26 +384,26 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                     {/* Row 1: Name & Company */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                       <div>
-                        <label style={labelStyle}>Full Name *</label>
+                        <label style={labelStyle}>{isArabic ? 'الاسم الكامل *' : 'Full Name *'}</label>
                         <input
                           type="text"
                           name="name"
                           required
                           value={form.name}
                           onChange={handleChange}
-                          placeholder="e.g. Abdullah Al-Harbi"
+                          placeholder={isArabic ? 'مثال: عبدالله الحربي' : 'e.g. Abdullah Al-Harbi'}
                           style={inputStyle}
                         />
                       </div>
                       <div>
-                        <label style={labelStyle}>Company / Fleet Name *</label>
+                        <label style={labelStyle}>{isArabic ? 'اسم الشركة أو الأسطول *' : 'Company / Fleet Name *'}</label>
                         <input
                           type="text"
                           name="company"
                           required
                           value={form.company}
                           onChange={handleChange}
-                          placeholder="e.g. Al-Tamimi Transport Group"
+                          placeholder={isArabic ? 'مثال: مجموعة التميمي للنقل' : 'e.g. Al-Tamimi Transport Group'}
                           style={inputStyle}
                         />
                       </div>
@@ -399,7 +412,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                     {/* Row 2: Email & Phone */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                       <div>
-                        <label style={labelStyle}>Business Email *</label>
+                        <label style={labelStyle}>{isArabic ? 'البريد الإلكتروني للعمل *' : 'Business Email *'}</label>
                         <input
                           type="email"
                           name="email"
@@ -411,7 +424,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                         />
                       </div>
                       <div>
-                        <label style={labelStyle}>Phone / WhatsApp (+966) *</label>
+                        <label style={labelStyle}>{isArabic ? 'الهاتف أو واتساب (+966) *' : 'Phone / WhatsApp (+966) *'}</label>
                         <input
                           type="tel"
                           name="phone"
@@ -427,28 +440,28 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                     {/* Row 3: Vehicle Type & Fleet Size */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                       <div>
-                        <label style={labelStyle}>Vehicle Platform *</label>
+                        <label style={labelStyle}>{isArabic ? 'نوع المركبة *' : 'Vehicle Platform *'}</label>
                         <select
                           name="vehicleType"
                           value={form.vehicleType}
                           onChange={handleChange}
                           style={inputStyle}
                         >
-                          {VEHICLE_OPTIONS.map(opt => (
-                            <option key={opt} value={opt}>{opt}</option>
+                          {VEHICLE_OPTIONS.map((opt, index) => (
+                            <option key={opt} value={opt}>{isArabic ? ['هيكل شاحنة مخصص', 'صهريج بترول ومواد كيميائية', 'مقطورة منخفضة ثقيلة', 'مقطورة مسطحة متعددة المحاور', 'مكنسة طرق عالية السعة', 'منصة عمل جوية معزولة', 'شاحنة إنقاذ واستعادة ثقيلة', 'ناقلة سيارات متعددة الطوابق', 'نقل عسكري أو صحراوي متخصص', 'تصنيع خاص آخر'][index] : opt}</option>
                           ))}
                         </select>
                       </div>
                       <div>
-                        <label style={labelStyle}>Required Fleet Size *</label>
+                        <label style={labelStyle}>{isArabic ? 'حجم الأسطول المطلوب *' : 'Required Fleet Size *'}</label>
                         <select
                           name="fleetSize"
                           value={form.fleetSize}
                           onChange={handleChange}
                           style={inputStyle}
                         >
-                          {FLEET_SIZES.map(opt => (
-                            <option key={opt} value={opt}>{opt}</option>
+                          {FLEET_SIZES.map((opt, index) => (
+                            <option key={opt} value={opt}>{isArabic ? ['1–2 مركبة (نموذج أولي أو طلب عاجل)', '3–5 مركبات (توسعة أسطول)', '6–15 مركبة (عقد كبير)', '16+ مركبة (مشروع مؤسسي أو ضخم)'][index] : opt}</option>
                           ))}
                         </select>
                       </div>
@@ -456,28 +469,28 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
 
                     {/* Row 4: Timeline */}
                     <div>
-                      <label style={labelStyle}>Target Delivery Timeline *</label>
+                      <label style={labelStyle}>{isArabic ? 'موعد التسليم المطلوب *' : 'Target Delivery Timeline *'}</label>
                       <select
                         name="timeline"
                         value={form.timeline}
                         onChange={handleChange}
                         style={inputStyle}
                       >
-                        {TIMELINES.map(opt => (
-                          <option key={opt} value={opt}>{opt}</option>
+                        {TIMELINES.map((opt, index) => (
+                          <option key={opt} value={opt}>{isArabic ? ['في أقرب وقت (طلب عاجل)', 'خلال 1–3 أشهر', 'خلال 3–6 أشهر (خطة مجدولة)', 'مشروع رؤية السعودية 2030 (2026–2027)'][index] : opt}</option>
                         ))}
                       </select>
                     </div>
 
                     {/* Row 5: Detailed Specifications */}
                     <div>
-                      <label style={labelStyle}>Technical Payload / Special Specifications (Optional)</label>
+                      <label style={labelStyle}>{isArabic ? 'الحمولة والمواصفات الفنية الخاصة (اختياري)' : 'Technical Payload / Special Specifications (Optional)'}</label>
                       <textarea
                         name="specifications"
                         rows={4}
                         value={form.specifications}
                         onChange={handleChange}
-                        placeholder="Mention desired payload weight (tons), OEM chassis brand (Mercedes, Volvo, MAN), fluid capacity, hydraulic crane ratings, or extreme duty environments..."
+                        placeholder={isArabic ? 'اذكر وزن الحمولة بالطن، نوع الهيكل (Mercedes أو Volvo أو MAN)، سعة السوائل، قدرة الرافعة الهيدروليكية أو ظروف التشغيل...' : 'Mention desired payload weight (tons), OEM chassis brand (Mercedes, Volvo, MAN), fluid capacity, hydraulic crane ratings, or extreme duty environments...'}
                         style={{ ...inputStyle, resize: 'vertical' }}
                       />
                     </div>
@@ -486,7 +499,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                     <div className="pt-2">
                       {formState === 'error' && (
                         <p role="alert" className="mb-3 text-center text-sm font-medium text-red-600">
-                          {formError || 'We couldn’t send your request. Please try again.'}
+                          {formError ? getFormErrorMessage(formError, isArabic) : isArabic ? 'تعذّر إرسال طلبك. يرجى المحاولة مرة أخرى.' : 'We couldn’t send your request. Please try again.'}
                         </p>
                       )}
                       <button
@@ -497,11 +510,11 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                         {formState === 'submitting' ? (
                           <>
                             <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            <span>PROCESSING SPECIFICATION DOSSIER...</span>
+                          <span>{isArabic ? 'جارٍ تجهيز طلب المواصفات...' : 'PROCESSING SPECIFICATION DOSSIER...'}</span>
                           </>
                         ) : (
                           <>
-                            <span>SUBMIT & OPEN EMAIL (READY TO SEND)</span>
+                            <span>{isArabic ? 'إرسال وفتح البريد الإلكتروني' : 'SUBMIT & OPEN EMAIL (READY TO SEND)'}</span>
                             <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <line x1="5" y1="12" x2="19" y2="12" />
                               <polyline points="12 5 19 12 12 19" />
@@ -514,7 +527,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                           <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                         </svg>
-                        <span>Confidential commercial inquiry. Guaranteed factory non-disclosure.</span>
+                        <span>{isArabic ? 'طلب تجاري سري، مع ضمان سرية معلوماتك.' : 'Confidential commercial inquiry. Guaranteed factory non-disclosure.'}</span>
                       </p>
                     </div>
 

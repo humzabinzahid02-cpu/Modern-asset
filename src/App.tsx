@@ -89,7 +89,7 @@ export default function App() {
 
   return (
     <LanguageContext.Provider value={{ isArabic, toggleLanguage: () => setIsArabic((value) => !value) }}>
-    <>
+    <div lang={isArabic ? 'ar' : 'en'} dir="ltr" className={`app-shell ${isArabic ? 'app-language-ar' : 'app-language-en'}`}>
       {/* Initial Splash Animation */}
       {!introDone && <IntroAnimation onDone={() => setIntroDone(true)} />}
 
@@ -144,7 +144,7 @@ export default function App() {
           <QuotePage onBackToHome={() => triggerNavigation('home')} />
         )}
       </div>
-    </>
+    </div>
     </LanguageContext.Provider>
   )
 }

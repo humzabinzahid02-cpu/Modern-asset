@@ -15,11 +15,10 @@ interface IntroItem {
 
 // Alternating Dark -> Light -> Dark -> Light -> Dark -> Light (Modern Assets)
 const SEQUENCE: IntroItem[] = [
-  { type: 'word', text: 'مرحباً', lang: 'Arabic', dir: 'rtl', theme: 'dark' },
-  { type: 'word', text: 'Hello', lang: 'English', dir: 'ltr', theme: 'light' },
-  { type: 'word', text: 'Bonjour', lang: 'French', dir: 'ltr', theme: 'dark' },
-  { type: 'word', text: 'Hola', lang: 'Spanish', dir: 'ltr', theme: 'light' },
-  { type: 'word', text: 'Merhaba', lang: 'Turkish', dir: 'ltr', theme: 'dark' },
+  { type: 'word', text: 'مرحباً', lang: 'العربية', dir: 'rtl', theme: 'dark' },
+  { type: 'word', text: 'أهلاً وسهلاً', lang: 'العربية', dir: 'rtl', theme: 'light' },
+  { type: 'word', text: 'السلام عليكم', lang: 'العربية', dir: 'rtl', theme: 'dark' },
+  { type: 'word', text: 'نرحب بكم', lang: 'العربية', dir: 'rtl', theme: 'light' },
   { type: 'brand', theme: 'light' }, // Final: Modern Assets brand on light theme matching the website
 ]
 
@@ -228,7 +227,7 @@ export default function IntroAnimation({ onDone }: Props) {
               <div
                 dir={item.dir}
                 style={{
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: item.dir === 'rtl' ? 'Cairo, sans-serif' : 'Poppins, sans-serif',
                   fontSize: 'clamp(48px, 14vw, 130px)',
                   fontWeight: 800,
                   lineHeight: 1.05,
@@ -243,7 +242,7 @@ export default function IntroAnimation({ onDone }: Props) {
               </div>
               <div
                 style={{
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: item.dir === 'rtl' ? 'Cairo, sans-serif' : 'Poppins, sans-serif',
                   fontSize: 'clamp(10px, 2.5vw, 12px)',
                   letterSpacing: '0.3em',
                   textTransform: 'uppercase',

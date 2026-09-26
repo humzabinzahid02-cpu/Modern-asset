@@ -121,8 +121,18 @@ const STEPS: StepItem[] = [
   },
 ];
 
+const AR_STEPS: Omit<StepItem, 'num' | 'icon'>[] = [
+  { title: 'الاستشارة', subtitle: 'تقييم التشغيل والمتطلبات التنظيمية', desc: 'نحلل احتياجات الحمولة وطبيعة التشغيل واللوائح المحلية ومتطلبات دمج المركبات في الأسطول قبل بدء التصنيع.', phase: 'المرحلة 1 • الأسبوعان 1–2', badge: 'دراسة المتطلبات', deliverables: ['تحليل الحمولة وتوزيع وزن المحاور', 'مراجعة اشتراطات الطرق واللوائح', 'دراسة المسارات والارتفاعات المحدودة', 'سعر وجدول تسليم ثابتان'], specs: [{ label: 'الدراسة', val: 'تقييم جاهز للتنفيذ' }, { label: 'الامتثال', val: 'متوافق مع اشتراطات الطرق' }] },
+  { title: 'التصميم', subtitle: 'تصميم ثلاثي الأبعاد وتحليل الإجهاد', desc: 'ينشئ مهندسونا نماذج ثلاثية الأبعاد دقيقة، ويجرون تحليل العناصر المحدودة لتعزيز متانة الهيكل وتقليل الوزن غير الضروري.', phase: 'المرحلة 2 • الأسبوعان 3–4', badge: 'محاكاة ثلاثية الأبعاد', deliverables: ['نمذجة ثلاثية الأبعاد باستخدام SolidWorks', 'اختبار الإجهاد بتحليل العناصر المحدودة FEA', 'تخطيط مخصص للأنظمة الهيدروليكية والكهربائية', 'اعتماد العميل للنموذج التفاعلي'], specs: [{ label: 'الدقة', val: '±0.5 مم' }, { label: 'المحاكاة', val: 'تم التحقق بتحليل FEA' }] },
+  { title: 'التصنيع', subtitle: 'تصنيع CNC ولحام معتمد وطلاء واقٍ', desc: 'يتم التصنيع في منشأتنا المعتمدة وفق ISO 9001:2015 باستخدام القطع بالليزر وأجهزة CNC واللحام الروبوتي والتشطيبات المقاومة للتآكل.', phase: 'المرحلة 3 • الأسابيع 5–7', badge: 'تصنيع ثقيل', deliverables: ['فولاذ Hardox® وDomex® عالي المقاومة', 'لحام متعدد المسارات معتمد وفق AWS D1.1', 'طبقات أساس إيبوكسي زنك وطلاء بولي يوريثان', 'فحص المحاذاة والانحراف بالليزر'], specs: [{ label: 'نوع الفولاذ', val: 'Hardox® 450 / Domex' }, { label: 'اعتماد اللحام', val: 'AWS D1.1 / ISO 3834' }] },
+  { title: 'التسليم', subtitle: 'اختبارات الأحمال والاعتماد وتسليم الأسطول', desc: 'تخضع كل مركبة لاختبارات قيادة وأحمال وفحص ضغط الأنظمة الهيدروليكية واستكمال الاعتمادات قبل تسليمها مع المخططات والوثائق التشغيلية.', phase: 'المرحلة 4 • الأسبوع 8', badge: 'تسليم جاهز للتشغيل', deliverables: ['اعتماد الأحمال للطرق والطرق الوعرة', 'ملف كامل للمخططات الهيدروليكية والكهربائية', 'لوحة تعريف باشتراطات السلامة', 'ضمان ودعم للأسطول لمدة ثلاث سنوات'], specs: [{ label: 'التجهيز', val: 'جاهز للتشغيل الميداني' }, { label: 'الضمان', val: 'حماية للأسطول لثلاث سنوات' }] },
+]
+
 export default function Process() {
   const { isArabic } = useLanguage()
+  const displaySteps = isArabic
+    ? STEPS.map((step, index) => ({ ...step, ...AR_STEPS[index] }))
+    : STEPS
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -220,7 +230,7 @@ export default function Process() {
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
         <img
           src="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?w=1600&h=900&fit=crop&auto=format"
-          alt="Industrial welding fabrication"
+          alt={isArabic ? 'تصنيع صناعي باللحام' : 'Industrial welding fabrication'}
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.04 }}
         />
         <div
@@ -308,7 +318,7 @@ export default function Process() {
 
         {/* Expansive Full-Width Process Cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(16px, 2vw, 24px)' }}>
-          {STEPS.map((step, idx) => {
+          {displaySteps.map((step, idx) => {
             const isHovered = hoveredIdx === idx;
             return (
               <div
@@ -421,7 +431,7 @@ export default function Process() {
                             marginBottom: 6,
                           }}
                         >
-                          STEP {step.num}
+                          {isArabic ? `الخطوة ${step.num}` : `STEP ${step.num}`}
                         </div>
 
                         {/* Step Title Animated with ScrollFloat */}

@@ -37,7 +37,7 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 font-body text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase font-bold text-[#E07B10] mb-3 sm:mb-4">
               <span className="w-2 h-2 rounded-full bg-[#E07B10] animate-pulse" />
-              START WITH US • KSA FLEET PARTNER
+              {isArabic ? 'ابدأ معنا • شريك أساطيل في المملكة' : 'START WITH US • KSA FLEET PARTNER'}
             </div>
 
             {/* Headline */}

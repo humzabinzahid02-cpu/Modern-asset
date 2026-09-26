@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { useLanguage } from '../LanguageContext'
 
 interface PageTransitionOverlayProps {
   isTransitioning: boolean
@@ -14,6 +15,7 @@ export default function PageTransitionOverlay({
   onCovered,
   onComplete,
 }: PageTransitionOverlayProps) {
+  const { isArabic } = useLanguage()
   const containerRef = useRef<HTMLDivElement | null>(null)
   const creamLayerRef = useRef<HTMLDivElement | null>(null)
   const navyLayerRef = useRef<HTMLDivElement | null>(null)
@@ -191,7 +193,7 @@ export default function PageTransitionOverlay({
             willChange: 'transform, opacity',
           }}
         >
-          <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt="Modern Assets — Heavy Vehicle Solutions" style={{ width: 'min(72vw, 360px)', height: 100, objectFit: 'contain', marginBottom: 24 }} />
+          <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt={isArabic ? 'مودرن أسيتس — حلول المركبات الثقيلة' : 'Modern Assets — Heavy Vehicle Solutions'} style={{ width: 'min(72vw, 360px)', height: 100, objectFit: 'contain', marginBottom: 24 }} />
 
           {/* Big Bold Display Headline in Site Cream */}
           <h1
@@ -222,7 +224,7 @@ export default function PageTransitionOverlay({
               marginTop: 18,
             }}
           >
-            Modern Assets • Heavy-Duty Engineering • KSA
+            {isArabic ? 'مودرن أسيتس • هندسة المركبات الثقيلة • المملكة' : 'Modern Assets • Heavy-Duty Engineering • KSA'}
           </p>
         </div>
       </div>

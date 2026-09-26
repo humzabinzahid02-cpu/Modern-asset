@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLanguage } from '../LanguageContext'
 
 interface FooterProps {
   onOpenQuote?: () => void
@@ -21,7 +22,17 @@ const SITE_LINKS = [
   { name: 'Contact', target: 'contact' },
 ]
 
+const AR_FLEET_PRODUCTS = ['صهاريج دقيقة', 'مقطورات منخفضة', 'مقطورات قلاب', 'ناقلات مسطحة', 'مكنسات وشاحنات إنقاذ', 'هياكل شاحنات مخصصة']
+const AR_SITE_LINKS: Record<string, string> = {
+  Home: 'الرئيسية',
+  Products: 'المنتجات',
+  'Our Process': 'آلية العمل',
+  'Why Us': 'لماذا نحن',
+  Contact: 'تواصل معنا',
+}
+
 export default function Footer({ onOpenQuote }: FooterProps) {
+  const { isArabic } = useLanguage()
   const handleLinkClick = (target: string, e: React.MouseEvent) => {
     e.preventDefault()
     const el = document.getElementById(target)
@@ -42,16 +53,18 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             <div>
               <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.25em] uppercase text-[#E07B10] mb-2 font-body">
                 <span className="w-2 h-2 rounded-full bg-[#E07B10]" />
-                Saudi Vision 2030 Fleet Partner
+                {isArabic ? 'شريك الأساطيل لرؤية السعودية 2030' : 'Saudi Vision 2030 Fleet Partner'}
               </div>
 
               <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-[38px] uppercase tracking-tight text-white mb-2.5 leading-[0.98]">
-                See how we can help you. <br />
-                <span className="text-[#E07B10]">Get in touch today.</span>
+                {isArabic ? 'اكتشف كيف نساعدك.' : 'See how we can help you.'} <br />
+                <span className="text-[#E07B10]">{isArabic ? 'تواصل معنا اليوم.' : 'Get in touch today.'}</span>
               </h3>
 
               <p className="font-body text-[13px] sm:text-sm text-[#B0B8BC] leading-relaxed max-w-lg mb-4">
-                Custom fabrication of heavy-duty commercial vehicles and specialized transport platforms — built for strength, precision &amp; operational endurance.
+                {isArabic
+                  ? 'تصنيع مخصص للمركبات التجارية الثقيلة ومنصات النقل المتخصصة، مصممة للقوة والدقة وكفاءة التشغيل.'
+                  : 'Custom fabrication of heavy-duty commercial vehicles and specialized transport platforms — built for strength, precision & operational endurance.'}
               </p>
             </div>
 
@@ -129,10 +142,10 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             {/* Products Column */}
             <div>
               <div className="font-display font-black text-sm tracking-wider uppercase text-white mb-2.5">
-                Fleet Products
+                {isArabic ? 'منتجات الأساطيل' : 'Fleet Products'}
               </div>
               <ul className="space-y-1.5 p-0 m-0 list-none font-body text-sm sm:text-[15px]">
-                {FLEET_PRODUCTS.map((prod) => (
+                {FLEET_PRODUCTS.map((prod, index) => (
                   <li key={prod}>
                     <a
                       href="#products"
@@ -140,7 +153,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                       className="text-[#C5CCD2] hover:text-[#E07B10] transition-all no-underline cursor-pointer flex items-center gap-1.5 group font-medium"
                     >
                       <span className="text-[#E07B10] text-xs font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">›</span>
-                      <span className="group-hover:translate-x-0.5 transition-transform">{prod}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform">{isArabic ? AR_FLEET_PRODUCTS[index] : prod}</span>
                     </a>
                   </li>
                 ))}
@@ -150,7 +163,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
             {/* Site Navigation Links */}
             <div>
               <div className="font-display font-black text-sm tracking-wider uppercase text-white mb-2.5">
-                Site Links
+                {isArabic ? 'روابط الموقع' : 'Site Links'}
               </div>
               <ul className="space-y-1.5 p-0 m-0 list-none font-body text-sm sm:text-[15px]">
                 {SITE_LINKS.map((link) => (
@@ -161,7 +174,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                       className="text-[#C5CCD2] hover:text-[#E07B10] transition-all no-underline cursor-pointer flex items-center gap-1.5 group font-medium"
                     >
                       <span className="text-[#E07B10] text-xs font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">›</span>
-                      <span className="group-hover:translate-x-0.5 transition-transform">{link.name}</span>
+                      <span className="group-hover:translate-x-0.5 transition-transform">{isArabic ? AR_SITE_LINKS[link.name] : link.name}</span>
                     </a>
                   </li>
                 ))}
@@ -176,10 +189,10 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  <span>Headquarters</span>
+                  <span>{isArabic ? 'المقر الرئيسي' : 'Headquarters'}</span>
                 </div>
                 <div className="font-body text-sm sm:text-base text-[#D0D6DC] leading-relaxed">
-                <span className="text-[#E07B10] font-bold">Industrial Area 2</span>, Riyadh, Kingdom of Saudi Arabia
+                <span className="text-[#E07B10] font-bold">{isArabic ? 'المدينة الصناعية الثانية' : 'Industrial Area 2'}</span>{isArabic ? '، الرياض، المملكة العربية السعودية' : ', Riyadh, Kingdom of Saudi Arabia'}
                 </div>
               </div>
             </div>
@@ -199,10 +212,10 @@ export default function Footer({ onOpenQuote }: FooterProps) {
         {/* Small Copyright & Legal Metadata Bar — Clean & Borderless */}
         <div className="pt-2 pb-1 flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left text-[11px] font-body text-[#8C949C]">
           <div>
-            &copy; {new Date().getFullYear()} Modern Assets. All rights reserved. Saudi Vision 2030 Fleet Partner.
+            &copy; {new Date().getFullYear()} {isArabic ? 'مودرن أسيتس. جميع الحقوق محفوظة. شريك الأساطيل لرؤية السعودية 2030.' : 'Modern Assets. All rights reserved. Saudi Vision 2030 Fleet Partner.'}
           </div>
           <div className="flex flex-wrap justify-center sm:justify-end gap-3.5">
-            {['Privacy Policy', 'Terms of Service', 'ISO 9001 Certifications'].map((item) => (
+            {(isArabic ? ['سياسة الخصوصية', 'شروط الاستخدام', 'شهادات ISO 9001'] : ['Privacy Policy', 'Terms of Service', 'ISO 9001 Certifications']).map((item) => (
               <a
                 key={item}
                 href="#contact"

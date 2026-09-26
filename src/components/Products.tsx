@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ScrollExpand from './ScrollExpand'
 import StickyCard002 from './StickyCard002'
 import GlassButton from '../GlassButton'
+import { useLanguage } from '../LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -211,6 +212,18 @@ const PRODUCTS_DATA: ProductDetail[] = [
   },
 ]
 
+const PRODUCTS_AR: Record<string, Partial<ProductDetail>> = {
+  tankers: { name: 'صهاريج دقيقة', tag: 'نقل السوائل', desc: 'صهاريج للوقود والبترول والمواد الكيميائية ومياه الشرب، مصممة وفق معايير SASO وADR وISO، مع حواجز متعددة الحجرات.', leadTime: '٣–٥ أسابيع', specs: [{ label: 'سعة الحمولة', value: '32,000–55,000 لتر' }, { label: 'سبيكة الهيكل', value: 'ستانلس 304/316 أو ألمنيوم 5182' }, { label: 'الحجرات', value: 'من حجرة إلى 5 حجرات' }, { label: 'الشهادات', value: 'ADR • SASO • ISO 9001' }], features: ['مجمع تحميل سفلي هوائي وآمن', 'استعادة الأبخرة إلكترونياً وحساسات منع زيادة التعبئة', 'تعليق هوائي BPW مع محور رفع أمامي', 'لحامات داخلية آلية مقاومة للتآكل'] },
+  lowbed: { name: 'مقطورات منخفضة ثقيلة', tag: 'النقل الثقيل', desc: 'مصممة لنقل المعدات الصناعية والمحولات والآليات الثقيلة ونقل المنشآت، مع هيكل ثابت دون انحناء.', leadTime: '٤–٦ أسابيع مضمونة', specs: [{ label: 'قدرة الحمولة', value: '60–150 طناً مترياً' }, { label: 'المحاور', value: '3 أو 4 أو 5 أو 6 محاور هيدروليكية' }, { label: 'سبيكة الهيكل', value: 'فولاذ عالي المقاومة Strenx 700MC' }, { label: 'نظام المنحدر', value: 'منحدر هيدروليكي مزدوج الطي' }], features: ['هيكل من فولاذ Strenx 700MC عالي المقاومة', 'محاور توجيه هيدروليكية مع تحكم لاسلكي', 'حوامل جانبية للأحمال العريضة', 'نقاط ربط ثقيلة كل 500 مم'] },
+  flatbed: { name: 'مقطورات مسطحة معززة', tag: 'نقل البضائع', desc: 'منصات نقل تجارية عالية الحمولة، مزودة بأقفال حاويات متعددة الاستخدام ودعامات قابلة للإزالة ولوح أمامي معزز.', leadTime: '٢–٤ أسابيع', specs: [{ label: 'طول المنصة', value: '12.5–14.5 م قياسي' }, { label: 'سعة الحمولة', value: '45–60 طناً مترياً' }, { label: 'الأرضية', value: 'خشب صلب أو فولاذ مضلع' }, { label: 'أقفال الحاويات', value: '12 قفلاً معيارياً قابلاً للسحب' }], features: ['هيكل عوارض فولاذية مع تدعيم مسبق', 'نظام إنارة LED محكم بالكامل', 'حاملان للعجلات الاحتياطية مع ونش', 'حاجز أمامي معتمد لامتصاص الصدمات'] },
+  truckbodies: { name: 'هياكل شاحنات مخصصة', tag: 'تصنيع مخصص', desc: 'صناديق شحن ووحدات تبريد معزولة وهياكل ستائرية وصناديق قلاب، مصممة لتناسب مختلف هياكل الشاحنات الأصلية.', leadTime: '٢–٣ أسابيع', specs: [{ label: 'حجم الهيكل', value: 'من 18 إلى 65 م³' }, { label: 'الجوانب', value: 'ألواح أحادية معززة' }, { label: 'رافعة خلفية', value: 'هيدروليكية 1,500–3,000 كجم' }, { label: 'الشاحنات المتوافقة', value: 'Mercedes، Volvo، MAN، Scania' }], features: ['سقف انسيابي يقلل استهلاك الوقود حتى 7٪', 'أرضية معززة وعوارض مجلفنة', 'مسارات تثبيت داخلية للبضائع', 'طلاء خارجي مقاوم للأشعة فوق البنفسجية'] },
+  sweepers: { name: 'مكنسات طرق صناعية', tag: 'خدمات بلدية', desc: 'مكنسات طرق عالية الأداء تعمل بالهواء أو التفريغ الميكانيكي، مناسبة للبلديات والمطارات ومواقع الإنشاء.', leadTime: '٤–٦ أسابيع', specs: [{ label: 'حجم الحاوية', value: 'سعة 6–9 م³' }, { label: 'عرض الكنس', value: 'حتى 3,600 مم' }, { label: 'خزان المياه', value: '1,500 لتر للتحكم بالغبار' }, { label: 'المحرك الإضافي', value: 'ديزل Tier 4 / Stage V' }], features: ['مروحة شفط قوية مع تحكم هيدروليكي بالسرعة', 'كاميرات توجيه وشاشة بيانات داخل المقصورة', 'رشاش أمامي عالي الضغط ومسدس غسيل', 'حاوية مخلفات من الستانلس مع تنظيف آلي'] },
+  wreckers: { name: 'شاحنات إنقاذ ثقيلة', tag: 'الإنقاذ', desc: 'مركبات إنقاذ بأذرع دوارة ومنصات سحب، لإزالة المركبات من الطرق واستعادة الشاحنات الثقيلة وسحبها.', leadTime: '٦–٨ أسابيع', specs: [{ label: 'قدرة الذراع', value: '30–75 طناً' }, { label: 'قدرة الرافعة السفلية', value: '16,000 كجم' }, { label: 'الروافع', value: 'روافع كوكبية مزدوجة 25,000 كجم' }, { label: 'الدوران', value: '360 درجة' }], features: ['تحكم لاسلكي متناسب بالوظائف الهيدروليكية', 'دعامات مزودة بحساسات ضغط أرضي', 'معدات سحب للحافلات والشاحنات المفصلية', 'إضاءة طوارئ محيطية كاملة'] },
+  aerial: { name: 'منصات عمل جوية', tag: 'العمل على ارتفاعات', desc: 'منصات رفع معزولة بذراع مفصلية أو تلسكوبية لصيانة خطوط الكهرباء والبنية التحتية والاتصالات.', leadTime: '٤–٦ أسابيع', specs: [{ label: 'ارتفاع العمل', value: '14–42 م' }, { label: 'حمولة السلة', value: '250–450 كجم لشخصين' }, { label: 'العزل الكهربائي', value: 'حتى 69 كيلوفولت' }, { label: 'الدوران', value: 'منصة دوارة 360 درجة' }], features: ['تصميم بذراع لا يتجاوز حدود المركبة للممرات الضيقة', 'سلة ألياف زجاجية مستوية مع تحكم أرضي للطوارئ', 'مخارج أدوات هيدروليكية في السلة', 'فحص وفق معايير EN 280 وANSI A92.2'] },
+  carriers: { name: 'ناقلات سيارات متعددة الطوابق', tag: 'نقل السيارات', desc: 'مقطورات لنقل عدة مركبات بكثافة عالية، مع منصات رفع هيدروليكية ومنحدرات تحميل منخفضة ومثبتات للعجلات.', leadTime: '٣–٥ أسابيع', specs: [{ label: 'سعة المركبات', value: '6–10 سيارات ركاب' }, { label: 'تحكم المنصة', value: 'رفع هيدروليكي متعدد الصمامات' }, { label: 'زاوية المنحدر', value: 'تحميل منخفض بزاوية 8 درجات' }, { label: 'الوزن الإجمالي', value: 'حتى 38,000 كجم' }], features: ['أرضيات مجلفنة مثقبة بسطح مانع للانزلاق', 'أقفال هيدروليكية مع أنظمة أمان ميكانيكية', 'مصدات عجلات قابلة للتعديل وأحزمة تثبيت', 'أنابيب هيدروليكية سفلية محمية'] },
+  custom: { name: 'هندسة مركبات متخصصة', tag: 'حلول خاصة', desc: 'مركبات مخصصة تشمل العيادات المتنقلة ومراكز القيادة ونقل المواد الخطرة وشاحنات التشحيم وخدمات التعدين.', leadTime: 'حسب الطلب', specs: [{ label: 'الهندسة', value: 'تحليل إجهاد FEA وتصميم CAD' }, { label: 'تعديل الهيكل', value: 'تمديد أو خفض قاعدة العجلات' }, { label: 'أنظمة الطاقة', value: 'مولدات أو طاقة شمسية' }, { label: 'أنظمة مخصصة', value: 'تكييف وهيدروليك وهواء' }], features: ['تصميم متكامل من الفكرة إلى التسجيل على الطريق', 'دمج المعدات مع وحدات تحكم آلية', 'أدلة تشغيل وتدريب فني شامل', 'تشغيل ميداني ودعم لقطع الغيار'] },
+}
+
 const CATEGORIES = [
   { id: 'all', label: 'All Fleet' },
   { id: 'transport', label: 'Liquid & Freight' },
@@ -218,8 +231,10 @@ const CATEGORIES = [
   { id: 'municipal', label: 'Municipal & Wreckers' },
   { id: 'custom', label: 'Custom & Elevated' },
 ]
+const AR_CATEGORIES = ['كل الأساطيل', 'السوائل والبضائع', 'النقل الثقيل والمقطورات', 'الخدمات البلدية والإنقاذ', 'التصنيع الخاص والمنصات']
 
 export default function Products() {
+  const { isArabic } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
   const [viewMode, setViewMode] = useState<'stack' | 'grid'>('stack')
   const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(null)
@@ -227,7 +242,7 @@ export default function Products() {
 
   const filteredProducts = PRODUCTS_DATA.filter((p) =>
     activeCategory === 'all' ? true : p.category === activeCategory
-  )
+  ).map((product) => isArabic ? { ...product, ...PRODUCTS_AR[product.id] } : product)
   const gridCardsRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -271,10 +286,10 @@ export default function Products() {
       <div className="relative w-full mb-4 sm:mb-8">
         <ScrollExpand
           src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&h=1080&fit=crop&auto=format"
-          alt="Modern Assets Heavy Fleet Expansion"
-          title="BUILT FOR EVERY INDUSTRY"
-          badge="CHAPTER 02 • COMMERCIAL FLEET"
-          scrollHint="SCROLL TO EXPAND FLEET"
+          alt={isArabic ? 'توسّع أسطول مودرن أسيتس' : 'Modern Assets Heavy Fleet Expansion'}
+          title={isArabic ? 'حلول لكل القطاعات' : 'BUILT FOR EVERY INDUSTRY'}
+          badge={isArabic ? 'الفصل 02 • الأساطيل التجارية' : 'CHAPTER 02 • COMMERCIAL FLEET'}
+          scrollHint={isArabic ? 'مرّر لتوسيع عرض الأسطول' : 'SCROLL TO EXPAND FLEET'}
           startWidth={76}
           startHeight={78}
           startRadius={24}
@@ -289,18 +304,19 @@ export default function Products() {
           {/* Content that fades in over the media once it reaches full bleed */}
           <div className="flex flex-col items-center justify-center max-w-4xl mx-auto px-4 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E07B10]/20 border border-[#E07B10]/40 backdrop-blur-md font-body text-[10px] sm:text-xs tracking-[0.25em] uppercase text-[#E07B10] mb-4">
-              <span>CHAPTER 02</span>
+              <span>{isArabic ? 'الفصل 02' : 'CHAPTER 02'}</span>
               <span className="opacity-40">•</span>
-              <span>HEAVY-DUTY COMMERCIAL FLEET</span>
+              <span>{isArabic ? 'أساطيل تجارية للمركبات الثقيلة' : 'HEAVY-DUTY COMMERCIAL FLEET'}</span>
             </div>
 
             <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl uppercase leading-[0.95] mb-4 text-white drop-shadow-md">
-              ENGINEERED FOR <span className="text-[#E07B10]">EXTREME PAYLOADS</span>
+              {isArabic ? 'مصممة ' : 'ENGINEERED FOR '}<span className="text-[#E07B10]">{isArabic ? 'للحمولات الفائقة' : 'EXTREME PAYLOADS'}</span>
             </h2>
 
             <p className="font-body text-xs sm:text-base md:text-lg font-light leading-relaxed text-white/90 max-w-xl mb-6 drop-shadow-sm">
-              From certified ADR chemical tankers to 150-ton hydraulic low-bed trailers, our heavy
-              commercial solutions are forged for unyielding performance and absolute durability.
+              {isArabic
+                ? 'من صهاريج المواد الكيميائية المعتمدة وفق ADR إلى المقطورات الهيدروليكية منخفضة السطح بقدرة 150 طناً، نصنع حلولاً تجارية ثقيلة لأداء موثوق ومتانة عالية.'
+                : 'From certified ADR chemical tankers to 150-ton hydraulic low-bed trailers, our heavy commercial solutions are forged for unyielding performance and absolute durability.'}
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center">
@@ -312,7 +328,7 @@ export default function Products() {
                   if (target) target.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                <span className="inline-flex items-center gap-1.5">Inspect Fleet Catalog <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></svg></span>
+                <span className="inline-flex items-center gap-1.5">{isArabic ? 'تصفّح كتالوج الأسطول' : 'Inspect Fleet Catalog'} <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></svg></span>
               </GlassButton>
               <GlassButton
                 variant="ghost-white"
@@ -322,7 +338,7 @@ export default function Products() {
                   if (target) target.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                <span className="inline-flex items-center gap-1.5">Request Custom Blueprint <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+                <span className="inline-flex items-center gap-1.5">{isArabic ? 'اطلب تصميماً مخصصاً' : 'Request Custom Blueprint'} <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
               </GlassButton>
             </div>
           </div>
@@ -337,10 +353,10 @@ export default function Products() {
           <div className="flex flex-col items-stretch gap-6">
             <div>
               <div className="font-body text-[11px] tracking-[0.3em] uppercase text-[#E07B10] mb-2 font-bold">
-                Precision Fleet Catalog
+                {isArabic ? 'كتالوج الأسطول الدقيق' : 'Precision Fleet Catalog'}
               </div>
               <h3 className="font-display font-black text-3xl sm:text-4xl md:text-5xl uppercase leading-none text-[#1B2B3A]">
-                Tailored for Every Sector
+                {isArabic ? 'حلول تناسب كل قطاع' : 'Tailored for Every Sector'}
               </h3>
             </div>
 
@@ -360,7 +376,7 @@ export default function Products() {
                           : 'bg-transparent text-[#5C6470] hover:text-[#1B2B3A]'
                       }`}
                     >
-                      {cat.label}
+                      {isArabic ? AR_CATEGORIES[CATEGORIES.findIndex((category) => category.id === cat.id)] : cat.label}
                     </button>
                   )
                 })}
@@ -381,7 +397,7 @@ export default function Products() {
                     <line x1="3" y1="12" x2="21" y2="12" />
                     <line x1="3" y1="18" x2="21" y2="18" />
                   </svg>
-                  <span>Stack</span>
+                  <span>{isArabic ? 'تكديس' : 'Stack'}</span>
                 </button>
                 <button
                   onClick={() => setViewMode('grid')}
@@ -397,7 +413,7 @@ export default function Products() {
                     <rect x="14" y="14" width="7" height="7" rx="1" />
                     <rect x="3" y="14" width="7" height="7" rx="1" />
                   </svg>
-                  <span>Grid</span>
+                  <span>{isArabic ? 'شبكة' : 'Grid'}</span>
                 </button>
               </div>
             </div>
@@ -432,14 +448,14 @@ export default function Products() {
 
                     {/* Expand Cue */}
                     <div className="absolute top-4 right-4 font-body text-[10px] sm:text-xs tracking-wider uppercase text-[#1B2B3A] bg-white/90 backdrop-blur-xs px-3 py-1 rounded-md border border-[#E2DFDC] font-semibold">
-                      Inspect Specs ↗
+                      {isArabic ? 'عرض المواصفات ↗' : 'Inspect Specs ↗'}
                     </div>
                   </div>
 
                   {/* Detailed Specs & Controls (Bottom on mobile, Right 5-cols on desktop) */}
                   <div className="lg:col-span-5 p-5 sm:p-7 lg:p-8 xl:p-10 flex flex-col justify-center bg-white">
                     <div className="font-body text-[10px] sm:text-xs tracking-widest uppercase text-[#E07B10] font-bold mb-1.5">
-                      Build Lead Time: {p.leadTime}
+                      {isArabic ? 'مدة التصنيع: ' : 'Build Lead Time: '}{p.leadTime}
                     </div>
                     <h4 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl uppercase text-[#1B2B3A] mb-2 sm:mb-3 leading-tight">
                       {p.name}
@@ -473,7 +489,7 @@ export default function Products() {
                           setSelectedProduct(p)
                         }}
                       >
-                        <span className="inline-flex items-center gap-1.5">Inspect Specs <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+                        <span className="inline-flex items-center gap-1.5">{isArabic ? 'عرض المواصفات' : 'Inspect Specs'} <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
                       </GlassButton>
                       <GlassButton
                         variant="ghost"
@@ -485,7 +501,7 @@ export default function Products() {
                           if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
                         }}
                       >
-                        Inquire Quote
+                        {isArabic ? 'اطلب عرض سعر' : 'Inquire Quote'}
                       </GlassButton>
                     </div>
                   </div>
@@ -527,7 +543,7 @@ export default function Products() {
 
                     {/* Lead Time indicator */}
                     <div className="absolute top-3.5 right-3.5 font-body text-[10px] sm:text-xs tracking-wider uppercase text-[#1B2B3A] bg-white px-2.5 py-1 rounded-md border border-[#E2DFDC] font-semibold">
-                      Build: {p.leadTime}
+                      {isArabic ? 'التصنيع: ' : 'Build: '}{p.leadTime}
                     </div>
 
                     {/* Name overlay */}
@@ -569,7 +585,7 @@ export default function Products() {
                           setSelectedProduct(p)
                         }}
                       >
-                        <span className="inline-flex items-center gap-1.5">Inspect Specs <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+                        <span className="inline-flex items-center gap-1.5">{isArabic ? 'عرض المواصفات' : 'Inspect Specs'} <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
                       </GlassButton>
                       <GlassButton
                         variant="ghost"
@@ -581,7 +597,7 @@ export default function Products() {
                           if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
                         }}
                       >
-                        Inquire Quote
+                        {isArabic ? 'اطلب عرض سعر' : 'Inquire Quote'}
                       </GlassButton>
                     </div>
                   </div>
@@ -615,7 +631,7 @@ export default function Products() {
               <button
                 onClick={() => setSelectedProduct(null)}
                 className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white hover:bg-[#E07B10] text-[#1B2B3A] hover:text-white border border-[#E2DFDC] flex items-center justify-center cursor-pointer transition-colors shadow-sm"
-                aria-label="Close modal"
+                aria-label={isArabic ? 'إغلاق النافذة' : 'Close modal'}
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -642,7 +658,7 @@ export default function Products() {
 
               {/* Specs Grid */}
               <h5 className="font-display font-extrabold text-base sm:text-lg tracking-wider uppercase text-[#1B2B3A] mb-3">
-                Technical Specifications &amp; Limits
+                {isArabic ? 'المواصفات والحدود الفنية' : 'Technical Specifications & Limits'}
               </h5>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 mb-6">
                 {selectedProduct.specs.map((s, idx) => (
@@ -662,7 +678,7 @@ export default function Products() {
 
               {/* Engineering Features */}
               <h5 className="font-display font-extrabold text-base sm:text-lg tracking-wider uppercase text-[#1B2B3A] mb-3">
-                Key Engineering Highlights
+                {isArabic ? 'أبرز المزايا الهندسية' : 'Key Engineering Highlights'}
               </h5>
               <ul className="list-none p-0 m-0 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {selectedProduct.features.map((feat, fIdx) => (
@@ -683,7 +699,7 @@ export default function Products() {
               {/* Modal Actions */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E2DFDC] pt-5 mt-auto">
                 <div className="font-body text-xs text-[#5C6470] text-center sm:text-left">
-                  Custom engineering and dimensions built to order in KSA.
+                  {isArabic ? 'هندسة وأبعاد مخصصة حسب الطلب في المملكة.' : 'Custom engineering and dimensions built to order in KSA.'}
                 </div>
                 <div className="flex gap-2.5 w-full sm:w-auto">
                   <GlassButton
@@ -696,7 +712,7 @@ export default function Products() {
                       if (c) c.scrollIntoView({ behavior: 'smooth' })
                     }}
                   >
-                    <span className="inline-flex items-center gap-1.5">Inquire Blueprint <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
+                    <span className="inline-flex items-center gap-1.5">{isArabic ? 'اطلب تصميماً' : 'Inquire Blueprint'} <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg></span>
                   </GlassButton>
                   <GlassButton
                     variant="ghost"
@@ -704,7 +720,7 @@ export default function Products() {
                     style={{ flex: 1, justifyContent: 'center' }}
                     onClick={() => setSelectedProduct(null)}
                   >
-                    Close
+                    {isArabic ? 'إغلاق' : 'Close'}
                   </GlassButton>
                 </div>
               </div>

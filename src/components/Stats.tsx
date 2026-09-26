@@ -58,7 +58,7 @@ export default function Stats() {
             </div>
           </div>
           <div className="md:hidden w-8 h-8 rounded-full bg-[#E07B10]/10 flex items-center justify-center text-[#E07B10] font-bold text-xs">
-            KSA
+            {isArabic ? 'السعودية' : 'KSA'}
           </div>
         </div>
 

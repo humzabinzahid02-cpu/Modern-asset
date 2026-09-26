@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLanguage } from '../LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -44,7 +45,17 @@ const MARQUEE_ITEMS = [
   'VISION 2030 READY',
 ]
 
+const AR_FEATURES = [
+  { title: 'جودة بلا مساومة', desc: 'منشأتنا حاصلة على شهادة ISO 9001:2015. كل لحام وقطع وتشطيب مصمم لتحمل أقسى ظروف الصحراء السعودية.', statLabel: 'عاماً' },
+  { title: 'حلول مصممة لاحتياجاتك', desc: 'لا حلول جاهزة. نصمم كل مركبة خصيصاً وفق الحمولة المطلوبة وطبيعة التشغيل.', statLabel: 'حسب الطلب' },
+  { title: 'شراكات تدوم', desc: 'من الاستشارة الأولى إلى خدمات ما بعد البيع، نلتزم بدعمك. جاهزية أسطولك هي سمعتنا.', statLabel: 'ساعة' },
+  { title: 'مواعيد تسليم موثوقة', desc: 'مواعيد وأسعار واضحة وثابتة. نلتزم بجدولك لأننا نعرف أن التأخير يكلفك أكثر من المال.', statLabel: 'في الموعد' },
+]
+
+const AR_MARQUEE_ITEMS = ['تصنيع دقيق', 'هندسة حسب الطلب', 'معايير ISO', 'حلول للمركبات الثقيلة', 'المملكة العربية السعودية', 'جاهزون لرؤية 2030']
+
 export default function WhyUs() {
+  const { isArabic } = useLanguage()
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null)
   const sectionRef = useRef<HTMLElement | null>(null)
   const leftColRef = useRef<HTMLDivElement | null>(null)
@@ -151,7 +162,7 @@ export default function WhyUs() {
               key={i}
               className="shrink-0 font-display text-lg sm:text-2xl font-black tracking-[0.25em] uppercase text-transparent [-webkit-text-stroke:1.5px_rgba(224,123,16,0.45)] whitespace-nowrap px-6 sm:px-10 flex items-center select-none"
             >
-              {item}
+              {isArabic ? AR_MARQUEE_ITEMS[i % MARQUEE_ITEMS.length] : item}
               <span className="text-[#E07B10] [-webkit-text-stroke:0] ml-6 sm:ml-10 opacity-70 inline-flex items-center">
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5Z" />
@@ -175,7 +186,7 @@ export default function WhyUs() {
             <div className="relative bg-[#E2DFDC] aspect-[4/3] sm:aspect-[4/5] overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg">
               <img
                 src="https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?w=700&h=900&fit=crop&auto=format"
-                alt="Welder working with sparks flying"
+                alt={isArabic ? 'عامل لحام أثناء العمل' : 'Welder working with sparks flying'}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#1B2B3A]/40 via-transparent to-transparent pointer-events-none" />
@@ -186,10 +197,10 @@ export default function WhyUs() {
               <img src={`${import.meta.env.BASE_URL}modern-assets-logo.png`} alt="" className="w-16 h-10 object-contain shrink-0" />
               <div>
                 <span className="font-display font-extrabold text-xs sm:text-sm text-[#1B2B3A] leading-tight block uppercase">
-                  Precision in Every Detail
+                  {isArabic ? 'دقة في كل التفاصيل' : 'Precision in Every Detail'}
                 </span>
                 <span className="font-body text-[10px] text-[#E07B10] font-bold block">
-                  Saudi Quality Standard
+                  {isArabic ? 'معايير الجودة السعودية' : 'Saudi Quality Standard'}
                 </span>
               </div>
             </div>
@@ -200,7 +211,7 @@ export default function WhyUs() {
                 15+
               </div>
               <div className="font-body text-[10px] sm:text-xs text-white/90 mt-1 leading-snug">
-                Years of industrial engineering in KSA
+                {isArabic ? 'عاماً من الهندسة الصناعية في المملكة' : 'Years of industrial engineering in KSA'}
               </div>
             </div>
           </div>
@@ -209,16 +220,18 @@ export default function WhyUs() {
           <div className="lg:col-span-7 flex flex-col">
             <div ref={headingRef}>
               <div className="font-body text-[11px] tracking-[0.3em] uppercase text-[#E07B10] mb-3 font-bold">
-                Why Modern Assets
+                {isArabic ? 'لماذا مودرن أسيتس' : 'Why Modern Assets'}
               </div>
               <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#1B2B3A] uppercase tracking-tight leading-[0.93] mb-4">
-                We Don't Just Build — <br />
+                {isArabic ? <>نحن لا نبني فحسب — <br /></> : <>We Don't Just Build — <br /></>}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E07B10] to-[#1B2B3A]">
-                  We Engineer
+                  {isArabic ? 'نحن نهندس' : 'We Engineer'}
                 </span>
               </h2>
               <p className="font-body text-sm sm:text-base text-[#5C6470] leading-relaxed mb-8 max-w-xl">
-                You need more than a fabricator. You need a partner who understands operational demands, respects your timelines, and builds equipment that genuinely keeps your fleet running.
+                {isArabic
+                  ? 'أنت بحاجة إلى أكثر من جهة تصنيع؛ أنت بحاجة إلى شريك يفهم متطلبات التشغيل، ويحترم مواعيدك، ويصنع معدات تحافظ على جاهزية أسطولك.'
+                  : 'You need more than a fabricator. You need a partner who understands operational demands, respects your timelines, and builds equipment that genuinely keeps your fleet running.'}
               </p>
             </div>
 
@@ -227,8 +240,9 @@ export default function WhyUs() {
               ref={featuresGridRef}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
             >
-              {FEATURES.map((f) => {
+              {FEATURES.map((f, index) => {
                 const isHovered = hoveredFeature === f.title
+                const text = isArabic ? { ...f, ...AR_FEATURES[index] } : f
                 return (
                   <div
                     key={f.title}
@@ -267,15 +281,15 @@ export default function WhyUs() {
                             {f.stat}
                           </div>
                           <div className="font-body text-[9px] tracking-wider uppercase text-[#8C949C] mt-0.5">
-                            {f.statLabel}
+                            {text.statLabel}
                           </div>
                         </div>
                       </div>
                       <div className="font-display font-extrabold text-base uppercase text-[#1B2B3A] mb-1.5 leading-tight">
-                        {f.title}
+                        {text.title}
                       </div>
                       <div className="font-body text-xs text-[#5C6470] leading-relaxed">
-                        {f.desc}
+                        {text.desc}
                       </div>
                     </div>
                   </div>
