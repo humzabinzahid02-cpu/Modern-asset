@@ -58,25 +58,24 @@ export function StickyCard002<T extends CardData = CardData>({
       </div>
       <style>{`
         .sticky-card-item {
-          position: relative;
+          position: sticky;
+          top: 84px;
           border-radius: 24px;
           background: #FFFFFF;
           box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.05), 0 16px 40px rgba(27, 43, 58, 0.09);
           transition: transform 0.2s ease-out;
         }
+        ${cards.map((_, i) => `
+          .sticky-card-item[data-index="${i}"] {
+            z-index: ${i + 1};
+          }
+        `).join('\n')}
         @media (min-width: 1024px) {
           .sticky-card-item {
-            position: sticky;
             border-radius: 34px;
             /* Safe distance below fixed navbar so card never goes inside navbar */
             top: clamp(104px, 15vh, 118px);
           }
-          /* Every card has increasing z-index so incoming card fully covers the previous card instead of lining up */
-          ${cards.map((_, i) => `
-            .sticky-card-item[data-index="${i}"] {
-              z-index: ${i + 1};
-            }
-          `).join('\n')}
         }
       `}</style>
     </div>

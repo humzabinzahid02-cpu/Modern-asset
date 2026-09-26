@@ -31,14 +31,14 @@ export default function Footer({ onOpenQuote }: FooterProps) {
   return (
     <footer
       id="contact-footer"
-      className="w-full min-h-[550px] bg-[#1C2128] px-4 sm:px-6 lg:px-13 pt-10 sm:pt-9 lg:pt-10 pb-4 sm:pb-5 text-[#B0B8BC] overflow-hidden"
+      className="flex w-full min-h-screen flex-col bg-[#1C2128] px-4 sm:px-6 lg:px-13 pt-10 sm:pt-9 lg:pt-10 pb-4 sm:pb-5 text-[#B0B8BC] overflow-hidden"
     >
-      <div className="max-w-[100rem] mx-auto">
+      <div className="w-full max-w-[100rem] flex flex-1 flex-col mx-auto">
         {/* Top Section: CTA on Left, Link Columns on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 mb-4 sm:mb-6">
           
           {/* Left Column: Headline & Direct Contact CTA */}
-          <div className="lg:col-span-6 flex flex-col justify-between">
+          <div className="lg:col-span-6 flex flex-col">
             <div>
               <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.25em] uppercase text-[#E07B10] mb-2 font-body">
                 <span className="w-2 h-2 rounded-full bg-[#E07B10]" />
@@ -50,7 +50,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                 <span className="text-[#E07B10]">Get in touch today.</span>
               </h3>
 
-              <p className="font-body text-xs sm:text-[13px] text-[#B0B8BC] leading-relaxed max-w-lg mb-4">
+              <p className="font-body text-[13px] sm:text-sm text-[#B0B8BC] leading-relaxed max-w-lg mb-4">
                 Custom fabrication of heavy-duty commercial vehicles and specialized transport platforms — built for strength, precision &amp; operational endurance.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
                   e.preventDefault()
                   if (onOpenQuote) onOpenQuote()
                 }}
-                className="font-display font-bold text-base sm:text-lg text-white hover:text-[#E07B10] transition-colors inline-flex items-center gap-2 mb-3.5 tracking-wide underline underline-offset-4 decoration-[#E07B10]"
+                className="font-display font-bold text-lg sm:text-xl text-white hover:text-[#E07B10] transition-colors inline-flex items-center gap-2 mb-3.5 tracking-wide underline underline-offset-4 decoration-[#E07B10]"
               >
                 <span>info@modernassets.sa</span>
                 <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -124,14 +124,14 @@ export default function Footer({ onOpenQuote }: FooterProps) {
           </div>
 
           {/* Right Columns: Products & Site Links + Spanning Location */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8 lg:pt-[34px]">
             
             {/* Products Column */}
             <div>
               <div className="font-display font-black text-sm tracking-wider uppercase text-white mb-2.5">
                 Fleet Products
               </div>
-              <ul className="space-y-1.5 p-0 m-0 list-none font-body text-xs sm:text-[13px]">
+              <ul className="space-y-1.5 p-0 m-0 list-none font-body text-sm sm:text-[15px]">
                 {FLEET_PRODUCTS.map((prod) => (
                   <li key={prod}>
                     <a
@@ -152,7 +152,7 @@ export default function Footer({ onOpenQuote }: FooterProps) {
               <div className="font-display font-black text-sm tracking-wider uppercase text-white mb-2.5">
                 Site Links
               </div>
-              <ul className="space-y-1.5 p-0 m-0 list-none font-body text-xs sm:text-[13px]">
+              <ul className="space-y-1.5 p-0 m-0 list-none font-body text-sm sm:text-[15px]">
                 {SITE_LINKS.map((link) => (
                   <li key={link.name}>
                     <a
@@ -170,15 +170,17 @@ export default function Footer({ onOpenQuote }: FooterProps) {
 
             {/* Headquarters — SPANS ACROSS BOTH COLUMNS & ENLARGED WITH HIGHLIGHT */}
             <div className="sm:col-span-2 mt-2 pt-1">
-              <div className="font-body text-xs tracking-wider uppercase text-white font-bold mb-1 flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <span>Headquarters</span>
-              </div>
-              <div className="font-body text-xs sm:text-sm text-[#D0D6DC] leading-relaxed">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <div className="font-body text-xs tracking-wider uppercase text-white font-bold flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Headquarters</span>
+                </div>
+                <div className="font-body text-sm sm:text-base text-[#D0D6DC] leading-relaxed">
                 <span className="text-[#E07B10] font-bold">Industrial Area 2</span>, Riyadh, Kingdom of Saudi Arabia
+                </div>
               </div>
             </div>
 
@@ -187,8 +189,8 @@ export default function Footer({ onOpenQuote }: FooterProps) {
         </div>
 
         {/* Giant Typographic Brand Display — BORDERLESS, FULL, AND PROMINENT */}
-        <div className="w-full pt-2 sm:pt-3 pb-2 select-none overflow-hidden text-center">
-          <div className="font-display font-black text-[clamp(2.5rem,11vw,10.5rem)] tracking-tight uppercase leading-[0.82] whitespace-nowrap select-none">
+        <div className="w-full mt-8 sm:mt-10 pt-4 sm:pt-6 pb-2 select-none overflow-hidden text-center">
+          <div className="font-display font-black text-[clamp(2rem,10.5vw,12rem)] tracking-[-0.04em] uppercase leading-[0.82] whitespace-nowrap select-none">
             <span className="text-white">Modern </span>
             <span className="text-[#E07B10]">Assets.</span>
           </div>
@@ -216,3 +218,8 @@ export default function Footer({ onOpenQuote }: FooterProps) {
     </footer>
   )
 }
+
+
+
+
+

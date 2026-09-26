@@ -1,5 +1,7 @@
 ﻿import { useState, useEffect } from 'react'
 
+import { useRef } from 'react'
+
 const LINKS = [
   { name: 'Home', target: 'home' },
   { name: 'Products', target: 'products' },
@@ -14,14 +16,58 @@ interface NavProps {
 }
 
 export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
-  const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
   const [open, setOpen] = useState(false)
+  const [darkBackground, setDarkBackground] = useState(false)
+  const navRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const detectBackground = () => {
+      if (window.scrollY < 80) {
+        setDarkBackground(false)
+        return
+      }
+      const nav = navRef.current
+      if (!nav) return
+      const oldPointerEvents = nav.style.pointerEvents
+      nav.style.pointerEvents = 'none'
+      const element = document.elementFromPoint(window.innerWidth / 2, Math.min(60, window.innerHeight - 1))
+      nav.style.pointerEvents = oldPointerEvents
+
+      let current: Element | null = element?.closest('section') ?? element
+      let isDark = false
+      while (current && current !== document.documentElement) {
+        const channels = getComputedStyle(current).backgroundColor.match(/[\d.]+/g)?.map(Number)
+        if (channels && channels.length >= 3 && (channels[3] ?? 1) > 0.1) {
+          const [red, green, blue] = channels
+          isDark = (0.2126 * red + 0.7152 * green + 0.0722 * blue) / 255 < 0.22
+          break
+        }
+        current = current.parentElement
+      }
+      setDarkBackground(isDark)
+    }
+
+    detectBackground()
+    window.addEventListener('scroll', detectBackground, { passive: true })
+    window.addEventListener('resize', detectBackground)
+    return () => {
+      window.removeEventListener('scroll', detectBackground)
+      window.removeEventListener('resize', detectBackground)
+    }
+  }, [])
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY
+    const onScroll = () => {
+      const currentScrollY = window.scrollY
+      if (currentScrollY < 80 || currentScrollY < lastScrollY - 4) setVisible(true)
+      else if (currentScrollY > lastScrollY + 4 && !open) setVisible(false)
+      lastScrollY = currentScrollY
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [open])
 
   const handleLinkClick = (target: string, e: React.MouseEvent) => {
     e.preventDefault()
@@ -68,6 +114,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
 
   return (
     <nav
+      ref={navRef}
       style={{
         position: 'fixed',
         top: 0,
@@ -80,14 +127,14 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        background: 'rgba(246, 245, 241, 0.68)',
-        backdropFilter: 'blur(18px) saturate(140%)',
-        transform: 'translateZ(0)',
-        willChange: 'background, box-shadow',
-        WebkitBackdropFilter: 'blur(18px) saturate(140%)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.32)',
-        boxShadow: '0 8px 28px rgba(27, 43, 58, 0.06)',
-        transition: 'background 300ms ease, box-shadow 300ms ease, backdrop-filter 300ms ease',
+        background: 'transparent',
+        backdropFilter: 'none',
+        WebkitBackdropFilter: 'none',
+        transform: `translate3d(0, ${visible ? '0' : '-100%'}, 0)`,
+        willChange: 'transform',
+        borderBottom: 'none',
+        boxShadow: 'none',
+        transition: 'transform 300ms ease',
       }}
     >
       {/* Specular Liquid Gleam line */}
@@ -149,10 +196,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
               fontSize: '16.5px',
               fontWeight: 700,
               letterSpacing: '0.01em',
-              color:
-                link.target === 'contact' && currentPage === 'quote'
-                  ? '#E07B10'
-                  : '#1B2B3A',
+              color: link.target === 'contact' && currentPage === 'quote' ? '#E07B10' : darkBackground ? '#E07B10' : '#1B2B3A',
               textDecoration: 'none',
               padding: '6px 0',
               transition: 'color 180ms ease',
@@ -169,7 +213,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
               e.currentTarget.style.color =
                 link.target === 'contact' && currentPage === 'quote'
                   ? '#E07B10'
-                  : '#1B2B3A'
+                  : darkBackground ? '#E07B10' : '#1B2B3A'
             }}
           >
             <span>{link.name}</span>
@@ -190,7 +234,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         <button
           onClick={handleGetInTouch}
           style={{
-            background: '#1B2B3A',
+            background: darkBackground ? '#E07B10' : '#1B2B3A',
             color: '#FFFFFF',
             border: 'none',
             borderRadius: '9999px',
@@ -212,7 +256,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
             e.currentTarget.style.boxShadow = '0 6px 24px rgba(224, 123, 16, 0.35)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = '#1B2B3A'
+            e.currentTarget.style.background = darkBackground ? '#E07B10' : '#1B2B3A'
             e.currentTarget.style.color = '#FFFFFF'
             e.currentTarget.style.transform = 'scale(1)'
             e.currentTarget.style.boxShadow = '0 4px 18px rgba(27, 43, 58, 0.22)'
@@ -230,7 +274,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
             border: 'none',
             cursor: 'pointer',
             padding: 8,
-            color: '#1B2B3A',
+            color: darkBackground ? '#E07B10' : '#1B2B3A',
           }}
           className="hamburger"
           aria-label="Toggle menu"

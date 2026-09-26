@@ -1,26 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import FluidMorphBg from './FluidMorphBg'
 
 
-const BG_WORDS_TRACK_1 = [
-  'ENGINEERING EXCELLENCE',
-  'HEAVY HAULAGE',
-  'VISION 2030',
-  'HARDOX STEEL',
-  'MAXIMUM PAYLOAD',
-  'MODERN ASSETS',
-]
-
-const BG_WORDS_TRACK_2 = [
-  'PRECISION TANKERS',
-  'BPW AXLES',
-  'ADR CERTIFIED',
-  'ZERO DEFLECTION',
-  'INDUSTRIAL FLEETS',
-  '150 TON RATING',
-]
-
 const FLIP_WORDS = ['ENDURE', 'SECURE', 'ASSURE']
+
+const TEXT_CARD_PADDING_TOP = 'clamp(1.75rem, 2.7vw, 2.75rem)'
 
 function CalendarFlip() {
   const [index, setIndex] = useState(0)
@@ -96,7 +80,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
           Right:
             We focus on transport strategies that deliver amazing business results.
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative w-full bg-[#F6F5F1] overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 px-4 sm:px-8 lg:px-12 select-none">
+      <section className="relative w-full bg-[#F6F5F1] overflow-hidden pt-32 pb-6 sm:pt-36 sm:pb-8 lg:pt-40 lg:pb-8 px-4 sm:px-8 lg:px-12 select-none">
 
         {/* FluidMorphBg: Organic Brand Fluid Wave Background */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-35 [transform:translateZ(0)]">
@@ -119,49 +103,6 @@ export default function Hero({ onOpenQuote }: HeroProps) {
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#E07B10]/[0.08] rounded-full blur-3xl pointer-events-none z-0 [transform:translateZ(0)]" />
         <div className="absolute top-1/2 right-0 w-80 h-80 bg-[#1B2B3A]/[0.04] rounded-full blur-3xl pointer-events-none z-0 [transform:translateZ(0)]" />
 
-        {/* Background Kinetic Watermark Typography */}
-        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 flex flex-col justify-between py-6 opacity-60">
-          
-          {/* Top Drift Track: Drifting Left */}
-          <div className="w-full overflow-hidden">
-            <div className="hero-bg-drift-left flex w-max">
-              {[...BG_WORDS_TRACK_1, ...BG_WORDS_TRACK_1, ...BG_WORDS_TRACK_1].map((w, idx) => (
-                <span
-                  key={`bg-w1-${idx}`}
-                  className="shrink-0 font-display font-black text-6xl sm:text-8xl lg:text-[115px] uppercase tracking-wider px-8 text-transparent [-webkit-text-stroke:1.2px_rgba(27,43,58,0.08)] opacity-70 flex items-center"
-                >
-                  <span>{w}</span>
-                  <span className="text-[#E07B10] [-webkit-text-stroke:0] opacity-40 mx-4 inline-flex items-center">
-                    <svg className="w-6 h-6 sm:w-10 sm:h-10 fill-current" viewBox="0 0 24 24">
-                      <polygon points="12 2 22 12 12 22 2 12" />
-                    </svg>
-                  </span>
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Drift Track: Drifting Right */}
-          <div className="w-full overflow-hidden">
-            <div className="hero-bg-drift-right flex w-max">
-              {[...BG_WORDS_TRACK_2, ...BG_WORDS_TRACK_2, ...BG_WORDS_TRACK_2].map((w, idx) => (
-                <span
-                  key={`bg-w2-${idx}`}
-                  className="shrink-0 font-display font-black text-5xl sm:text-7xl lg:text-[100px] uppercase tracking-wider px-8 text-transparent [-webkit-text-stroke:1.2px_rgba(224,123,16,0.12)] opacity-70 flex items-center"
-                >
-                  <span>{w}</span>
-                  <span className="text-[#1B2B3A] [-webkit-text-stroke:0] opacity-35 mx-4 inline-flex items-center">
-                    <svg className="w-5 h-5 sm:w-8 sm:h-8 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5Z" />
-                    </svg>
-                  </span>
-                </span>
-              ))}
-            </div>
-          </div>
-
-        </div>
-
         {/* Floating Background Aesthetic Badge (Top Right) */}
         <div className="hidden md:flex absolute top-28 right-16 z-0 items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#E2DFDC] shadow-xs text-[11px] font-bold tracking-widest uppercase text-[#E07B10] hero-badge-float pointer-events-none">
           <span className="w-2 h-2 rounded-full bg-[#E07B10] animate-ping" />
@@ -171,7 +112,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-8 sm:gap-10 lg:gap-12">
           
           {/* ROW 1: Hero Typography & Mission Statement */}
-          <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-12">
+          <div className="w-full flex flex-col lg:flex-row items-start lg:items-start justify-between gap-8 lg:gap-12">
             
             {/* Left Column: Fits strictly in 2 lines with Calendar Flip */}
             <div className="w-full lg:w-[50%] xl:w-[48%] flex flex-col items-start text-left select-none space-y-1">
@@ -187,7 +128,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             </div>
 
             {/* Right Column: Statement with smaller, refined typography */}
-            <div className="w-full lg:w-[46%] xl:w-[44%] flex flex-col justify-center text-left">
+            <div className="w-full lg:w-[42%] xl:w-[44%] flex flex-col justify-center text-left">
               <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#E07B10] mb-3 font-body">
                 <span className="w-2 h-2 rounded-full bg-[#E07B10]" />
                 Industrial Fleet Leadership
@@ -195,19 +136,16 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               <h2 className="text-xl sm:text-2xl lg:text-[26px] xl:text-[28px] font-bold font-display text-[#1B2B3A] leading-snug tracking-tight m-0">
                 We focus on transport strategies that deliver amazing business results.
               </h2>
-              <p className="text-sm sm:text-base text-[#5C6470] font-normal font-body mt-3 leading-relaxed max-w-lg">
-                Specialized cement bulkers, tipper dump trailers, and heavy-duty logistics platforms engineered for Saudi Vision 2030 fleets.
-              </p>
             </div>
 
           </div>
 
           {/* ─── ROW 2: Overlapping Cards Stacking (Matching Reference Image) ─── */}
-          <div className="w-full relative mt-8 sm:mt-10 lg:mt-14 pb-14 sm:pb-20 lg:pb-28">
+          <div className="w-full relative mt-8 sm:mt-10 lg:mt-14 pb-6 sm:pb-8 lg:pb-[90px]">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-end relative">
               
               {/* Back Card: Video Frame (Columns 4 to 13, Row 1, z-10) */}
-              <div className="order-1 lg:order-none lg:col-start-6 lg:col-end-13 lg:row-start-1 z-10 w-full rounded-3xl overflow-hidden bg-[#0C121A] border-2 border-[#E2DFDC] shadow-[0_20px_50px_rgba(27,43,58,0.14)] aspect-[16/10] sm:aspect-[16/9] lg:self-start relative group lg:translate-y-[30px]">
+              <div className="order-1 lg:order-none lg:col-start-6 lg:col-end-13 lg:row-start-1 z-10 w-full rounded-3xl overflow-hidden bg-[#0C121A] border-2 border-[#E2DFDC] shadow-[0_20px_50px_rgba(27,43,58,0.14)] aspect-[16/10] sm:aspect-[16/9] lg:self-start relative group lg:translate-x-[4px] lg:translate-y-[-188px]">
                 <video
                   src="/hero-video.mp4"
                   autoPlay
@@ -247,7 +185,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               </div>
 
               {/* Front Card: Compact Text Card (Columns 1 to 6, Row 1, z-20) — Overlaps bottom-left of Video Card */}
-              <div className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 w-full -mt-10 sm:-mt-14 lg:mt-0 lg:self-end lg:translate-x-12 lg:translate-y-[90px] max-w-[500px] xl:max-w-[500px] bg-[#0A0E14]/75 backdrop-blur-md text-white rounded-3xl p-6 sm:p-8 lg:p-9 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
+              <div style={{ paddingTop: TEXT_CARD_PADDING_TOP }} className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 mt-6 sm:mt-8 lg:mt-0 w-full max-w-[500px] lg:w-[110%] lg:max-w-[550px] lg:self-end lg:translate-x-[51px] lg:translate-y-[-103px] bg-[#0A0E14]/75 backdrop-blur-md text-white rounded-3xl px-6 pb-5 sm:px-8 sm:pb-6 lg:px-9 lg:pb-7 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-[28px] lg:text-[30px] xl:text-[32px] font-black font-display text-white tracking-tight leading-[1.14] mb-3.5">
                     Accelerate your fleet growth with <span className="text-[#E07B10]">Modern Assets</span>
@@ -284,17 +222,6 @@ export default function Hero({ onOpenQuote }: HeroProps) {
         }
         .marquee-rtl-track {
           animation: heroMarqueeRTL 24s linear infinite;
-        }
-
-        .hero-bg-drift-left {
-          animation: heroBgDriftLeft 45s linear infinite;
-          will-change: transform;
-          transform: translateZ(0);
-        }
-        .hero-bg-drift-right {
-          animation: heroBgDriftRight 40s linear infinite;
-          will-change: transform;
-          transform: translateZ(0);
         }
 
         .hero-badge-float {
@@ -334,15 +261,6 @@ export default function Hero({ onOpenQuote }: HeroProps) {
         @keyframes heroMarqueeRTL {
           from { transform: translateX(0); }
           to   { transform: translateX(-25%); }
-        }
-
-        @keyframes heroBgDriftLeft {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-33.333%); }
-        }
-        @keyframes heroBgDriftRight {
-          from { transform: translateX(-33.333%); }
-          to   { transform: translateX(0); }
         }
 
         @keyframes heroBadgeFloat {
