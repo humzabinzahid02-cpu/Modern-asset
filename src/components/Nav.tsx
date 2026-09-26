@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react'
 
 import { useRef } from 'react'
+import { useLanguage } from '../LanguageContext'
 
 const LINKS = [
   { name: 'Home', target: 'home' },
@@ -16,6 +17,7 @@ interface NavProps {
 }
 
 export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
+  const { isArabic, toggleLanguage } = useLanguage()
   const [visible, setVisible] = useState(true)
   const [open, setOpen] = useState(false)
   const [darkBackground, setDarkBackground] = useState(false)
@@ -168,7 +170,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
         >
           <img
             src={`${import.meta.env.BASE_URL}modern-assets-logo.png`}
-            alt="Modern Assets — Heavy Vehicle Solutions"
+            alt={isArabic ? 'مودرن أسيتس — حلول المركبات الثقيلة' : 'Modern Assets — Heavy Vehicle Solutions'}
             style={{ width: 'clamp(240px, 27vw, 288px)', height: 92, objectFit: 'contain', transition: 'transform 200ms ease' }}
             className="group-hover:scale-105"
           />
@@ -216,7 +218,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
                   : darkBackground ? '#E07B10' : '#1B2B3A'
             }}
           >
-            <span>{link.name}</span>
+            <span>{isArabic ? ({ Home: 'الرئيسية', Products: 'المنتجات', 'Our Process': 'آلية العمل', 'Why Us': 'لماذا نحن', Contact: 'تواصل معنا' }[link.name] || link.name) : link.name}</span>
             {/* Animated Underline on Hover */}
             <span
               className={`absolute -bottom-0.5 left-0 w-full h-[2.5px] bg-[#E07B10] rounded-full transition-transform duration-250 ease-out origin-center ${
@@ -231,6 +233,9 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
 
       {/* 3. Right: Big 'Get in touch' Button (Positioned slightly right, bigger size) */}
       <div className="flex-1 flex items-center justify-end">
+        <button type="button" onClick={toggleLanguage} aria-label={isArabic ? 'Switch to English' : 'التبديل إلى العربية'} className="mr-3 rounded-full border border-[#E07B10]/50 bg-white/80 px-3 py-2 text-xs font-bold text-[#1B2B3A] transition hover:bg-[#E07B10] hover:text-white">
+          {isArabic ? 'EN' : 'عربي'}
+        </button>
         <button
           onClick={handleGetInTouch}
           style={{
@@ -262,7 +267,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
             e.currentTarget.style.boxShadow = '0 4px 18px rgba(27, 43, 58, 0.22)'
           }}
         >
-          Get in touch
+          {isArabic ? 'تواصل معنا' : 'Get in touch'}
         </button>
 
         {/* Mobile Hamburger */}
@@ -339,7 +344,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
                 padding: '6px 0',
               }}
             >
-              {link.name}
+              {isArabic ? ({ Home: 'الرئيسية', Products: 'المنتجات', 'Our Process': 'آلية العمل', 'Why Us': 'لماذا نحن', Contact: 'تواصل معنا' }[link.name] || link.name) : link.name}
             </a>
           ))}
           <div style={{ paddingTop: 12 }}>
@@ -358,7 +363,7 @@ export default function Nav({ currentPage = 'home', onNavigate }: NavProps) {
                 cursor: 'pointer',
               }}
             >
-              Get in touch
+              {isArabic ? 'تواصل معنا' : 'Get in touch'}
             </button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { sendFormEmail, openEmailClient, getGmailComposeLink, getMailtoLink, TARGET_EMAIL } from '../lib/sendFormEmail'
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -22,6 +23,7 @@ export default function Contact() {
     message: '',
   })
   const [formState, setFormState] = useState<FormState>('idle')
+  const [formError, setFormError] = useState('')
 
   const VEHICLE_TYPES = [
     'Custom Truck Body',
@@ -97,13 +99,18 @@ export default function Contact() {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setFormState('sending')
-    setTimeout(() => {
-      setFormState('success')
-      setForm({ name: '', company: '', email: '', phone: '', vehicleType: '', message: '' })
-    }, 1600)
+
+    // Launch email composer SYNCHRONOUSLY at the exact same moment of click
+    openEmailClient('New Contact Quote Request', form)
+
+    // Immediately show success screen
+    setFormState('success')
+    setFormError('')
+
+    // Send silent background backup copy via EmailJS
+    sendFormEmail('New Contact Quote Request', form).catch(console.error)
   }
 
   const inputStyle: React.CSSProperties = {
@@ -382,7 +389,7 @@ export default function Contact() {
               boxShadow: '0 24px 64px rgba(0,0,0,0.25)',
             }}>
               {formState === 'success' ? (
-                <div style={{ textAlign: 'center', padding: '60px 0' }}>
+                <div style={{ textAlign: 'center', padding: '40px 10px' }}>
                   <div style={{
                     width: 72,
                     height: 72,
@@ -400,25 +407,83 @@ export default function Contact() {
                   </div>
                   <h3 style={{
                     fontFamily: 'Poppins, sans-serif',
-                    fontSize: 32,
+                    fontSize: 28,
                     fontWeight: 800,
                     textTransform: 'uppercase',
                     color: '#1B2B3A',
                     margin: '0 0 12px',
-                  }}>Request Received!</h3>
+                  }}>Email Ready To Send!</h3>
                   <p style={{
                     fontFamily: 'Poppins, sans-serif',
                     fontSize: 15,
                     color: '#5C6470',
                     lineHeight: 1.65,
-                    margin: 0,
+                    margin: '0 0 20px',
+                    maxWidth: 480,
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
                   }}>
-                    Our engineering team will review your requirements and reach out within 24 hours with a tailored proposal.
+                    Your email application has opened with your inquiry pre-written to <strong style={{ color: '#1B2B3A' }}>{TARGET_EMAIL}</strong>. Just click <strong>Send</strong>!
                   </p>
+
+                  <div style={{
+                    background: '#F8F7F4',
+                    border: '1px solid #E2DFDC',
+                    borderRadius: 14,
+                    padding: 16,
+                    maxWidth: 420,
+                    margin: '0 auto 24px',
+                  }}>
+                    <p style={{ fontFamily: 'Poppins, sans-serif', fontSize: 12, fontWeight: 700, color: '#1B2B3A', margin: '0 0 10px' }}>
+                      Didn't open automatically? Choose your app:
+                    </p>
+                    <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
+                      <a
+                        href={getGmailComposeLink('New Contact Quote Request', form)}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 8,
+                          padding: '10px 18px',
+                          background: '#EA4335',
+                          color: '#fff',
+                          borderRadius: 8,
+                          fontFamily: 'Poppins, sans-serif',
+                          fontSize: 12,
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <svg style={{ width: 16, height: 16, fill: '#fff' }} viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.266H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                        Open in Gmail Web
+                      </a>
+                      <a
+                        href={getMailtoLink('New Contact Quote Request', form)}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 8,
+                          padding: '10px 18px',
+                          background: '#1B2B3A',
+                          color: '#fff',
+                          borderRadius: 8,
+                          fontFamily: 'Poppins, sans-serif',
+                          fontSize: 12,
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <svg style={{ width: 16, height: 16 }} fill="none" stroke="#fff" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Open Default Mail
+                      </a>
+                    </div>
+                  </div>
+
                   <button
                     onClick={() => setFormState('idle')}
                     style={{
-                      marginTop: 28,
                       background: 'transparent',
                       border: '1.5px solid #E2DFDC',
                       borderRadius: 8,
@@ -599,6 +664,11 @@ export default function Contact() {
                   </div>
 
                   {/* Submit */}
+                  {formState === 'error' && (
+                    <p role="alert" style={{ margin: 0, color: '#B42318', fontFamily: 'Poppins, sans-serif', fontSize: 13 }}>
+                      {formError || 'We couldn’t send your request. Please try again.'}
+                    </p>
+                  )}
                   <button
                     type="submit"
                     disabled={formState === 'sending'}
@@ -650,7 +720,7 @@ export default function Contact() {
                       </>
                     ) : (
                       <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                        <span>Send Request</span>
+                        <span>Send Request (Opens Email Ready To Send)</span>
                         <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="5" y1="12" x2="19" y2="12" />
                           <polyline points="12 5 19 12 12 19" />

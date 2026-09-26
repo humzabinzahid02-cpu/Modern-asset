@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { LanguageContext } from './LanguageContext'
 import IntroAnimation from './components/IntroAnimation'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
@@ -17,6 +18,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export default function App() {
   const [introDone, setIntroDone] = useState(false)
+  const [isArabic, setIsArabic] = useState(true)
   const [currentPage, setCurrentPage] = useState<'home' | 'quote'>('home')
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [transitionText, setTransitionText] = useState('DESIGNED FOR RESULTS')
@@ -60,7 +62,7 @@ export default function App() {
 
     if (targetPage === currentPage) return
 
-    setTransitionText(targetPage === 'quote' ? 'DESIGNED FOR RESULTS' : 'MODERN ASSETS')
+    setTransitionText(targetPage === 'quote' ? (isArabic ? 'صُممت لتحقيق أفضل النتائج' : 'DESIGNED FOR RESULTS') : (isArabic ? 'مودرن أسيتس' : 'MODERN ASSETS'))
     setPendingNav({ page: targetPage, sectionId })
     setIsTransitioning(true)
   }
@@ -86,6 +88,7 @@ export default function App() {
   }
 
   return (
+    <LanguageContext.Provider value={{ isArabic, toggleLanguage: () => setIsArabic((value) => !value) }}>
     <>
       {/* Initial Splash Animation */}
       {!introDone && <IntroAnimation onDone={() => setIntroDone(true)} />}
@@ -119,7 +122,7 @@ export default function App() {
 
             {/* Marquee transition: Products → Process */}
             <SectionMarquee
-              items={['Engineering Excellence', 'Our Process', 'From Concept to Road']}
+              items={isArabic ? ['التميز الهندسي', 'آلية العمل', 'من الفكرة إلى الطريق'] : ['Engineering Excellence', 'Our Process', 'From Concept to Road']}
               direction="ltr"
               background="#1B2B3A"
               textSize={90}
@@ -142,5 +145,6 @@ export default function App() {
         )}
       </div>
     </>
+    </LanguageContext.Provider>
   )
 }

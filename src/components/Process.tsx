@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollFloat from './ScrollFloat';
+import { useLanguage } from '../LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,6 +122,7 @@ const STEPS: StepItem[] = [
 ];
 
 export default function Process() {
+  const { isArabic } = useLanguage()
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -268,7 +270,7 @@ export default function Process() {
                 fontWeight: 700,
               }}
             >
-              Our Engineering Lifecycle
+              {isArabic ? 'مراحلنا الهندسية' : 'Our Engineering Lifecycle'}
             </span>
           </div>
 
@@ -287,7 +289,7 @@ export default function Process() {
               color: '#1B2B3A',
             }}
           >
-            From Concept To Completion
+            {isArabic ? 'من الفكرة إلى الإنجاز' : 'From Concept To Completion'}
           </ScrollFloat>
 
           <p
@@ -300,8 +302,7 @@ export default function Process() {
               maxWidth: 680,
             }}
           >
-            We follow a streamlined, high-precision engineering process to ensure structural excellence,
-            regulatory certification, and turnkey deployment - on time, every time.
+            {isArabic ? 'نتبع منهجاً هندسياً دقيقاً ومبسطاً لضمان التميز الإنشائي والاعتماد التنظيمي والتسليم الجاهز في الموعد المحدد، في كل مرة.' : 'We follow a streamlined, high-precision engineering process to ensure structural excellence, regulatory certification, and turnkey deployment - on time, every time.'}
           </p>
         </div>
 
@@ -533,7 +534,7 @@ export default function Process() {
                           fontWeight: 700,
                         }}
                       >
-                        Core Deliverables & Standards
+                        {isArabic ? 'المخرجات والمعايير الأساسية' : 'Core Deliverables & Standards'}
                       </div>
                       <div className="process-deliverables-grid">
                         {step.deliverables.map((item, dIdx) => (

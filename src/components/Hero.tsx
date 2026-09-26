@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import FluidMorphBg from './FluidMorphBg'
+import { useLanguage } from '../LanguageContext'
 
 
 const FLIP_WORDS = ['ENDURE', 'SECURE', 'ASSURE']
 
 const TEXT_CARD_PADDING_TOP = 'clamp(1.75rem, 2.7vw, 2.75rem)'
 
-function CalendarFlip() {
+function CalendarFlip({ isArabic }: { isArabic: boolean }) {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function CalendarFlip() {
         <span className="w-2.5 h-2.5 rounded-full bg-[#1B2B3A]/30 border border-[#1B2B3A]/50 inline-block shadow-inner" />
         <span className="w-2.5 h-2.5 rounded-full bg-[#1B2B3A]/30 border border-[#1B2B3A]/50 inline-block shadow-inner" />
         <span className="text-[10px] font-bold tracking-widest uppercase text-[#E07B10] ml-2">
-          PILLAR 0{index + 1} / 03
+          {isArabic ? `ركيزة 0${index + 1} / 03` : `PILLAR 0${index + 1} / 03`}
         </span>
       </div>
 
@@ -43,7 +44,7 @@ function CalendarFlip() {
           key={currentWord}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[58px] font-black font-display text-[#E07B10] tracking-tight leading-none uppercase m-0 calendar-flip-anim"
         >
-          {currentWord}
+          {isArabic ? ['تحمّل', 'أمان', 'ثقة'][index] : currentWord}
         </div>
       </div>
     </div>
@@ -55,6 +56,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenQuote }: HeroProps) {
+  const { isArabic } = useLanguage()
   const handleOpenClient = () => {
     if (onOpenQuote) {
       onOpenQuote()
@@ -65,7 +67,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
   }
 
   return (
-    <div id="home" className="relative w-full overflow-hidden">
+    <div id="home" lang={isArabic ? 'ar' : 'en'} className="relative w-full overflow-hidden">
       
       {/* ─────────────────────────────────────────────────────────────
           PART 1: HERO TOP WITH SLASH (Modern Assets Light Cream Theme)
@@ -80,7 +82,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
           Right:
             We focus on transport strategies that deliver amazing business results.
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative w-full bg-[#F6F5F1] overflow-hidden pt-32 pb-6 sm:pt-36 sm:pb-8 lg:pt-40 lg:pb-8 px-4 sm:px-8 lg:px-12 select-none">
+      <section className="relative w-full bg-[#F6F5F1] overflow-hidden pt-32 pb-4 sm:pt-36 sm:pb-4 lg:pt-40 lg:pb-0 lg:-mb-[84px] px-4 sm:px-8 lg:px-12 select-none">
 
         {/* FluidMorphBg: Organic Brand Fluid Wave Background */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-35 [transform:translateZ(0)]">
@@ -106,7 +108,7 @@ export default function Hero({ onOpenQuote }: HeroProps) {
         {/* Floating Background Aesthetic Badge (Top Right) */}
         <div className="hidden md:flex absolute top-28 right-16 z-0 items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-[#E2DFDC] shadow-xs text-[11px] font-bold tracking-widest uppercase text-[#E07B10] hero-badge-float pointer-events-none">
           <span className="w-2 h-2 rounded-full bg-[#E07B10] animate-ping" />
-          <span>Vision 2030 Fleet Compliant</span>
+          <span>{isArabic ? 'متوافق مع رؤية 2030' : 'Vision 2030 Fleet Compliant'}</span>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-8 sm:gap-10 lg:gap-12">
@@ -117,13 +119,13 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             {/* Left Column: Fits strictly in 2 lines with Calendar Flip */}
             <div className="w-full lg:w-[50%] xl:w-[48%] flex flex-col items-start text-left select-none space-y-1">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[58px] font-black font-display text-[#1B2B3A] tracking-tight leading-[0.98] uppercase m-0 whitespace-nowrap">
-                Engineered To
+                {isArabic ? 'صُممت لتتفوق' : 'Engineered To'}
               </h1>
               <div className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[58px] font-black font-display text-[#1B2B3A] tracking-tight leading-[0.98] uppercase m-0 whitespace-nowrap">
-                Outperform
+                {isArabic ? 'بأداء استثنائي' : 'Outperform'}
               </div>
               <div className="pt-2">
-                <CalendarFlip />
+                <CalendarFlip isArabic={isArabic} />
               </div>
             </div>
 
@@ -131,17 +133,17 @@ export default function Hero({ onOpenQuote }: HeroProps) {
             <div className="w-full lg:w-[42%] xl:w-[44%] flex flex-col justify-center text-left">
               <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#E07B10] mb-3 font-body">
                 <span className="w-2 h-2 rounded-full bg-[#E07B10]" />
-                Industrial Fleet Leadership
+                {isArabic ? 'ريادة الأساطيل الصناعية' : 'Industrial Fleet Leadership'}
               </div>
               <h2 className="text-xl sm:text-2xl lg:text-[26px] xl:text-[28px] font-bold font-display text-[#1B2B3A] leading-snug tracking-tight m-0">
-                We focus on transport strategies that deliver amazing business results.
+                {isArabic ? 'نركز على استراتيجيات النقل التي تحقق نتائج متميزة للأعمال.' : 'We focus on transport strategies that deliver amazing business results.'}
               </h2>
             </div>
 
           </div>
 
           {/* ─── ROW 2: Overlapping Cards Stacking (Matching Reference Image) ─── */}
-          <div className="w-full relative mt-8 sm:mt-10 lg:mt-14 pb-6 sm:pb-8 lg:pb-[90px]">
+          <div className="w-full relative mt-8 sm:mt-10 lg:mt-14 pb-4 sm:pb-4 lg:pb-0">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-end relative">
               
               {/* Back Card: Video Frame (Columns 4 to 13, Row 1, z-10) */}
@@ -188,11 +190,11 @@ export default function Hero({ onOpenQuote }: HeroProps) {
               <div style={{ paddingTop: TEXT_CARD_PADDING_TOP }} className="order-2 lg:order-none lg:col-start-1 lg:col-end-6 lg:row-start-1 z-20 mt-6 sm:mt-8 lg:mt-0 w-full max-w-[500px] lg:w-[110%] lg:max-w-[550px] lg:self-end lg:translate-x-[51px] lg:translate-y-[-103px] bg-[#0A0E14]/75 backdrop-blur-md text-white rounded-3xl px-6 pb-5 sm:px-8 sm:pb-6 lg:px-9 lg:pb-7 shadow-[0_25px_60px_-12px_rgba(0,0,0,0.65)] border border-white/10 flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-[28px] lg:text-[30px] xl:text-[32px] font-black font-display text-white tracking-tight leading-[1.14] mb-3.5">
-                    Accelerate your fleet growth with <span className="text-[#E07B10]">Modern Assets</span>
+                    {isArabic ? <>عزز نمو أسطولك مع <span className="text-[#E07B10]">مودرن أسيتس</span></> : <>Accelerate your fleet growth with <span className="text-[#E07B10]">Modern Assets</span></>}
                   </h2>
 
                   <p className="text-slate-300 font-body text-xs sm:text-[13px] lg:text-[13.5px] leading-relaxed mb-6">
-                    Modern Assets is a premier heavy-duty vehicle and trailer manufacturer that uses skilled engineering, certified Hardox steel, and heavy-duty European running gear to help transport fleets expand with maximum uptime and unmatched operational reliability.
+                    {isArabic ? 'مودرن أسيتس شركة رائدة في تصنيع المركبات والمقطورات الثقيلة. نوظف خبراتنا الهندسية وفولاذ هاردوكس المعتمد ومكونات الحركة الأوروبية لمساعدة أساطيل النقل على التوسع بأعلى جاهزية وموثوقية تشغيلية.' : 'Modern Assets is a premier heavy-duty vehicle and trailer manufacturer that uses skilled engineering, certified Hardox steel, and heavy-duty European running gear to help transport fleets expand with maximum uptime and unmatched operational reliability.'}
                   </p>
                 </div>
 
@@ -201,9 +203,9 @@ export default function Hero({ onOpenQuote }: HeroProps) {
                   <button
                     type="button"
                     onClick={handleOpenClient}
-                    className="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full border-2 border-[#E07B10] bg-transparent hover:bg-[#E07B10] text-[#E07B10] hover:text-[#0A0E14] font-extrabold text-xs sm:text-sm tracking-wider uppercase font-body shadow-[0_4px_16px_rgba(224,123,16,0.18)] hover:shadow-[0_6px_22px_rgba(224,123,16,0.35)] transition-all duration-300 cursor-pointer"
+                    className="group inline-flex items-center gap-3 px-8 sm:px-10 py-3 sm:py-4 rounded-full border-2 border-[#E07B10] bg-transparent hover:bg-[#E07B10] text-[#E07B10] hover:text-[#0A0E14] font-extrabold text-sm sm:text-base tracking-wider uppercase font-body shadow-[0_4px_16px_rgba(224,123,16,0.18)] hover:shadow-[0_6px_22px_rgba(224,123,16,0.35)] transition-all duration-300 cursor-pointer"
                   >
-                    <span>BECOME A CLIENT</span>
+                    <span>{isArabic ? 'كن عميلاً' : 'BECOME A CLIENT'}</span>
                     <span className="text-base font-black transition-transform group-hover:translate-x-1">›</span>
                   </button>
                 </div>

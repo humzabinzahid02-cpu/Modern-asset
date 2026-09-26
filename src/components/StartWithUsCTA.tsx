@@ -1,10 +1,12 @@
 import React from 'react'
+import { useLanguage } from '../LanguageContext'
 
 interface StartWithUsCTAProps {
   onOpenQuote: () => void
 }
 
 export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
+  const { isArabic } = useLanguage()
   return (
     <section
       id="contact"
@@ -40,15 +42,15 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
 
             {/* Headline */}
             <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white uppercase tracking-tight leading-[0.93] mb-4 sm:mb-6">
-              LET'S BUILD YOUR<br />
+              {isArabic ? 'لنبنِ' : "LET'S BUILD YOUR"}<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E07B10] via-[#F5A623] to-[#E07B10]">
-                VISION TOGETHER
+                {isArabic ? 'رؤيتك معاً' : 'VISION TOGETHER'}
               </span>
             </h2>
 
             {/* Subtitle */}
             <p className="font-body text-sm sm:text-base lg:text-lg text-[#9CA3AF] max-w-xl leading-relaxed mb-6 sm:mb-8">
-              Tell us about your fleet requirements and our engineering team will respond within 24 hours with a tailored proposal — fixed pricing and guaranteed timelines included.
+              {isArabic ? 'أخبرنا عن احتياجات أسطولك، وسيرد فريقنا الهندسي خلال 24 ساعة بعرض مخصص وأسعار ثابتة ومواعيد تسليم مضمونة.' : 'Tell us about your fleet requirements and our engineering team will respond within 24 hours with a tailored proposal — fixed pricing and guaranteed timelines included.'}
             </p>
 
             {/* Action Button: BECOME A CLIENT */}
@@ -58,7 +60,7 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
                 onClick={onOpenQuote}
                 className="group inline-flex items-center justify-center gap-3 font-display font-extrabold text-sm sm:text-base tracking-[0.1em] uppercase text-white bg-[#E07B10] hover:bg-[#C96B0A] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full border-2 border-[#E07B10] shadow-[0_8px_25px_rgba(224,123,16,0.35)] hover:shadow-[0_12px_32px_rgba(224,123,16,0.5)] transition-all duration-300 cursor-pointer w-full sm:w-auto text-center"
               >
-                <span>BECOME A CLIENT</span>
+                <span>{isArabic ? 'كن عميلاً' : 'BECOME A CLIENT'}</span>
                 <span className="text-lg font-black transition-transform group-hover:translate-x-1">›</span>
               </button>
             </div>
@@ -75,13 +77,13 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
               </div>
               <div>
                 <span className="font-body text-[10px] tracking-widest uppercase text-[#9CA3AF] font-bold block">
-                  Headquarters
+                  {isArabic ? 'المقر الرئيسي' : 'Headquarters'}
                 </span>
                 <h4 className="font-display font-bold text-base text-white uppercase mt-0.5 mb-1">
-                  Riyadh, Saudi Arabia
+                  {isArabic ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia'}
                 </h4>
                 <p className="font-body text-xs text-[#9CA3AF] m-0">
-                  <span className="text-[#E07B10] font-semibold">Industrial City 2</span> • Fleet deliveries available nationwide
+                  <span className="text-[#E07B10] font-semibold">{isArabic ? 'المدينة الصناعية الثانية' : 'Industrial City 2'}</span> • {isArabic ? 'توصيل الأساطيل متاح لجميع أنحاء المملكة' : 'Fleet deliveries available nationwide'}
                 </p>
               </div>
             </div>
@@ -93,13 +95,13 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
               </div>
               <div>
                 <span className="font-body text-[10px] tracking-widest uppercase text-[#9CA3AF] font-bold block">
-                  Commercial Response
+                  {isArabic ? 'الاستجابة التجارية' : 'Commercial Response'}
                 </span>
                 <h4 className="font-display font-bold text-base text-white uppercase mt-0.5 mb-1">
-                  24-Hour Proposal Turnaround
+                  {isArabic ? 'عرض خلال 24 ساعة' : '24-Hour Proposal Turnaround'}
                 </h4>
                 <p className="font-body text-xs text-[#9CA3AF] m-0">
-                  Fixed quotes with complete axle weight analysis &amp; delivery dates
+                  {isArabic ? 'عروض أسعار ثابتة مع تحليل كامل لأوزان المحاور ومواعيد التسليم' : 'Fixed quotes with complete axle weight analysis & delivery dates'}
                 </p>
               </div>
             </div>
@@ -111,7 +113,7 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
               </div>
               <div className="flex-1">
                 <span className="font-body text-[10px] tracking-widest uppercase text-[#9CA3AF] font-bold block">
-                  Direct Engineering Desk
+                  {isArabic ? 'التواصل المباشر مع الهندسة' : 'Direct Engineering Desk'}
                 </span>
                 <h4 className="font-display font-bold text-base text-white uppercase mt-0.5 mb-1">
                   proposals@modern-assets.com
@@ -121,7 +123,7 @@ export default function StartWithUsCTA({ onOpenQuote }: StartWithUsCTAProps) {
                   onClick={onOpenQuote}
                   className="font-body text-xs text-[#E07B10] hover:underline font-bold bg-transparent border-none p-0 cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  <span>Open Dedicated Fleet Spec Form</span>
+                  <span>{isArabic ? 'افتح نموذج مواصفات الأسطول' : 'Open Dedicated Fleet Spec Form'}</span>
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />

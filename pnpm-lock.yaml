@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@emailjs/browser':
+        specifier: ^4.4.1
+        version: 4.4.1
       gsap:
         specifier: ^3.15.0
         version: 3.15.0
@@ -53,6 +56,10 @@ importers:
         version: 8.0.5(@types/node@22.19.17)(jiti@2.6.1)
 
 packages:
+
+  '@emailjs/browser@4.4.1':
+    resolution: {integrity: sha512-DGSlP9sPvyFba3to2A50kDtZ+pXVp/0rhmqs2LmbMS3I5J8FSOgLwzY2Xb4qfKlOVHh29EAutLYwe5yuEZmEFg==}
+    engines: {node: '>=14.0.0'}
 
   '@emnapi/core@1.9.1':
     resolution: {integrity: sha512-mukuNALVsoix/w1BJwFzwXBN/dHeejQtuVzcDsfOEsdpCumXb/E9j8w11h5S54tT1xhifGfbbSm/ICrObRb3KA==}
@@ -588,6 +595,8 @@ packages:
         optional: true
 
 snapshots:
+
+  '@emailjs/browser@4.4.1': {}
 
   '@emnapi/core@1.9.1':
     dependencies:

@@ -1,3 +1,5 @@
+import { useLanguage } from '../LanguageContext'
+
 const ITEMS = [
   'Custom Truck Bodies',
   'Tankers',
@@ -11,6 +13,8 @@ const ITEMS = [
 ]
 
 export default function Ticker() {
+  const { isArabic } = useLanguage()
+  const arabicItems = ['هياكل شاحنات مخصصة', 'صهاريج', 'مقطورات منخفضة', 'مقطورات مسطحة', 'آليات كنس', 'منصات عمل جوية', 'شاحنات إنقاذ', 'ناقلات سيارات', 'تصنيع مخصص']
   const doubled = [...ITEMS, ...ITEMS]
 
   return (
@@ -35,7 +39,7 @@ export default function Ticker() {
             display: 'inline-flex',
             alignItems: 'center',
           }}>
-            <span>{item}</span>
+            <span>{isArabic ? arabicItems[i % ITEMS.length] : item}</span>
             <span style={{ marginLeft: 32, display: 'inline-flex', alignItems: 'center' }}>
               <svg className="w-2.5 h-2.5 text-[#E07B10] fill-current" viewBox="0 0 24 24">
                 <polygon points="12 2 22 12 12 22 2 12" />

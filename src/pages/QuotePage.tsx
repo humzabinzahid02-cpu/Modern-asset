@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
+import { sendFormEmail, openEmailClient, getGmailComposeLink, getMailtoLink, TARGET_EMAIL } from '../lib/sendFormEmail'
 
 interface QuotePageProps {
   onBackToHome: () => void
 }
 
-type FormState = 'idle' | 'submitting' | 'success'
+type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
 export default function QuotePage({ onBackToHome }: QuotePageProps) {
   const [formState, setFormState] = useState<FormState>('idle')
+  const [formError, setFormError] = useState('')
   const [form, setForm] = useState({
     name: '',
     company: '',
@@ -46,12 +48,18 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
     'Saudi Vision 2030 Project (2026 - 2027)',
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setFormState('submitting')
-    setTimeout(() => {
-      setFormState('success')
-    }, 1200)
+    
+    // Launch email composer SYNCHRONOUSLY at the exact same moment of click
+    openEmailClient('New Fleet Quote Request', form)
+
+    // Immediately show success screen
+    setFormState('success')
+    setFormError('')
+
+    // Send silent background backup copy via EmailJS
+    sendFormEmail('New Fleet Quote Request', form).catch(console.error)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -300,11 +308,34 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                   </div>
                   <h2 className="font-display font-black text-2xl sm:text-4xl uppercase text-[#1B2B3A] mb-2 sm:mb-3">
-                    Quote Request Received
+                    Email Created & Ready To Send!
                   </h2>
-                  <p className="font-body text-sm sm:text-base text-[#5C6470] max-w-md mx-auto leading-relaxed mb-6 sm:mb-8">
-                    Thank you, <strong className="text-[#1B2B3A]">{form.name}</strong>. Your project dossier has been assigned to our commercial engineering desk. We will reach out within 24 hours.
+                  <p className="font-body text-sm sm:text-base text-[#5C6470] max-w-lg mx-auto leading-relaxed mb-4">
+                    Your email app has been opened with your full specifications pre-written to <strong className="text-[#1B2B3A]">{TARGET_EMAIL}</strong>. Simply click <strong>Send</strong> in your mail app!
                   </p>
+
+                  {/* Direct Launch Buttons */}
+                  <div className="bg-[#F8F7F4] border border-[#E2DFDC] rounded-2xl p-4 sm:p-5 max-w-md mx-auto mb-8 text-center">
+                    <p className="font-body text-xs font-semibold text-[#1B2B3A] mb-3">Didn't open automatically? Choose your preferred client:</p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                      <a
+                        href={getGmailComposeLink('New Fleet Quote Request', form)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#EA4335] text-white font-display font-bold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-opacity no-underline"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.266H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                        <span>Open in Gmail Web</span>
+                      </a>
+                      <a
+                        href={getMailtoLink('New Fleet Quote Request', form)}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#1B2B3A] text-white font-display font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-[#E07B10] transition-colors no-underline"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>Open Default Mail App</span>
+                      </a>
+                    </div>
+                  </div>
                   
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                     <button
@@ -453,6 +484,11 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
 
                     {/* Submit Button */}
                     <div className="pt-2">
+                      {formState === 'error' && (
+                        <p role="alert" className="mb-3 text-center text-sm font-medium text-red-600">
+                          {formError || 'We couldn’t send your request. Please try again.'}
+                        </p>
+                      )}
                       <button
                         type="submit"
                         disabled={formState === 'submitting'}
@@ -465,7 +501,7 @@ export default function QuotePage({ onBackToHome }: QuotePageProps) {
                           </>
                         ) : (
                           <>
-                            <span>SUBMIT FLEET SPECIFICATION REQUEST</span>
+                            <span>SUBMIT & OPEN EMAIL (READY TO SEND)</span>
                             <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <line x1="5" y1="12" x2="19" y2="12" />
                               <polyline points="12 5 19 12 12 19" />
