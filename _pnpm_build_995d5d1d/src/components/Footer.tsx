@@ -1,0 +1,284 @@
+import { useState } from 'react'
+import { useLanguage } from '../LanguageContext'
+import PrivacyPolicy from '../pages/PrivacyPolicy'
+import TermsOfService from '../pages/TermsOfService'
+import LicensePage from '../pages/LicensePage'
+
+const FLEET_PRODUCTS = [
+  'Precision Tankers',
+  'Heavy Lowbeds',
+  'Tipper Trailers',
+  'Flatbed Transporters',
+  'Sweepers & Wreckers',
+  'Custom Truck Bodies',
+]
+
+const SITE_LINKS = [
+  { name: 'Home', target: 'home' },
+  { name: 'Products', target: 'products' },
+  { name: 'Our Process', target: 'process' },
+  { name: 'Why Us', target: 'why-us' },
+  { name: 'Contact', target: 'contact' },
+]
+
+const AR_FLEET_PRODUCTS = ['صهاريج دقيقة', 'مقطورات منخفضة', 'مقطورات قلاب', 'ناقلات مسطحة', 'مكنسات وشاحنات إنقاذ', 'هياكل شاحنات مخصصة']
+const AR_SITE_LINKS: Record<string, string> = {
+  Home: 'الرئيسية',
+  Products: 'المنتجات',
+  'Our Process': 'آلية العمل',
+  'Why Us': 'لماذا نحن',
+  Contact: 'تواصل معنا',
+}
+
+export default function Footer() {
+  const { isArabic } = useLanguage()
+  const [showPrivacy, setShowPrivacy] = useState(false)
+  const [showTerms, setShowTerms] = useState(false)
+  const [showLicense, setShowLicense] = useState(false)
+
+  const handleLinkClick = (target: string, e: React.MouseEvent) => {
+    e.preventDefault()
+    const el = document.getElementById(target)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <>
+      {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />}
+      {showTerms && <TermsOfService onClose={() => setShowTerms(false)} />}
+      {showLicense && <LicensePage onClose={() => setShowLicense(false)} />}
+
+      <footer
+        id="contact-footer"
+        className="flex w-full min-h-screen flex-col bg-[#1C2128] px-4 sm:px-6 lg:px-13 pt-10 sm:pt-9 lg:pt-10 pb-4 sm:pb-5 text-[#B0B8BC] overflow-hidden"
+      >
+        <div className="w-full max-w-[100rem] flex flex-1 flex-col mx-auto">
+          {/* Top Section: CTA on Left, Link Columns on Right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 mb-4 sm:mb-6">
+            
+            {/* Left Column: Headline & Direct Contact CTA */}
+            <div className="lg:col-span-6 flex flex-col">
+              <div>
+                <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.25em] uppercase text-[#E07B10] mb-2 font-body">
+                  <span className="w-2 h-2 rounded-full bg-[#E07B10]" />
+                  {isArabic ? 'شريك الأساطيل لرؤية السعودية 2030' : 'Saudi Vision 2030 Fleet Partner'}
+                </div>
+
+                <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-[38px] uppercase tracking-tight text-white mb-2.5 leading-[0.98]">
+                  {isArabic ? 'اكتشف كيف نساعدك.' : 'See how we can help you.'} <br />
+                  <span className="text-[#E07B10]">{isArabic ? 'تواصل معنا اليوم.' : 'Get in touch today.'}</span>
+                </h3>
+
+                <p className="font-body text-[13px] sm:text-sm text-[#B0B8BC] leading-relaxed max-w-lg mb-4">
+                  {isArabic
+                    ? 'تصنيع مخصص للمركبات التجارية الثقيلة ومنصات النقل المتخصصة، مصممة للقوة والدقة وكفاءة التشغيل.'
+                    : 'Custom fabrication of heavy-duty commercial vehicles and specialized transport platforms — built for strength, precision & operational endurance.'}
+                </p>
+              </div>
+
+              {/* Direct Email & Social Links */}
+              <div>
+                <a
+                  href="mailto:info@modern-assets.com"
+                  className="font-display font-bold text-lg sm:text-xl text-white hover:text-[#E07B10] transition-colors inline-flex items-center gap-2 mb-3.5 tracking-wide underline underline-offset-4 decoration-[#E07B10]"
+                >
+                  <span>info@modern-assets.com</span>
+                  <svg className="w-4 h-4 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+                <a href="tel:+966540888840" dir="ltr" className="mb-3 inline-flex items-center gap-2 font-display text-base font-bold text-white no-underline transition-colors hover:text-[#E07B10]">
+                  +966 54 088 8840
+                </a>
+
+                {/* Social Media Pill Badges */}
+                <div className="flex items-center gap-2.5">
+                  {[
+                    {
+                      name: 'LinkedIn',
+                      svg: (
+                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                      ),
+                    },
+                    {
+                      name: 'Instagram',
+                      svg: (
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                      ),
+                    },
+                    {
+                      name: 'Facebook',
+                      svg: (
+                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.5-1.5h1.7V4.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V11H7.6v3h2.7v8h3.2z" />
+                        </svg>
+                      ),
+                    },
+                    {
+                      name: 'X',
+                      svg: (
+                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                      ),
+                    },
+                    {
+                      name: 'YouTube',
+                      svg: (
+                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                      ),
+                    },
+                  ].map((s) => (
+                    <a
+                      key={s.name}
+                      href={s.name === 'Instagram' ? 'https://www.instagram.com/modernassets1/' : s.name === 'Facebook' ? 'https://www.facebook.com/modernassets1/' : '#contact'}
+                      target={s.name === 'Instagram' || s.name === 'Facebook' ? '_blank' : undefined}
+                      rel={s.name === 'Instagram' || s.name === 'Facebook' ? 'noopener noreferrer' : undefined}
+                      title={s.name}
+                      aria-label={s.name}
+                      className="w-8 h-8 rounded-full border border-white/20 bg-white/5 hover:bg-[#E07B10] hover:border-[#E07B10] hover:text-white text-[#B0B8BC] flex items-center justify-center transition-all duration-200 cursor-pointer no-underline"
+                    >
+                      {s.svg}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Columns: Products & Site Links + Spanning Location */}
+            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8 lg:pt-[34px]">
+              
+              {/* Products Column */}
+              <div>
+                <div className="font-display font-black text-sm tracking-wider uppercase text-white mb-2.5">
+                  {isArabic ? 'منتجات الأساطيل' : 'Fleet Products'}
+                </div>
+                <ul className="space-y-1.5 p-0 m-0 list-none font-body text-sm sm:text-[15px]">
+                  {FLEET_PRODUCTS.map((prod, index) => (
+                    <li key={prod}>
+                      <a
+                        href="#products"
+                        onClick={(e) => handleLinkClick('products', e)}
+                        className="text-[#C5CCD2] hover:text-[#E07B10] transition-all no-underline cursor-pointer flex items-center gap-1.5 group font-medium"
+                      >
+                        <span className="text-[#E07B10] text-xs font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">›</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform">{isArabic ? AR_FLEET_PRODUCTS[index] : prod}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Site Navigation Links */}
+              <div>
+                <div className="font-display font-black text-sm tracking-wider uppercase text-white mb-2.5">
+                  {isArabic ? 'روابط الموقع' : 'Site Links'}
+                </div>
+                <ul className="space-y-1.5 p-0 m-0 list-none font-body text-sm sm:text-[15px]">
+                  {SITE_LINKS.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={`#${link.target}`}
+                        onClick={(e) => handleLinkClick(link.target, e)}
+                        className="text-[#C5CCD2] hover:text-[#E07B10] transition-all no-underline cursor-pointer flex items-center gap-1.5 group font-medium"
+                      >
+                        <span className="text-[#E07B10] text-xs font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">›</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform">{isArabic ? AR_SITE_LINKS[link.name] : link.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Full Address — spans both columns */}
+              <div className="sm:col-span-2 mt-2 pt-3 border-t border-white/8">
+                <div className="font-display font-black text-xs tracking-wider uppercase text-white mb-3 flex items-center gap-1.5">
+                  <svg className="w-3.5 h-3.5 text-[#E07B10]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  {isArabic ? 'العنوان الرسمي' : 'Registered Address'}
+                </div>
+                <div dir={isArabic ? 'rtl' : 'ltr'} className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 font-body text-xs text-[#8C949C]">
+                  <div>
+                    <span className="text-[#B0B8BC] font-semibold">{isArabic ? 'المؤسسة:' : 'Entity:'}</span>{' '}
+                    <span>{isArabic ? 'مؤسسة مودرن أسيتس للتصنيع' : 'MODERN ASSETS Establishment For Manufacturing'}</span>
+                  </div>
+                  <div>
+                    <span className="text-[#B0B8BC] font-semibold">{isArabic ? 'رقم السجل التجاري:' : 'CR No.:'}</span>{' '}
+                    <span className="text-[#E07B10] font-bold" dir="ltr">7038446733</span>
+                  </div>
+                  <div>
+                    <span className="text-[#B0B8BC] font-semibold">{isArabic ? 'الشارع:' : 'Street:'}</span>{' '}
+                    <span>{isArabic ? 'حمد بن فارس ٤٣٢٦، حي المشاعل' : '4326 Hamad Ibn Faris St., Al Mishael Dist.'}</span>
+                  </div>
+                  <div>
+                    <span className="text-[#B0B8BC] font-semibold">{isArabic ? 'الرمز البريدي:' : 'Postal Code:'}</span>{' '}
+                    <span dir="ltr">14326</span>
+                  </div>
+                  <div>
+                    <span className="text-[#B0B8BC] font-semibold">{isArabic ? 'المدينة:' : 'City:'}</span>{' '}
+                    <span>{isArabic ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Kingdom of Saudi Arabia'}</span>
+                  </div>
+                  <div>
+                    <span className="text-[#B0B8BC] font-semibold">{isArabic ? 'العنوان المختصر:' : 'Short Address:'}</span>{' '}
+                    <span dir="ltr" className="font-mono tracking-widest text-[#E07B10]">RNMA 4326</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Giant Typographic Brand Display */}
+          <div className="w-full mt-8 sm:mt-10 pt-4 sm:pt-6 pb-2 select-none overflow-hidden text-center">
+            <div className="font-display font-black text-[clamp(2rem,10.5vw,12rem)] tracking-[-0.04em] uppercase leading-[0.82] whitespace-nowrap select-none">
+              <span className="text-white">Modern </span>
+              <span className="text-[#E07B10]">Assets.</span>
+            </div>
+          </div>
+
+          {/* Copyright & Legal Bar */}
+          <div className="pt-2 pb-1 flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left text-[11px] font-body text-[#8C949C]">
+            <div>
+              &copy; {new Date().getFullYear()} {isArabic
+                ? 'مودرن أسيتس. جميع الحقوق محفوظة. شريك الأساطيل لرؤية السعودية 2030.'
+                : 'Modern Assets. All rights reserved. Saudi Vision 2030 Fleet Partner.'}
+            </div>
+            <div className="flex flex-wrap justify-center sm:justify-end gap-3.5">
+              <button
+                onClick={() => setShowPrivacy(true)}
+                className="text-[#8C949C] hover:text-white transition-colors no-underline bg-transparent border-0 cursor-pointer p-0 font-body text-[11px]"
+              >
+                {isArabic ? 'سياسة الخصوصية' : 'Privacy Policy'}
+              </button>
+              <button
+                onClick={() => setShowTerms(true)}
+                className="text-[#8C949C] hover:text-white transition-colors no-underline bg-transparent border-0 cursor-pointer p-0 font-body text-[11px]"
+              >
+                {isArabic ? 'شروط الاستخدام' : 'Terms of Service'}
+              </button>
+              <button
+                onClick={() => setShowLicense(true)}
+                className="text-[#8C949C] hover:text-white transition-colors no-underline bg-transparent border-0 cursor-pointer p-0 font-body text-[11px]"
+              >
+                {isArabic ? 'السجل التجاري / الرخصة' : 'CR License & Certifications'}
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </footer>
+    </>
+  )
+}

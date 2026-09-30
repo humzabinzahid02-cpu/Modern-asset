@@ -22,216 +22,382 @@ export interface ProductDetail {
 
 const PRODUCTS_DATA: ProductDetail[] = [
   {
-    id: 'tankers',
-    name: 'Precision Tankers',
-    tag: 'Liquid Transport',
-    category: 'transport',
-    desc: 'Fuel, petroleum, chemical, and potable water tankers engineered to SASO, ADR, and ISO standards with multi-compartment baffles.',
-    img: 'https://images.unsplash.com/photo-1745441062417-5d0fbfcbf48f?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Payload Capacity', value: '32,000L - 55,000L' },
-      { label: 'Chassis Alloy', value: '304/316 Stainless or Al-5182' },
-      { label: 'Compartments', value: '1 to 5 Multi-Chamber' },
-      { label: 'Certifications', value: 'ADR • SASO • ISO 9001' },
-    ],
-    features: [
-      'Pneumatic bottom-loading safety manifold',
-      'Electronic vapor recovery & overfill sensors',
-      'BPW air suspension with front lift axle',
-      'Anti-corrosion robotic interior weld seams',
-    ],
-    leadTime: '3 - 5 Weeks',
+    id: "vacuum-jetting",
+    name: "Vacuum & Jetting Trucks",
+    tag: "Vacuum & Jetting",
+    category: "municipal",
+    desc: "Truck-mounted vacuum and high-pressure jetting vehicles for industrial cleaning and drainage work.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-02.jpg`,
+    specs: [{"label":"Equipment","value":"Vacuum and jetting systems"},{"label":"Vehicle","value":"Truck-mounted unit"},{"label":"Applications","value":"Industrial cleaning and drainage"}],
+    features: ["Vacuum collection equipment","High-pressure jetting equipment","Vehicle setup selected for the operation"],
+    leadTime: 'On request',
   },
   {
-    id: 'lowbed',
-    name: 'Heavy-Duty Low-Bed Trailers',
-    tag: 'Heavy Haul',
-    category: 'heavy',
-    desc: 'Engineered for multi-ton abnormal haulage, industrial transformers, earthmoving equipment, and extreme plant relocation with zero chassis deflection.',
-    img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Payload Rating', value: '60 - 150 Metric Tons' },
-      { label: 'Axle Configuration', value: '3, 4, 5 & 6-Axle Hydraulic' },
-      { label: 'Chassis Alloy', value: 'Strenx 700MC High-Tensile' },
-      { label: 'Ramp System', value: 'Heavy Hydraulic Bi-Fold' },
-    ],
-    features: [
-      'High-tensile Strenx 700MC steel construction',
-      'Hydraulic steering axles with wireless remote override',
-      'Outrigger brackets for wide load accommodation',
-      'Integrated heavy-duty lashing points every 500mm',
-    ],
-    leadTime: '4 - 6 Weeks Guaranteed',
+    id: "sweepers",
+    name: "Sweepers",
+    tag: "Road Cleaning",
+    category: "municipal",
+    desc: "Road-sweeping vehicles for collecting debris and supporting street and site maintenance.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-03.jpg`,
+    specs: [{"label":"Equipment","value":"Road sweeper"},{"label":"Operation","value":"Sweeping and debris collection"},{"label":"Applications","value":"Road and site maintenance"}],
+    features: ["Road-sweeping equipment","Debris collection","Vehicle format selected for the route"],
+    leadTime: 'On request',
   },
   {
-    id: 'flatbed',
-    name: 'Reinforced Flat-Bed Trailers',
-    tag: 'General Freight',
-    category: 'heavy',
-    desc: 'High-payload commercial transport platforms featuring versatile container twist-locks, removable stanchions, and reinforced headboards.',
-    img: 'https://images.unsplash.com/photo-1626121300305-def4dc305387?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Deck Length', value: '12.5m - 14.5m Standard' },
-      { label: 'Payload Capacity', value: '45 - 60 Metric Tons' },
-      { label: 'Flooring', value: 'Hardwood or Checkered Steel' },
-      { label: 'Twist Locks', value: '12x Retractable ISO Units' },
-    ],
-    features: [
-      'Heavy-duty I-beam fabricated chassis with camber pre-stressing',
-      'Full LED hermetically sealed lighting harness',
-      'Dual spare wheel carrier with winch mechanism',
-      'Certified front impact collision bulkhead',
-    ],
-    leadTime: '2 - 4 Weeks',
+    id: "aerial-platforms",
+    name: "Aerial Platforms",
+    tag: "Elevated Access",
+    category: "custom",
+    desc: "Truck-mounted aerial work platforms for maintenance and work at height.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-04.jpg`,
+    specs: [{"label":"Equipment","value":"Aerial work platform"},{"label":"Vehicle","value":"Truck-mounted platform"},{"label":"Applications","value":"Elevated maintenance work"}],
+    features: ["Elevated work access","Truck-mounted equipment","Platform configuration selected for the task"],
+    leadTime: 'On request',
   },
   {
-    id: 'truckbodies',
-    name: 'Custom Truck Bodies',
-    tag: 'Custom Build',
-    category: 'custom',
-    desc: 'Bespoke cargo boxes, refrigerated insulated units, curtain-siders, and tipper bodies custom manufactured onto any OEM chassis.',
-    img: 'https://images.unsplash.com/photo-1778103617525-76877c583fa5?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Body Volume', value: '18m³ - 65m³ Available' },
-      { label: 'Side Wall Spec', value: 'Reinforced Monocoque Panels' },
-      { label: 'Tail Lift', value: '1,500kg - 3,000kg Hydraulic' },
-      { label: 'Chassis Match', value: 'Mercedes, Volvo, MAN, Scania' },
-    ],
-    features: [
-      'Aerodynamic roof radius reducing fuel consumption by up to 7%',
-      'Heavy-duty floor substructure with galvanized crossmembers',
-      'Flush-mount internal cargo track tie-down systems',
-      'Custom exterior paint with UV-resistant clear coat',
-    ],
-    leadTime: '2 - 3 Weeks',
+    id: "cranes",
+    name: "Cranes",
+    tag: "Lifting Equipment",
+    category: "custom",
+    desc: "Truck-mounted cranes for lifting and handling materials at work sites.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-05.jpg`,
+    specs: [{"label":"Equipment","value":"Truck-mounted crane"},{"label":"Operation","value":"Material lifting and handling"},{"label":"Applications","value":"On-site and fleet operations"}],
+    features: ["Crane mounted on a truck chassis","Lifting equipment for material handling","Setup selected for the operation"],
+    leadTime: 'On request',
   },
   {
-    id: 'sweepers',
-    name: 'Industrial Road Sweepers',
-    tag: 'Municipal',
-    category: 'municipal',
-    desc: 'High-performance regenerative-air and mechanical vacuum road sweepers for municipalities, airports, and construction sites.',
-    img: 'https://images.unsplash.com/photo-1782421932252-dbca02aae506?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Hopper Volume', value: '6.0m³ - 9.0m³ Capacity' },
-      { label: 'Sweeping Width', value: 'Up to 3,600mm Dual Gutter' },
-      { label: 'Water Tank', value: '1,500L Dust Suppression' },
-      { label: 'Auxiliary Engine', value: 'Tier 4 / Stage V Diesel' },
-    ],
-    features: [
-      'High-vacuum impeller with variable speed hydraulic drive',
-      'Dual steer camera system with cabin telemetry screen',
-      'High-pressure front spray bar and handheld washdown lance',
-      'Stainless steel debris hopper with automatic wash-out nozzle',
-    ],
-    leadTime: '4 - 6 Weeks',
+    id: "recovery-trucks",
+    name: "Recovery Trucks",
+    tag: "Vehicle Recovery",
+    category: "municipal",
+    desc: "Recovery vehicles for assisting and moving disabled commercial vehicles.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-06.jpg`,
+    specs: [{"label":"Vehicle","value":"Recovery truck"},{"label":"Operation","value":"Roadside vehicle recovery"},{"label":"Applications","value":"Commercial vehicles"}],
+    features: ["Vehicle recovery equipment","Roadside assistance use","Configuration selected for recovery needs"],
+    leadTime: 'On request',
   },
   {
-    id: 'wreckers',
-    name: 'Heavy Recovery Wreckers',
-    tag: 'Recovery',
-    category: 'municipal',
-    desc: 'Rotator boom and slide-back recovery vehicles designed for severe highway clearing, overturn recovery, and heavy vehicle towing.',
-    img: 'https://images.unsplash.com/photo-1768759579422-91cf6f113de1?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Boom Capacity', value: '30 - 75 Ton Continuous' },
-      { label: 'Underlift Rating', value: '16,000kg Retracted' },
-      { label: 'Winches', value: 'Dual 25,000kg Planetary' },
-      { label: 'Rotation', value: '360° Continuous Bearing' },
-    ],
-    features: [
-      'Wireless proportional remote control for all hydraulic functions',
-      'Outrigger pads with integrated ground pressure sensors',
-      'Complete towing adapter suite for buses and articulated trucks',
-      'Full emergency strobe perimeter illumination suite',
-    ],
-    leadTime: '6 - 8 Weeks',
+    id: "flatbed-trailers",
+    name: "Flat-Bed Trailers",
+    tag: "Freight Trailers",
+    category: "heavy",
+    desc: "Flat-deck trailers for transporting freight, equipment, and general cargo.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-07.jpg`,
+    specs: [{"label":"Trailer","value":"Flat-bed platform"},{"label":"Cargo","value":"Freight and equipment"},{"label":"Configuration","value":"Selected for the transported load"}],
+    features: ["Open flat-bed deck","General cargo transport","Trailer configuration selected per load"],
+    leadTime: 'On request',
   },
   {
-    id: 'aerial',
-    name: 'Aerial Work Platforms',
-    tag: 'Elevated Work',
-    category: 'custom',
-    desc: 'Insulated articulated boom and telescopic cherry pickers for power line maintenance, civil infrastructure, and telecommunications.',
-    img: 'https://images.unsplash.com/photo-1598302936625-6075fbd98dd7?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Working Height', value: '14m - 42m Elevation' },
-      { label: 'Basket Capacity', value: '250kg - 450kg (2-Person)' },
-      { label: 'Insulation Rating', value: 'Up to 69kV Dielectric' },
-      { label: 'Rotation', value: 'Continuous 360° Turntable' },
-    ],
-    features: [
-      'Zero-tailswing boom geometry for tight urban corridor access',
-      'Automatic leveling fiberglass basket with emergency ground controls',
-      'Hydraulic tool circuit outlets in basket',
-      'Certified EN 280 / ANSI A92.2 compliance inspection',
-    ],
-    leadTime: '4 - 6 Weeks',
+    id: "lowbed-trailers",
+    name: "Low-Bed Trailers",
+    tag: "Heavy Haul",
+    category: "heavy",
+    desc: "Low-bed trailers for hauling heavy machinery and equipment.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-08.jpg`,
+    specs: [{"label":"Trailer","value":"Low-bed platform"},{"label":"Cargo","value":"Heavy machinery and equipment"},{"label":"Configuration","value":"Selected for the transported load"}],
+    features: ["Low loading deck","Heavy equipment transport","Trailer setup selected for the cargo"],
+    leadTime: 'On request',
   },
   {
-    id: 'carriers',
-    name: 'Multi-Level Car Carriers',
-    tag: 'Auto Logistics',
-    category: 'transport',
-    desc: 'High-density multi-vehicle transporter trailers with hydraulic lifting decks, low angle drive-on ramps, and car tie-down chocks.',
-    img: 'https://images.unsplash.com/photo-1766561994067-dbd575e1cff2?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Vehicle Capacity', value: '6 to 10 Passenger Cars' },
-      { label: 'Deck Control', value: 'Multi-Valve Hydraulic Lift' },
-      { label: 'Ramp Angle', value: 'Ultra-Low 8° Drive-On' },
-      { label: 'Gross Weight', value: 'Up to 38,000kg' },
-    ],
-    features: [
-      'Perforated galvanized decking with heavy safety grip punchings',
-      'Hydraulic deck locks with mechanical secondary fail-safes',
-      'Adjustable wheel stops and ratchet tensioners included',
-      'Protected undercarriage hydraulics with zinc-nickel hard piping',
-    ],
-    leadTime: '3 - 5 Weeks',
+    id: "car-carrier-trailers",
+    name: "Car Carrier Trailers",
+    tag: "Vehicle Transport",
+    category: "heavy",
+    desc: "Purpose-built trailers for transporting passenger vehicles between locations.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-09.jpg`,
+    specs: [{"label":"Trailer","value":"Car carrier"},{"label":"Cargo","value":"Passenger vehicles"},{"label":"Configuration","value":"Vehicle transport layout"}],
+    features: ["Vehicle transport trailer","Multi-vehicle layout options","Configuration selected for the fleet"],
+    leadTime: 'On request',
   },
   {
-    id: 'custom',
-    name: 'Bespoke Vehicle Engineering',
-    tag: 'Bespoke',
-    category: 'custom',
-    desc: 'Custom special-purpose builds: mobile clinics, command centers, explosive transport, lubrication trucks, and mining service vehicles.',
-    img: 'https://images.unsplash.com/photo-1455165814004-1126a7199f9b?w=1200&h=800&fit=crop&auto=format',
-    specs: [
-      { label: 'Engineering', value: 'FEA Stress Analysis & CAD' },
-      { label: 'Chassis Mod', value: 'Wheelbase Extension / Drop' },
-      { label: 'Power Systems', value: 'Integrated Generators / Solar' },
-      { label: 'Custom Systems', value: 'HVAC, Hydraulic & Pneumatic' },
-    ],
-    features: [
-      'End-to-end custom design from blank page to road registration',
-      'Turnkey equipment integration with automated control PLC',
-      'Comprehensive operator manuals and technical training',
-      'On-site field commissioning and lifecycle spares support',
-    ],
-    leadTime: 'Inquire',
+    id: "cargo-trucks",
+    name: "Cargo Trucks",
+    tag: "Cargo Transport",
+    category: "transport",
+    desc: "Cargo trucks for moving general goods, freight, and deliveries.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-10.jpg`,
+    specs: [{"label":"Vehicle","value":"Cargo truck"},{"label":"Cargo","value":"General goods and freight"},{"label":"Body","value":"Selected for the load and route"}],
+    features: ["Cargo-focused truck body","Freight and delivery use","Body configuration selected per operation"],
+    leadTime: 'On request',
   },
+  {
+    id: "dump-trucks",
+    name: "Dump Trucks",
+    tag: "Bulk Material",
+    category: "transport",
+    desc: "Tipper trucks for transporting and unloading bulk materials at work sites.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-11.jpg`,
+    specs: [{"label":"Vehicle","value":"Dump truck"},{"label":"Body","value":"Tipping cargo body"},{"label":"Cargo","value":"Bulk materials"}],
+    features: ["Tipping body for unloading","Bulk material transport","Configuration selected for the job"],
+    leadTime: 'On request',
+  },
+  {
+    id: "wrecker-trucks",
+    name: "Wrecker Trucks",
+    tag: "Heavy Recovery",
+    category: "municipal",
+    desc: "Wrecker trucks for towing and recovering disabled vehicles from roads and work sites.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-12.jpg`,
+    specs: [{"label":"Vehicle","value":"Wrecker truck"},{"label":"Operation","value":"Towing and recovery"},{"label":"Applications","value":"Roadside and site assistance"}],
+    features: ["Vehicle towing equipment","Recovery of disabled vehicles","Configuration selected for recovery work"],
+    leadTime: 'On request',
+  },
+  {
+    id: "car-carrier-trucks",
+    name: "Car Carrier Trucks",
+    tag: "Vehicle Transport",
+    category: "transport",
+    desc: "Car-carrier trucks for moving passenger vehicles as part of vehicle logistics operations.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-13.jpg`,
+    specs: [{"label":"Vehicle","value":"Car carrier truck"},{"label":"Cargo","value":"Passenger vehicles"},{"label":"Operation","value":"Vehicle logistics"}],
+    features: ["Truck-mounted car transport body","Vehicle loading and transport","Configuration selected for the fleet"],
+    leadTime: 'On request',
+  },
+  {
+    id: "waste-containers",
+    name: "Heavy Waste Containers",
+    tag: "Waste Handling",
+    category: "municipal",
+    desc: "Heavy-duty containers for collecting and moving waste at municipal, construction, and industrial sites.",
+    img: `${import.meta.env.BASE_URL}catalog-pages/catalog-14.jpg`,
+    specs: [{"label":"Product","value":"Heavy waste container"},{"label":"Operation","value":"Waste collection and transfer"},{"label":"Applications","value":"Municipal and industrial sites"}],
+    features: ["Heavy-duty container format","Waste collection and transfer","Container setup selected for the handling system"],
+    leadTime: 'On request',
+  }
 ]
 
+const SPEC_LABEL_AR: Record<string, string> = {
+  Equipment: 'المعدة',
+  Vehicle: 'المركبة',
+  Operation: 'نوع العملية',
+  Applications: 'مجالات الاستخدام',
+  Trailer: 'المقطورة',
+  Cargo: 'نوع الحمولة',
+  Body: 'الهيكل',
+  Configuration: 'التهيئة والتجهيز',
+  Product: 'المنتج',
+}
+
 const PRODUCTS_AR: Record<string, Partial<ProductDetail>> = {
-  tankers: { name: 'صهاريج دقيقة', tag: 'نقل السوائل', desc: 'صهاريج للوقود والبترول والمواد الكيميائية ومياه الشرب، مصممة وفق معايير SASO وADR وISO، مع حواجز متعددة الحجرات.', leadTime: '٣–٥ أسابيع', specs: [{ label: 'سعة الحمولة', value: '32,000–55,000 لتر' }, { label: 'سبيكة الهيكل', value: 'ستانلس 304/316 أو ألمنيوم 5182' }, { label: 'الحجرات', value: 'من حجرة إلى 5 حجرات' }, { label: 'الشهادات', value: 'ADR • SASO • ISO 9001' }], features: ['مجمع تحميل سفلي هوائي وآمن', 'استعادة الأبخرة إلكترونياً وحساسات منع زيادة التعبئة', 'تعليق هوائي BPW مع محور رفع أمامي', 'لحامات داخلية آلية مقاومة للتآكل'] },
-  lowbed: { name: 'مقطورات منخفضة ثقيلة', tag: 'النقل الثقيل', desc: 'مصممة لنقل المعدات الصناعية والمحولات والآليات الثقيلة ونقل المنشآت، مع هيكل ثابت دون انحناء.', leadTime: '٤–٦ أسابيع مضمونة', specs: [{ label: 'قدرة الحمولة', value: '60–150 طناً مترياً' }, { label: 'المحاور', value: '3 أو 4 أو 5 أو 6 محاور هيدروليكية' }, { label: 'سبيكة الهيكل', value: 'فولاذ عالي المقاومة Strenx 700MC' }, { label: 'نظام المنحدر', value: 'منحدر هيدروليكي مزدوج الطي' }], features: ['هيكل من فولاذ Strenx 700MC عالي المقاومة', 'محاور توجيه هيدروليكية مع تحكم لاسلكي', 'حوامل جانبية للأحمال العريضة', 'نقاط ربط ثقيلة كل 500 مم'] },
-  flatbed: { name: 'مقطورات مسطحة معززة', tag: 'نقل البضائع', desc: 'منصات نقل تجارية عالية الحمولة، مزودة بأقفال حاويات متعددة الاستخدام ودعامات قابلة للإزالة ولوح أمامي معزز.', leadTime: '٢–٤ أسابيع', specs: [{ label: 'طول المنصة', value: '12.5–14.5 م قياسي' }, { label: 'سعة الحمولة', value: '45–60 طناً مترياً' }, { label: 'الأرضية', value: 'خشب صلب أو فولاذ مضلع' }, { label: 'أقفال الحاويات', value: '12 قفلاً معيارياً قابلاً للسحب' }], features: ['هيكل عوارض فولاذية مع تدعيم مسبق', 'نظام إنارة LED محكم بالكامل', 'حاملان للعجلات الاحتياطية مع ونش', 'حاجز أمامي معتمد لامتصاص الصدمات'] },
-  truckbodies: { name: 'هياكل شاحنات مخصصة', tag: 'تصنيع مخصص', desc: 'صناديق شحن ووحدات تبريد معزولة وهياكل ستائرية وصناديق قلاب، مصممة لتناسب مختلف هياكل الشاحنات الأصلية.', leadTime: '٢–٣ أسابيع', specs: [{ label: 'حجم الهيكل', value: 'من 18 إلى 65 م³' }, { label: 'الجوانب', value: 'ألواح أحادية معززة' }, { label: 'رافعة خلفية', value: 'هيدروليكية 1,500–3,000 كجم' }, { label: 'الشاحنات المتوافقة', value: 'Mercedes، Volvo، MAN، Scania' }], features: ['سقف انسيابي يقلل استهلاك الوقود حتى 7٪', 'أرضية معززة وعوارض مجلفنة', 'مسارات تثبيت داخلية للبضائع', 'طلاء خارجي مقاوم للأشعة فوق البنفسجية'] },
-  sweepers: { name: 'مكنسات طرق صناعية', tag: 'خدمات بلدية', desc: 'مكنسات طرق عالية الأداء تعمل بالهواء أو التفريغ الميكانيكي، مناسبة للبلديات والمطارات ومواقع الإنشاء.', leadTime: '٤–٦ أسابيع', specs: [{ label: 'حجم الحاوية', value: 'سعة 6–9 م³' }, { label: 'عرض الكنس', value: 'حتى 3,600 مم' }, { label: 'خزان المياه', value: '1,500 لتر للتحكم بالغبار' }, { label: 'المحرك الإضافي', value: 'ديزل Tier 4 / Stage V' }], features: ['مروحة شفط قوية مع تحكم هيدروليكي بالسرعة', 'كاميرات توجيه وشاشة بيانات داخل المقصورة', 'رشاش أمامي عالي الضغط ومسدس غسيل', 'حاوية مخلفات من الستانلس مع تنظيف آلي'] },
-  wreckers: { name: 'شاحنات إنقاذ ثقيلة', tag: 'الإنقاذ', desc: 'مركبات إنقاذ بأذرع دوارة ومنصات سحب، لإزالة المركبات من الطرق واستعادة الشاحنات الثقيلة وسحبها.', leadTime: '٦–٨ أسابيع', specs: [{ label: 'قدرة الذراع', value: '30–75 طناً' }, { label: 'قدرة الرافعة السفلية', value: '16,000 كجم' }, { label: 'الروافع', value: 'روافع كوكبية مزدوجة 25,000 كجم' }, { label: 'الدوران', value: '360 درجة' }], features: ['تحكم لاسلكي متناسب بالوظائف الهيدروليكية', 'دعامات مزودة بحساسات ضغط أرضي', 'معدات سحب للحافلات والشاحنات المفصلية', 'إضاءة طوارئ محيطية كاملة'] },
-  aerial: { name: 'منصات عمل جوية', tag: 'العمل على ارتفاعات', desc: 'منصات رفع معزولة بذراع مفصلية أو تلسكوبية لصيانة خطوط الكهرباء والبنية التحتية والاتصالات.', leadTime: '٤–٦ أسابيع', specs: [{ label: 'ارتفاع العمل', value: '14–42 م' }, { label: 'حمولة السلة', value: '250–450 كجم لشخصين' }, { label: 'العزل الكهربائي', value: 'حتى 69 كيلوفولت' }, { label: 'الدوران', value: 'منصة دوارة 360 درجة' }], features: ['تصميم بذراع لا يتجاوز حدود المركبة للممرات الضيقة', 'سلة ألياف زجاجية مستوية مع تحكم أرضي للطوارئ', 'مخارج أدوات هيدروليكية في السلة', 'فحص وفق معايير EN 280 وANSI A92.2'] },
-  carriers: { name: 'ناقلات سيارات متعددة الطوابق', tag: 'نقل السيارات', desc: 'مقطورات لنقل عدة مركبات بكثافة عالية، مع منصات رفع هيدروليكية ومنحدرات تحميل منخفضة ومثبتات للعجلات.', leadTime: '٣–٥ أسابيع', specs: [{ label: 'سعة المركبات', value: '6–10 سيارات ركاب' }, { label: 'تحكم المنصة', value: 'رفع هيدروليكي متعدد الصمامات' }, { label: 'زاوية المنحدر', value: 'تحميل منخفض بزاوية 8 درجات' }, { label: 'الوزن الإجمالي', value: 'حتى 38,000 كجم' }], features: ['أرضيات مجلفنة مثقبة بسطح مانع للانزلاق', 'أقفال هيدروليكية مع أنظمة أمان ميكانيكية', 'مصدات عجلات قابلة للتعديل وأحزمة تثبيت', 'أنابيب هيدروليكية سفلية محمية'] },
-  custom: { name: 'هندسة مركبات متخصصة', tag: 'حلول خاصة', desc: 'مركبات مخصصة تشمل العيادات المتنقلة ومراكز القيادة ونقل المواد الخطرة وشاحنات التشحيم وخدمات التعدين.', leadTime: 'حسب الطلب', specs: [{ label: 'الهندسة', value: 'تحليل إجهاد FEA وتصميم CAD' }, { label: 'تعديل الهيكل', value: 'تمديد أو خفض قاعدة العجلات' }, { label: 'أنظمة الطاقة', value: 'مولدات أو طاقة شمسية' }, { label: 'أنظمة مخصصة', value: 'تكييف وهيدروليك وهواء' }], features: ['تصميم متكامل من الفكرة إلى التسجيل على الطريق', 'دمج المعدات مع وحدات تحكم آلية', 'أدلة تشغيل وتدريب فني شامل', 'تشغيل ميداني ودعم لقطع الغيار'] },
+  "vacuum-jetting": {
+    name: "شاحنات الشفط والنفث",
+    tag: "الشفط والنفث",
+    desc: "شاحنات مجهزة بأنظمة الشفط والنفث عالي الضغط لأعمال التنظيف الصناعي وصيانة شبكات التصريف.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المعدة", value: "أنظمة الشفط والنفث عالي الضغط" },
+      { label: "المركبة", value: "وحدة متكاملة مركبة على شاحنة" },
+      { label: "مجالات الاستخدام", value: "التنظيف الصناعي وشبكات التصريف" }
+    ],
+    features: [
+      "معدات شفط متطورة بقدرات سحب وتفريغ عالية",
+      "مضخات نفث عالي الضغط لتسليك وتنظيف الأنابيب",
+      "تهيئة الشاسيه والمواصفات حسب متطلبات التشغيل"
+    ]
+  },
+  "sweepers": {
+    name: "مكنسات الطرق",
+    tag: "تنظيف الطرق",
+    desc: "مركبات كنس لجمع المخلفات ودعم صيانة الطرق والمواقع.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المعدة", value: "مكنسة طرق متطورة" },
+      { label: "نوع العملية", value: "كنس وجمع المخلفات والأتربة" },
+      { label: "مجالات الاستخدام", value: "صيانة الطرق والشوارع والمواقع" }
+    ],
+    features: [
+      "معدات كنس وفرش هيدروليكية عالية الكفاءة",
+      "نظام شفط وتجميع المخلفات مع خزان مياه للترطيب",
+      "تصميم وهيكل مخصص لطبيعة المسارات التشغيلية"
+    ]
+  },
+  "aerial-platforms": {
+    name: "منصات العمل الجوية",
+    tag: "الوصول إلى المرتفعات",
+    desc: "منصات عمل جوية مركبة على شاحنات لأعمال الصيانة والعمل على ارتفاعات.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المعدة", value: "منصة عمل جوية معزولة" },
+      { label: "المركبة", value: "رافعة هيدروليكية على شاحنة" },
+      { label: "مجالات الاستخدام", value: "أعمال الصيانة والرفع على ارتفاعات" }
+    ],
+    features: [
+      "وصول آمن للمرتفعات مع سلة عمل معزولة ومحمية",
+      "أنظمة أمان وتحكم هيدروليكي دقيق وثنائي الاتجاه",
+      "دعامات أرضية هيدروليكية لتحقيق أعلى درجات الاستقرار"
+    ]
+  },
+  "cranes": {
+    name: "الرافعات",
+    tag: "معدات الرفع",
+    desc: "رافعات مركبة على الشاحنات لرفع المواد ومناولتها في مواقع العمل.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المعدة", value: "رافعة هيدروليكية على الشاحنة" },
+      { label: "نوع العملية", value: "رفع ومناولة ونقل الحمولات" },
+      { label: "مجالات الاستخدام", value: "المشاريع الإنشائية وعمليات الأساطيل" }
+    ],
+    features: [
+      "رافعة مدمجة على شاسيه الشاحنة بقدرات حمولة متعددة",
+      "ذراع تلسكوبي ممتد مع تحكم لاسلكي عن بعد",
+      "دعامات تثبيت هيدروليكية لضمان السلامة الميدانية"
+    ]
+  },
+  "recovery-trucks": {
+    name: "شاحنات الاستعادة",
+    tag: "استعادة المركبات",
+    desc: "مركبات لمساعدة الطريق ونقل المركبات التجارية المتعطلة.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المركبة", value: "شاحنة استعادة وسحب مركبات" },
+      { label: "نوع العملية", value: "استعادة وسحب المركبات على الطرق" },
+      { label: "مجالات الاستخدام", value: "المركبات التجارية والشاحنات" }
+    ],
+    features: [
+      "ونش سحب هيدروليكي ثقيل مع ذراع رفع سفلي",
+      "خدمات الإنقاذ السريع ومساعدة الطريق على مدار الساعة",
+      "هيكل فولاذي مدعم للأوزان والحمولات الثقيلة"
+    ]
+  },
+  "flatbed-trailers": {
+    name: "مقطورات مسطحة",
+    tag: "مقطورات البضائع",
+    desc: "مقطورات بمنصة مسطحة لنقل البضائع والمعدات والحمولات العامة.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المقطورة", value: "سطحة مسطحة متعددة المحاور" },
+      { label: "نوع الحمولة", value: "البضائع والمعدات والحاويات العامة" },
+      { label: "التهيئة والتجهيز", value: "تصميم مخصص حسب وزن ونوع الحمولة" }
+    ],
+    features: [
+      "أرضية شحن مفتوحة من الفولاذ أو الخشب المعالج",
+      "نقاط تثبيت وسلاسل مطابقة للمواصفات القياسية",
+      "محاور وأنظمة تعليق متينة للطرق الوعرة والسريعة"
+    ]
+  },
+  "lowbed-trailers": {
+    name: "مقطورات منخفضة",
+    tag: "النقل الثقيل",
+    desc: "مقطورات منخفضة لنقل الآليات والمعدات الثقيلة.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المقطورة", value: "مقطورة لوبد منخفضة التحميل" },
+      { label: "نوع الحمولة", value: "المعدات الإنشائية والآليات الثقيلة" },
+      { label: "التهيئة والتجهيز", value: "محاور متعددة مع منحدرات هيدروليكية" }
+    ],
+    features: [
+      "ارتفاع تحميل منخفض لتسهيل صعود الآليات الثقيلة بأمان",
+      "منحدرات صعود خلفية هيدروليكية شديدة التحمل",
+      "فولاذ عالي المقاومة ومحاور متطورة للأوزان الفائقة"
+    ]
+  },
+  "car-carrier-trailers": {
+    name: "مقطورات نقل السيارات",
+    tag: "نقل المركبات",
+    desc: "مقطورات مخصصة لنقل سيارات الركاب بين المواقع.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المقطورة", value: "مقطورة نقل سيارات متعددة الطوابق" },
+      { label: "نوع الحمولة", value: "سيارات الركاب والمركبات الخفيفة" },
+      { label: "التهيئة والتجهيز", value: "نظام تحميل ثنائي الطوابق" }
+    ],
+    features: [
+      "منصات تحميل هيدروليكية قابلة للتعديل والرفع",
+      "أنظمة قفل وتثبيت للعجلات لضمان السلامة الكاملة",
+      "سعة استيعابية مصممة لخفض تكاليف النقل اللوجستي"
+    ]
+  },
+  "cargo-trucks": {
+    name: "شاحنات نقل البضائع",
+    tag: "نقل البضائع",
+    desc: "شاحنات لنقل البضائع العامة والحمولات وطلبات التوصيل.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المركبة", value: "شاحنة نقل بضائع" },
+      { label: "نوع الحمولة", value: "البضائع العامة والشحنات التجارية" },
+      { label: "الهيكل", value: "صندوق شاحنة مصمم حسب المسار والحمولة" }
+    ],
+    features: [
+      "صندوق شاحنة معزول أو مفتوح بأبواب وجدران متعددة",
+      "تصميم هندسي متوازن لتقليل استهلاك الوقود",
+      "هيكل عالي الصلابة ملائم لظروف المناخ بالمملكة"
+    ]
+  },
+  "dump-trucks": {
+    name: "شاحنات قلاب",
+    tag: "نقل المواد السائبة",
+    desc: "شاحنات قلاب لنقل المواد السائبة وتفريغها في مواقع العمل.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المركبة", value: "شاحنة قلاب لنقل المواد" },
+      { label: "الهيكل", value: "صندوق تفريغ هيدروليكي قلاب" },
+      { label: "نوع الحمولة", value: "المواد السائبة والرمل والحصى" }
+    ],
+    features: [
+      "أسطوانة هيدروليكية تلسكوبية أمامية لرفع سلس وسريع",
+      "فولاذ صلب مقاوم للاحتكاك والصدمات في بيئات العمل الشاقة",
+      "بوابة خلفية بنظام فتح تلقائي عند التفريغ"
+    ]
+  },
+  "wrecker-trucks": {
+    name: "شاحنات سحب وإنقاذ",
+    tag: "الإنقاذ الثقيل",
+    desc: "شاحنات لسحب واستعادة المركبات المتعطلة من الطرق ومواقع العمل.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المركبة", value: "شاحنة سحب وإنقاذ ثقيل (ريكفري)" },
+      { label: "نوع العملية", value: "سحب وإنقاذ الآليات والمركبات المتعطلة" },
+      { label: "مجالات الاستخدام", value: "مساعدة الطريق ومواقع المشاريع الكبرى" }
+    ],
+    features: [
+      "ذراع رفع دوّار ومزدوج بقدرات سحب هائلة",
+      "أنظمة تحكم هيدروليكية متطورة بكابلات فائقة المتانة",
+      "أرجل تثبيت هيدروليكية لضمان الاستقرار أثناء عمليات السحب"
+    ]
+  },
+  "car-carrier-trucks": {
+    name: "شاحنات ناقلة للسيارات",
+    tag: "نقل المركبات",
+    desc: "شاحنات لنقل سيارات الركاب ضمن عمليات لوجستية للمركبات.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المركبة", value: "شاحنة ناقلة سيارات مدمجة" },
+      { label: "نوع الحمولة", value: "سيارات الركاب والمركبات الخفيفة" },
+      { label: "نوع العملية", value: "اللوجستيات ونقل وتوزيع السيارات" }
+    ],
+    features: [
+      "هيكل هيدروليكي مدمج مركب مباشرة على الشاسيه",
+      "منحدرات صعود سلسة لتحميل آمن وسريع للمركبات",
+      "مرونة عالية في الحركة والمناورة داخل المدن والموانئ"
+    ]
+  },
+  "waste-containers": {
+    name: "حاويات نفايات ثقيلة",
+    tag: "إدارة النفايات",
+    desc: "حاويات قوية لجمع النفايات ونقلها في المواقع البلدية والإنشائية والصناعية.",
+    leadTime: 'حسب الطلب',
+    specs: [
+      { label: "المنتج", value: "حاوية نفايات ومخلفات صناعية ثقيلة" },
+      { label: "نوع العملية", value: "تجميع ونقل المخلفات والنفايات" },
+      { label: "مجالات الاستخدام", value: "المواقع البلدية والإنشائية والصناعية" }
+    ],
+    features: [
+      "هيكل فولاذي ملحوم بالكامل لتحمل أقصى درجات الضغط",
+      "متوافقة مع شاحنات الرفع والسكيب وهوكلفت القياسية",
+      "معالجة حرارية وطلاء مقاوم للصدأ والعوامل الجوية"
+    ]
+  }
 }
 
 const CATEGORIES = [
-  { id: 'all', label: 'All Fleet' },
-  { id: 'transport', label: 'Liquid & Freight' },
-  { id: 'heavy', label: 'Heavy Haul & Trailers' },
-  { id: 'municipal', label: 'Municipal & Wreckers' },
-  { id: 'custom', label: 'Custom & Elevated' },
+  { id: 'all', label: 'All Products' },
+  { id: 'transport', label: 'Trucks & Freight' },
+  { id: 'heavy', label: 'Trailers' },
+  { id: 'municipal', label: 'Municipal & Recovery' },
+  { id: 'custom', label: 'Lifting & Access' },
 ]
-const AR_CATEGORIES = ['كل الأساطيل', 'السوائل والبضائع', 'النقل الثقيل والمقطورات', 'الخدمات البلدية والإنقاذ', 'التصنيع الخاص والمنصات']
+const AR_CATEGORIES = ['كل المنتجات', 'الشاحنات ونقل البضائع', 'المقطورات', 'الخدمات البلدية والإنقاذ', 'الرفع والوصول']
+
 
 export default function Products() {
   const { isArabic } = useLanguage()
@@ -285,7 +451,7 @@ export default function Products() {
       {/* ScrollExpand Section */}
       <div className="relative w-full mb-4 sm:mb-8">
         <ScrollExpand
-          src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1920&h=1080&fit=crop&auto=format"
+          src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1280&h=720&fit=crop&auto=format"
           alt={isArabic ? 'توسّع أسطول مودرن أسيتس' : 'Modern Assets Heavy Fleet Expansion'}
           title={isArabic ? 'حلول لكل القطاعات' : 'BUILT FOR EVERY INDUSTRY'}
           badge={isArabic ? 'الفصل 02 • الأساطيل التجارية' : 'CHAPTER 02 • COMMERCIAL FLEET'}
@@ -436,6 +602,8 @@ export default function Products() {
                     <img
                       src={p.img}
                       alt={p.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1B2B3A]/40 via-transparent to-transparent pointer-events-none" />
@@ -469,7 +637,7 @@ export default function Products() {
                       {p.specs.map((s, idx) => (
                         <div key={idx}>
                           <div className="font-body text-[10px] sm:text-[11px] tracking-wider uppercase text-[#5C6470] mb-0.5 font-semibold">
-                            {s.label}
+                            {isArabic ? (SPEC_LABEL_AR[s.label] || s.label) : s.label}
                           </div>
                           <div className="font-display font-extrabold text-sm sm:text-base lg:text-lg text-[#1B2B3A] leading-tight">
                             {s.value}
@@ -530,6 +698,8 @@ export default function Products() {
                     <img
                       src={p.img}
                       alt={p.name}
+                      loading="lazy"
+                      decoding="async"
                       className={`w-full h-full object-cover transition-transform duration-500 ease-out ${
                         isHovered ? 'scale-105' : 'scale-100'
                       }`}
@@ -565,7 +735,7 @@ export default function Products() {
                       {p.specs.map((s, sIdx) => (
                         <div key={sIdx}>
                           <div className="font-body text-[10px] tracking-wider uppercase text-[#5C6470] mb-0.5">
-                            {s.label}
+                            {isArabic ? (SPEC_LABEL_AR[s.label] || s.label) : s.label}
                           </div>
                           <div className="font-display font-bold text-sm sm:text-base text-[#1B2B3A]">
                             {s.value}
@@ -623,6 +793,8 @@ export default function Products() {
               <img
                 src={selectedProduct.img}
                 alt={selectedProduct.name}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1B2B3A]/80 via-[#1B2B3A]/20 to-transparent" />
@@ -667,7 +839,7 @@ export default function Products() {
                     className="bg-[#F6F5F1] border border-[#E2DFDC] rounded-xl p-3"
                   >
                     <div className="font-body text-[10px] tracking-wider uppercase text-[#5C6470]">
-                      {s.label}
+                      {isArabic ? (SPEC_LABEL_AR[s.label] || s.label) : s.label}
                     </div>
                     <div className="font-display font-extrabold text-sm sm:text-base text-[#1B2B3A] mt-1">
                       {s.value}

@@ -230,7 +230,9 @@ export default function IntroAnimation({ onDone }: Props) {
                   fontFamily: item.dir === 'rtl' ? 'Cairo, sans-serif' : 'Poppins, sans-serif',
                   fontSize: 'clamp(48px, 14vw, 130px)',
                   fontWeight: 800,
-                  lineHeight: 1.05,
+                  // Arabic glyphs extend beyond a tight Latin-style line box; give
+                  // the greeting enough vertical room before its gold language label.
+                  lineHeight: item.dir === 'rtl' ? 1.35 : 1.05,
                   letterSpacing: '-0.01em',
                   color: textColor,
                   textAlign: 'center',
@@ -248,7 +250,7 @@ export default function IntroAnimation({ onDone }: Props) {
                   textTransform: 'uppercase',
                   fontWeight: 700,
                   color: subColor,
-                  marginTop: 14,
+                  marginTop: item.dir === 'rtl' ? 28 : 14,
                   textAlign: 'center',
                 }}
               >

@@ -1,7 +1,7 @@
 import { createServer } from 'node:http'
 
 const PORT = Number(process.env.API_PORT || 3001)
-const RECIPIENT = process.env.MAIL_TO || 'humzazahid455@gmail.com'
+const RECIPIENT = process.env.MAIL_TO || 'Fadhl.alabbas@gmail.com'
 const MAX_BODY_BYTES = 16 * 1024
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000
 const RATE_LIMIT_MAX = 5
